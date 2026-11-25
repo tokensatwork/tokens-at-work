@@ -2,8 +2,8 @@
   "metrics": {
     "sources": "80+",
     "topics": "2",
-    "reports": "0",
-    "episodes": "0"
+    "reports": "1",
+    "episodes": "1"
   },
   "platforms": {
     "rss": "",
@@ -19,13 +19,13 @@
     {
       "id": "ai-2026-W48",
       "topic": "ai",
-      "title": "Compute is the new constraint",
+      "title": "The AI Infrastructure Signal — 2026-W48",
       "week": "2026-W48",
       "date": "2026-11-24",
-      "summary": "Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure. This is placeholder content, not a published report.",
+      "summary": "TSMC export restrictions, NVIDIA Rubin HPC GPU, quantum-classical convergence at SC26, and supply chain bifurcation signals.",
       "url": "ai/reports/2026-W48/index.html",
       "minutes": 8,
-      "status": "preview"
+      "status": "published"
     },
     {
       "id": "quantum-2026-W48",
@@ -50,4 +50,4 @@
       ]
     }
   ]
-}
+}   
