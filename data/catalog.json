@@ -1,10 +1,53 @@
 {
-  "metrics": {"sources":"80+", "topics":"2", "reports":"0", "episodes":"0"},
-  "platforms": {"rss":"", "spotify":"", "apple":"", "rsscom":""},
-  "topics": {"ai":"AI Infrastructure", "quantum":"Quantum Computing"},
+  "metrics": {
+    "sources": "80+",
+    "topics": "2",
+    "reports": "0",
+    "episodes": "0"
+  },
+  "platforms": {
+    "rss": "",
+    "spotify": "",
+    "apple": "",
+    "rsscom": ""
+  },
+  "topics": {
+    "ai": "AI Infrastructure",
+    "quantum": "Quantum Computing"
+  },
   "reports": [
-    {"id":"ai-2026-W48", "topic":"ai", "title":"Compute is the new constraint", "week":"2026-W48", "date":"2026-11-24", "summary":"Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure. This is placeholder content, not a published report.", "url":"ai/reports/2026-W48/index.html", "minutes":8, "status":"preview"},
-    {"id":"quantum-2026-W48", "topic":"quantum", "title":"From qubits to useful systems", "week":"2026-W48", "date":"2026-11-24", "summary":"Launch preview: error correction, logical performance, and engineering milestones in quantum computing. This is placeholder content, not a published report.", "url":"quantum/reports/2026-W48/index.html", "minutes":7, "status":"preview"}
+    {
+      "id": "ai-2026-W48",
+      "topic": "ai",
+      "title": "Compute is the new constraint",
+      "week": "2026-W48",
+      "date": "2026-11-24",
+      "summary": "Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure. This is placeholder content, not a published report.",
+      "url": "ai/reports/2026-W48/index.html",
+      "minutes": 8,
+      "status": "preview"
+    },
+    {
+      "id": "quantum-2026-W48",
+      "topic": "quantum",
+      "title": "From qubits to useful systems",
+      "week": "2026-W48",
+      "date": "2026-11-24",
+      "summary": "Launch preview: error correction, logical performance, and engineering milestones in quantum computing. This is placeholder content, not a published report.",
+      "url": "quantum/reports/2026-W48/index.html",
+      "minutes": 7,
+      "status": "preview"
+    }
   ],
-  "episodes": []
+  "episodes": [
+    {
+      "number": 48,
+      "title": "The Weekly Signal #48 — The AI Infrastructure Signal 2026-W48",
+      "date": "2026-11-24",
+      "url": "podcast/signal_2026-W48.mp3",
+      "topics": [
+        "ai"
+      ]
+    }
+  ]
 }
