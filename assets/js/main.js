@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Derive the deploy root from this script's resolved URL. The script always
   // lives at <site-root>/assets/js/main.js, independent of page depth, a Pages
   // project prefix, or a custom domain.
-  const scriptElement = document.querySelector('script[src$="/assets/js/main.js"]');
+  const scriptElement = document.querySelector('script[src*="main.js"]');
   if (!scriptElement) return;
   const siteRoot = new URL('../../', scriptElement.src);
   let catalog;
