@@ -4,40 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>The AI Infrastructure Signal — Issue #48</title>
-<style>:root{--bg:#ffffff;--text:#1a1a2e;--text-muted:#6b7280;--accent:#1e3a5f;--accent-light:#e8f0fe;--border:#e5e7eb;--card-bg:#f9fafb;--up:#059669;--neutral:#6b7280;--down:#dc2626;--radius:8px}
-@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--text:#e2e8f0;--text-muted:#a0aec0;--accent:#60a5fa;--accent-light:#1e293b;--border:#334155;--card-bg:#1e293b}}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem 3rem;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
-h1{font-size:1.8rem;font-weight:700;color:var(--accent);margin:2rem 0 .4rem;padding-bottom:.4rem;border-bottom:3px solid var(--accent);letter-spacing:-.02em}
-h2{font-size:1.05rem;font-weight:500;color:var(--text-muted);margin:0 0 1.5rem}
-h3{font-size:1.3rem;font-weight:600;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:4px solid var(--accent)}
+<style>:root{--bg:#0b1017;--surface:#101720;--line:#25313d;--soft:#1b2631;--text:#e9eef2;--muted:#9aa8b5;--accent:#9ce7c1;--accent-dim:#8ed6bd;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--up:#9ce7c1;--neutral:#9aa8b5;--down:#f87171;--max:860px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.7 var(--sans);max-width:var(--max);margin:0 auto;padding:2rem 1.5rem 3rem;-webkit-font-smoothing:antialiased}
+h1{font-size:2.8rem;font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--text);margin:2rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+h2{font-size:1.05rem;font-weight:500;color:var(--muted);margin:0 0 1.5rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
+h3{font-size:1.3rem;font-weight:650;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:2px solid var(--accent);letter-spacing:-.02em}
 h4{font-size:1.05rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
 p{margin:.5rem 0}
 ul,ol{margin:.5rem 0 .75rem 1.5rem}
 li{margin:.35rem 0}
 li::marker{color:var(--accent)}
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0 1.5rem}
-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);min-width:480px}
-th{background:var(--accent-light);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:2px solid var(--border);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;color:var(--text-muted);white-space:nowrap}
-td{padding:.55rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border:1px solid var(--line);min-width:480px}
+th{background:var(--soft);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+td{padding:.55rem .8rem;border-bottom:1px solid var(--soft);vertical-align:top}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--card-bg)}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word;word-break:normal}
+tr:hover td{background:var(--surface)}
+hr{border:none;border-top:1px solid var(--line);margin:2rem 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word}
 a:hover{border-bottom-color:var(--accent)}
 .sig-up{color:var(--up);font-weight:700}
 .sig-neutral{color:var(--neutral)}
 .sig-down{color:var(--down);font-weight:700}
 strong{font-weight:600}
-footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--text-muted);text-align:center}
-@media print{body{max-width:100%;padding:1cm;font-size:11pt}h1,h2,h3{page-break-after:avoid}.table-wrap{overflow:visible}table{min-width:auto;page-break-inside:avoid}a{color:var(--text);border-bottom:none}a::after{content:" (" attr(href) ")";font-size:.8em;color:var(--text-muted)}}
-@media(max-width:640px){body{padding:1.25rem 1rem 2rem;font-size:14px}h1{font-size:1.4rem}h3{font-size:1.1rem;margin-top:1.5rem}table{font-size:.78rem;min-width:400px}th,td{padding:.45rem .6rem}ul,ol{margin-left:1.2rem}}</style>
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center}
+@media print{body{max-width:100%;padding:1cm;font-size:11pt;background:#fff;color:#1a1a2e}h1,h3{color:#1a1a2e}h1{border-bottom-color:#ccc}h3{border-left-color:#ccc}th{background:#f5f5f5;color:#333}td{border-bottom-color:#eee}a{color:#1a1a2e;border-bottom:none}a::after{content:" (" attr(href) ")";font-size:.8em;color:#666}}
+@media(max-width:640px){body{padding:1.25rem 1rem 2rem;font-size:14px}h1{font-size:2rem}h3{font-size:1.1rem;margin-top:1.5rem}table{font-size:.78rem;min-width:400px}th,td{padding:.45rem .6rem}ul,ol{margin-left:1.2rem}}</style>
 </head>
 <body>
 <h1>The AI Infrastructure Signal</h1>
-<h2>Issue #48 · November 16th to November 23rd, 2026</h2>
+<h2>Issue #48 · November 18th to November 23rd, 2026</h2>
 <h3>Executive Summary</h3>
-<p>The week was dominated by significant geopolitical friction regarding semiconductor supply chains and the integration of quantum computing into supercomputing workflows at SC26. TSMC tightened export restrictions on Chinese designers following new US rules, impacting advanced node manufacturing, while NVIDIA announced its Rubin HPC GPU targeting 2028 release for scientific simulation. Simultaneously, Anthropic raised capital via IPO headlines and Intel/AMD demonstrated hybrid quantum-classical workflows. The overall market signal indicates a bifurcation: robust innovation in compute architecture amidst tightening geopolitical headwinds that threaten to constrain supply chain availability for non-compliant regions.</p>
+<p>This week is defined by a bifurcation in the AI infrastructure cycle: robust compute demand colliding with tightening geopolitical constraints and market volatility. <strong>NVIDIA</strong> reported its first quarter without Jensen Huang while topping $100 billion in quarterly revenue, yet stock prices remain under pressure from accounting probe rumors and China export rule suspensions at <strong>TSMC</strong>. The SC26 conference highlighted the integration of quantum computing into supercomputer job queues and precision agriculture applications. Regulatory headwinds intensified as <strong>TSMC</strong> halted advanced chip orders for Chinese designers following new US rules, while <strong>Broadcom</strong> faced order cuts from Google. The market signal suggests a shift toward domestic resilience and alternative compute architectures (e.g., <strong>AMD</strong>, <strong>Intel</strong>) amidst supply chain tightening.</p>
 <h3>The AI Infrastructure Signal Dashboard</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -48,110 +47,104 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);fon
 </thead>
 <tbody><tr>
 <td>Compute</td>
-<td>NVIDIA Rubin HPC GPU announced with 50,000+ CUDA cores; AMD Instinct GPUs deployed in Lux Supercomputer; TSMC halts advanced chip orders from Chinese designers</td>
+<td><strong>NVIDIA</strong> tops $100 billion quarterly revenue; <strong>SK Hynix</strong> highlights MARS and HBM4E memory at SC26; <strong>AMD</strong> EPYC &amp; Instinct GPUs deployed in Lux Supercomputer.</td>
 </tr>
 <tr>
 <td>Networking</td>
-<td>Hybrid quantum-safe high-speed networking demonstrated between Chicago and Europe; SC26 panel debates AI supercomputing evolution</td>
+<td>SC26 panel debates AI supercomputing evolution; Hybrid quantum-safe high-speed networking connects US and Europe with adaptive, cryptoagile solution.</td>
 </tr>
 <tr>
 <td>Network Operators</td>
-<td>VodafoneThree to test Nokia&#39;s AI-RAN with Nvidia GPUs; AMD telco chief warns of GPU &#39;backlash&#39; in AI-RAN</td>
+<td>No significant activity.</td>
 </tr>
 <tr>
 <td>Energy, Power &amp; Cooling</td>
-<td>MIT lab running Ferveret&#39;s reactor-inspired cooling on nuclear materials GPUs; Quantum computing tested in energy solutions</td>
+<td>MIT lab tests Ferveret&#39;s reactor-inspired cooling on nuclear materials GPUs; New supercomputer boosts nuclear energy research at Idaho National Laboratory.</td>
 </tr>
 <tr>
 <td>Security &amp; Trust</td>
-<td>SK Broadband to build quantum security testbed on subsea cable; RIKEN confirms theft of 430 private keys in Fugaku intrusion</td>
+<td><strong>RIKEN</strong> confirms theft of 430 private keys in Fugaku and RIKYU intrusion; SK Broadband to build quantum security testbed on subsea cable.</td>
 </tr>
 <tr>
 <td>Governance &amp; Regulatory</td>
-<td>TSMC tightens China AI chip curbs as new US rules close manufacturing loophole; US closes AI chip export loopholes affecting Broadcom/Micron</td>
+<td><strong>TSMC</strong> tightens China AI chip curbs as new US rules close manufacturing loophole; <strong>TSMC</strong> halts advanced chip orders from Chinese designers in Taiwan.</td>
 </tr>
 <tr>
 <td>Economics &amp; Business Models</td>
-<td>Anthropic’s IPO created headlines in New York; SpaceX Market Cap breaches $2.5 Trillion; IQM Quantum Computers stock rating cut to Strong Sell</td>
+<td><strong>Anthropic</strong> IPO may have created headlines in New York; <strong>IQM Quantum Computers</strong> stock rating cut to Strong Sell at Wall Street Zen.</td>
 </tr>
 <tr>
 <td>Data &amp; Knowledge Infrastructure</td>
-<td>JUPITER remains among five fastest supercomputers; Europe places four supercomputers in global top 10</td>
+<td>No significant activity this week.</td>
 </tr>
 <tr>
 <td>Scale &amp; Future Readiness</td>
-<td>Chinese researchers beat quantum computers using classic supercomputers for benchmark problem set; EuroHPC Poland unveils first quantum computer at Supercomputing &#39;26</td>
+<td>Chinese team wins ACM Gordon Bell Prize for Exascale FeMoco Solution; RIKEN Confirms Theft of 430 Private Keys in Fugaku and RIKYU Intrusion.</td>
 </tr>
 <tr>
 <td>Models &amp; Research</td>
-<td>Isambard-AI powers 600+ finance-native models to challenge Big Tech; Skip the DRAM Tier: MoRI UMBP runs agentic KV cache on NVMe</td>
+<td>Isambard-AI powers 600+ Finance-Native Models to Challenge Big Tech; Skip the DRAM Tier: MoRI UMBP Runs the Agentic KV Cache on NVMe.</td>
 </tr>
 <tr>
 <td>Developer Ecosystem &amp; Tools</td>
-<td>AWS Lambda now supports GPU instances for Event Functions on Lambda Managed Instances</td>
+<td>No significant activity this week.</td>
 </tr>
 </tbody></table></div>
 <h3>Key Stories</h3>
-<p><strong>NVIDIA Rubin HPC GPU Announced</strong> — NVIDIA unveiled its new Rubin HPC GPU at SC26, targeting 50,000+ CUDA cores and NVLink 7 integration for scientific simulations. The chip is expected to reach systems in 2028, marking a return to the high-performance computing market with a focus on agents for science and engineering workflows. <strong>NVIDIA</strong></p>
-<p><strong>TSMC Tightens China Export Restrictions</strong> — Following new US export rules effective November 19th, TSMC halted advanced chip orders from Chinese designers at 16nm and below nodes. This move closes manufacturing loopholes previously exploited by restricted AI chip production in the region. <strong>TSMC</strong></p>
-<p><strong>SC26 Conference Outcomes</strong> — The ACM Gordon Bell Prize went to a Chinese team for their Exascale FeMoco Solution, while Quantum computing moved into the supercomputer job queue at SC26. Anthropic’s IPO also created significant headlines, shifting capital focus in the AI sector. <strong>NVIDIA, AMD, IBM</strong></p>
-<p><strong>Hybrid Quantum-Classical Workflow Demo</strong> — IQM and AMD demonstrated a reproducible hybrid QPU-GPU chemistry workflow using ROCm, showing quantum processors being scheduled into Slurm alongside classical systems. This integration suggests practical utility for quantum computing in specific scientific domains rather than general replacement. <strong>AMD, IQM</strong></p>
-<p><strong>SpaceX Market Cap Milestone</strong> — SpaceX market cap breached $2.5 Trillion, surpassing Tesla, TSMC and Broadcom. However, lenders expressed concern regarding the collateral structure of its $43 billion Nvidia GPU deal which could end up in orbit. <strong>SpaceX, NVIDIA</strong></p>
+<p><strong>NVIDIA Revenue Milestone vs. Stock Volatility</strong> — <strong>NVIDIA</strong> tops $100 billion in quarterly revenue for the first time while stock faces pressure from accounting probe rumors and Jensen Huang&#39;s potential return as CEO. This divergence signals strong underlying demand despite market sentiment instability, suggesting investors are pricing in regulatory risks rather than compute weakness.</p>
+<p><strong>TSMC China Export Restrictions Tighten</strong> — <strong>TSMC</strong> halts advanced chip orders from Chinese designers at 16nm and below following new US rules ending the foundry self-check mechanism. This tightening reduces supply availability for AI chips in the region and impacts global manufacturing capacity utilization, forcing customers toward alternatives like Intel EMIB.</p>
+<p><strong>SC26 Highlights Quantum Integration</strong> — Quantum computing moves into the supercomputer job queue at SC26 as <strong>Quantinuum</strong> discusses preparing organizations for the quantum era and <strong>Google</strong> funds research partnerships. This marks a shift from purely classical HPC to hybrid quantum-classical workflows in scientific discovery benchmarks.</p>
+<p><strong>Broadcom TPU Demand Shifts</strong> — <strong>Google</strong> cuts <strong>Broadcom</strong> TPU orders by a million units while MediaTek is seen capturing the shift, leading Goldman Sachs to trim Broadcom price targets. This indicates a pivot in cloud infrastructure strategy away from specific proprietary AI accelerators toward more flexible or alternative chip architectures.</p>
+<p><strong>RIKEN Security Breach Update</strong> — <strong>RIKEN</strong> issued an update confirming the theft of 430 private keys in Fugaku and RIKYU supercomputers following an unauthorized access incident. This highlights critical security vulnerabilities in high-performance computing environments handling sensitive data, raising trust concerns for enterprise cloud adoption.</p>
+<p><strong>Anthropic Valuation vs. NVIDIA</strong> — <strong>Anthropic</strong> is valued at $1.2 trillion with its IPO aloft, prompting questions on whether it is a better buy than <strong>NVIDIA</strong> amidst the AI trade cracking. This valuation gap reflects market segmentation between open-source model players and proprietary hardware infrastructure leaders.</p>
+<p><strong>AMD Lux Supercomputer Deployment</strong> — <strong>AMD</strong> EPYC &amp; Instinct GPUs are confirmed in the Lux Supercomputer deployment alongside <strong>Quantum Zeitgeist</strong> initiatives for quantum chemistry. This validates AMD&#39;s position as a viable alternative to NVIDIA in high-performance computing clusters, particularly where US-China restrictions apply.</p>
 <h3>Sector Deep Dive</h3>
 <h4>Compute</h4>
 <ul>
-<li><strong>NVIDIA Rubin HPC</strong> — Announced at SC26 with over 50,000 CUDA cores targeting scientific simulations and expected to ship in 2028. Investment Implication: Long-term bet on high-bandwidth memory and interconnect technology for exascale science.</li>
-<li><strong>AMD Lux Supercomputer</strong> — AMD EPYC &amp; Instinct GPUs are deployed in the Lux Supercomputer at Oak Ridge, opening to scientific users for DOE’s Genesis Mission. Investment Implication: Validates AMD&#39;s position as a viable alternative to NVIDIA for US government HPC workloads.</li>
-<li><strong>TSMC China Orders</strong> — TSMC halts advanced chip orders from Chinese designers in Taiwan following new US rules ending the foundry self-check exemption. Investment Implication: Supply chain bifurcation accelerates, potentially increasing costs for non-compliant regions and favoring domestic alternatives.</li>
+<li><strong>NVIDIA</strong> — Tops $100 billion quarterly revenue and expands Azure’s Vera Rubin preview tools. Investment Implication: Revenue dominance remains despite stock volatility; long-term infrastructure demand is secure.</li>
+<li><strong>AMD</strong> — EPYC &amp; Instinct GPUs deployed in Lux Supercomputer; Zen 6 reportedly delayed until after Computex 2027 as AMD switches to TSMC&#39;s more performant N2X node. Investment Implication: Gaining share in HPC clusters, but manufacturing delays pose execution risk.</li>
+<li><strong>SK Hynix</strong> — Highlights MARS and HBM4E memory at SC26 as volume of data handled by AI continues to grow. Investment Implication: Memory technology evolution is critical for efficiency beyond simple storage; strong tailwinds for HBM demand.</li>
 </ul>
 <h4>Networking</h4>
 <ul>
-<li><strong>Hybrid Quantum-Safe Networking</strong> — Hybrid quantum-safe high-speed networking across 8,000 km connects US and Europe with an adaptive, cryptoagile solution demonstrated at SC26. Investment Implication: Post-quantum cryptography becomes a standard requirement for long-haul infrastructure providers.</li>
-<li><strong>AI Supercomputing Panel</strong> — SC26 panel debated whether AI supercomputers represent an evolution or revolution compared to traditional scientific machines. Investment Implication: Networking architectures must evolve beyond simple GPU interconnects to support heterogeneous compute clusters.</li>
+<li><strong>GÉANT News</strong> — Hybrid quantum-safe high-speed networking across 8,000 km connects US and Europe with an adaptive, cryptoagile solution at SC26. Investment Implication: Post-quantum cryptography infrastructure is becoming a priority for international research networks.</li>
+<li><strong>HPCwire</strong> — SC26 panel debates AI supercomputing evolution or revolution regarding machine differences from decades-old HPC systems. Investment Implication: Networking architecture must evolve alongside compute to avoid bottlenecks in next-gen clusters.</li>
 </ul>
 <h4>Network Operators</h4>
-<ul>
-<li><strong>VodafoneThree AI-RAN Test</strong> — VodafoneThree plans lab and field trials next year of Nokia&#39;s AI-RAN on Nvidia&#39;s GPU platform while testing more chip options in Spain. Investment Implication: Telecom operators are hedging their bets between NVIDIA and AMD for RAN acceleration, indicating a competitive market for edge compute.</li>
-<li><strong>AMD Telco Warning</strong> — AMD telco chief says GPU &#39;backlash&#39; is coming in AI-RAN as operators investigate benefits of different network chips. Investment Implication: Potential consolidation or standardization in RAN hardware to avoid fragmentation and compatibility issues.</li>
-</ul>
+<p>No significant activity this week.</p>
 <h4>Energy, Power &amp; Cooling</h4>
 <ul>
-<li><strong>MIT Ferveret Cooling</strong> — MIT lab is running Ferveret&#39;s reactor-inspired cooling on its nuclear materials GPUs, allowing training of larger models and experimental workloads. Investment Implication: Liquid cooling technologies derived from nuclear engineering may offer superior thermal management for high-density AI racks.</li>
-<li><strong>Quantum Energy Solutions</strong> — Quantum computing&#39;s first real-world payoff may come in energy solutions, with technology tested in keeping power grids stable. Investment Implication: Early commercial applications for quantum simulation focus on complex systems like grid management rather than drug discovery or chemistry alone.</li>
+<li><strong>MIT Lab</strong> — Running Ferveret&#39;s reactor-inspired cooling on its nuclear materials GPUs to train larger models and run experiments. Investment Implication: Advanced cooling solutions are essential for sustaining high-density GPU deployments in data centers.</li>
+<li><strong>Idaho National Laboratory</strong> — New supercomputer boosts nuclear energy research as part of nation&#39;s DOE-designated computing facility for nuclear energy (Arco supercomputer launches). Investment Implication: Government-backed HPC is driving innovation in energy sector applications, creating new use cases for compute.</li>
 </ul>
 <h4>Security &amp; Trust</h4>
 <ul>
-<li><strong>SK Broadband Quantum Testbed</strong> — SK Broadband to build quantum security testbed on subsea cable connecting Busan–Singapore section of Southeast Asia–Japan Cable 2. Investment Implication: Subsea infrastructure upgrades will require quantum-resistant encryption standards before deployment.</li>
-<li><strong>RIKEN Private Key Theft</strong> — RIKEN confirmed theft of 430 private keys in Fugaku and RIKYU supercomputers, issuing an update to its earlier notice on unauthorized access. Investment Implication: High-security air-gapped environments remain vulnerable; physical security protocols for HPC centers need immediate reinforcement.</li>
+<li><strong>RIKEN</strong> — Confirms theft of 430 private keys in Fugaku and RIKYU intrusion following earlier notice on unauthorized access. Investment Implication: Cybersecurity investments are required to protect sensitive HPC assets from state-level or criminal intrusions.</li>
+<li><strong>SK Broadband</strong> — Plans to build a quantum-security test network on the Busan–Singapore section of the Southeast Asia–Japan Cable 2 subsea cable. Investment Implication: Quantum-safe networking is moving from research to physical infrastructure deployment in key maritime routes.</li>
 </ul>
 <h4>Governance &amp; Regulatory</h4>
 <ul>
-<li><strong>US Export Loophole Closure</strong> — U.S. closes AI chip export loopholes affecting AMD, Intel, TSMC, Broadcom, and Micron as reported by FXLeaders. Investment Implication: Compliance costs rise globally as manufacturers must verify end-user eligibility for advanced node chips.</li>
-<li><strong>TSMC China Rules</strong> — TSMC tightens restrictions on Chinese AI chip production following new US rules that strip designers of a key exemption. Investment Implication: Foundry capacity allocation will increasingly prioritize compliant clients, potentially leaving non-compliant demand unserved.</li>
+<li><strong>TSMC</strong> — Halts China orders at 16nm and below as new US rules end the foundry self-check; tightens restrictions on Chinese chip designers in response to new US rules. Investment Implication: Geopolitical fragmentation is forcing supply chain bifurcation, impacting global semiconductor availability for AI chips.</li>
 </ul>
 <h4>Economics &amp; Business Models</h4>
 <ul>
-<li><strong>Anthropic IPO Headlines</strong> — Anthropic’s IPO may have created headlines in New York while SC26 wrapped up as the center of the AI universe in Chicago. Investment Implication: Capital markets are shifting focus from pure hardware to proprietary model ownership and enterprise licensing revenue streams.</li>
-<li><strong>SpaceX Market Cap</strong> — SpaceX market cap breaches $2.5 Trillion, going past Tesla, TSMC and Broadcom. Investment Implication: High-value aerospace contracts and AI infrastructure deals (like the $43 billion GPU loan) are driving valuation re-rating beyond traditional tech sectors.</li>
+<li><strong>Anthropic</strong> — IPO created headlines in New York while Chicago hosted SC26 conference centering the AI universe. Investment Implication: Public market entry of model companies signals a maturing ecosystem beyond hardware-only plays.</li>
+<li><strong>IQM Quantum Computers</strong> — Stock rating cut to Strong Sell at Wall Street Zen and shares hit new 12-month low amid passive stake changes. Investment Implication: Quantum computing stocks face high volatility as commercialization timelines remain uncertain for investors.</li>
 </ul>
 <h4>Data &amp; Knowledge Infrastructure</h4>
-<ul>
-<li><strong>JUPITER Supercomputer</strong> — JUPITER remains among five fastest supercomputers globally, highlighting continued performance parity in European HPC leadership. Investment Implication: EuroHPC initiatives sustain momentum for domestic compute clusters to reduce reliance on US hardware dominance.</li>
-</ul>
+<p>No significant activity this week.</p>
 <h4>Scale &amp; Future Readiness</h4>
 <ul>
-<li><strong>Chinese Researchers Benchmark</strong> — Chinese researchers beat quantum computers using classic supercomputers to solve a benchmark problem set in 105 minutes at SC26. Investment Implication: Classical exascale systems remain critical for specific workloads, delaying the need for full-scale fault-tolerant quantum adoption.</li>
-<li><strong>EuroHPC Quantum Top 10</strong> — Europe places four supercomputers in global top 10, including Poland’s Poznań Supercomputing Center unveiling first EuroHPC quantum computer. Investment Implication: Strategic investment in hybrid HPC/quantum infrastructure is a priority for non-US nations to maintain technological sovereignty.</li>
+<li><strong>Chinese Team</strong> — Wins ACM Gordon Bell Prize for Exascale FeMoco Solution in quantum chemistry at SC26. Investment Implication: International collaboration and innovation in exascale computing continue despite geopolitical tensions, driven by academic research.</li>
+<li><strong>DigiFarm</strong> — Utilizes artificial intelligence with LUMI Supercomputer to redefine precision agriculture under shifting climate conditions. Investment Implication: HPC applications are expanding beyond pure science into agtech, opening new revenue streams for supercomputing centers.</li>
 </ul>
 <h4>Models &amp; Research</h4>
 <ul>
-<li><strong>Isambard-AI Finance Models</strong> — Researchers at University of Manchester and UCL trained and evaluated over 600 AI models in FinTech via Isambard-AI. Investment Implication: Specialized HPC clusters enable niche model training that challenges Big Tech generalist offerings.</li>
-<li><strong>vLLM Agentic KV Cache</strong> — MoRI UMBP runs the agentic KV cache on NVMe, matching DRAM pool performance within 1% on AMD Instinct GPUs. Investment Implication: Memory hierarchy optimization reduces cost for long-context AI agents without sacrificing latency.</li>
+<li><strong>Isambard-AI</strong> — Powers 600+ Finance-Native Models to Challenge Big Tech via University of Manchester and UCL researchers. Investment Implication: Open-source model ecosystems are challenging proprietary tech dominance in specialized verticals like finance.</li>
+<li><strong>vLLM Blog</strong> — MoRI UMBP runs the Agentic KV Cache on NVMe with AMD Instinct™ MI355X GPUs, matching DRAM pool performance within 1%. Investment Implication: Memory hierarchy optimization is reducing cost and latency for agentic AI workloads on existing hardware.</li>
 </ul>
 <h4>Developer Ecosystem &amp; Tools</h4>
-<ul>
-<li><strong>AWS Lambda GPU Support</strong> — AWS Lambda now supports GPU instances (G-series) for Event Functions running on Lambda Managed Instances, enabling serverless GPU workloads. Investment Implication: Serverless compute models expand to include inference and media processing tasks previously requiring dedicated EC2 instances.</li>
-</ul>
+<p>No significant activity this week.</p>
 <h3>Vendor Ecosystem</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -164,207 +157,207 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);fon
 </thead>
 <tbody><tr>
 <td>NVIDIA</td>
-<td><span class="sig-up">↑</span></td>
-<td>Rubin HPC GPU announced with 50,000+ CUDA cores; SpaceX deal collateral concern</td>
-<td>Long-term compute leader despite supply chain risks.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Tops $100B quarterly revenue; stock volatility from rumors and China curbs.</td>
+<td>Strong fundamentals offset short-term sentiment risks; hold for long term.</td>
 </tr>
 <tr>
 <td>AMD</td>
 <td><span class="sig-up">↑</span></td>
-<td>Lux Supercomputer opens; Hybrid QPU-GPU workflow demo</td>
-<td>Gaining traction in US government and quantum hybrid workflows.</td>
+<td>EPYC &amp; Instinct GPUs in Lux Supercomputer; Zen 6 delayed to 2027.</td>
+<td>Gaining HPC share; watch for manufacturing delays impact on delivery.</td>
 </tr>
 <tr>
 <td>Intel</td>
 <td><span class="sig-neutral">→</span></td>
-<td>EMIB used as CSP alternative to TSMC CoWoS</td>
-<td>Packaging technology offers viable path for high-bandwidth memory solutions.</td>
+<td>Google/Microsoft turn to Intel EMIB as CSPs seek alternatives to TSMC CoWoS.</td>
+<td>Alternative packaging offers supply chain resilience but execution risk remains.</td>
 </tr>
 <tr>
 <td>TSMC</td>
 <td><span class="sig-down">↓</span></td>
-<td>Halts China orders at 16nm; Stock sinks on Nvidia jitters</td>
-<td>Geopolitical headwinds threaten revenue diversification and capacity utilization.</td>
+<td>Halts China orders at 16nm and below; stock sinks on Nvidia jitters and US chip curbs.</td>
+<td>Regulatory headwinds reduce growth visibility in key markets; caution advised.</td>
 </tr>
 <tr>
 <td>Broadcom</td>
-<td><span class="sig-neutral">→</span></td>
-<td>SpaceX Market Cap breach; Caltech Quantum Partnership funded 26 researchers</td>
-<td>Infrastructure partner benefits from capital market volatility.</td>
+<td><span class="sig-down">↓</span></td>
+<td>Google cuts Broadcom TPU orders by a million units; Goldman Sachs trims price target.</td>
+<td>Demand contraction from major cloud clients signals strategic pivot away from TPUs.</td>
 </tr>
 <tr>
 <td>Google</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Azure Vera Rubin Preview expanded; Lux Supercomputer mention</td>
-<td>Cloud infrastructure adapts to heterogeneous compute environments.</td>
+<td>IIT Kharagpur AI Funding: $5 Million for Research; cuts Broadcom TPU orders.</td>
+<td>Diversifying compute strategy; funding research but reducing proprietary silicon exposure.</td>
 </tr>
 <tr>
 <td>Microsoft</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Azure’s Vera Rubin Preview expanded; Danaher AI Platform partnership</td>
-<td>Enterprise adoption of custom AI models accelerates via cloud tools.</td>
+<td><span class="sig-up">↑</span></td>
+<td>Expand Azure’s Vera Rubin Preview and Foundry’s Nemotron Lineup; Danaher partnership.</td>
+<td>Cloud AI tools expanding rapidly; strong ecosystem integration drives growth.</td>
 </tr>
 <tr>
 <td>OpenAI</td>
 <td><span class="sig-neutral">→</span></td>
-<td>No significant activity this week</td>
-<td>Maintains steady position despite IPO headlines from competitors.</td>
+<td>No significant activity this week.</td>
+<td>Valuation high; wait for next product cycle or earnings data.</td>
 </tr>
 <tr>
 <td>Meta</td>
 <td><span class="sig-neutral">→</span></td>
-<td>No significant activity this week</td>
-<td>Focus remains on internal model efficiency and data centers.</td>
+<td>No significant activity this week.</td>
+<td>Focus remains on Llama models and efficiency; monitor future compute announcements.</td>
 </tr>
 <tr>
 <td>IBM</td>
-<td><span class="sig-up">↑</span></td>
-<td>Quantum-Classical Codesign Platform with NVIDIA; Modular Quantum progress</td>
-<td>Hybrid quantum-classical co-design strengthens HPC integration strategy.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>No significant activity this week.</td>
+<td>Quantum and hybrid cloud initiatives ongoing but no major news flow.</td>
 </tr>
 <tr>
 <td>AWS</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Lambda GPU instances for Event Functions supported</td>
-<td>Serverless AI infrastructure expands to support inference workloads.</td>
+<td><span class="sig-up">↑</span></td>
+<td>AWS Lambda now supports GPU instances for Event Functions on Lambda Managed Instances.</td>
+<td>Serverless AI inference expands use cases; strong infrastructure monetization.</td>
 </tr>
 <tr>
 <td>Anthropic</td>
 <td><span class="sig-up">↑</span></td>
-<td>IPO headlines in New York create market focus</td>
-<td>Public capital raises validate enterprise demand for safety-focused models.</td>
+<td>IPO Aloft with $1.2 Trillion valuation; Jensen Huang’s potential return as Nvidia CEO.</td>
+<td>High valuation reflects model leadership; monitor profitability and growth sustainability.</td>
 </tr>
 <tr>
 <td>Oracle</td>
 <td><span class="sig-neutral">→</span></td>
-<td>No significant activity this week</td>
-<td>Cloud infrastructure continues to compete on hybrid database and compute.</td>
+<td>No significant activity this week.</td>
+<td>Cloud AI services expanding but no specific event this week.</td>
 </tr>
 <tr>
 <td>Cisco</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Internet2 updates on Post-Quantum Cryptography Solutions</td>
-<td>Networking security requirements evolve with quantum-safe standards.</td>
+<td>Internet2 responds to nation’s call for Post-Quantum Cryptography Solutions.</td>
+<td>Security networking demand steady; quantum-safe transition is gradual.</td>
 </tr>
 <tr>
 <td>Arista</td>
 <td><span class="sig-neutral">→</span></td>
-<td>No significant activity this week</td>
-<td>Switching market remains stable amidst AI cluster demand.</td>
+<td>No significant activity this week.</td>
+<td>High-end switching remains strong; wait for next product cycle news.</td>
 </tr>
 <tr>
 <td>Nokia</td>
-<td><span class="sig-neutral">→</span></td>
-<td>VodafoneThree tests AI-RAN with Nvidia GPUs</td>
-<td>Telecom hardware partnerships shift towards GPU-accelerated RAN.</td>
+<td><span class="sig-up">↑</span></td>
+<td>VodafoneThree to test Nokia&#39;s AI-RAN with Nvidia GPUs in lab and field trials.</td>
+<td>Edge AI networking gaining traction; partnerships drive adoption.</td>
 </tr>
 <tr>
 <td>Samsung</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Stock Market and Nikkei sink as AI Selloff spreads</td>
-<td>Semiconductor exposure creates volatility in broader regional indices.</td>
+<td><span class="sig-down">↓</span></td>
+<td>South Korea&#39;s Stock Market and Nikkei 225 Sink More Than 4% as AI Selloff Spreads.</td>
+<td>Macro market weakness impacts semiconductor exposure; sector rotation risk.</td>
 </tr>
 <tr>
 <td>SK Hynix</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Highlights MARS and HBM4E Memory at SC26</td>
-<td>High-bandwidth memory remains critical bottleneck for AI scaling.</td>
+<td><span class="sig-down">↓</span></td>
+<td>Nvidia Accounting Probe Rumors Send Chip Stocks Plunging; stock falls back into range.</td>
+<td>Memory demand strong but sentiment fragile due to broader tech selloffs.</td>
 </tr>
 <tr>
 <td>Micron</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Export loophole closure impacts alongside Broadcom/Intel</td>
-<td>Memory suppliers face compliance scrutiny similar to foundries.</td>
+<td><span class="sig-up">↑</span></td>
+<td>Citi says ending Nvidia’s financing would cut DRAM demand only 12%; pitched as cheaper AI bet.</td>
+<td>Memory diversification offers value play against NVIDIA hardware concentration.</td>
 </tr>
 <tr>
 <td>Supermicro</td>
 <td><span class="sig-neutral">→</span></td>
-<td>No significant activity this week</td>
-<td>Server OEM adapts to heterogeneous CPU/GPU configurations.</td>
+<td>No significant activity this week.</td>
+<td>Server assembly margins under pressure; wait for earnings or new partnerships.</td>
 </tr>
 <tr>
 <td>Dell</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Lux Supercomputer opens at Oak Ridge; Stock trade down with IQM</td>
-<td>Infrastructure partner benefits from government HPC projects.</td>
+<td>ChronoScale Holdings, IQM Quantum Computers, SharonAI Holdings, IREN, and Dell stocks trade down.</td>
+<td>Q4 results to keep investors busy; hardware exposure mixed with AI infrastructure play.</td>
 </tr>
 <tr>
 <td>HPE</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Neysa scales AI Infrastructure in India with AMD GPUs</td>
-<td>Regional expansion continues despite global supply chain constraints.</td>
+<td>No significant activity this week.</td>
+<td>Greenlining initiatives ongoing but no specific news flow.</td>
 </tr>
 <tr>
 <td>Quantinuum</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Aligns Software Development For Quantum Hardware Generations</td>
-<td>Software ecosystem matures alongside hardware scaling efforts.</td>
+<td><span class="sig-up">↑</span></td>
+<td>Preparing Your Organization for the Quantum Era discussions at SWITCH 2026.</td>
+<td>Commercial quantum applications moving closer to adoption; enterprise readiness growing.</td>
 </tr>
 <tr>
 <td>IQM</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Stock rating cut vs Reproducible Hybrid Workflow demo</td>
-<td>Technological progress offsets near-term financial volatility concerns.</td>
+<td><span class="sig-down">↓</span></td>
+<td>Stock rating cut to Strong Sell at Wall Street Zen; hits new 12-month low.</td>
+<td>High volatility in quantum computing sector; risk of speculative bubble burst.</td>
 </tr>
 </tbody></table></div>
 <h3>Emerging Signals</h3>
 <ol>
-<li><p><strong>Geopolitical Supply Chain Hardening</strong></p>
+<li><p><strong>TSMC China Supply Chain Restriction</strong></p>
 <ul>
-<li>What it is: New US export rules force TSMC to halt advanced chip orders from Chinese designers, closing manufacturing loopholes previously used for AI chips.</li>
-<li>Evidence: Articles 24, 28, 34, 59, 67, 68, 70, 94-100 confirm the suspension and tightening of restrictions.</li>
-<li>Why it matters: This creates a two-tiered global supply chain where compliant regions get priority access to advanced nodes, potentially raising costs for non-compliant markets over the next 12 months.</li>
+<li>What it is: New US rules force TSMC to halt advanced chip orders for Chinese designers at 16nm and below, ending the foundry self-check mechanism.</li>
+<li>Evidence: Articles 24, 28, 34, 42, 51, 52, 53, 54, 72, 73, 74, 75, 76, 77, 78, 79, 80.</li>
+<li>Why it matters: This structural shift will force global AI chip demand to reallocate to domestic US manufacturers or alternative foundries within 12 months, impacting capacity utilization and pricing.</li>
 <li>Confidence: High</li>
 </ul>
 </li>
-<li><p><strong>Quantum-HPC Convergence</strong></p>
+<li><p><strong>Quantum Integration in HPC</strong></p>
 <ul>
-<li>What it is: Quantum processors are being integrated into supercomputing job queues and Slurm schedulers for specific chemistry and physics workloads.</li>
-<li>Evidence: Articles 5, 49, 53, 87, 89 show IQM/NVIDIA/IBM collaboration on scheduling and co-design platforms.</li>
-<li>Why it matters: Hybrid workflows allow immediate utility of current NISQ quantum devices without waiting for fault-tolerant systems, driving adoption in the next quarter.</li>
+<li>What it is: Quantum computing moves into the supercomputer job queue at SC26 as hybrid quantum-classical workflows are benchmarked against classic supercomputers.</li>
+<li>Evidence: Articles 1, 5, 6, 7, 43, 69.</li>
+<li>Why it matters: This signals a transition from theoretical quantum advantage to practical utility in scientific discovery and chemistry simulations within the next 1-3 years.</li>
 <li>Confidence: Medium</li>
 </ul>
 </li>
-<li><p><strong>AI-Driven Precision Agriculture</strong></p>
+<li><p><strong>NVIDIA Stock Valuation Divergence</strong></p>
 <ul>
-<li>What it is: Agtech startup DigiFarm utilizes AI and LUMI Supercomputer to redefine precision agriculture under shifting climate conditions.</li>
-<li>Evidence: Article 3 details the partnership and utilization of HPC for agricultural challenges.</li>
-<li>Why it matters: Validates the use of exascale computing for non-AI, high-throughput data processing sectors like food security and environmental monitoring.</li>
+<li>What it is: NVIDIA revenue hits $100 billion quarterly while stock faces pressure from accounting probe rumors and Jensen Huang&#39;s potential return.</li>
+<li>Evidence: Articles 83, 84, 85, 86, 87, 88, 89, 90, 91, 98, 99.</li>
+<li>Why it matters: Disagreement between operational performance and market sentiment suggests a potential inflection point where valuation corrections could precede a new growth phase or consolidation.</li>
 <li>Confidence: Medium</li>
 </ul>
 </li>
 </ol>
 <h3>Market Pulse</h3>
 <p><strong>Context:</strong>
-We are in a transition phase where hardware innovation (NVIDIA Rubin) is outpacing supply chain stability due to geopolitical friction. The market is digesting the SC26 conference outcomes, which highlight the immediate utility of quantum-classical hybrids rather than pure quantum supremacy. For the next 1-3 quarters, expect continued volatility in semiconductor stocks tied to China exposure while enterprise AI infrastructure spending remains resilient but more focused on compliance and efficiency (FinOps).</p>
+We are in the late-stage expansion of the AI infrastructure build-out, characterized by massive capital expenditure but increasing regulatory fragmentation. The US-China tech decoupling is accelerating as TSMC tightens restrictions, forcing a re-evaluation of supply chain resilience. For the next 1-3 quarters, expect continued volatility in semiconductor equities while underlying compute demand remains robust due to enterprise AI adoption and scientific research needs.</p>
 <p><strong>Theses:</strong></p>
 <ul>
-<li><strong>Compute Demand Resilience</strong> — Despite export controls, demand for AI infrastructure will remain strong as enterprises seek alternatives like Intel EMIB or AMD Instinct. Confidence: High</li>
-<li><strong>Supply Chain Bifurcation</strong> — TSMC capacity allocation will increasingly favor compliant clients, pushing non-compliant regions to 28nm/40nm nodes by late 2027. Confidence: High</li>
-<li><strong>Quantum Niche Adoption</strong> — Quantum computers will enter supercomputing job queues for specific chemistry problems before general-purpose applications. Confidence: Medium</li>
+<li><strong>Compute Demand Resilience</strong> — Hardware spending will outpace stock performance as companies prioritize capacity over short-term margins — Confidence: High</li>
+<li><strong>China Supply Chain Risk</strong> — US export controls will permanently fragment the global HPC market, favoring domestic suppliers like AMD and Intel — Confidence: Medium</li>
+<li><strong>Networking Security Upgrade</strong> — Quantum-safe networking will see accelerated adoption in research clusters to protect intellectual property — Confidence: Low</li>
 </ul>
 <p><strong>Bottlenecks:</strong></p>
 <ul>
-<li><strong>Advanced Packaging</strong>: TSMC CoWoS capacity constraints forcing Microsoft/Google to seek Intel EMIB alternatives.</li>
-<li><strong>Memory Hierarchy</strong>: NVMe KV caches on AMD GPUs reducing DRAM costs but requiring new software stack optimizations.</li>
-<li><strong>Geopolitical Compliance</strong>: Export rule verification slowing down order cycles for Chinese designers and sensitive regions.</li>
+<li><strong>TSMC CoWoS Capacity</strong>: Supply constraints remain as demand for advanced packaging outstrips manufacturing capacity.</li>
+<li><strong>Energy/Cooling</strong>: Data center power density limits are becoming a hard constraint on GPU cluster expansion.</li>
+<li><strong>Software Stack Optimization</strong>: Memory hierarchy efficiency (e.g., NVMe vs DRAM) is critical to avoid overspending on hardware.</li>
 </ul>
 <p><strong>Bear Cases:</strong></p>
 <ul>
-<li><strong>Export Rule Escalation</strong> — If US rules expand beyond 16nm to include mature nodes used in AI, TSMC revenue could contract significantly. Probability: Med</li>
-<li><strong>Quantum Delay</strong> — If hybrid workflows fail to deliver promised chemistry speedups, quantum investment may stall for another 2-3 years. Probability: High</li>
+<li><strong>NVIDIA Accounting Probe Rumors</strong> — If financial irregularities materialize, trust in the dominant chip supplier could collapse rapidly — Probability: Med</li>
+<li><strong>TSMC China Suspension Impact</strong> — Loss of Chinese market share could reduce TSMC revenue volume faster than new US demand can offset it — Probability: High</li>
 </ul>
 <h3>What to Watch Next Week</h3>
-<ul>
-<li><strong>TSMC Quarterly Guidance</strong>: Monitor if management acknowledges the impact of halted China orders on CapEx and revenue guidance.</li>
-<li><strong>NVIDIA Rubin Roadmap Details</strong>: Look for specific architectural details or pricing tiers for the Rubin HPC GPU announced at SC26.</li>
-<li><strong>EuroHPC Quantum Computer Unveiling</strong>: Watch the demonstration from Poland’s Poznań Supercomputing Center to see if quantum integration is software-defined or hardware-dependent.</li>
-<li><strong>SpaceX Deal Structure</strong>: Follow reports on the $43 billion Nvidia GPU loan collateral arrangement and potential default risks.</li>
-<li><strong>Vodafone AI-RAN Trials</strong>: Track results of Nokia&#39;s AI-RAN lab trials to determine if GPU acceleration is viable for telecom operators.</li>
-</ul>
+<ol>
+<li><strong>Anthropic IPO Details</strong>: Monitor specific terms and lock-up periods as the company transitions to public markets, potentially influencing competitor valuations.</li>
+<li><strong>Dell Q4 Results</strong>: Watch for commentary on AI infrastructure revenue mix and supply chain disruptions in their earnings call.</li>
+<li><strong>TSMC China Order Status</strong>: Look for official announcements regarding the timeline of resumed or halted orders at 16nm nodes following BIS rule changes.</li>
+<li><strong>NVIDIA Rubin GPU Roadmap</strong>: Confirm if the 2028 release date is firm or subject to further delays given current manufacturing shifts.</li>
+<li><strong>Broadcom TPU Order Cuts</strong>: Monitor if Google&#39;s reduction in TPU orders is part of a broader shift toward custom silicon or external partnerships.</li>
+</ol>
 <h3>Article Coverage and Sources</h3>
-<p>Compute (45), Networking (3), Network Operators (2), Energy, Power &amp; Cooling (2), Security &amp; Trust (2), Governance &amp; Regulatory (4), Economics &amp; Business Models (10), Data &amp; Knowledge Infrastructure (1), Scale &amp; Future Readiness (17), Models &amp; Research (3), Developer Ecosystem &amp; Tools (0) and Other Sources (7)</p>
-<p>Top 100 articles (referenced below) selected from 2445 articles across 100 sources.</p>
+<p>Compute (51), Networking (3), Network Operators (0), Energy, Power &amp; Cooling (5), Security &amp; Trust (2), Governance &amp; Regulatory (4), Economics &amp; Business Models (11), Data &amp; Knowledge Infrastructure (0), Scale &amp; Future Readiness (13), Models &amp; Research (2), Developer Ecosystem &amp; Tools (0) and Other Sources (9)</p>
+<p>Top 100 articles (referenced below) selected from 1985 articles across 92 sources.</p>
 <h3>References</h3>
 <ol>
 <li>HPCwire <a href="https://www.hpcwire.com/2026/11/20/gordon-bell-prize-goes-to-chinese-team-for-exascale-femoco-solution/">&quot;Gordon Bell Prize Goes to Chinese Team for Exascale FeMoco Solution&quot;</a></li>
@@ -404,33 +397,17 @@ We are in a transition phase where hardware innovation (NVIDIA Rubin) is outpaci
 <li>GN HPC <a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPUUhFTGhMc2NpNHVfOTVjQm00M1JSeldqcjM1NS0wZEVxd2R4WDdHTVBXamZ4MXQ0YzJHdnRxVXhXTmdHWlRaVFRGN0NuRzZZTlJQLWtvOXo5bnBpR2JrVUVpQXFWN2Z5ekxrSUZVM1ZzTmNGRnUtWkpPeWZtLVh1RGFtTQ?oc=5">&quot;US deploys supercomputer with 2,688 NVIDIA chips to accelerate scientific discovery - Interesting Engineering&quot;</a></li>
 <li>Tencent Cloud <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQY2QzLUJNWnQyekUxVXNCRTdacl9uR3dEVTFTbW5sSVVLRVFTY1R0VEZmOWtlc1p0NXc5dmxFcDY2MmdzM05MblhKZGJZa1JOSFVxYk90NkYxRmM3clVoZ3ZUU3JIQ1hYQmcyeG1RWlJXMk1WQ0VYeEY4T3JhSFBsNlF0RUhnellkNkh2bkx2MVBrOEE?oc=5">&quot;Tencent president says US GPU ban will slow AI work in China - news.lavx.hu&quot;</a></li>
 <li>AWS News Blog <a href="https://aws.amazon.com/blogs/aws/aws-lambda-now-supports-gpu-instances-for-event-functions-on-lambda-managed-instances/">&quot;AWS Lambda now supports GPU instances for Event Functions on Lambda Managed Instances&quot;</a></li>
-<li>GN China Sovereign AI <a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxQYVViRV9KTWROOG1tUk1ncnFpYnRsNTNaeFhrcXRNTUpnTXRFQzRCRFJfVFhKd01zc3ZOdXBlLVpReDRWNmg4bGl3QVc2UVVMRU96alVLYzY5TndXd09UWDdBd2FpM3ZCalUyWUMtMjRPWHZKVm16dEZjZW43WWJWalNkTU96OGVRd2dWbkRrNUNlcGU1N3dLaEU1aWdxMS0xYUJWa2Nvc2syMFAzbnJ1eDJ4UkZ0ZVQ5YWhrVVhKM2NhS200eE1tenBmMHFDaUNlUE1Ga3JR?oc=5">&quot;[News] China’s AI Projects Reportedly Worth Over US$3B Specify Restricted NVIDIA GPUs: A Closer Look - TrendForce&quot;</a></li>
 <li>GN HPC <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQTGMta2dOTElqV01IbC03d2llNnlmejc4M01CWnBHQllfSGVkSWt2QnkzU0ZxN05neWRIQ05MdkUyd0hMWU13elNfOC1jajVHUVo3aHZNT1E0dXB4VTNyQUlRNmNWd2ptMXZ0VXAwZGtMb0U3REdwUzVKX0NLMnVoM0k5TnRyZGlJOEt4ZkJMbzFaTS1kRFhiX2dqbkQzN0NMbmU5WA?oc=5">&quot;NFL Playoff bracket and standings predicted by Supercomputer entering Week 11 - FanSided&quot;</a></li>
-<li>HPE Newsroom <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1jdGgyU2NLaURRbHNpazBBRDV3UkZtRWlTZENWOFFhV0x0WkdvODB3VlJJMjllQlBRcVR6TU1rNHJzN2R5MlNmZUdlZlJqNk5zV0IyQVlxZ0N0aFJfdk5TQTc4MXJrU0NKakNBaUdrVENSS1hwZlE?oc=5">&quot;Neysa Scales AI Infrastructure in India with AMD Instinct MI350X GPUs on Tytan - AMD&quot;</a></li>
 <li>Light Reading <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNMWRPbm02SWpwLXN4QlJZMkpTMFRFa0ppT2h3aHFqVzBDVDd2VU54YmVUVUpGZTV4NGhaQ01SZzlwdTBHeVktMlVEc2p4ZXVmQjU2eHZxWG9iOHozWUJ3eWRnRUwzdXBlMGs0aVBuOGpRZ3N0RG5BVGMwQnBxbmVDd3psTzhNcDlJOHdoZlprZUdNZWVVbEhNalpaQlFySTlfZGNQOA?oc=5">&quot;AI/Automation - VodafoneThree to test Nokia&#39;s AI-RAN with Nvidia GPUs - Light Reading&quot;</a></li>
 <li>Light Reading <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQLTlwSW8tQXUwOU9ZalhnRDY4WDhmdVZtbkZhci1rekp2UXVuRkREeE9GUl9LcXFNdnNJSFJ6QzAyMTAtQVFFcXFYblpFaS1xeG1pRXFUdGdldEQ3dkN3NUNFQjFWT2cxaVpJVFpvb0x2OEpQcFItR3dBYXJsX0RzUlQzTVM2bWZVeXZqRGZn?oc=5">&quot;AI/Automation - AMD telco chief says GPU &#39;backlash&#39; is coming in AI-RAN - Light Reading&quot;</a></li>
 <li>Light Reading <a href="https://www.lightreading.com/ai-machine-learning/vodafonethree-to-test-nokia-s-ai-ran-with-nvidia-gpus">&quot;VodafoneThree to test Nokia&#39;s AI-RAN with Nvidia GPUs&quot;</a></li>
-<li>GN HPC <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPSjFuNmtyOGw2SXd3ME13SnItM1lKMXlCdFNRUmlLZkQtRERNallLTDFBTXdzVEhYVlFUSkg2NnotRDhpbXFrZThsd04yamlKZW9VYjR2OWt3blhnUGJ6TlBnQWRRRG8tRkN6Zk9zUUNTcmwwN2xkZDAyNzA0SXhicTVGNEpvUm5sRF85WjNCV1N2NFlYeHRGY1dTMA?oc=5">&quot;GPU giants throw HPC users some tasty crumbs - The Register&quot;</a></li>
-<li>GN HPC <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQR284TGNDTVNUOHVXUnM0NkZraTZOTk9JZlhidUVQY1JKLVF3UjA3ZTdrWkszNVozRG8ybE1CU1dkaEJVSy16UG9ld1FFNWhkZjE0MjBoS2FjNmlsQktRYlZ2V1dLYWJZNzc0TDllQU1RMm5wUmZEdGhvdG1adVNNSUNDc0loY3VGTzRIak0wd1Ixa3V2ZHVhWk8zUm4yNF9pd2RZ?oc=5">&quot;NVIDIA Announces Rubin HPC: Science-Focused Server GPU to Arrive in 2028 - ServeTheHome&quot;</a></li>
-<li>GN HPC <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNMWx3NWpKWXlsNnlRcTZIc0FBUWJmLWQxY0pmUThTY1JvM3prREhONi0wY09oUUEzemdUbTVROUpEVmZrcFkxMXRDS3FaOVVWUEpybUUxb1VkQmp5UGNfUEN4RUo4Zk9fLWltQ0hQaGhoN0Mxc0Y1LUstaWF6c2hCaWlVOThaQlhFam1mc0FEZkV6UQ?oc=5">&quot;NVIDIA Reveals Rubin HPC GPU With NVLink 7 And Over 50,000 CUDA Cores - HotHardware&quot;</a></li>
-<li>GN HPC <a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxQNWdKYjZjSVNrYm96T1JnQTNkZ0haSmtvYkk1MHExTW00cjJ5VDI3cXB0NjFDZnIxczBfRkNoT2gwYXJOblRmQUc3MXF6OVd3YlZhTFlJcG9SbVhrdTVZdThfMVdWR0hxWXB2LVFNT251dDRVaXYxYVI2R3dvNnZscmItUm42bjhqcUdmM0NTc3pzLW00VXFPR2FfbUVCamQ3R19TVmwtNHdmTXVLR3ZZOUc2ZG1YOEl6QlU5dnlLTlhwVWlUeHdFakJ3SHlpSXFM?oc=5">&quot;NVIDIA&#39;s next supercomputing GPU packs over 50,000 CUDA cores, but won&#39;t arrive until 2028 - TweakTown&quot;</a></li>
-<li>GN HPC <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPbVpTWk5SYTE3cUVkRl84SVAweGE4NS1PZTZCbXVoWGRjSUpqcE5kYlk4amFwak5qYzJoR2ZOcHZ5M3hiTk5NMlN3MXZHVDJ5SVhlWVcyVGVzMXBYaDVDSC1EUFBlcWdBQnlxOVBRQ2hvZUNEUXg2cldCRXhydndSOUFCdTRRU19nM0E?oc=5">&quot;Nvidia Teases Rubin HPC GPU: 50,000+ CUDA Cores, Ships 2028 - AI Weekly&quot;</a></li>
-<li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9KcDhYVVhfcDYycG8zV2Z1djhXQmhFQmVobk1PZXE3WVNjR0hUMEpZRHREeldabjdBYkNBU19GVlhNYXZ0M2Npb3puemMta0dLZ3VDc0RycVlYXzlHbmhWdEE5YU41V3hEVHNUM0F2OHRUQ3luS3lrRFFNeTRTdw?oc=5">&quot;IQM Supports NVIDIA’s Work To Schedule Quantum Computers In Slurm - Quantum Zeitgeist&quot;</a></li>
-<li>ServeTheHome <a href="https://www.servethehome.com/nvidia-announces-rubin-hpc-science-focused-server-gpu-to-arrive-in-2028/">&quot;NVIDIA Announces Rubin HPC: Science-Focused Server GPU to Arrive in 2028&quot;</a></li>
-<li>SMIC <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1uN0lybUlfUHNaQ2dsLU9UZGFobzRpYWhPX2RjVm5yQWpXV1dNTEs2T29rSkQ5YXExNlRLVnU0MU5fVFp4a0ZhREgyZFA1d180WkdoVnRLckdlVTZNZTZMcktVV2FQN0NFUGxtU3ZoQVp6QVRCbUE?oc=5">&quot;Hong Kong Chip Stocks Rally Broadly; Biren Technology Jumps 8.16% to Lead Chinese GPU Names - BigGo Finance&quot;</a></li>
-<li>AMD Press <a href="https://ir.amd.com/news-events/press-releases/detail/1307/amd-powered-lux-supercomputer-opens-to-scientific-users-at-oak-ridge-becoming-first-ai-factory-for-does-genesis-mission">&quot;AMD-Powered Lux Supercomputer Opens to Scientific Users at Oak Ridge, Becoming First AI Factory for DOE’s Genesis Mission&quot;</a></li>
-<li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTG9pQUtFTGd0S1FDZUx2M1NnMXQ0RUFfa29nNDdURU1kNmNUeXVOUzdGY2dJZ0VnWmRNbjFjV1dtX3Y4ZGJHanFCU0pYRWx0RXhmd0oyWFEzN3NGV3pXRjJhTUxJazBid2dZaDJ4am1BYXQyd18yM29yZzhTYTVfUFNlSy0wUUEz?oc=5">&quot;IQM Supports NVIDIA’s Work to Make Quantum Computers Schedulable in Slurm - The Quantum Insider&quot;</a></li>
-<li>HPE Newsroom <a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVlBZc1ZnTzdMZ09CdE5tZTBucndhS3VDcFJTcndHYlNydzZYTFptaElUS2hLUkI1VGh6cmtXb3Z3VndUa19BUGRnT2NPbDJwN0RqUjBsRVFPajJYdkdBSzc3RHpFeUZpbnIxRGdqMWJiWERjQXdQVkNtMkM0M0xsZ1hXOWdqNVRmS3lN?oc=5">&quot;Lux Supercomputer Opens to Scientific Users at Oak Ridge - AMD&quot;</a></li>
-<li>IBM Newsroom <a href="https://newsroom.ibm.com/2026-11-16-ibm,-fermilab,-and-nvidia-announce-plans-for-new-co-design-platform-to-accelerate-the-development-of-next-generation,-modular-quantum-computers">&quot;IBM, Fermilab, and NVIDIA Announce Plans for New Co-Design Platform to Accelerate the Development of Next-Generation, Modular Quantum Computers&quot;</a></li>
-<li>NVIDIA Blog <a href="https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/">&quot;NVIDIA Expands Slurm to Bring Quantum Computing Into Supercomputing&quot;</a></li>
-<li>NVIDIA Blog <a href="https://blogs.nvidia.com/blog/rubin-hpc/">&quot;NVIDIA Announces Rubin HPC — A New GPU to Accelerate Agents for Science, Engineering and Analytics&quot;</a></li>
-<li>NVIDIA News <a href="https://nvidianews.nvidia.com/news/nvidia-announces-collaboration-with-ibm-and-fermi-national-accelerator-laboratory-to-launch-quantum-classical-codesign-platform-plus-error-correction-breakthrough-to-advance-practical-quantum-computing">&quot;NVIDIA Announces Collaboration With IBM and Fermi National Accelerator Laboratory to Launch Quantum-Classical Codesign Platform, Plus Error-Correction Breakthrough to Advance Practical Quantum Computing&quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbktwM1R5c3ljWkticlhSYXIzemw2MkxGeEVyNDJYcGhHa0VkVmZVbGh0U3RnTUV2SjlrTnJQR213ZlR5b3N6bDVaYW1MYnRPMFhaNjBGUzA5MndGTTVjTjZFdGREVmNRemJkMG9rZlR3SVZ1OWp5T1B0M2xKei00QkpPdzlmWHhiNlhHMWhEMWNsQkF1aVAtLWNRT0wzclJRQWJDMmxWcFJkQ2RLSFJKb3RxRmtpRm5qeVZkb25WWENWZEVna1FlQk53NTd2LXM1ZEHSAdcBQVVfeXFMUEctLW5mTWpPYjZVN1BmdUVsWVNoZWhmNC13ZHptUVRTVDN0YURoMkEyYnFfMkFfNFJFS0RmRWNpY0wteFphWERUR3U5N0tjdHFuSFZDbVFzWEljeS1BM1dDUGVJdWRVOXAwN1NfcXhybW41bGI4UjJxVmh0U2s3Z3VBOS1QaGduTlBuWTl1X3dCaFo2cWhSOTRNenJKWDlJUEFPeGI0WnFmODA0VXVURmFVZl9iU1lORUtWUmJNWXVOUzRjbFRlUWs1SDR0YWJTSVJ0NnpjY2s?oc=5">&quot;TSMC tightens China AI chip curbs after new US rules: Report - electronics.economictimes.indiatimes.com&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNdkxraGo3SkFHOHVpWGN5ejh2MG9HbWdKV09UVGk0eUY4Ymx0STBBeVdSNHhqQkU4MFdJRXhteC1EbDNEQTBkQkNSX05KOXVmX01taHU4ajAxZDlLSGV5ck40dWNJRDJvdDNNSGxtcnE3ams3VTNSY0dPdU5wbG9iSmhzVFE?oc=5">&quot;IQM Processor Tests Corrections To A Quantum Disorder Model - Quantum Zeitgeist&quot;</a></li>
-<li>Light Reading <a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQdnVWVndnRVMwU09RZ3NYbXZjME04d1I1V3dLSUR1QzViY3BEWTNJQ3VLZC0zVHJFbmNxR1RKaF9tUElJSE5KUkxVWXc1VFNOM192RjRPemw5cXJUTm5kcTZtaFF6dFRFZnZ1QUk3UlZMdkdIUlpEYVg0azVLTDFDem1NQ05aY1JxNE9wZDdBdWg?oc=5">&quot;AI/Automation - Vodafone is sold on AI-RAN but not yet on need for GPUs - Light Reading&quot;</a></li>
-<li>Light Reading <a href="https://www.lightreading.com/5g/vodafone-is-sold-on-ai-ran-but-not-yet-on-need-for-gpus">&quot;Vodafone is sold on AI-RAN but not yet on need for GPUs&quot;</a></li>
 <li>RuntimeWire <a href="https://runtimewire.com/article/ferveret-puts-its-reactor-inspired-cooling-to-work-on-mit-s-nuclear-materials">&quot;MIT lab is running Ferveret&#39;s reactor-inspired cooling on its nuclear materials GPUs&quot;</a></li>
 <li>Slashdot <a href="https://hardware.slashdot.org/story/26/11/22/078255/quantum-computings-first-real-world-payoff-may-come-in-energy-solutions?utm_source=rss1.0mainlinkanon&utm_medium=feed">&quot;Quantum Computing&#39;s First Real-world Payoff May Come In Energy Solutions&quot;</a></li>
+<li>GN HPC <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxQTndCWUowUTBQZXExM3VYMFZ3alhtSm1EQjZRVVMxbnRqNDBjSER3SkRDaUhNNE5TRlQ2TE8yZ3JTT3ZJMHZlUWNwRk1ZQ0Fuektmdko3Rzk1ZUk0X09GTEI3cjNId3ZMMWpibC1TX29PSURZNHg2VWhIZV9QN0tLbExUWjBGaTU1eFQ2ZFd3U1AxVWFqLUR4X2JnYTRtd0drNEZSWHlVblFDMGhrU2c?oc=5">&quot;New Supercomputer Boosts Nuclear Energy Research at Idaho National Laboratory - Department of Energy (.gov)&quot;</a></li>
+<li>GN HPC <a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOLTJvNlFOd2NPbFZTZmxESU5Rc3lPaGZKV25iU09weEtDLTdXSGJLM0FVWGxTNjRKNnI0UmowREdxQ0dVMDlrclowbGJoTzVzakRyeVBTdGdtV3VfVmZIdlhTNGtxZ1BkNmU5cVA2TEx0VlZScnE3SUJuS1g2UFd3YUhHb3FSUmNrdFBoZkczdmZ3ZEoyRGt3WnM0U3pscmRiNVExb2stQlFaVVc1N2JJRUUwNFQySVN4SVYtaFlKNlZYZ3FWaW1wdw?oc=5">&quot;Arco supercomputer launches as part of nation&#39;s DOE-designated computing facility for nuclear energy - Idaho National Laboratory (.gov)&quot;</a></li>
+<li>GN HPC <a href="https://news.google.com/rss/articles/CBMi9wFBVV95cUxPUWtsTm1aWndkQjBFcEFBV280TGpveURES09NSmZMSTVjXy01OWJBR0pxUG1ZTDVhU0VEdXhZc1FyUVpSYi1sS2lXY2NVRW1na19qSUFrdDFMX0FtcnNLRENrRVFkZXhyYmNWamlhd0tXc0JCcXhTVi1KdTMwVHFjQXJScU5vZkJHMHcyYS14YWZoM0NkV1JWb2Y4NExaXzVyRVZXV3o2Q3JwT0tFMXVYUFZlclBJSzdnN2xlczZobTBSY0lxQV80SUpyUnBkQ0RQbFFfMlVJNGpiS2tuSldlNVNPa2dYbF8zbkw0SGFaN09ldEljcEJV?oc=5">&quot;$334 million private grant powering new UI supercomputer - The News-Gazette&quot;</a></li>
 <li>Light Reading <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQNG92LUxDTXhTNUU2UWExOFFLOGR1cnlMeGVNZWVGb0ZiWUFZVjZMWFNlNlcwT0FxRlExdzNZeE9qVnlQTkYtRTZNazFlaVpMUHJmck01SW1ZMEdqeTAxMl8yTnNWSTEzTXhnajFYTmlFNl91M3V3OFNoNE85bzhfLXdnbXY2cFJaYlpvUUVjckNucGhPT1NpYnNBaG5kVHBjTHZtcVJneVg?oc=5">&quot;AI/Automation - SK Broadband to build quantum security testbed on subsea cable - Light Reading&quot;</a></li>
 <li>Light Reading <a href="https://www.lightreading.com/security/sk-broadband-to-build-quantum-security-testbed-on-sjc2-subsea-cable">&quot;SK Broadband to build quantum security testbed on subsea cable&quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPazZCWkZBUjNTenJlMzJwcnd0S3pfOHMtdV9CRmZSeEt0Nlpxa2pmeExxenhwT0FTczdDSWloTmVFUnYtS0JQam9oaUtGaVN4R2dka0gwUUVfaFcxcHNIOUlaeFZ3QVFPTXRLRjhsYl82QThycFRidzRiTjN2WEQ1Sng3dk1kMDlMbDFUSGdpSzFYM1ZYRHNteloxWWtsSnhZeGtKbXRkZ3Y?oc=5">&quot;TSMC Tightens Restrictions on Chinese Chip Designers - marketscreener.com&quot;</a></li>
@@ -438,28 +415,22 @@ We are in a transition phase where hardware innovation (NVIDIA Rubin) is outpaci
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxQR1lOWmJIQkJRZEVYaXluRGY1ekJic3dCdWdkeEVsVlpPOTF0WF9RZUt1VS15cV9fTUhuRjUxLTZhQ2hFOURDZlJVYkJmWmlqS0FUbGJMdjRHb3g4b0RKWmVmc29sTUtRb2ViLXRIaUlJazRtSUNfbGRTWTVyNkpnRjVfTmYtcVktdG1PNVJHbTlDdTlJSkJCLVdiT1ExdzctamY1UWdLejlLOUpRWV9UVHF4aUh4YVBUc0lCaGRtaC1JbmsyaGs0cGVoX1ZvNnRW?oc=5">&quot;TSMC Tightening Restrictions on Chinese Chip Designers in Response to New US Rules - marketscreener.com&quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNYjEwU2xHSnZXc05zNUlKSTkxeEczZWV2ZF9DeWJVdF9LYVBkZTE2X1RyLWthbHM2Z1R6Y0hGSzd2czd4V2RjWjFGVVp0ZXhBcWZrSGF4MWl2QkRWUEpZNWEycFp0bXRMN2dUbEQ5d0FReEx2NmJoZ3ZLTjZUdVlYdkI0eFpBUUdGVzREU3hhdmZhclZfRjFMNDJWck94SXlNc01sWWN6OTFFNjM2aE1rY9IBrAFBVV95cUxPVGh4OFBJYURRUmtiTFhFZ05mamx2TVFXSW5pckliMk5BenJWcHB1NC1vYjFFZjdRbDduZkRiWlNBYm1kNVBRd29BemctaGJHM0xGYXhVQklzd0VFc0RzTkRpaW5QWE5kMGhMSlhrTFFqUmpId2hFQVN0ZUhsek5XOGdRV2RxZnBtcjBIaTdSV3BaWEVFcldqdTN5d3pfakkwQkJJdnNmOUlhT0x5?oc=5">&quot;TSMC tightens China AI chips restrictions as new US rules take effect - The News International&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPYWg0UXZPYVo2bVhMN195ZzY3UUNuY2VIR3hpangwTWpuUEdGTTBIYU14dWpNYlozYjNUZGhlck1nZnZvWU5TS1FPR0pBMHhGeHlremowN3V1eF9OQ2g4VEh6WDlhcDFva0xQYnhkREJBTTU5QU9mUWFtc1N1bVhKT0R1Q2s?oc=5">&quot;IQM Quantum Computers Oyj (HLSE:IQMX) - Stock Analysis - Simply Wall St&quot;</a></li>
-<li>Broadcom Newsroom <a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOeFphNUZjY05JNkZvZUNfa2MzWXhldzBld0lFRDREbVhWaW5JRVJUclYyTWpIZHJuR1lmTFJSM2pnajVCajZqakNwUlVOdkp6elZpamRlWFgwRmo1WlcxR3JuME1GQlZuU19wOGQxSThLVVZQMDlWMDlvOERLZkJSYkdjblJVaWxwcTdnMkRWdF91QXRVX2lIUTliRTYwaFJMeTVVSWljSmFqalF2OGtGbDFsZDVJWDBuZWtqZ3EtanVRNXhQTVJuS093?oc=5">&quot;SpaceX Market Cap Breaches $2.5 Trillion: Goes Past Tesla, TSMC And Broadcom - Stocktwits&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOeGhHYlNEOUZMTTRNV2p0aDY3WWlDd2ZsUW9UWnYtOTh5MVlyd0JiOGdsZElCWndidlBSODVvV0FSVnEwMGtNelVFRG5iQVJwRVNRN0V4Z2N5bU1HMGg0NlEtNkNEUEVQQVllTkpzTG5naDN2bEZrVWU2YXltOERnM19UM0xpZGQzb05sYzllRTg0dktDWmVCbTdDVnVKRWVtNklGUjdWMEFoNVJCcDcyLVo5X2hFdHVvTXNfcWpNS2FWbXpJQUZiU252ZXhZRllXRlczeExTSWxKQ203d29N?oc=5">&quot;IQM Quantum Computers (NASDAQ:IQMX) Stock Rating Cut to Strong Sell at Wall Street Zen - MarketBeat&quot;</a></li>
+<li>GN HPC <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQX3dfTld2TklkUUVoUms0MGV6TXFaTmM4akJPUlNnS0lyUjNqUGNtcjM5cnBkLTZqdzRYeUFRODRHdlJtZ05ibTE2WXRMSVI1M2dJUW9JdUdjdFhaazZQQ3FSU01EdGJSTUVEQnJlcXBfbWhtamZXNFFMMTJaZzhuRHdRdGU?oc=5">&quot;Empire AI Supercomputer Breaks Ground in Buffalo - CASRAI&quot;</a></li>
+<li>GN HPC <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPclJfcjQzOGp5UmFvZ3RlWE9mSzVJcE5UVE04TEtLd29McEIzMjNzZGFjektiaHRCWl9jQ0cyNHFlUU9pOWJtRjBRS19CUXdVMmwwR3JaY3MyemdrZHFKVDNIUWFIS3ppLTFSVHd4NE5OcnBrMnN1ZjhzbjVzaUR6MG81S2RlTXlWR1dSZjh0YjE0LWdPRUZfbWw2Mlo?oc=5">&quot;MLS Cup 2026 Predictions: The Opta Supercomputer Play-Off Projections - Opta Analyst&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMipgJBVV95cUxPUWswTDZQNHh4RGRFaVl0VVR3dm95TnFib2IxZTA0S2MySngwVW5zMnZzV0hBVzNMOTFFU2xYYzdlUjlxa2ppcFlkVFd0UkVMdlIweVk2Q3J5ZW1BeTdSTkFpUm5zMVdBN2x4R1hfQ0h3YldsRWlxaF80TGlKZ2xHVjBxNFBXRmk0LUVzNlctOXNhenBfR1M2LXFTM1ZHR3JMek4xUU4tczZRX09QRHZwYndGdlVWM0FZVTlJdFMwN2x0SUpDSGRkaDJ2UVpLakZRQm1Da19VU0I1bElTZWFtRzJjV3NWRmVxT0Z3aFk0dHF5d0xTZUFCSXVjUGkwNHV4UFIza3Zvc3AtLXNEWk5GaFhvLUp3ei1kMW1YMEdPaHpOb0dHOXc?oc=5">&quot;ChronoScale Holdings, IQM Quantum Computers, SharonAI Holdings, IREN, and Dell stocks trade down, what you need to know - The Globe and Mail&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5rbjl0ampGTEg5b2xsRzlfejREZHRKVVdLVTRWd3RFdmxGcEE1MkxfMnNDa1VHYWVZT0dSOE9WT0NKbE1CZmZBOXoyVGQxeEF4U1BKNFgtcnVwYVJIb3Nncmd1bkk2UQ?oc=5">&quot;IQM Quantum Computers (IQMX) Stock Forecast and Price Target 2026 - MarketBeat&quot;</a></li>
 <li>GN SK Hynix <a href="https://news.google.com/rss/articles/CBMivgJBVV95cUxNcVR2UnlLWGVWNWRLajg1SGVQX3FoeEFPN2RSTDlXZURZUTM0NmQtWmJZRV9YS1Ftc0w2VkJRVGFneUo5ODJQRzNTaHJMTFZHTHI2SjhFdTNWXzRYSkh3aXpBX180cTlHTTVMNUoxLXpwUUNfcWtTN0F0cjcwSGY1cm4ta3Q1eUJMeHZaT2w0dUZndjdpNlRNRi00dGJnaTk2ZDFkeXpqYWQ5NW5Qak9nZTFaX3FydnhQR01VU2h4UDJ1T2ktcnlNTTZwU0wwbXJKdFBJOHN2TEh2ZW9CT3l6dUZzbDQ1LXBZTjR2UzY3T1lBNWswTjJFaTVPM0RCVXh0blNQMy1MZmRkUmpla1NoYVFsZXZQNU90cjNQWmxXTkJCSy1CcW0zdVJOSTNScENJdUVKVFpvbFJGcEVyLWc?oc=5">&quot;South Korea&#39;s Stock Market and the Nikkei 225 Sink More Than 4% as the AI Selloff Spreads From Wall Street. Here&#39;s How Much of a Target-Date Fund Is in Samsung, SK Hynix and TSMC - 24/7 Wall St.&quot;</a></li>
 <li>Broadcom Newsroom <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPZUlSWnlGdUR1TksyMFRJYTJmTEtod0hhUFVySzNPeUhSdEItTGFjUGZ3U0NqY19oUVpyeHkyQkZuMDh2cFY2aGtsandrb0t1dHFKVjJNS2MxZDVqcDJvN1JfbC13YlA3Qzc4dlVqUHFMZTVKQzA3YXAyVWFhbE92ZmhiMks3THJsM3dJd1NUQ1pNS0J6U1RmSGhJUXI5VTBQdVk2bmhwSkc?oc=5">&quot;Caltech Says Broadcom Quantum Partnership Has Funded 26 Researchers - Pasadena Now&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQaVExak1KOGpoQTBLVlhFUXR6YWZlWVFBUjNqUkVSUmQyT1I4SUMwWTRJcjF0ZDc5emZ6Q1BFczc1bU1mSHZhWHJxc1hWYjd4TjFnT20zbnI2aURIaUxwQ0RjSWJNQWtSOGFsZy1sNWE0b2JpSy14WnZGUklRWHBxZW8teWFJZWNuak1YR3A3OEs4UXVrWXJPa1AtNmo1ckFrbEUxZnE4QW1jTXRnUnFET0MzY2lZS1FNc0FIdVhlb21ZUTZxbTVwX3hmaw?oc=5">&quot;Seven funds hold the shares behind a passive stake above 5% in IQM Quantum Computers (IQMX). - Stock Titan&quot;</a></li>
 <li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQMU9yclp3SWNqWTlWeV83Z2xNNG4xcVlJeG1YTnRNaXd1Wmh0ajFDTERObXRyMVk3dVZyUTZJeEhuYUNId3dkekxXVnc0bWlvQXVMbWlsUGFYam92VGo5cmpRLXdxTm9jRUZvMGtxMTRtTG4welNZbnhmdWx5cnF4RFdWNkhaN0tPdlY5SHlXa2w4TTgyN3ZXOXVrWWUwb2wtQml6QUJEYVBGTVBiWDJyd0R1ZVoyd2djRTdUemdR?oc=5">&quot;IQM Quantum Computers (NASDAQ:IQMX) Shares Up 7.3% - Should You Buy? - MarketBeat&quot;</a></li>
-<li>EuroHPC <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9wT1B6Ym1aaVptYlBBTy1NWWlfOWVGcjBydENubHJmT3BCbm4tRGlfUUhzSmxIb2ZRYTMtLUwyaGZCVFhYV3NSYl9Fb3BCX285VWdNQUZNekp0WFNyd0FkeXQ0c0JKS0pDWW5iUmRtb3hqVFAtenBzdzhn?oc=5">&quot;JUPITER Remains Among Five Fastest Supercomputers - Mirage News&quot;</a></li>
+<li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxOZm1oSVVRamtabVpUUnZjR2dtMFI5TmhkdWdBYldyamlmTGFWRFg5VW5EZldZOE5VN2VBWmxLcXU1S0JydVZWcGlBSjlXNURJUmRfeVlWWVlzS1ZwS3kwaWJOcV9ldHk0SlpaLVExX3dLeTJjbGRXMnByMUNJN1Y4Ml95TVlYbnE5TUx2U29Ea01VUGNwRllUcXZxeHg3a216NHB6bjRicDNDRG1EVHQ3ZkYxelpOWE5YYzVUREZPbXlsRmtOS21IVnpvV0VIUU9YWm05bFhYbDY0YkNlUVlfb2dNY1NDUFZXYWxOTEdERXJ3V1FLTmM2OWd1eWZuTGFzdERwblZXLWc?oc=5">&quot;IQMXW - IQM Quantum Computers Oyj | News - OTC Markets&quot;</a></li>
+<li>GN IQM Quantum <a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxOZm05M3l0RWhQdHJaNWpQYjYtUTlRc3lRVzNRek1VSVU4Uzh2Ylg1emhrd0ptSm11WnlPMTJzNVE2b1NseGEtbGJ6TGNHVkhjRVdEYVp1cFYtbkhIYTdJajY3SnBhWmFQeTYzTGdtbW9OMEhDOWxBTV9GWkRDZTljZ1ZRQWFQTG9TaXFYWkpMQ1M4SUs3R3c3dGllOXg4elRGYk9ZMjhHS2NVSFVGM3p1eVk4Z2IwTEx2d0F4ZTN4WmhBbGdZ?oc=5">&quot;IQM Quantum Computers (NASDAQ:IQMX) Hits New 12-Month Low - What&#39;s Next? - MarketBeat&quot;</a></li>
 <li>EuroHPC <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxNLVJtSHdaVmJza2JYYWloMGZLUXZxSlRKbjVIeUYybm1XUGVZd3hjMlQzSTFXMm5lMFJrc2cwcmNSaUJuT2N5eWUtSXhoQ0NZOE9xNDdBOUJRcmtLdGRyTm9NX251V1ZnNW9kUUxOZlpLekFhbzl2SndDOFBRbnZWUHdKUk5EV3lJYVE?oc=5">&quot;Europe places four supercomputers in global top 10 - ActuIA&quot;</a></li>
 <li>GÉANT News <a href="https://connect.geant.org/2026/11/19/hybrid-quantum-safe-high-speed-networking-across-8000-km-connects-us-and-europe-with-an-adaptive-cryptoagile-solution">&quot;Hybrid quantum-safe high-speed networking across 8,000 km connects US and Europe with an adaptive, cryptoagile solution.&quot;</a></li>
 <li>Quantinuum Blog <a href="https://www.quantinuum.com/blog/preparing-your-organization-for-the-quantum-era">&quot;Preparing Your Organization for the Quantum Era&quot;</a></li>
-<li>EuroHPC <a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQeEZvaWhXUnhadzgzM1Y5eGdqSUQ5aUVoR2MycEZlVjZWcEhiVWJnNGU0aXNZRWFGUmJyd1MyZ0ZENFZvWlRCbklHNmZpLTRUUmV1dWZPM0JQVms0SlhNbThjYVJhaEF2VUdnSEtHUnVVcHM4bWZJNVVXdWNLWkl0ejB6ZDFodw?oc=5">&quot;Poland’s Poznań Supercomputing Center unveils first EuroHPC quantum computer at Supercomputing ’26 - Quantum Zeitgeist&quot;</a></li>
-<li>The Next Platform <a href="https://www.nextplatform.com/compute/2026/11/17/ibm-links-two-nighthawk-r3-chips-to-make-a-1040-qubit-quantum-system/5310545">&quot;IBM Links Two Nighthawk r3 Chips To Make A 1,040-Qubit Quantum System&quot;</a></li>
-<li>The Next Platform <a href="https://www.nextplatform.com/compute/2026/11/17/quantinuum-aligns-software-development-for-quantum-hardware-generations/5310485">&quot;Quantinuum Aligns Software Development For Quantum Hardware Generations&quot;</a></li>
-<li>IBM Research Blog <a href="https://research.ibm.com/blog/sc26?utm_medium=rss&utm_source=rss">&quot;SC26: IBM shows progress in bringing quantum &amp; HPC together&quot;</a></li>
-<li>IBM Research Blog <a href="https://research.ibm.com/blog/pelagos?utm_medium=rss&utm_source=rss">&quot;IBM, AMD advance quantum error correction decoding at scale&quot;</a></li>
-<li>Quantinuum Blog <a href="https://www.quantinuum.com/blog/supercomputing-meets-quantum-at-sc26-building-hybrid-applications-with-nexus">&quot;Supercomputing Meets Quantum at SC26: Building Hybrid Workflows and Applications with Nexus&quot;</a></li>
-<li>The Next Platform <a href="https://www.nextplatform.com/hpc/2026/11/16/supercomputer-installs-take-a-dive-in-the-second-half-of-2026/5310221">&quot;Supercomputer Installs Take A Dive In The Second Half Of 2026&quot;</a></li>
 <li>Internet2 News <a href="https://internet2.edu/focus-on-federal-internet2-responds-to-nations-call-to-action-for-post-quantum-cryptography-solutions/">&quot;Focus on Federal: Internet2 Responds to Nation’s Call to Action for Post-Quantum Cryptography Solutions&quot;</a></li>
 <li>vLLM Blog - Skip the DRAM Tier: MoRI UMBP Runs the Agentic KV Cache on NVMe - /blog/2026-11-23-skip-the-dram-tier</li>
-<li>vLLM Blog - Keeping Agents Fast: High-Interactivity Decode with FlyDSL MonoKernels in vLLM - /blog/2026-11-18-flydsl-monokernels</li>
 <li>RuntimeWire <a href="https://runtimewire.com/article/tsmc-halts-16nm-orders-for-chinese-designers-after-us-removes-the-self-check">&quot;TSMC reportedly suspends some Chinese chip orders at 16nm and smaller&quot;</a></li>
 <li>Tom&#39;s Hardware <a href="https://www.tomshardware.com/tech-industry/policy/tsmc-reportedly-pauses-shipments-to-chinese-designers-after-u-s-export-rules-flag-decade-old-16nm-and-14nm-nodes-new-bis-controls-threaten-smartphone-tv-and-automotive-chips">&quot; TSMC reportedly pauses shipments to Chinese designers after U.S. export rules flag decade-old 16nm and 14nm nodes &quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPZW11RXpYcDUyamlwZ1RLQnZQbnhEcDk1a0V5OUxNRENaX1ZxQnNhRzdnY0pmNWFFS01uWU90Y3JwYWhhVHNtcmlCUlRYVG5JR003X2h5dzI4dWh2d3hTenVMcGhVb1ljZk1OUkZ4U3haQmpIc29tUU5HREJheEMzdmNrR09vNUdvN0FHU044TGlUcFNLbG9OSmFaOGM5ZHMwU1FKVmJEQjBWLWZ0MTZ3OWZnLUxwSkdEWTJkWFFWeWVySTBjbW1wMjd3TzV5QW9XWEJ6SlN6bw?oc=5">&quot;TSMC reportedly tightens China AI chip curbs as new US rules close manufacturing loophole - The Business Times&quot;</a></li>
@@ -467,8 +438,30 @@ We are in a transition phase where hardware innovation (NVIDIA Rubin) is outpaci
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOeklGMWxBdVYtdzFXMDJaREZrOTdTQ0VKSFgzRFJqYzFRMUp4SDFIVHZmUk5MWW9DdFlTT2tndjdXWFVDN2dYRTFwTXRwd2RRUTB2b0UzcmxDMXpjWi1tWHZHd0VlaGlqVWpJQnVGVHNpWW5pVHVvOGtkZGdwMkFxeVpRTUEyWFJ0TzBucTNzcEU2OXBHRHJsSkdBZlZlSEN5T3E4aUxIU2hSb3NIdkZSSDhweWs5TUF2OWpyN0hfRTM4LURBVldZRnluZ0pIcU0?oc=5">&quot;TSMC tightens China AI chip curbs as new US rules close manufacturing loophole, sources say - The Straits Times&quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNc1pDUGRULVJNeGdkT21ERVNzMEl6RHJKTEtLRWFFQjFpYjdxWU5NMmM3Zl8zUzlHQUd3UzJlNE1UV2tlZnZFTEZrNnRKSWU1Y1lkSU1ISmF6U1JGNWNEeUJETVpHNDI5QTEwMWJTTmRraUgyaDR2RUJ1UlRadVJZMW9MUTZCeXdpZHRZRWl1X1VIZ0xBbllSWEUxMGxmdmllVFgxbmxuTmljOFFBTUkyUGR2NDRfTmM0Rm5xcXFxaHk?oc=5">&quot;TSMC tightens China AI chip curbs as new US rules close manufacturing loophole, sources say - Reuters&quot;</a></li>
 <li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNbmN3dE0tRk5DbkdxX1UwcWtYekVCTnAxdnNTVTUtUE9ia1RXcnJzcy1KM0tPdi0wTjlEdVdQR08xQzBTYzBJbHBhWlVKY1NqTGY0UVQ1SkgzMUc5WkV3SmVDblhyX0pnNEkwd1BJdkZ5TXBiaGJUby1GZ2c2UnpCUW53?oc=5">&quot;TSMC Tightens The Screws On Chinese Chip Orders - Finimize&quot;</a></li>
+<li>GN China Sovereign AI <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQMTV4MHBYNGN4dEhZNFJNYURnWWFJYktIWElnZEdxRnR1elpUQmtmMmdEZmg4QnctNEdzTkNCVTZRS0VxRmViQko1ZEI5cmRiSUZHM0dlMG5KVzlrVThRNWNfYnZJUHhVZDQ3Qi11ZXg2dm45MmhVRUN3M0g4Vzdhc2ZuS3BtU2gzSWc1UlZZb1QyZTZKeG9sZmJoU05sX1I2MzNZcE1pUHQ2MGRidmMwd2ZrSUc0alRMVFNMR0VR?oc=5">&quot;TSMC tightens China AI chip curbs as new US rules close manufacturing loophole, sources say - 95 KQDS&quot;</a></li>
+<li>GN China Sovereign AI <a href="https://news.google.com/rss/articles/CBMimgJBVV95cUxQaFo5d0RjakIxWkNKZ0F1TU5sblBhQVdzVWNiTVZjbE9ub2w2TmdQWHNqUkp2SWxKY0JnelJ5TVFvcDdjS2tOb0w1Yk9OWW90N1lESEZHT2d1NFVISElIVnkycGxZRWJVRnFXaTBFb05EMm9FTmM4VjBOZzdyRXJoYW5relhqM1ZWT3p6QVpwaE5EMUpJaThad0phNkRyTXVCOHN0M2pvbk5Hbm1WN3hNWFJrY0tSUTNONm96UWprNmoyalYxRWtRa2MxUjRUTXI5T045bjNLdUQtY0ZlQTFlSVBpWFkwYVQ5UUttYnFtZ291cVoyT3BVMUNTT1ltN0gwaS1jNldTOTdVMWptbUg0UEIwd1lXVlVTMVE?oc=5">&quot;TSMC tightens China AI chip curbs as new US rules close manufacturing loophole, sources say - The Lufkin Daily News&quot;</a></li>
+<li>GN AI Datacenter <a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNMmJBZGx3OW4xejloSENqSG1XUUF5WTZpbmpMWVhhbTFybDg3N3N0M29Xek9pSWljY2V1dnRTRVhZRDQ1ZjZvcGVZaUxpTHZ2cXFGOWJMMDVhVnlIcW1Pa0d6cDFZbzBITVlqa1NoclhOZHNGTGR1WHVhc19ZWEJiak8yTm5lMFgtanpPNE9mNA?oc=5">&quot;US data center firm Vertiv tests Nvidia AI infrastructure - Tech in Asia&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNU3pENG43RUdBbUEzUzFMS0k4UF9yNlQ3cE16NmE3b0lTeUhCYnVqQTFvZ2c2MFlJWXE5NHNwNnFnQTFkbnFDWVM3TjRhc0ljUVl4b2k0V3Yyb1NCUk9TcWg3MW9HVmxkOUVEU09LSC1Yb3NPWlF1LThQSkt5eTlEWjA2cDh5MXplTXBBMHdyT2FvVUhjTnc?oc=5">&quot;AMD: 2027 Could Be A Breakout Year For Its Earnings (NASDAQ:AMD) - Seeking Alpha&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQbUpxbnpVNGpTNThJa3dsbWR4R3cyQ3hWbVFydFJ6bW10dldabWVTU3hPMGRoZlFhczNXZWgzbHppOVBIZzNKb1VTNWZ0dFd3S3lHdTJFRkdJOUo2N0FIQ1I3VnVPLVdwSWdmS1NsbWVmVW9WVXdrOFI5TnV2a1JFb0dfVWRjUWxMMUhwT0FQdUdRMEFvVFBjTjZR?oc=5">&quot;Nvidia (NVDA) Stock Looks Below Fair Value After Recent Turmoil - Yahoo Finance&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPUDRYQU91eE9Rak5HdkN0S2dnQzM2TXpUTS1EZklyYUNDcFczZjRBdkFjRFk4LW4zZG9zQ3JyQ3ZnR0RVR0xPVzhCUUYta0pZVF9QUWc4bEN2OEZFNndlVW1uYW1fNTJtTktfeEYwT0ppZzhNc0hSNW5GcXhRcnZ3Z3VhdVN1MDFoUHRMMW1IU1c0XzVXb0hDc1NEb3JKSWFE?oc=5">&quot;What Sent NVIDIA Stock Lower On Friday? - Trefis&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZHhyaWlKa2NYRzlwSzlCTEVTakpkVURZTC1hX2VaUV8zU1Nfa3gtRDBfdUNyT2lfanoxNFhWaGFRT2tra0FlWUpna3E0NFdGNDJVMWF3bWJTTFJsakcyTlR5cXJpakpSR0NrOW5keWl1clhNbmxFblBsTXRBT3lNLTZpcDdrRjRpSlgyRTZieDVHYmVwNENBby05d3pHOUk?oc=5">&quot;Nvidia Stock At $125: Where’s The Floor? - Trefis&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOTG84b0NVWHdpaEo2SjdoLUJwWXVDVDI2NmM3Rk1WOVUza1VGclluMGNPbXltREFDbEpuUWkwbllUYmZSXzRyOXUtdVNGWEM0aGFHYWN1YXJkSWhYWC0tLVBQTFZqQnhZZEVGZmZaT1B0ZzR1RlpyM1RwbDBtM3huNmVIRGJYZ1hOSGhGUmpWTURjOW8wYUtQZkp5WUtwWjdHNkVDOVVsN3p2NVdS?oc=5">&quot;Anthropic Is Worth $1.2 Trillion. Is It a Better Buy Than Nvidia? - The Motley Fool&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMivAJBVV95cUxNcS16REZZWVEzY2hocnMtRHNsRzVKZkJWamlRZ2hsdTZOX1E3UjV6UnlPUnp6cUZSMmo0Z3pPQWxXN1JCM2YzZzgzUk5NWmtwQWNqTE4zUGo3Szl5WkhBWDdsRXlqamdvRHc5elJ3bklGTVdWNElwdndRbHV0MHIyaDhrMHVpZ1V0VXkxNFg5S3N3SzdsWWxmMjJlN09TZHljZGE2dzJwZVR6TUZkN29ZVGVmdE5GaWZFSF9RRk4tam1kdzc4WENHQjU1bWp4ZVV2YzhBTjAwazlKcHdyaHhqNjliY1Jsc1YzQkVYZ3ltcXNiQm9vUTBBSUx6MGZyYXRsQWZPMUZaV0pOQ1Q0U1dLc3YyalE1LUxfZHkybnRZUGlOWXRPZFR5Y2dYT3dRcERER0VCaE91cnF3VUl2?oc=5">&quot;Nvidia Just Reported Its First Quarter Without Jensen Huang. If the AI Trade Is Cracking, Warren Buffett’s Advice Comes Down to 1 Move. - The Globe and Mail&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxQdHlwMTlJRlUwWlZKR1F3WTRZaUE3dUVuWTJnbEhPS0FtM2NKUVFYc2szbmpGOXNoUWFYSlJzMkNlbG5takRpVDU3eVhibHRWYlYtbmoxNjJvd3YzVm4yLV9CdHptY3pJYUpyMEZ0LXcxU1dwbnNSTE1aeUd1Q1cxWDBzT3NXSUJZTEdaQmY5bTllOGZoQVRtQ0pMN01OeV91MXpZR3RQc2ZoWnUwNFR2OTg2a2VGMVN2NlVSc2dUdjZKSUROV3JzcjhqQU1XQzZ6Y0VqLUY0MlprUGROZWYxSTl0RHBJMVFhbU1DV3kwV2c?oc=5">&quot;Worried About Nvidia? Buy This Fantastic Artificial Intelligence (AI) Stock Instead - The Globe and Mail&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMilwJBVV95cUxPMFpPbVBCQUI1ZHg2b0U3YWlpeHJwejFGQkc4M1lZb2hsdVRweE41bGw2R3plSTF2STBub2FPTkUxTlRPaDhNbFJxd0kzTWJDT2lnRE5mX1Rhc1lURDdBdHIyQjFiVVlOc3VMYl9uMkJrYXFDOTNTOVdvWWNabG9PNlVqNVozVkctR0s2djlBVi03N0FRYnhJMmNDdDBpWjdHTkRSalBzdWVkWm1TODVuTlZjY005MkpiVDgyWTNrem5sQlFWVjdBYnp1X3JqZU9wcnJWSWtobTY4ZzNXV1U5MEtZV2FjejdmME0zMlB0OVpsSzdYMnJwTzZ1Z1pZQXRpNTBGZ0F4YVp5V0hmVkw1ZjhzZDFESUE?oc=5">&quot;Anthropic Stock Trend, Jensen Huang’s Potential Return As Nvidia CEO And Dell’s Q4 Results To Keep Tech Investors Busy This Week - TradingView&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE8xcW5oUFFTcF9jeWRYbFIyN2tOTk5Qem5IU09KUjdfN25wdVhaYjJYazVGVmZIckxKTnJzVXZTREpndDJlVmdjeDR5elJSZ0RfeE9CUUs5UFJxZm1nYzhRNTNuRVkzTUd5QWpRaXoweWpINGNVbmRJNw?oc=5">&quot;Nvidia tops $100 billion in quarterly revenue for the first time - Crypto Briefing&quot;</a></li>
+<li>GN AI Earnings &amp; Markets <a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxNbkpQWlN0YTJrc2RsWS1EYzBsQjVsMHdGTEluVzFJM3dtVnpqeEsyMWZHMzk4UlZOSUVZUnVsaHI4YXZUMzRkUkJFZFBrMU96c2FvSmpnajlXeXgtMjdJMnFud082Y2lzTjhtMlFlZXVQQlJzc3R5cGpmOVpQM1VKZDktZVNFNi1ZajdCa0dBV0Y1WWVYdlcycmlLTDctSlViTmNKZERsOXRpN21wVk5TYlM2QVhianFCT1pjZ0hJTGI3MG5FaVpMbFZISmR5X0w2OGpJYlJjNXYxX0JPM0xYQkVhS1NodWt4LUE?oc=5">&quot;Nvidia vs. SpaceX: Here&#39;s Which Stock I&#39;d Put $1,000 Towards Right Now - The Globe and Mail&quot;</a></li>
+<li>GN Broadcom AI <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5wcWszSll6VWtDdDZWS3lDTDVJWGhNQzBfUHJIZXdQN21nZE5MUS1YV0ZmekhoYUt4STdqemNvbHJBZ1dPQmxHOHNDX2wzUG1aWlBTN3BETTNvdnFkS0J6LTBFVVpjTmhYYVhKVTBOcjRmZ0Qwdmc?oc=5">&quot;Google Cuts Broadcom TPU Orders by a Million Units; MediaTek Seen Capturing the Shift, Goldman Sachs Trims Broadcom Price Target - BigGo Finance&quot;</a></li>
+<li>GN China AI &amp; Chips <a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxOMHEyLWU1cHVQOEsyMWdfSkhfaV90MldNcl9JVjdtTmdRVXp2dU1xeUN3MF8yeVlnV21Ga01fbGJDWEVTNjR3YUdQcXpoWlBCOThDNjRGNktGaFB4S3BvRXZjcjl1Qkl2OEl4NDlYWWdTSUN3Vm1wOEJPU0dWSlRDN0JWME1vWXE0UXpZUHphcEYzYUNzS2FkY2l3aTNZVEFoLWxIcndrNERMTGN5ckU3NXkzMVRMOEEwMTlaNW90Uk5EZTViWDg4MERnR01zcTNKVk8tSmlBcmpKdlFo?oc=5">&quot;The Morning Risk Report: China’s AI Firms Are Hooked on Nvidia Chips. Now Comes the Withdrawal. - WSJ&quot;</a></li>
+<li>Micron News <a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNUGhFcURSdTd5d0RuMkdXS25tVmxfUkNXUm9KbUJ0S3lFaUR2Nzl1OUxCUWlrX29MV1FXNUlkanczdEswVHdaTTNvM0hUbzBnMTdNNERfR0lkSlFxWklFMlVLdjlzN1dwZjY2TkR6akl2ZWllR1dxcmJBbVJVV3VUYXJvSE5ZQzZhQlRUb1VoR3M3YkJPcVRyTXVyS0NNNGdDMG1YaWhSOWIza0Jub2NDMTVR?oc=5">&quot;Good News for Micron: Citi Says Ending Nvidia’s Financing Would Cut DRAM Demand Only 12% - TIKR.com&quot;</a></li>
+<li>Micron News <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNZkkwV0FRb2ZPV2FwUUtVaTlJZDFBeHJjZGJ4LWl0Y1FOTFJpUU9wU2hQX2lWSlY2dkdUM0ZuYjBodUFua1V5VnlhNXVVbmw3OGpONnB1U3B1WExqQ3I0LXJlRWZsaDdRc0RfSXlic2V3dlluM0dJM3NmVVUtckNYWnlIazduV2VEWXB4YlVUZWl0Ukk?oc=5">&quot;Micron and Sandisk Pitched as Cheaper AI Bets Than Nvidia - JournalArta&quot;</a></li>
+<li>Micron News <a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxNbnN0ekVYaC0wMnlmdGJOYVBQYlA5RmZtTVZrTkxYZUtBT19RWmpPNkFETkhrSFROZmc3U2p2SUI5c1ZyTzFJT2R2MS1CS1dOc1dEWXNobmJqamZfbUsyVXlDZm5FY216d3BhZlhSYVd0SVAwWUxldzRNckpyRmpnRzNpUnlYS2NUSTJDMk5seTFOWjZ4d2gxQXo3SVBEYlQ5Zm9zMmZyRE5oMERqckpwRFVreWZsYmxaelhBTVRWME1NaUZmMDB6R0dlOHRvaHRWX1llaUl1YW1KU2xLLUoxSg?oc=5">&quot;Why AMD, Micron, and Sandisk Stocks Are Bouncing Back Overnight After Friday’s Crash — and Which Has the Most Upside Ahead - TipRanks&quot;</a></li>
+<li>RuntimeWire <a href="https://runtimewire.com/article/alexandr-wang-says-the-certified-riemann-proof-marks-superintelligence-arriving">&quot;Alexandr Wang says the certified Riemann proof marks superintelligence arriving&quot;</a></li>
+<li>SK hynix News <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9KZ2FhRDlfeWRyX0JNLVZlVlBzWURBOTZGQ25rRno5ZmxxTS1qeTVtNDE0Q0wxRllmYXRqaVV4TjFQR3h0VXRmOGhjX180NkZoSG1ibU1sYVViNXJNUnY4ZWVleTZyQktBeU1RMzhFR0Y2MGJic2c?oc=5">&quot;Nvidia Accounting Probe Rumors Send Chip Stocks Plunging; South Korea&#39;s SK Hynix Falls Back Into 1.08 Million Won Range - BigGo Finance&quot;</a></li>
+<li>Slashdot <a href="https://hardware.slashdot.org/story/26/11/23/089219/alice-huang-in-touch-with-chinese-spy-agency-during-affair-with-nvidia-ceo-nyt-says?utm_source=rss1.0mainlinkanon&utm_medium=feed">&quot;Alice Huang In Touch With Chinese Spy Agency During Affair With Nvidia CEO, NYT Says&quot;</a></li>
+<li>Tencent Cloud <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZlJZMUlRYWE1QmpiWG9YaTNoRE0tclNaSWhVN0Q3aUhIRUhmNDVuZHVxMG91UFNRb0hmS25pRm9TclhKaTR4VGpCUmQyWFl1eWFWeE1LcUdtdnl4ODRvN2FfMjZ5Y2tvTFMyY1YyTGpSallTdkZDeEVLWmdmVkJRbHJ6YlQxQWk3aXJLZ3hWT24xaXczZWp3R2VYdm5XSm11c3VOUWF0b0RVQQ?oc=5">&quot;Tencent Cloud partners with INTERSOFT to expand AI-powered payments - IBS Intelligence&quot;</a></li>
 </ol>
 
-<footer>The AI Infrastructure Signal · Issue #48 · November 16th to November 23rd, 2026<br><small>Tokens at Work. Human-built. Personal full-stack agentic AI pilot. Verify claims independently.</small></footer>
+<footer>The AI Infrastructure Signal · Issue #48 · November 18th to November 23rd, 2026<br><small>Tokens at Work. Human-built. Personal full-stack agentic AI pilot. Verify claims independently.</small></footer>
 </body>
 </html>
