@@ -11,8 +11,8 @@
   "metrics": {
     "sources": "607",
     "topics": "2",
-    "reports": "1",
-    "episodes": "1"
+    "reports": "2",
+    "episodes": "2"
   },
   "reports": [
     {
@@ -29,13 +29,13 @@
     {
       "id": "quantum-2026-W48",
       "topic": "quantum",
-      "title": "From qubits to useful systems",
+      "title": "The Quantum Signal — 2026-W48",
       "week": "2026-W48",
-      "date": "2026-11-24",
+      "date": "2026-11-27",
       "summary": "Launch preview: error correction, logical performance, and engineering milestones in quantum computing.",
       "url": "quantum/reports/2026-W48/index.html",
       "minutes": 7,
-      "status": "preview"
+      "status": "published"
     }
   ],
   "episodes": [
@@ -46,6 +46,15 @@
       "url": "ai/podcast/signal_2026-W48.mp3",
       "topics": [
         "ai"
+      ]
+    },
+    {
+      "number": 48,
+      "title": "The Quantum Signal #48 — 2026-W48",
+      "date": "2026-11-27",
+      "url": "quantum/podcast/signal_2026-W48.mp3",
+      "topics": [
+        "quantum"
       ]
     }
   ]
