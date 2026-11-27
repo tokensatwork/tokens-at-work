@@ -9,7 +9,7 @@
     "amazon": "https://music.amazon.com/podcasts/a71db7b2-f0c7-4c31-a400-b7e5cb474611/tokens-at-work"
   },
   "metrics": {
-    "sources": "92",
+    "sources": "607",
     "topics": "2",
     "reports": "1",
     "episodes": "1"
@@ -20,7 +20,7 @@
       "topic": "ai",
       "title": "The AI Infrastructure Signal — 2026-W48",
       "week": "2026-W48",
-      "date": "2026-11-26",
+      "date": "2026-11-27",
       "summary": "Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure.",
       "url": "ai/reports/2026-W48/index.html",
       "minutes": 8,
@@ -44,7 +44,9 @@
       "title": "The AI Infrastructure Signal #48 — 2026-W48",
       "date": "2026-11-24",
       "url": "ai/podcast/signal_2026-W48.mp3",
-      "topics": ["ai"]
+      "topics": [
+        "ai"
+      ]
     }
   ]
-}   
+}
