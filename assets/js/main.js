@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (latestEpisode) latestEpisode.innerHTML = episodes.length ? episodeCard(episodes[0]) : '<p class="empty-state">Our first topic briefings are in preparation.</p>';
   document.querySelectorAll('[data-topic-episode]').forEach((el) => {
     const episode = episodes.find((ep) => (Array.isArray(ep.topics) ? ep.topics : []).includes(el.dataset.topicEpisode));
-    el.innerHTML = episode ? episodeCard(episode) : '<div class="episode-preview"><strong>First topic briefing in preparation</strong><p>Opening briefings cover AI Infrastructure and Quantum Computing.</p><a class="text-link" href="' + escapeHtml(siteUrl('podcast/index.html')) + '">Podcast launch information →</a></div>';
+    el.innerHTML = episode ? episodeCard(episode) : '<div class="episode-preview"><strong>First topic briefing in preparation</strong><p>Opening briefings cover AI Infrastructure and Quantum Computing.</p><a class="text-link" href="' + escapeHtml(siteUrl("archive/index.html")) + '">View published episodes →</a></div>';
   });
   Object.entries(catalog.platforms || {}).forEach(([key, url]) => {
     const link = document.querySelector(`[data-platform="${key}"]`);
