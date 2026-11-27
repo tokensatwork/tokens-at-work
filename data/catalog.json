@@ -1,19 +1,18 @@
 {
+  "topics": {
+    "ai": "AI Infrastructure",
+    "quantum": "Quantum Computing"
+  },
+  "platforms": {
+    "rss": "https://media.rss.com/tokens-at-work/feed.xml",
+    "spotify": "https://media.rss.com/tokens-at-work/feed.xml",
+    "amazon": "https://music.amazon.com/podcasts/a71db7b2-f0c7-4c31-a400-b7e5cb474611/tokens-at-work"
+  },
   "metrics": {
     "sources": "92",
     "topics": "2",
     "reports": "1",
     "episodes": "1"
-  },
-  "platforms": {
-    "rss": "YOUR_RSS_FEED_URL",
-    "spotify": "YOUR_SPOTIFY_SHOW_URL",
-    "apple": "",
-    "rsscom": "https://rss.com/podcasts/tokens-at-work/"
-  },
-  "topics": {
-    "ai": "AI Infrastructure",
-    "quantum": "Quantum Computing"
   },
   "reports": [
     {
@@ -22,7 +21,7 @@
       "title": "The AI Infrastructure Signal — 2026-W48",
       "week": "2026-W48",
       "date": "2026-11-26",
-      "summary": "Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure. This is placeholder content, not a published report.",
+      "summary": "Launch preview: power availability, advanced packaging, and inference economics in AI infrastructure.",
       "url": "ai/reports/2026-W48/index.html",
       "minutes": 8,
       "status": "published"
@@ -33,7 +32,7 @@
       "title": "From qubits to useful systems",
       "week": "2026-W48",
       "date": "2026-11-24",
-      "summary": "Launch preview: error correction, logical performance, and engineering milestones in quantum computing. This is placeholder content, not a published report.",
+      "summary": "Launch preview: error correction, logical performance, and engineering milestones in quantum computing.",
       "url": "quantum/reports/2026-W48/index.html",
       "minutes": 7,
       "status": "preview"
@@ -45,9 +44,7 @@
       "title": "The AI Infrastructure Signal #48 — 2026-W48",
       "date": "2026-11-24",
       "url": "ai/podcast/signal_2026-W48.mp3",
-      "topics": [
-        "ai"
-      ]
+      "topics": ["ai"]
     }
   ]
-}
+}   
