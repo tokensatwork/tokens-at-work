@@ -136,7 +136,7 @@ a:hover { color: var(--accent); }
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   margin-top: 16px;
   border: 1px solid var(--line);
 }
@@ -147,7 +147,7 @@ a:hover { color: var(--accent); }
   flex-direction: column;
   border-right: 1px solid var(--line);
 }
-.metric-card:last-child { border: 0; }
+.metric-card:last-child { border-right: 0; }
 .metric-card strong { font-size: 28px; color: var(--accent); }
 
 .section-heading {
@@ -320,9 +320,36 @@ a:hover { color: var(--accent); }
 .expanding {
   text-align: center;
   font-size: .85rem;
-  color: var(--text-muted, var(--muted));
+  color: var(--muted);
   font-style: italic;
   margin-top: 1rem;
+}
+
+/* --- Per-report metrics --- */
+.report-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.report-metric { text-align: center; }
+.report-metric strong {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .25rem;
+}
+.report-metric span {
+  font-size: .65rem;
+  font-family: var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* --- Responsive --- */
@@ -336,8 +363,9 @@ a:hover { color: var(--accent); }
   .split-section { grid-template-columns: 1fr; gap: 15px; }
   .report-grid { grid-template-columns: 1fr; }
   .metrics-grid { grid-template-columns: 1fr 1fr; }
-  .metric-card:nth-child(2) { border-right: 0; }
-  .metric-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .metric-card { border-bottom: 1px solid var(--line); }
+  .metric-card:nth-child(even) { border-right: 0; }
+  .metric-card:nth-last-child(-n+2) { border-bottom: 0; }
   .topics-grid { grid-template-columns: 1fr; }
   .footer-main { align-items: flex-start; flex-direction: column; }
   .section { padding-block: 48px; }

@@ -81,6 +81,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (catalog.metrics && catalog.metrics[key] !== undefined) el.textContent = String(catalog.metrics[key]);
   });
 
+// --- Per-report metrics (topic pages) ---
+  document.querySelectorAll('[data-report-metrics]').forEach((el) => {
+    const topic = el.dataset.reportMetrics;
+    const rm = catalog.reportMetrics && catalog.reportMetrics[topic];
+    if (!rm) { el.innerHTML = ''; return; }
+    el.innerHTML =
+      '<div class="report-metrics">' +
+        '<div class="report-metric"><strong>' + (rm.articlesCollected || 0).toLocaleString() + '</strong><span>ARTICLES COLLECTED</span></div>' +
+        '<div class="report-metric"><strong>' + (rm.sourcesSuccessful || 0) + ' / ' + (rm.sourcesConfigured || 0) + '</strong><span>SOURCES SUCCESSFUL</span></div>' +
+        '<div class="report-metric"><strong>' + (rm.healthScore || 0) + '/100</strong><span>HEALTH SCORE</span></div>' +
+        '<div class="report-metric"><strong>' + (rm.otherPercentage || 0) + '%</strong><span>OTHER CATEGORY</span></div>' +
+      '</div>';
+  });
+
   // --- Latest reports grid ---
   document.querySelectorAll('[data-report-list]').forEach((el) => {
     const limit = Number(el.dataset.limit) || reports.length;
