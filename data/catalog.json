@@ -6,8 +6,8 @@
     "episodes": "1"
   },
   "platforms": {
-    "rss": "",
-    "spotify": "",
+    "rss": "YOUR_RSS_FEED_URL",
+    "spotify": "YOUR_SPOTIFY_SHOW_URL",
     "apple": "",
     "rsscom": "https://rss.com/podcasts/tokens-at-work/"
   },
