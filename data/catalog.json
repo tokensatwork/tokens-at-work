@@ -13,7 +13,7 @@
     "topics": "2",
     "reports": "2",
     "episodes": "2",
-    "articles": "3358"
+    "articles": "3444"
   },
   "reports": [
     {
@@ -68,11 +68,11 @@
       "otherPercentage": 10.84
     },
     "quantum": {
-      "articlesCollected": 840,
+      "articlesCollected": 926,
       "sourcesConfigured": 69,
       "sourcesSuccessful": 67,
       "healthScore": 65,
-      "otherPercentage": 33.1
+      "otherPercentage": 32.29
     }
   }
 }

@@ -4,90 +4,129 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>The Quantum Signal — Issue #48</title>
-<style>:root{--bg:#0b1017;--surface:#101720;--line:#25313d;--soft:#1b2631;--text:#e9eef2;--muted:#9aa8b5;--accent:#9ce7c1;--accent-dim:#8ed6bd;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--up:#9ce7c1;--neutral:#9aa8b5;--down:#f87171;--max:860px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font:15px/1.7 var(--sans);max-width:var(--max);margin:0 auto;padding:2rem 1.5rem 3rem;-webkit-font-smoothing:antialiased}
-h1{font-size:2.8rem;font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--text);margin:2rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
-h2{font-size:1.05rem;font-weight:500;color:var(--muted);margin:0 0 1.5rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
-h3{font-size:1.3rem;font-weight:650;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:2px solid var(--accent);letter-spacing:-.02em}
-h4{font-size:1.05rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
-p{margin:.5rem 0}
-ul,ol{margin:.5rem 0 .75rem 1.5rem}
-li{margin:.35rem 0}
-li::marker{color:var(--accent)}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0 1.5rem}
-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border:1px solid var(--line);min-width:480px}
-th{background:var(--soft);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-td{padding:.55rem .8rem;border-bottom:1px solid var(--soft);vertical-align:top}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--surface)}
-hr{border:none;border-top:1px solid var(--line);margin:2rem 0}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word}
-a:hover{border-bottom-color:var(--accent)}
-.sig-up{color:var(--up);font-weight:700}
-.sig-neutral{color:var(--neutral)}
-.sig-down{color:var(--down);font-weight:700}
-strong{font-weight:600}
-footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center}
-@media print{body{max-width:100%;padding:1cm;font-size:11pt;background:#fff;color:#1a1a2e}h1,h3{color:#1a1a2e}h1{border-bottom-color:#ccc}h3{border-left-color:#ccc}th{background:#f5f5f5;color:#333}td{border-bottom-color:#eee}a{color:#1a1a2e;border-bottom:none}a::after{content:" (" attr(href) ")";font-size:.8em;color:#666}}
-@media(max-width:640px){body{padding:1.25rem 1rem 2rem;font-size:14px}h1{font-size:2rem}h3{font-size:1.1rem;margin-top:1.5rem}table{font-size:.78rem;min-width:400px}th,td{padding:.45rem .6rem}ul,ol{margin-left:1.2rem}}</style>
+<link rel="stylesheet" href="../../../assets/css/styles.css">
+<style>
+.report-body{
+  --bg:#0b1017;--surface:#101720;--line:#25313d;--soft:#1b2631;
+  --text:#e9eef2;--muted:#9aa8b5;--accent:#9ce7c1;--accent-dim:#8ed6bd;
+  --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --up:#9ce7c1;--neutral:#9aa8b5;--down:#f87171;--max:860px;
+  background:var(--bg);color:var(--text);
+  font:15px/1.7 var(--sans);
+  max-width:var(--max);margin:0 auto;
+  padding:2rem 1.5rem 3rem;
+  -webkit-font-smoothing:antialiased
+}
+.report-body h1{font-size:2.8rem;font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--text);margin:2rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.report-body h2{font-size:1.05rem;font-weight:500;color:var(--muted);margin:0 0 1.5rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
+.report-body h3{font-size:1.3rem;font-weight:650;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:2px solid var(--accent);letter-spacing:-.02em}
+.report-body h4{font-size:1.05rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
+.report-body p{margin:.5rem 0}
+.report-body ul,.report-body ol{margin:.5rem 0 .75rem 1.5rem}
+.report-body li{margin:.35rem 0}
+.report-body li::marker{color:var(--accent)}
+.report-body .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0 1.5rem}
+.report-body table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border:1px solid var(--line);min-width:480px}
+.report-body th{background:var(--soft);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.report-body td{padding:.55rem .8rem;border-bottom:1px solid var(--soft);vertical-align:top}
+.report-body tr:last-child td{border-bottom:none}
+.report-body tr:hover td{background:var(--surface)}
+.report-body hr{border:none;border-top:1px solid var(--line);margin:2rem 0}
+.report-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word}
+.report-body a:hover{border-bottom-color:var(--accent)}
+.report-body .sig-up{color:var(--up);font-weight:700}
+.report-body .sig-neutral{color:var(--neutral);font-weight:700}
+.report-body .sig-down{color:var(--down);font-weight:700}
+.report-body strong{font-weight:600}
+.report-body blockquote{border-left:2px solid var(--line);padding-left:1rem;color:var(--muted);font-size:.9rem;margin:1rem 0}
+.report-body .report-tagline{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center}
+body{background:#0b1017;margin:0}
+.site-header{background:#0b1017;border-bottom:1px solid #25313d;padding:1rem 1.5rem;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.site-header .nav-wrap{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.site-header .brand{color:#9ce7c1;text-decoration:none;font-weight:700;font-size:1rem}
+.site-header .brand-mark{color:#e9eef2}
+.site-header .brand-at{color:#9aa8b5;font-weight:400}
+.site-header .primary-nav a{color:#9aa8b5;text-decoration:none;margin-left:1.25rem;font-size:.85rem;transition:color .2s}
+.site-header .primary-nav a:hover{color:#9ce7c1}
+.site-footer{background:#0b1017;border-top:1px solid #25313d;padding:1.5rem;color:#9aa8b5;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.site-footer .footer-main{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.site-footer .brand{color:#e9eef2;text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.05em}
+.site-footer .footer-links a{color:#9aa8b5;text-decoration:none;margin-left:1rem;font-size:.8rem}
+.site-footer .footer-links a:hover{color:#9ce7c1}
+.site-footer .footer-bottom{max-width:860px;margin:1rem auto 0;padding-top:.75rem;border-top:1px solid #1b2631;font-size:.75rem;text-align:center}
+@media print{.report-body{max-width:100%;padding:1cm;font-size:11pt;background:#fff;color:#1a1a2e}.report-body h1,.report-body h3{color:#1a1a2e}.report-body h1{border-bottom-color:#ccc}.report-body h3{border-left-color:#ccc}.report-body th{background:#f5f5f5;color:#333}.report-body td{border-bottom-color:#eee}.report-body a{color:#1a1a2e;border-bottom:none}.report-body a::after{content:" (" attr(href) ")";font-size:.8em;color:#666}}
+@media(max-width:640px){.report-body{padding:1.25rem 1rem 2rem;font-size:14px}.report-body h1{font-size:2rem}.report-body h3{font-size:1.1rem;margin-top:1.5rem}.report-body table{font-size:.78rem;min-width:400px}.report-body th,.report-body td{padding:.45rem .6rem}.report-body ul,.report-body ol{margin-left:1.2rem}}</style>
 </head>
 <body>
-<h1>The Quantum Signal · Issue #48 · November 21st to November 28th, 2026</h1>
-<h2>Issue #48 — November 21st to November 28th, 2026</h2>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../../../index.html"><span class="brand-mark">T.</span><span>tokens <span class="brand-at">at</span> work</span></a>
+    <nav class="primary-nav" id="primary-nav">
+      <a href="../../../archive/index.html">Archive</a>
+      <a href="../../../podcast/index.html">Podcast</a>
+      <a href="../../../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container section">
+<div class="report-body">
+<h1>The Quantum Signal</h1>
+<h2><a href="https://tokensatwork.com">T.tokens at work</a> · Issue #48 · November 21st to November 28th, 2026</h2>
 <h3>Executive Summary</h3>
-<p>The week was defined by a sharp divergence between hardware milestones and market sentiment, highlighted by Rigetti Computing’s surge on federal funding news and IonQ’s strategic focus on the post-quantum cryptography deadline. A significant breakthrough in error correction emerged, with Quiver Quantitative reporting that Quantum X Labs’ QXL Decoder reduced logical errors by 12–13% on Google Quantum hardware data when integrated with NVIDIA CUDA-Q QEC. Funding activity remained robust, as Diraq secured $38 million for silicon quantum chip R&amp;D and the EU proposed a €50 billion sovereign tech equity fund to close the funding gap with the US and China. While stock prices saw volatility—D-Wave declined 9% while Arqit received a new &#39;Buy&#39; rating—the underlying research momentum accelerated, particularly in fault-tolerant architectures and quantum networking infrastructure for satellite missions.</p>
+<p>The week was defined by a convergence of breakthroughs in error correction and significant policy shifts in post-quantum cryptography. Live Science reported on a new record in quantum error correction bringing fault-tolerant systems closer to reality, while Riverlane demonstrated software cuts that reduce qubit counts for error correction by a third. In the security sector, Ethereum plans a shift to hash-based signatures for post-quantum security, and IonQ highlighted the approaching federal contractor PQC deadline. Funding activity remained robust, with QuTech receiving an ERC Synergy Grant and Diraq securing $38M in CHIPS Act backing for silicon quantum chip R&amp;D. Market sentiment showed volatility, with Rigetti surging on NVIDIA&#39;s return to lift the sector while D-Wave faced revenue scrutiny.</p>
 <h3>Signal of the Week</h3>
-<p>A decisive shift toward practical error correction was confirmed this week when Quantum X Labs reported that its QXL Decoder cut logical errors by 12–13% on Google Quantum hardware data using NVIDIA CUDA-Q QEC, corroborated by independent analysis from Quiver Quantitative. This development directly impacts the investment outlook for companies leveraging classical co-processors like NVIDIA to bridge the gap to fault tolerance, while pressuring pure-play qubit manufacturers to accelerate their own correction stacks. The signal suggests that near-term value creation will increasingly come from hybrid classical-quantum software stacks rather than raw qubit counts alone. (High confidence)</p>
+<p>The single most consequential development this week is the validation of full-stack error correction engineering as a viable near-term milestone. Live Science reported that scientists achieved a new record in quantum error correction, signaling that powerful, fault-tolerant quantum computers are closer to reality than previously anticipated. This breakthrough is corroborated by Riverlane&#39;s release of their 2026 Quantum Error Correction Report, which highlights the industry shift toward full-stack engineering and their specific demonstration of code cuts reducing qubit counts by a third. This convergence suggests that the path to logical qubits is accelerating faster than hardware scaling alone would predict, creating a high-conviction opportunity for investors focusing on companies with demonstrated error-correction software stacks or strong partnerships in this space like Riverlane and Google Quantum.</p>
 <h3>Key Stories</h3>
 <ul>
-<li><p><strong>Quantum X Labs and Google</strong> — QXL Decoder cuts logical errors 12–13% on Google hardware</p>
+<li><p><strong>Live Science</strong> — New record in quantum error correction brings fault-tolerant computers closer to reality</p>
 <ul>
-<li>Quantum X Labs reported that its decoder reduced logical error rates by integrating NVIDIA CUDA-Q QEC, achieving a 12–13% improvement over standard tools on Google&#39;s hardware data.</li>
-<li>This breakthrough validates the efficacy of classical AI-driven decoding layers, positioning companies with strong software stacks like NVIDIA and IBM as critical enablers for near-term fault-tolerant milestones.</li>
+<li>Scientists announced a breakthrough in quantum error correction, reporting that the technology now brings powerful, fault-tolerant quantum computers significantly closer to practical reality.</li>
+<li>This development validates the efficacy of current QEC approaches over pure hardware scaling alone, potentially compressing the timeline for commercial fault tolerance and favoring companies with advanced decoder integration like Google Quantum and NVIDIA.</li>
 </ul>
 </li>
-<li><p><strong>Rigetti Computing</strong> — Lands CHIPS Act backing and secures growth plans via chiplet innovation</p>
+<li><p><strong>Riverlane</strong> — Software code cuts qubit count for error correction by a third</p>
 <ul>
-<li>Rigetti Computing announced it has secured federal funding support through the CHIPS Act, which is expected to bolster its chiplet-based manufacturing roadmap and expansion into the US market.</li>
-<li>This government backing reduces near-term capital expenditure risks for Rigetti, potentially widening the valuation gap between it and peers like IonQ that lack comparable direct federal hardware grants this week.</li>
+<li>Riverlane and Nature Research Intelligence released their 2026 Quantum Error Correction Report, highlighting a shift to full-stack engineering that reduces the physical qubit requirement for logical operations.</li>
+<li>This efficiency gain directly lowers the capital expenditure required to reach fault tolerance, offering a strategic advantage to software-centric players and those integrating advanced decoders like NVIDIA CUDA-Q into their hardware stacks.</li>
 </ul>
 </li>
-<li><p><strong>Diraq</strong> — Secures $38M CHIPS R&amp;D award to build silicon quantum chip capacity in the US</p>
+<li><p><strong>Ethereum</strong> — Core developers plan shift to hash-based signatures for post-quantum security</p>
 <ul>
-<li>Diraq finalized a $38 million CHIPS Act award to build silicon quantum chip manufacturing capacity within the United States, marking a significant expansion of its domestic footprint.</li>
-<li>The funding validates the silicon-based approach as a viable path for scaling, offering an alternative to trapped-ion or superconducting architectures pursued by competitors like IonQ and Quantinuum.</li>
+<li>Ethereum&#39;s core developers are preparing to phase out elliptic-curve cryptography to switch to hash-based signatures, a change designed to protect against attacks powered by future quantum computers.</li>
+<li>This move accelerates the industry-wide transition to Post-Quantum Cryptography (PQC), creating immediate demand for PQC solutions and potentially disadvantaging legacy crypto infrastructure providers who fail to migrate quickly enough.</li>
 </ul>
 </li>
-<li><p><strong>IonQ</strong> — Focuses on federal contractors facing post-quantum cryptography deadlines</p>
+<li><p><strong>IonQ</strong> — Federal contractors face approaching post-quantum deadline</p>
 <ul>
-<li>IonQ highlighted that the post-quantum cryptography deadline for federal contractors is approaching faster than anticipated, creating urgent demand for its quantum-safe solutions.</li>
-<li>This regulatory pressure provides a clear revenue tailwind for IonQ’s security segment while potentially leaving legacy hardware-focused competitors like D-Wave vulnerable to obsolescence in government contracts.</li>
+<li>IonQ highlighted that the post-quantum deadline for federal contractors is closer than it looks, emphasizing the urgency of migration for government entities.</li>
+<li>This regulatory pressure creates a clear revenue opportunity for quantum-safe encryption providers and could accelerate adoption by legacy enterprise clients seeking to avoid compliance risks with federal contracts.</li>
 </ul>
 </li>
-<li><p><strong>EU and Sovereign Tech Fund</strong> — Proposes €50 billion fund to close Europe&#39;s quantum funding gap</p>
+<li><p><strong>Diraq</strong> — Secures $38M US funding for silicon quantum chip R&amp;D via CHIPS Act</p>
 <ul>
-<li>The European Union proposed a €50 billion sovereign tech equity fund aimed at closing the quantum funding gap with the US and China, targeting key infrastructure and research hubs.</li>
-<li>This massive capital injection could accelerate the growth of European startups and established players like QuTech and Riverlane, altering the competitive landscape for global investors seeking exposure to non-US quantum markets.</li>
+<li>Diraq finalized a $38 million CHIPS Act award to build silicon quantum chip capacity in the United States, focusing on R&amp;D for their silicon-based architecture.</li>
+<li>This substantial government backing positions Diraq as a key beneficiary of federal semiconductor initiatives, reducing its capital burden and validating the commercial viability of silicon spin-qubit approaches against competing technologies like superconducting qubits.</li>
 </ul>
 </li>
-<li><p><strong>Arqit Quantum</strong> — Stock scores new &#39;Buy&#39; rating following security product developments</p>
+<li><p><strong>D-Wave</strong> — Stock faces scrutiny over revenue growth versus bookings slide</p>
 <ul>
-<li>Arqit Quantum received a new &#39;Buy&#39; rating from analysts, driven by its progress in quantum-safe security products and recent market positioning.</li>
-<li>The upgrade signals growing confidence in the post-quantum cryptography sector, suggesting that investors are rotating capital into security-focused firms ahead of the federal deadline mentioned in IonQ&#39;s reporting.</li>
+<li>D-Wave reported 21% revenue growth but faced a 19% slide in bookings alongside an unresolved SEC question, causing its stock to decline on Tuesday.</li>
+<li>The divergence between top-line revenue and booking trends suggests potential churn or recognition issues that investors should monitor closely, as it impacts the sustainability of its quantum annealing business model relative to gate-model competitors.</li>
 </ul>
 </li>
-<li><p><strong>Nvidia and IBM</strong> — Partner to use AI for correcting quantum computing errors in drug discovery</p>
+<li><p><strong>Google Quantum</strong> — Willow chip demonstrates ability to outsmart classical machines</p>
 <ul>
-<li>Nvidia and IBM announced a collaboration to use artificial intelligence to correct quantum computing errors, paving the way for practical applications in drug and materials discovery.</li>
-<li>This partnership underscores the critical role of classical AI infrastructure in enabling quantum advantage, reinforcing Nvidia’s position as a foundational enabler alongside hardware manufacturers like Google and Rigetti.</li>
+<li>Google&#39;s Willow chip demonstrated why quantum computers can outsmart classical machines, showcasing specific computational advantages in error correction and simulation tasks.</li>
+<li>This performance metric reinforces the lead of superconducting qubit architectures in near-term utility applications, potentially widening the moat for Google Quantum against emerging rivals like IonQ and Rigetti who rely on ion trap or neutral atom platforms.</li>
 </ul>
 </li>
 </ul>
 <h3>Market Pulse</h3>
-<p>The cycle is currently entering a phase where validation of error correction mechanisms is becoming the primary driver of valuation rather than qubit count announcements. The dominant tension this week is between the &quot;hardware-first&quot; narrative represented by companies like IonQ and Quantinuum pushing for logical qubit milestones, and the &quot;software-stack&quot; reality demonstrated by Quantum X Labs&#39; success with NVIDIA CUDA-Q QEC. While stock prices saw volatility—D-Wave declining 9% and Rigetti dropping 7% on Tuesday before recovering—the fundamental data points suggest that the market is re-pricing companies based on their ability to deliver fault-tolerant performance, not just raw scale. This means we should expect continued consolidation in hardware-only plays while software-integrated architectures like those of Quantinuum and Nvidia gain momentum over the next quarter.</p>
-<p>I&#39;m confident on the thesis that error correction breakthroughs will be the primary catalyst for the 3-12 month investment outlook, with specific conviction in companies bridging classical AI and quantum hardware. The direction is clear toward hybrid solutions where NVIDIA&#39;s CUDA-Q stack acts as a force multiplier for various QPU architectures. Early call, but the direction is clear that software-defined error correction will unlock value faster than pure hardware scaling alone.</p>
-<p>The two risks that would break this thesis are a failure of the CHIPS Act funding to materialize into actual manufacturing capacity for Diraq or Rigetti, and a delay in the Ethereum shift to hash-based signatures which could slow enterprise adoption of post-quantum cryptography. The single most important thing to watch next week is whether Quantum X Labs can replicate its 12–13% error reduction results on live hardware rather than just data simulations, as this will determine if the sector moves from &quot;breakthrough&quot; hype to commercial validation.</p>
+<p>We are witnessing a critical inflection point where error correction is transitioning from theoretical promise to demonstrated engineering reality. The dominant tension this week is between the accelerating pace of software-driven efficiency gains, exemplified by Riverlane&#39;s and Live Science&#39;s reports, and the slower, capital-intensive hardware scaling required by major players like IBM and Google. While funding flows remain strong with new grants for QuTech and Diraq, market sentiment remains volatile, as seen in the sharp swings of Rigetti and D-Wave stocks. This week&#39;s data suggests that companies solving the &quot;software stack&quot; problem—like Riverlane and NVIDIA via CUDA-Q integration—are becoming de facto essential partners for hardware vendors, regardless of their qubit technology choice. The next 1-3 quarters will likely see a bifurcation where pure hardware playbooks without error-correction software moats struggle to justify valuations, while full-stack players command premium multiples.</p>
+<p>I&#39;m confident on the thesis that the &quot;software-defined quantum&quot; era is beginning, where companies like Riverlane and NVIDIA are becoming critical infrastructure for any fault-tolerant roadmap. Early call, but the direction is clear: investors should prioritize entities demonstrating logical qubit efficiency over those boasting raw physical qubit counts alone. The integration of AI-driven control (like the Harvard-QuEra project) and PQC migration services represents a low-hanging fruit for revenue growth in the short term, while the long-term value accrues to those who can integrate these software layers into their physical hardware designs.</p>
+<p>The two specific risks that would break this thesis are: 1) If Google&#39;s Willow chip or similar demonstrations fail to show sustained error correction improvements in subsequent quarters, which could reset expectations for the entire sector; and 2) If the EU&#39;s proposed €50B Sovereign Tech Equity Fund faces political delays or if major US CHIPS Act awards like Diraq&#39;s are subject to restrictive usage clauses that limit commercialization speed. The single most important thing to watch next week is whether any of the major hardware vendors (IBM, Google, IonQ) release a formal roadmap update acknowledging these new error correction benchmarks and adjusting their timelines accordingly.</p>
 <h3>The Quantum Signal Dashboard</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -98,79 +137,79 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 </thead>
 <tbody><tr>
 <td>QPU Hardware</td>
-<td>Rigetti Computing secures CHIPS Act backing; Diraq finalizes $38M award for silicon chip capacity; Arqit Quantum receives new &#39;Buy&#39; rating</td>
+<td>QuTech awarded €7.4M ERC Synergy Grant for UniQ project; Diraq secures $38M CHIPS Act award for silicon chip capacity; Google Willow chip demonstrates outsmarting classical machines; Rigetti lands CHIPS Act backing and chiplet innovation support</td>
 </tr>
 <tr>
 <td>Error Correction &amp; Fault Tolerance</td>
-<td>Quantum X Labs reports QXL Decoder cut logical errors 12–13% on Google hardware data with NVIDIA CUDA-Q QEC; Riverlane and Nature Research Intelligence release 2026 Quantum Error Correction Report</td>
+<td>Live Science reports new record in quantum error correction bringing fault-tolerant reality closer; Riverlane code cuts qubit count for error correction by a third; QuEra joins Harvard-led $12M DOE project for AI-driven error correction</td>
 </tr>
 <tr>
 <td>Quantum Algorithms &amp; Software</td>
-<td>Quantinuum-led team built quantum programming tools for real-time magic state distillation using QIR; Researchers integrate quantum circuits into 30 billion parameter AI model</td>
+<td>Quantinuum-led team built tools for real-time magic state distillation on QIR protocol using Azure Quantum; Stanford physicist uses GPT-6 Astra to propose new quantum gravity framework with 400M tokens; AMD, Rolls-Royce and Xanadu reproduce 40-qubit circuit on supercomputer</td>
 </tr>
 <tr>
 <td>Quantum Networking &amp; Communication</td>
-<td>University of Waterloo builds critical hardware for Canada’s first quantum satellite mission; International consortium demonstrates 8,000-km hybrid QKD linking Europe and US at SC26</td>
+<td>University of Waterloo building critical hardware for Canada&#39;s first quantum satellite mission; NEC and IBM Japan demonstrate first PQC and QKD integrated method for quantum communication</td>
 </tr>
 <tr>
 <td>Post-Quantum Cryptography</td>
-<td>IonQ highlights urgency for federal contractors facing post-quantum deadline; Ethereum plans shift to hash-based signatures for post-quantum security</td>
+<td>Ethereum plans shift to hash-based signatures for post-quantum security; IonQ discusses PQC and QKD needs for mission owners; Aere replaces blockchain signatures with quantum-safe seals</td>
 </tr>
 <tr>
 <td>Industry &amp; Funding</td>
-<td>EU proposes €50 billion sovereign tech equity fund; Diraq secures $38M US funding; UK quantum computing investment reaches record $621m in 2026</td>
+<td>UK quantum computing investment reaches record $621m in 2026; EU proposes €50B Sovereign Tech Equity Fund to close funding gap; D-Wave reports 21% revenue growth but 19% bookings slide; China&#39;s AtomQure raises over 100 million yuan in angel round</td>
 </tr>
 <tr>
 <td>Research &amp; Publications</td>
-<td>Stanford physicist Venkatesa Chandrasekaran uses GPT-6 Astra to propose new quantum theory of gravity; University of Waterloo PhD student wins Best Paper Award for cloud security research</td>
+<td>PhD student wins Best Paper Award for cloud security research at University of Waterloo; Stanford physicist posts preprint on quantum theory of gravity after AI collaboration; Researchers bound error in free energy to one over root D</td>
 </tr>
 </tbody></table></div>
 <h3>Sector Deep Dives</h3>
 <h4>QPU Hardware</h4>
 <ul>
-<li><strong>Rigetti Computing</strong> — Lands CHIPS Act backing and secures growth plans via chiplet innovation. Investment Implication: Reduced capex risk and potential valuation expansion relative to peers lacking direct federal grants.</li>
-<li><strong>Diraq</strong> — Secures $38M CHIPS R&amp;D award to build silicon quantum chip capacity in the US. Investment Implication: Validates silicon-based scaling path, offering an alternative architecture play with strong government tailwinds.</li>
-<li><strong>IonQ</strong> — Focuses on federal contractors facing post-quantum cryptography deadlines. Investment Implication: Regulatory pressure creates immediate revenue visibility for security-focused segments over pure hardware plays.</li>
+<li><strong>Google</strong> — Willow chip shows why quantum computers can outsmart classical machines. Investment Implication: Reinforces superconducting lead but requires monitoring for sustained error rates.</li>
+<li><strong>Diraq</strong> — Secures $38M CHIPS Act funding to build silicon quantum chip capacity in the US. Investment Implication: Strong government backing validates silicon spin-qubit path and reduces capex risk.</li>
+<li><strong>Rigetti</strong> — Lands CHIPS Act backing and demonstrates chiplet innovation for growth plans. Investment Implication: Federal funding supports scaling but stock volatility suggests market skepticism on near-term delivery.</li>
+<li><strong>QuTech</strong> — Awarded ERC Synergy Grant to co-integrate spin qubits and cryo-CMOS electronics. Investment Implication: European leadership in semiconductor integration offers diversification from US-centric plays.</li>
+<li><strong>Xanadu</strong> — AMD, Rolls-Royce and Xanadu reproduce 40-qubit circuit on supercomputer for aircraft engine design. Investment Implication: Strong enterprise partnerships suggest practical near-term applications beyond pure computation.</li>
 </ul>
 <h4>Error Correction &amp; Fault Tolerance</h4>
 <ul>
-<li><strong>Quantum X Labs and Google</strong> — QXL Decoder cuts logical errors 12–13% on Google hardware data with NVIDIA CUDA-Q QEC. Investment Implication: Confirms value of classical AI co-processors, boosting Nvidia&#39;s relevance alongside pure QPU makers.</li>
-<li><strong>Riverlane and Nature Research Intelligence</strong> — Release 2026 Quantum Error Correction Report highlighting shift to full-stack engineering. Investment Implication: Validates companies integrating software stacks as essential partners for hardware manufacturers.</li>
-<li><strong>QuEra, Harvard, and UMD</strong> — Develop polynomial-time classical benchmarking for non-Clifford fault-tolerant circuits. Investment Implication: Accelerates the path to universal quantum computing, benefiting academic collaborators and full-stack firms like Quantinuum.</li>
+<li><strong>Riverlane</strong> — Released 2026 report highlighting shift to full-stack engineering cutting qubit count by a third. Investment Implication: Software efficiency gains lower hardware barriers to entry and favor software-integrated players.</li>
+<li><strong>Live Science</strong> — Scientists say breakthrough in error correction brings fault-tolerant quantum computers closer to reality. Investment Implication: Validates current QEC stacks and may accelerate timelines for commercial availability.</li>
+<li><strong>QuEra</strong> — Joins Harvard-led $12M DOE project to design AI-driven error correction for fault-tolerant computing. Investment Implication: Collaboration with top academic institutions strengthens R&amp;D pipeline and credibility.</li>
 </ul>
 <h4>Quantum Algorithms &amp; Software</h4>
 <ul>
-<li><strong>Quantinuum</strong> — Built quantum programming tools for real-time magic state distillation on a quantum computer using QIR. Investment Implication: Positions Quantinuum as a leader in fault-tolerant software stacks essential for universal computing milestones.</li>
-<li><strong>Nvidia and IBM</strong> — Use AI to correct quantum computing errors, paving way for practical drug and materials discovery. Investment Implication: Reinforces Nvidia&#39;s role as a foundational enabler for quantum advantage applications.</li>
-<li><strong>Xanadu</strong> — Nearly half of quantum computing survey respondents use or plan to use Xanadu&#39;s quantum software. Investment Implication: High software adoption rates suggest strong recurring revenue potential beyond hardware sales.</li>
+<li><strong>Quantinuum</strong> — Built quantum programming tools for real-time magic state distillation on QIR protocol using Azure Quantum. Investment Implication: Essential step toward universal, fault-tolerant computing; positions Quantinuum as key software partner.</li>
+<li><strong>Stanford (Venkatesa Chandrasekaran)</strong> — Uses GPT-6 Astra to propose new quantum theory of gravity framework. Investment Implication: Highlights deep integration of AI in fundamental research, though commercial application remains distant.</li>
+<li><strong>Nvidia</strong> — Used with Quantinuum and others for AI-driven error correction and QEC protocols. Investment Implication: CUDA-Q ecosystem becomes critical infrastructure, making Nvidia a non-negotiable partner for quantum hardware.</li>
 </ul>
 <h4>Quantum Networking &amp; Communication</h4>
 <ul>
-<li><strong>University of Waterloo</strong> — Building critical hardware for Canada’s first quantum satellite mission. Investment Implication: Early mover advantage in the emerging quantum internet and satellite communication market.</li>
-<li><strong>International Consortium</strong> — Demonstrates 8,000-km hybrid QKD and post-quantum network linking Europe and the U.S. at SC26. Investment Implication: Validates long-haul quantum networking viability, opening opportunities for fiber infrastructure and security providers.</li>
+<li><strong>University of Waterloo</strong> — Building critical hardware for Canada&#39;s first quantum satellite mission. Investment Implication: Satellite networking is key to distributed quantum computing; positions Canadian startups for export opportunities.</li>
+<li><strong>NEC Corporation</strong> — Successfully demonstrates Japan&#39;s first PQC and QKD integrated method for quantum communication. Investment Implication: Validates feasibility of hybrid classical-quantum networks in real-world infrastructure.</li>
 </ul>
 <h4>Post-Quantum Cryptography</h4>
 <ul>
-<li><strong>IonQ</strong> — Highlights urgency for federal contractors facing post-quantum deadline. Investment Implication: Creates immediate demand for quantum-safe solutions in the government sector.</li>
-<li><strong>Ethereum</strong> — Plans shift to hash-based signatures for post-quantum security. Investment Implication: Major blockchain adoption of PQC could drive revenue for vendors providing migration tools and hardware acceleration.</li>
+<li><strong>Ethereum</strong> — Core developers preparing to phase out elliptic-curve cryptography for hash-based signatures. Investment Implication: Accelerates PQC market demand; creates opportunity for migration service providers and new signature schemes.</li>
+<li><strong>IonQ</strong> — Discusses PQC and QKD needs for mission owners in security briefings. Investment Implication: Highlights regulatory pressure on federal contractors, driving near-term revenue for quantum-safe encryption vendors.</li>
 </ul>
 <h4>Industry &amp; Funding</h4>
 <ul>
-<li><strong>EU</strong> — Proposes €50 billion sovereign tech equity fund to close Europe’s quantum funding gap with US and China. Investment Implication: Massive capital influx could accelerate European startups and established players like QuTech.</li>
-<li><strong>Diraq</strong> — Secures $38M US funding for silicon quantum chip R&amp;D. Investment Implication: Validates the commercial viability of silicon-based approaches and attracts further venture capital to the sector.</li>
-<li><strong>UK Government</strong> — Quantum computing investment reaches record $621m in 2026. Investment Implication: Sustained public investment supports ecosystem growth, benefiting UK-based vendors like Pasqal and QuTech.</li>
+<li><strong>EU</strong> — Proposes €50 Billion Sovereign Tech Equity Fund to close Europe&#39;s quantum funding gap with US and China. Investment Implication: Massive public capital injection could reshape competitive landscape in Europe and potentially subsidize global players.</li>
+<li><strong>UK Government</strong> — Quantum computing investment reaches record $621m in 2026. Investment Implication: Sustained public investment supports domestic hardware ecosystem but may crowd out private venture if not managed carefully.</li>
+<li><strong>D-Wave</strong> — Reports 21% revenue growth alongside a 19% bookings slide and unresolved SEC question. Investment Implication: Revenue recognition issues or churn risks must be resolved to sustain valuation multiples.</li>
 </ul>
 <h4>Research &amp; Publications</h4>
 <ul>
-<li><strong>Stanford University</strong> — Physicist Venkatesa Chandrasekaran uses GPT-6 Astra to propose new quantum theory of gravity. Investment Implication: Highlights the growing intersection of generative AI and fundamental physics research, potentially opening new application areas.</li>
-<li><strong>University of Waterloo</strong> — PhD student wins Best Paper Award for cloud security research. Investment Implication: Academic breakthroughs in cloud security align with industry needs for secure quantum cloud services.</li>
-<li><strong>University of Alberta</strong> — College dean and vice-provost moving to University of Waterloo. Investment Implication: Talent migration to research hubs like Waterloo strengthens the talent pipeline for Canadian quantum companies.</li>
+<li><strong>University of Waterloo</strong> — PhD student wins Best Paper Award for cloud security research. Investment Implication: Highlights talent pipeline and academic-industry collaboration in security-focused quantum research.</li>
+<li><strong>Stanford</strong> — Physicist uses GPT-6 Astra to propose new quantum theory of gravity after 400 million tokens of AI collaboration. Investment Implication: Demonstrates transformative potential of AI in accelerating fundamental physics discovery, though commercialization path is long.</li>
 </ul>
 <h4>Applications</h4>
 <ul>
-<li><strong>Energy Sector</strong> — Quantum computing&#39;s first commercial payoff may be in energy, not drug discovery. Investment Implication: Shifts focus from pharma partnerships to energy optimization and materials science applications.</li>
-<li><strong>AMD and Rolls-Royce</strong> — Reproduce 40-qubit circuit on supercomputer in step toward aircraft engine design with Xanadu. Investment Implication: Validates quantum software utility in high-value industrial design and simulation workflows.</li>
-<li><strong>BigGo Finance</strong> — Reports quantum computing&#39;s first real-world payoff may come in energy, not drug discovery. Investment Implication: Reinforces the thesis that near-term commercial value lies in optimization problems within energy grids and logistics.</li>
+<li><strong>BigGo Finance/CNBC</strong> — Quantum computing&#39;s first real-world payoff may come in energy, not drug discovery. Investment Implication: Shifts focus from biotech to materials/energy optimization as primary near-term use cases for hybrid quantum-classical systems.</li>
+<li><strong>AMD/Rolls-Royce/Xanadu</strong> — Reproduce 40-qubit circuit on supercomputer in step toward aircraft engine design. Investment Implication: Validates quantum simulation for complex engineering problems like fluid dynamics in aerospace.</li>
 </ul>
 <h3>Key Developments in the Vendor Ecosystem</h3>
 <div class="table-wrap"><table>
@@ -185,170 +224,167 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <tbody><tr>
 <td>IonQ</td>
 <td><span class="sig-up">↑</span></td>
-<td>Federal PQC deadline pressure and stock surge.</td>
-<td>High short-term volatility; long-term strategic relevance increases.</td>
+<td>Secures federal contractor PQC compliance focus; stock slips after Monday&#39;s surge.</td>
+<td>Monitor regulatory deadlines for federal contracts as a key revenue driver.</td>
 </tr>
 <tr>
 <td>Rigetti</td>
 <td><span class="sig-up">↑</span></td>
-<td>CHIPS Act funding, chiplet innovation, and stock rally.</td>
-<td>Positive capital injection supports growth trajectory.</td>
+<td>Receives CHIPS Act backing and reports chiplet innovation driving growth.</td>
+<td>Strong federal funding support suggests positive momentum for scaling operations.</td>
 </tr>
 <tr>
 <td>D-Wave</td>
-<td><span class="sig-down">↓</span></td>
-<td>Revenue growth offset by bookings slide and SEC scrutiny.</td>
-<td>Mixed signals suggest need for operational stabilization.</td>
-</tr>
-<tr>
-<td>Microsoft</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Majorana 2 platform assessment and data centre target shifts.</td>
-<td>High-risk/high-reward; technology vindication could be transformative.</td>
+<td>Stock declines 9% following Monday&#39;s surge; revenue grows despite bookings slide.</td>
+<td>Mixed signals on financial performance warrant close monitoring of quarterly results.</td>
 </tr>
 <tr>
 <td>Xanadu</td>
 <td><span class="sig-up">↑</span></td>
-<td>Commercial circuit reproduction and software adoption growth.</td>
-<td>Strong product-market fit in financial and energy sectors.</td>
+<td>Demonstrates 40-qubit circuit on supercomputer with AMD/Rolls-Royce for aircraft design.</td>
+<td>Successful commercial application in high-value sectors like aerospace boosts prospects.</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td><span class="sig-down">↓</span></td>
+<td>Assessed by DARPA on Majorana 2 platform; may abandon clean energy data center targets.</td>
+<td>Potential pivot away from specific sustainability goals could impact long-term strategy.</td>
 </tr>
 <tr>
 <td>Pasqal</td>
 <td><span class="sig-up">↑</span></td>
-<td>Leading three-year error-correction project with industry partners.</td>
-<td>Strategic positioning strengthens for future fault-tolerant systems.</td>
-</tr>
-<tr>
-<td>QuEra</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Classical benchmarking development and DOE project inclusion.</td>
-<td>Solid research progress; commercialization timeline remains key watch item.</td>
-</tr>
-<tr>
-<td>Google Quantum</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Error correction breakthrough and QXL decoder integration results.</td>
-<td>Technical milestones validate roadmap but do not guarantee immediate profit.</td>
-</tr>
-<tr>
-<td>IBM Quantum</td>
-<td><span class="sig-up">↑</span></td>
-<td>AI-driven error correction collaboration with Nvidia for drug discovery.</td>
-<td>Enhances practical utility of platform, attracting enterprise interest.</td>
-</tr>
-<tr>
-<td>Quantinuum</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Real-time magic state distillation tools demonstrated on hardware.</td>
-<td>Critical step toward fault-tolerant universal quantum computing.</td>
+<td>Leads three-year project to correct quantum computer errors via new hardware integration.</td>
+<td>Strategic focus on error correction positions the company for future fault-tolerant systems.</td>
 </tr>
 <tr>
 <td>QuTech</td>
 <td><span class="sig-up">↑</span></td>
-<td>Working Majorana qubit demonstration in Delft.</td>
-<td>Validates topological qubit approach; significant long-term potential.</td>
+<td>Wins ERC Synergy Grant to co-integrate spin qubits with cryo-CMOS electronics.</td>
+<td>Significant funding for UniQ project aids scaling of semiconductor spin-qubit processors.</td>
 </tr>
 <tr>
-<td>Dirac</td>
+<td>Google Quantum</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Willow chip demonstrates quantum contextuality; decoder cuts logical errors by 12–13%.</td>
+<td>Hardware advances in error correction validate the path toward practical, fault-tolerant computing.</td>
+</tr>
+<tr>
+<td>QuEra</td>
 <td><span class="sig-up">↑</span></td>
-<td>Secures $38M CHIPS award for silicon quantum chip capacity buildout.</td>
-<td>Substantial funding supports manufacturing scalability goals.</td>
+<td>Joins Harvard-led $12M DOE project for AI-driven error correction on Rydberg arrays.</td>
+<td>Collaboration with top research institutions strengthens position in fault-tolerance R&amp;D.</td>
+</tr>
+<tr>
+<td>Diraq</td>
+<td><span class="sig-up">↑</span></td>
+<td>Secures $38M CHIPS R&amp;D award to build silicon quantum chip capacity in the US.</td>
+<td>Major government funding supports domestic manufacturing and scaling of silicon qubits.</td>
+</tr>
+<tr>
+<td>IBM Quantum</td>
+<td><span class="sig-neutral">→</span></td>
+<td>X Labs reports accurate radiation simulation on hardware; QXL decoder improves error rates.</td>
+<td>Continued validation of hybrid classical-quantum workflows reinforces ecosystem utility.</td>
+</tr>
+<tr>
+<td>Quantinuum</td>
+<td><span class="sig-up">↑</span></td>
+<td>Demonstrates real-time magic state distillation using QIR for fault-tolerant protocols.</td>
+<td>Achievement in a key element for universal quantum computing enhances platform value.</td>
 </tr>
 <tr>
 <td>Arqit</td>
 <td><span class="sig-up">↑</span></td>
-<td>Stock receives new &#39;Buy&#39; rating following security product updates.</td>
-<td>Market sentiment improves on post-quantum security offerings.</td>
+<td>Stock scores new &#39;Buy&#39; rating as it positions as a leader in quantum-safe security.</td>
+<td>Positive market sentiment driven by growing enterprise demand for post-quantum cryptography.</td>
 </tr>
 </tbody></table></div>
-<h3>What to Watch Next Week</h3>
-<ol>
-<li><strong>IonQ Federal PQC Deadline:</strong> Monitor specific guidance on how federal contractors are meeting the post-quantum cryptography deadline, as IonQ is a primary subject of this regulatory pressure.</li>
-<li><strong>Microsoft Majorana 2 Results:</strong> Check for official statements from Microsoft regarding the vindication or failure of its Majorana 2 platform following DARPA&#39;s assessment.</li>
-<li><strong>D-Wave SEC Resolution:</strong> Watch for updates on how D-Wave addresses unresolved SEC questions, which could impact investor confidence and stock price stability.</li>
-<li><strong>Pasqal Project Milestones:</strong> Look for progress reports or partnership announcements related to the three-year error-correction project Pasqal is leading.</li>
-<li><strong>Xanadu Commercial Deployments:</strong> Track specific details on the energy sector applications of Xanadu&#39;s 40-qubit circuit reproduction, particularly regarding aircraft engine design collaborations.</li>
-</ol>
-<h3>Methodology &amp; Sources</h3>
-<p>Articles are collected from 280 monitored sources (RSS feeds, press releases, and web search), deduplicated by URL, filtered to the past 7 days, and classified by keyword matching into the categories below. The top 106 articles are selected by importance score, category priority, and per-source cap. Summarization is AI-assisted (Qwen 3.5 9B) with human review.</p>
-<p>QPU Hardware (54), Error Correction &amp; Fault Tolerance (6), Quantum Algorithms &amp; Software (2), Quantum Networking &amp; Communication (4), Post-Quantum Cryptography (4), Industry &amp; Funding (26), Research &amp; Publications (5), Applications (3) and Other Sources (2)</p>
-<p>Top 106 articles selected from 840 articles across 280 sources.</p>
 <h3>References</h3>
+<blockquote>
+<p>The 100 highest-priority articles this week by strategic importance.</p>
+</blockquote>
 <ol>
 <li>IonQ <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPT1VGbURKWjlJTTFxT2RwaU8za0xOWTJzYUZSQWdYb3puVFRkSnNkX19kdTlodUZETTVLRkJPRkJxT096aFVJV21sSEVQTGE1cVBPUjZMZWxsOUJlY2dkZFpJSWpxLUkyN0dzWTR1VFFfRVRvdnh6bklTZGFTMXBOeHhnUkpfVzBRWnAxeTIyREVfTmZIZHA4NVo3YnMwWWJY?oc=5">&quot;The Post-Quantum Deadline for Federal Contractors Is Closer Than It Looks - IonQ&quot;</a></li>
 <li>Live Science <a href="https://news.google.com/rss/articles/CBMijwJBVV95cUxPY2dzYmtXZF9jTDRjZXUzZmxQY3R6RnZDb2lOV3B3eG5iTmtpaVZBZldxSlVLZHFwT2dsQVl6cE1WX2MtcjZ0ZWhmcmxVWmZDemZMLUU4TWhMS2JpbEFGR013d0ZGcWE2aVlNNW5qSnZubVk5VnNQYmtXMXNYSTdYUGM1aWl0d0dCb1FyUFJ5QnQwZm1GVmZSNWR5elZ5MThNYVZEYVhmVC11blFDMzdsMHgzbHJxaS1mMk5xN3EwSUh1TXFrc0V2OEJwektEY1k4bEtTZFNBM0dvdVdaaExxQU1oOHk0MElobEhLTGlILXpKa29tdEZDS0E2RFRyZHZCa3lFd2J5U2dsX1o2VFpN?oc=5">&quot;&#39;A new record in quantum error correction&#39;: Scientists say breakthrough brings powerful, fault-tolerant quantum computers closer to reality - Live Science&quot;</a></li>
+<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxPWUZqLTVJNXhUQW42MmtzLUNiQnpRVjVRalUxNDhtZURXNnlPU3lWUjBYd1FmbDRrRmdKeFJMaHBXbU92bldVM2ZXSVQ1WERqN3hkdkZIV2laS09md19jLXZCeDRYVUZwN2RDcTlsNzJSMUJGX25seU5IYU9HaXkwckFsWGpRNDBDYnN5cDNPQWh0Q3hqSjNtYWU5anZkekVDeEJzeHFvOWZNRmthbmdvNldpd0JMU3EwdC1CeHp3T1c0SWhSMk05b0JVVWpNU0VjSnpSV1RPRlVrRE5oOFNfb9IB5gFBVV95cUxNb2ZmdGU0X2NNVlJ3NE1SRzBKZkgzdHlfbUNKUW94dmFxaVprRG5KS3lYX3dlWjR3LUpjTTB0SndDX3pBM0plekZmakZtYkFFSFRObWRBOTVRQTg5MnNDdzZKRXdOMkl2M0pFSlVDN29ISVNRdkFvMlhwbHhtMEJnLWFRNE5nT19SS2NlYnFIaDJJRlJqS2t2Uk4zRERvTWQ2RkozaHN3SmxxTVEzTnh4aU9sTG5ZbTdqcWVORDByYUNqY0JVLVRmNkRvTlB0aGNsUFFLdU5zNG43T2RCMlg5bFI5WElZZw?oc=5">&quot;QuTech and TU Delft Researchers Awarded ERC Synergy Grant to Co-Integrate Spin Qubits and Cryo-CMOS Electronics - Quantum Computing Report&quot;</a></li>
 <li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQVFNOelZSLWliRWJXcUc5aHVGMThKQkx1SC1EV2puWlprTnJYQk0yWDlzX3c1dk1MVFBSbTZZWVNMV2lPeHRpZmY5Q1QtNmd4WUhoRlNFcHlvc1E4ZTM5dFExYUF3dWRjM3QycF91X2JXVTdGcXdmSTgwVGlTb2lxVHktQ0J4aEY2T0R6cTRrNlNmSFZYaThGWG80T2hyOHhfT1dsTVUwR3pIeVZFclE5cEN3b1duMWc?oc=5">&quot;Building critical hardware for Canada’s first quantum satellite mission - University of Waterloo&quot;</a></li>
+<li>University of Toronto Athletics <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNNmYzQm9SbDFTRUJMS3gtOGhZSi10Y2IzamlqMktDSWxwV1R2cWVlemx2ZW9sU0xrX1p6Qjk5c19mRXQycGN1T3hpVmgzVVAtd1ZPWXpQY00td1JTMkRRYmpuNmpzVk5KZ01GeWN0Um9tT29ldHFRZHRoUjNjUXY3ZUswTE04Y3ZETnR0ODByQlU4VmNscEZla2hUT1pIZk1HZ3NveVl2enk?oc=5">&quot;LIU DELIVERS IN FOUR SET WIN OVER WATERLOO - University of Toronto Athletics&quot;</a></li>
 <li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQc2hGNklST1ZwZ0FhOEFyY3A3OTl1RFk2NklQMW4wRllobkU4Z3RwRl9semN4UVRMZFJHd2pIOTR6WGQ1S0hhZDR2N3lMT1ZfRkRKUTVsUldDNHVKRjhzRzVOMmw5REpZdjNxQXlMakN0dTFsejZZbnZVVGQzWFlzeVJ3UVBJLTdjUVg3TVMzMXgwaV82MkxOWW44N1MtVWgwRFM0S3hIZ0NueXM?oc=5">&quot;Crude: Benchmarks higher as Mideast tensions inflate risk premium - Quantum Commodity Intelligence&quot;</a></li>
+<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQelhjTDROSmNHMnVPRUI2WlFqel9vWS1QcVI4emFxN25YSVFsMXhzSlA1djFDTHpMNTZaQjdMSm5yT21HRExpWU96QnlraGprSVNxdlhJSkhIbHpyREx0QVRnQ2JXdm9mUWo0RXppOUZBZ1B0V2xvUFJEamFfYUY0M0NOdGRmVl9pVWJXcDNkY3M3d09mLUxBVVVIelI1VVlWM2NXdDhKZw?oc=5">&quot;Guyana crude output slips before fifth offshore vessel starts - Quantum Commodity Intelligence&quot;</a></li>
+<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb1QtQlZRbnNwbzAzcjVDT2ZReGl2TG1fUThDRXgyVmdqd2kyaUtuVXlhT2t4c1ByLVR2enBOMHI4S1RMQ0VLcnZyc0h6MVJ1RnpWZjEwZFpXRktnZzJFbWYzY0UzUDdJZ1lQVGJFTTFVSElvS1ZWSDFaVURUTDd1Y2JyNkxvTHRWNktxVGRsS0l6X1hVODVPdUh6Z3JqbXRYVl96QXZhN3c?oc=5">&quot;Thailand jet fuel exports hit record as diesel shipments surge - Quantum Commodity Intelligence&quot;</a></li>
 <li>Live Science <a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxPYi1zaEdDU0FjcXhlVlg2OEdYb2xnbWkyZkh6U0ZSNUNHazVRSHZEVW9BMjdOOXZPOFloVFNBN3BYY29QQ2k4aXllSVlzUXZkWTNvVGlGd3pwcVZPUG5IcHNxZ3lIbU9wcmtsamRmc3kyejBfdkFDeVdHZ0tpVzZFSFVUUHpxUkxFaUNLTGV5aU0wY3lIbXVjYjlTVnVQN0tVOHRReElTVzRoaWc1emlJOHZVZUJZeG1iODIwdWZyMHBldmRlWjNJYnBWX2N2NnN3ZDZoNmQ2MW5PU19RYWhXSDBDamkwaUZRejJOTGJBX2Y3enlkM0VvWUZlQk91NlNlbGpKOEJaM3k?oc=5">&quot;DARPA is assessing Microsoft&#39;s controversial quantum computing technology. What will happen if the Majorana 2 platform is vindicated? - Live Science&quot;</a></li>
 <li>Nature <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFB3cWJoRUYtZnQ3XzJyVUdDcFo1YllYVHg3RjNLWVBPb1ZCQ2hwdlIxb0FKX0lwbHlKMDVrSXlOODhhMnVvMmQ1Qlp1NG1vRUVPT1JzZjI3MmowbDZfQ1dB?oc=5">&quot;Lateral photovoltaic infrared detectors with colloidal quantum dots - Nature&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPQmxhSFAxRWI1cmJPczlPTmlYVlFNVVpYTlg3MlZENXpEMndzcVZlbG5Vd0ZiLVBZeWZxZmtDNlFXWDVBWWpwOXB2Tm9ETTVkUXlYMlhrdWZZOHZUX3ZScXE5T09hZkVkY2hraUhHbi1uWnUtZ09FeklMTEdqY1JZM1U2MUZfaFhhVmhWbHN2T2NURWlkdVlfcUZ3V28yZkNl?oc=5">&quot;Rigetti Computing (RGTI) Lands CHIPS Act Backing, Is The Stock Cheap? - Yahoo Finance&quot;</a></li>
+<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxNNnJtejVmdG5BZm1JZEZhaW84OXA3amVRM0dVM1hGNEEyeXR2YU5uT1pNNEhnVUlqM1BLMDR6MG4ydkVWdEd3UF95LTVzY2YtN1d2UVh6OGdYb3Z4S2hONDBXZ0Y0blpBcUNwenN3T0NiM2o4UExEM2o4SDBlakxuRUR4dFU3SmpkQmRlcjNnb0NfYVlHdF9Vb0FHRklfeFhvTkNFY2V5bVM?oc=5">&quot;Singapore middle distillate stocks fall, offset light end build - Quantum Commodity Intelligence&quot;</a></li>
 <li>Nature <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBJTUJBYWZTeDZCWnI1S0Y0NmlJb2JiUTBJTTdKc1JsT1JJYncwR2VoYzl1YnJBd3Z1eWE5RUJIVVhzOWRNbE13VnpKY1lHb3k2TW1pU21VTDdjRzZFb2J3?oc=5">&quot;Submillimetre hot-electron transport in manganese-doped quantum dot solids - Nature&quot;</a></li>
 <li>TipRanks <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQdHcwV1lWNEhNcjBfWmxwLXZFZVV1cXpYMlo3UWpGX2Y1RXlmbExIQVNrWDJPaVBBN1VaRVVhNjNRNTdEeDl6bmUtLXlxZnUwNi1meV9vMDR4cU5vc3dXcmt6Y0ZZVkVUT19sT2Rkem1uYXFFbmhUX2tRdVA4dVdkMzZ6U1hRcmtBWXZjQU1Dbl9uUzFWSnVjc0J1RWQwci16VjgyOFV5RHkyaC1TNzd0VlZWcm8?oc=5">&quot;Quantum Computing Stocks Slip Pre-Market After IonQ, Rigetti and D-Wave Surge Over 12% - TipRanks&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQOXBCZ1E4SWd5aVg0blJaV19BR1NiY2RNQmlVbGZQV0NLd3JmZTRVdHZDTjd3TDF0QndTWUZKby1sQ05uMEN1SnJxN0taTWV3alcxWS1WRDcyb2U1SklXZ3VTWkctbE1vOWlLcEQ2SEdzSWJEd3FzZFdsUTA5cHBXanRMaHFQVGZJ?oc=5">&quot;Topological Qubits May Hold Partial Logical Information, Simulations Suggest - Quantum Zeitgeist&quot;</a></li>
+<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxORDNxc3N0UWsydWQ5amRmNzRoNHBxM09QZUs3Q25DMG04OFRhdmo5ZC14SU0tTkZKemVsRDJPN3hMVGdNVS1fUGlsTEt2UzZ1VUxXekxyRzRvemRIRjRSX2lIMk53OTkybjFTYmFPblJYYzlpZnVVMEJ6M3AwZkJLUHBweXBZUlNtaVlwRHNqN3l6cHk3UGV4MXFONF82V0RxcC0zUXpNelk5S1dXbU9J?oc=5">&quot;Oil futures: Crude retreats as ample supply offsets Mideast tensions - Quantum Commodity Intelligence&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNnk1enJoUzZ4dDZoSm1DQ1FXbktfVlhoQ1FjWlA1Uzd3SU1MX0JXSnZfVDlSVXRmM3gweHhSWEY3bktDY1NyX2tNSmZ3ZTlNMHdHQ3Z5dDduQngxdHV4a05aZTBFSzd3VVhMWVNpaVZrNWpIR0R5dXdyQ0VORzN1NWhFVzluUWdXY1d4MlloT2VrUjdVak51M1hiYkp0RnNWaVExSTNsLWh1Rms?oc=5">&quot;Rigetti&#39;s Chiplet Innovation and Federal Funding Support Growth Plans - Yahoo Finance&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQRS1uV3VUMWtxakNiVWYzT1FoWGJHQWdwTDNmenZINS1SbnBxVmF3djNqMklkd3EwdW85QzNleTF0NU9KUEZSd205bll5RXNRblFDZmhTTUFrWnkzRGJOUjNEcFpkOUhHQnp5ZnVJTDF5alJRWmJJSXdGa2ZLWnFKdFQtOW1lLVFpR016NkZOeTlmOEh0MUZXZlRMLVVJdUZ0?oc=5">&quot;Xanadu Quantum Technologies And 2 Other Top Quantum Computing Stocks - Yahoo Finance&quot;</a></li>
+<li>University World News <a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE9PaFdfb2lKLWNCYmo1RXBqNGlLUEF5eU9wU3I3bFd2eGhjWnc0cnRfZWxhNGRzdUVyUndRSU1Gem0wTTZWdDcydGtDck1XLTMtSFh3TWtEWS1VT1dkVm5faG5kMkJDRk85T2p0NjdaWW96THdZMXBr?oc=5">&quot;AI and the future of the university – A full-on crisis - University World News&quot;</a></li>
 <li>IonQ <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNaGV6QS1QckZUWFVlVzJnZjU3elNjWXl6eGJnUmJQbjUyMnNXZXJXWEJjUjlocjVVTWFyYzhrd1dHQ01TYS1NV1BPZ3QwaTJtMTd5ZW51bkUtWjNIbHJYTDU5X1ZrbjJ6ZVV1TWhCSTNWMEtMc0NQVU1oMXliZjhJdFVjejRNUGJEOXJnNHI2UFUxZ3dBV09zQnFfZ1hOUQ?oc=5">&quot;PQC and QKD: What Mission Owners Need to Know About Quantum-Era Security - IonQ&quot;</a></li>
+<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMikAJBVV95cUxPaU9HejlEelp2RTlobHVYY0pwOHRFNXFQcHVqdmFvaHJiNTRrNEY2ZHVwSXplc3hHeEFiOVdSZlA3S3JTY2FiWjFnY1V0OU9QLUdGdnladHFuV2ZIc0xwal9aWWNubGRIejhRLUN4MkQya0hGNVVZUEpMaC11X3hUdVRKNEdETVR3d3h1SERUdnlscnVXamx3eWRiTWx1WHdBV0lFWEo4UWpLdEgxdzlwZjNTQTAzdDFMMXh2Y1AtMFdxenlkU19fOWxpRWZzY3V0cHhOcl9ubkVtUDBDMHBaMTNxM2ZKeHV6ZUhaMVFjMTFQVDB5VG9uS3hfWEZMOW5TWHdQYnQ2SDhIMHVDZkpNQdIBlgJBVV95cUxOUDBVYUFaVENyUWFFRUxKdTBwbTR0SnhITGo1RWc0dXg4MnMwUy1UTXNVNEdrTE04RzRpNFotWGtxLVhwc3lxcEpKcVpvc0wxUTFsd1ZiUEZqb29xNmpEQk9pT0VmQUptaHYyWDRfSWJUb25OYjN5NTZuTEtoUEJPMHIzdjhGY1loOEZyUzR5eHBadk9NVGE2bllzUXNEbkJPdWVsYzBYUlJwYzBMeXRHR1djaExFQ3JXYURmYjhFRHlqOFU0cURQV1FLQnVKd2NYcUdjNmdnNFo0QU9iMFVoYU5tMXRrUkt5SU1FeU1haHdlN3VHQVMtM3B1RGZMN2xjd08yVXNneG1vM3M2NzJNdndOdFdPQQ?oc=5">&quot;Dutch HAIQ Consortium Awarded €7.4 Million ($8.1 Million USD) NWO Grant to Combine Human Intuition and AI for Quantum Control and Circuit Optimization - Quantum Computing Report&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNZmZmeFdVSjUyR18xSTJlVkhGcEZMRWY4V3NUd2RfcFo2M3pMVi03V0MyQkxCOElxVUpDS0V6V3Jxck9nVHRITDZLRVVzeU9aTXNaV0U3UVg2VFBJbFE4Mkl4Rm5oSTNsLXhfTS1KX1JieThtcDljYmltdzY1UkE4bWQxS3cydTMzSWwtMF9JSGZ1QTg?oc=5">&quot;D-Wave Declines 9% as Quantum Stocks Reverse Monday’s Surge; Rigetti Drops 7%, IonQ Falls 5% - Yahoo Finance&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNc0VWYkNXZDQxNlNnN0RvUnBkVXkyeHpTVHg3ZDVhUDBEUVJmVjR6TE5FcjliQXJOYW9hTmZwWllWZUk3anBzQzQ5RHJoaUZiVHN1eWNVZXpxbURXMHNGV2dBeVpLWHdYOUthdVlYVjRTUGlYeS1CTXJZeXF0MmF1ZzZ2c3lWeDNQQ2VURm1wTVpOclktVnd2RXFR?oc=5">&quot;Rigetti Surges 17% as Jensen Huang’s Return to NVIDIA Lifts Quantum Stocks; D-Wave Rallies 15%, IonQ Jumps 14% - Yahoo Finance&quot;</a></li>
 <li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOR2psV0tvSTE0QnNhLVdqOWtlUURzMHVtcEZlaFV4UU9JN1Y5cEk2SzQzckczZ1ZyX1YwMDBJT0t6aFNIVHYxWTNVcExSTFVJY3o0cjJlUm81eGNFZmstcUVrZVBkT3BscThEaGw1WFN6bVptYlhHSHk2RXdKakdpRVFmcWdNUTVYTUdGOTFWcHAySEVSZUJNV3N5MA?oc=5">&quot;PhD student wins Best Paper Award for cloud security research - University of Waterloo&quot;</a></li>
 <li>BigGo Finance <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTFBHc1A3WkVhaDVSam4tY284SF96QnBWRHFmcy1ZYTRDSkVrTFVFTHRBQVpDbjdYTXA4TXdZejNqelVnT3Y2MUIxVXpPakdfM1RGUFpIRGdnLWwxQVJVUFJDTnNRTEszWDRQeDAtWWZyamY0di1oM3c?oc=5">&quot;Quantum Computing&#39;s First Commercial Payoff May Be in Energy, Not Drug Discovery - BigGo Finance&quot;</a></li>
+<li>Quantum Computing Report <a href="https://quantumcomputingreport.com/qutech-and-tu-delft-researchers-awarded-erc-synergy-grant-to-co-integrate-spin-qubits-and-cryo-cmos-electronics/">&quot;QuTech and TU Delft Researchers Awarded ERC Synergy Grant to Co-Integrate Spin Qubits and Cryo-CMOS Electronics&quot;</a></li>
 <li>University of Toronto Athletics <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPam1YU0pnVF9HQXo0ZXNnczlkdVpnVFRhMFRDT2ZJLWM0QktWeWl6dTZ6LWs3bklOaW9wR2M4ZTRqU3Z1UW5iSnBjYzNKVXA4S3RKXzM4U2EteElqY2ZyelFkX3VjajVuOGpWNmMtQXVOci1OY2ZWeFQteW5DbWJhVjJKcVVtVWx0VVVHM1BBenBnNTRfVS1TQXB3QkNfZ0l3cF9fbnliS0FaRG8?oc=5">&quot;TORONTO SCORES STRAIGHT SETS WIN OVER WATERLOO - University of Toronto Athletics&quot;</a></li>
 <li>ScienceAlert <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQdmdiOGdjal96bEFLdWxoMUZRdFlvVHpuNHV6QnJfSlRoZjUxTG9mTzNXU2RxN3VITmxYaXFNMlNYVXJDb2dIamdISmNDdTdCQzZHM0NjbGtWZEwwWGduWnhGQndpTXBFeGlodnM3MnZGT2V2eXpzczZ6ZWloUkw0QXY3ODBMVWI3bUZEcUtCRlNRRWdHTGtUeGdvQkZIaUU?oc=5">&quot;A 367-Year-Old Physics Problem Just Got a Surprising Quantum Twist - ScienceAlert&quot;</a></li>
 <li>EnergyNow.com <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNcFhpNlpmQTV4bzNWX2RCU1BWYXlkSjJlcW1UWTdSTlNxYnhwU2Qwa3N3a1lyRzV1Z3VZQ3AxeXBVQXB4TUMtWTlzb1hJamZtV29XU2tVdVM3Y0ppNEFWTVh1NjUtbmowYi1aYjhPN0hMUjhjR3R4ZDV2a2RySGRuT2VKZWJHa0NMei1mdjV0aDAwMUY2OFl0ZHdaam40dw?oc=5">&quot;Microsoft May Abandon its Clean Energy Powered Data Centre Targets - EnergyNow.com&quot;</a></li>
-<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPOHlneW5EeXc3N2R3RHh1OWdRSmI2SU5Ed1dCV082M0xWLUxDa19IM2dscjNxV2RHWUZ3NUxIZUZzSUNpcU80VE05UUFFU2JsUzd2SFF2U1NQN3IwdmpfbmJLc0V5Qks1YkhYZVVvTlAzaTd6SzFhT2JlY2dzOG92N2U0SVFpU2hnUnZjcUZ1UkVwRjFtLWNpbm9rVXh5U0ROMFVHcE1R?oc=5">&quot;Power Certs: Malaysian 2026 solar I-RECs rise almost 7% - Quantum Commodity Intelligence&quot;</a></li>
+<li>Town-Crier Newspaper <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxOSEhUVHA2czhqU1V5X3BHV2JmZjk2NVNEWGlNbGFUOVduZmhYZUdVR3AzUEVSLVM0NGJUVzVjWlpaSXluZnFYeFlHUXROWFVZQVdJUmZjbE0yTmx3T1ZWN3MzMTBTcGQ3V3VCcXhrd2JrWnN0Z0daUEZnQ3hkbjltdXZRdnZaYUtKTllrYmFRQ3ZQeFk?oc=5">&quot;County Commission Creates Data Center Advisory Committee - Town-Crier Newspaper&quot;</a></li>
 <li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxOblR0aW41Mmwwd0h4ek9PX1I0Q3V5UTZKVlJOWjBMX1J1bTJ1M2JyMkxrTFFua1pBMGFGdGZmVFp4MkZEeXE2MzdlemNzcnkxaGFiamRrTXlyQjZKVllia3p2ZVU3UE4xQ0doNDRPbmNQWHhZeXhmMm9FZVN1S0FNZmhnRHBoYWhDT21Cc1ZDX2xrcE5jdy1GNGxuZUhEUVNFWmpIaVE0VTg0RHFlX24wMzJLcTFsaVhUV2JwQl93MWgxdF84V3RyTmNuMWFuWVd1cDZKdHBuUGlwRWhWRDFIN1ZjcFZpdHRJZGFZRVhDQ0FSSHp6VXg1aFJJdmPSAYICQVVfeXFMT0pVeWpDb3VFX3Nwc0xmbHZ0VERwRGFjMlhLX1BDZTEzS1FKSGs2WTJVcS1EYmtINHdYQVJtSXNlRWpUNGl2bF9oU0NxUW8xUkRwU0RlUHhWeHlzRG1FTFNJZ2xFb0VVRXBVdnU4Rlk4VnBobXRzVHN1dXJLLVpaUDZKSjNqUkxLUmZ3cTc1ZmUtR21SbHVfUTZwVXF5S1lYUllGbmdqaVpoY3FoZ3dCYXktQVl6Y0VSeWZ6Z0lIeGVsR3d1QVdnTDEtdXBYa1hFRlM1ZS1IaVhzSTZodjhrbDZobFI5ekZ0SklaLU1HZV9ITEhjcFYwbzFMdnNCRjNoQzh3?oc=5">&quot;Riverlane and Nature Research Intelligence Release 2026 Quantum Error Correction Report Highlighting Shift to Full-Stack Engineering - Quantum Computing Report&quot;</a></li>
-<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOTmVCRnhLNDJnN1RaWXRJZjRHZS1lNDlXQ0p1Nm1BRFEwdU1WSnVTbnFibV9GQ0M0YW5tM0VYM3BaaXZFd1pTYlU4QzNjS0VSdHdzZlV4dWg1dUlJWUtONHhXQUZING5TT245WEs2ZzNzcDk1dnRVOVk0aExzNGs0bGZUNzNxWmhIWjd3V1Nya1VsS0pTN2lBMVhCNWRkcXVPd2VPLS0tOA?oc=5">&quot;East of Suez: Crude climbs higher, gasoline cracks extend slump - Quantum Commodity Intelligence&quot;</a></li>
-<li>IFLScience &quot;&quot;Potato Chips<a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWlE1dnJVN01rN1Y5SzFtS0lydUVsNkdNcTQtRE1GbmxOWENsdzBWam11NTd0cEhCenNPTjVxZkktQlhFQkxWQ0ROT2tTenhleVBqSnFIUEZFYkZyTEp5SVlENjgwM0lERG1LTk5Cb3dLdW9Ha1pLd1pXd0RDbDFHUWFwVHBXVEktYTg4cU14aDBROWUyYWw5SUQ1SVRXM1NPYlYweHAxeXpNWV9NRkJlMVBFM2JENjZITEdKNjJjWUl4dm1obnprSVd3c3lGZkZaWGFnbWNxYWJBQ1g5dnc?oc=5">&quot; Are The Latest Weird Rock Formation Spotted On Mars To Go Along With Faces, Spiders, And Secret Doors - IFLScience&quot;</a></li>
 <li>Yahoo! Finance Canada <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOTk1YU1BpelRVUzNGMjF4VEI4SjFKYUxhTDFSbE1mUWNpSzhjZU9mb2NPUUN1SzNVQTNPcFh3V3JxYmpncEh1V3VkcEFPZ0pkRUo4Ykt2YkQ5UEpGbnZkdXY2WkpwcTB2TUtCNEFLMG94QlVWRVFUSXQzSi04OHhzWTVGVi1MYXUwbDNJa1FOMEpWZw?oc=5">&quot;Xanadu Quantum Technologies Limited (XNDU) Options Chain - Yahoo Finance - Yahoo! Finance Canada&quot;</a></li>
+<li>Phys.org <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPOVd4bkotY1VManRfYV9EZFRCY0kybGlQUC1hX21nN08tbUI4bk9XMzFGREljYmVWRTUyWVA5TjM0R2EzbVJZS1FwT2Z4Y29WS3pHQllzV0gtYnN1anM5NGxQY0hTdGVxeVkyN2lzbTR6a1FPdHR3eFBhZG85Zkx2REJGdHNPYmF1MnU0VA?oc=5">&quot;New theoretical model allows for sustained entanglement between diamond qubits at greater separations - Phys.org&quot;</a></li>
 <li>Stock Titan <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOQTZCSjhVWVFOeEZpSWhxTXp0cWlUMVF1S0M4SGQzLUVnUGowM1JubEhQTUI2YnJCVVJTYTYwRlFXRXUzbGg2Umc0QzFwU3I3TVBvSHJSbFRhX2g0NmJfZG1nZ0JxZGI0cE0xYUJsSG9JVlc0SXhBNkU0ZC1MWFd4U050YWJ6T21NYjluZlE3QXo4a19rbVhCMzVXM2pKZlBqNmdaTHRBdGE1X3Z5UDVFQTk4YUFGWnIxbzhMa2Qtc2o?oc=5">&quot;A three-year project aims to help quantum computers correct their own errors. Pasqal leads it. - Stock Titan&quot;</a></li>
 <li>Stock Titan <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxObl9MYUJDdlNraEpvWXBNZFNwWEdEbGRBbFBwenNfRTh6YldxaFRoNTFYOFVjN0hfSUxfN2llYnliUGhhNTdkMnFQQXJOM3ZET2VjS05IRUY4cEpEaW1DR3Y4MWp3RHJPWkh3WnNmdldaQ2FzUFNnSWhnRjR4aHlXZkpRM0FCQTdfRktmRTZRM280cWdVNTVnLUIzck8xYjdyR1g4b3hCWmhPSWZGWUlYMlQ2VWgyV016ekE?oc=5">&quot;Error-correction software cut quantum-computer errors 12–13% versus a standard tool on Google&#39;s hardware data. - Stock Titan&quot;</a></li>
 <li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE81cUUwcGd2Z2M2WjA3cHNFdExGMkxKVlIyaWxZNGJjRWx6WVBlUUN6T1hqTnVrZm5rWjZjdEJwXzBta3hhMFdpTk85bHpPN2FjclptdHppV1JrUQ?oc=5">&quot;Tuesday, November 24, 2026 - University of Waterloo&quot;</a></li>
 <li>BigGo Finance <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9wcllkS2FZa0w5QmdLRC1fRFdhR2dyVjhRVUxWeXY0QnhOdnc3N2I4WkszQWlGZkI5MGFCSWtiYkthVHlaUFc3SUU4TklyZkJMem1jVUVabUdoWVhrMVY2dXFvdGdZb2Rjd2Y1ZzdDQ3puUVpEamc?oc=5">&quot;AMD, Rolls-Royce and Xanadu Reproduce 40-Qubit Circuit on Supercomputer in Step Toward Aircraft Engine Design - BigGo Finance&quot;</a></li>
 <li>NewswireToday <a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxNcjF2Zm9RVHlhRlJ3Y0FKREdQX21WeVlQeHowTzhya0E3WmF2SUwxeC1RN3dGTVc0cTZWUEFoRk9YTEJwVXlZYV9veW1BcEZEWlhEeEVDUW5mR3Q5SGdpajVsRVUzYmlodHFfYWV3SlRCOUsybUJMY0ozdW9NT2hkLWFrcHZVdTJfZWgzUkZWYVpEc2hrSDdyYU84RDNUV3dGdFMwY205MS1WS1hhczlKb1FET1NUN19vbnpLVmpibXJCSGxBcG41RTBxOGVqVjlORGtrS1MxVzZHWFk4b2RyeUpIZl8tS2xZSVBRTTM5U3k2eHU0anBDZUVURkNOZzQ?oc=5">&quot;NEC and IBM Japan Successfully Demonstrate Japan&#39;s First PQC and QKD Integrated Method for Quantum... - Telecom / Wireless / VoIP / IPTV - NEC Corporation - NewswireToday&quot;</a></li>
-<li>Stock Titan <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVVZkV1RhdXRENU9GR1pGQXRwLVZZM0FlTFF3YXFHQTJsSHluQzZWbjNjUWxRSGVRNDBOSmRxdG5NNXJsWXpaYm8wbEpRYUFiejVkMk1TRDJ3eU5GS0JLZVliZTEwWWg2RmZ6ejNkRXU4T1M0VzMtM0g2MjktMnhWRXFzdVhYVk1fVnVYQnp0dWczTTZwSXhiTWE3QnprOERmWG82UFVxUnFZZw?oc=5">&quot;Nearly half of quantum computing survey respondents use or plan to use Xanadu&#39;s quantum software. - Stock Titan&quot;</a></li>
 <li>BigGo Finance <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5adzNmeF9MY2hBMm9LM1VrNDRaejZ5Z1RGdTJMRi1HQWNSdkZlZU1URVItT1ZwNEhqNC1VODVKYllROVA0YVFuaDBOWHBBbGd0T3MzVk9naUt6UTBnN2RDU0lWVFFodzBnYWNfMXVwN1k5aHBrV1E?oc=5">&quot;Nvidia and IBM to Use AI to Correct Quantum Computing Errors, Paving Way for Practical Drug and Materials Discovery - BigGo Finance&quot;</a></li>
 <li>DongA Science <a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE9YY0w2NXFOTzFaTHZNdmxjVVdqMzRIRmVkTHFqbjJ6eWtTbVpIczRaNFBuZDNrelRIX1JXTTJrUXF0bWcwV01neV82eDBOTGt0M25PMA?oc=5">&quot;[Science Through Covers] Google Demonstrates Quantum Contextuality on 71-Qubit Processor - DongA Science&quot;</a></li>
-<li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPemptdzJobWxVa0Z0MVV2OGh3dWVnRFhJUUNDOWVnM1RZSzlwek5VN1RYVlhRU2psbmxmekVMbHBJcko1d2RXclp2dTJWOEt1WGtkc3o2UEZUcDVCX1I0S3JkRHdkVVh5TnZmRDZOZ3ZEcUI3REJLb2tiVmg1T3U5MjQ4Y28wSlpGb2ZFeXFDdmV0WG1YVTl4VQ?oc=5">&quot;Targeting APP Gene Dosage in Alzheimer&#39;s Disease as a Therapeutic Strategy - University of Waterloo&quot;</a></li>
+<li>Science Daily <a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1JUG1ZNlNrTGpnOU1kZWlsS3M3clRra0EzcTBsZTVwOWtqNDFNTzR6UjNncnRlWC1SZjZaRS0zaHVXbHVJMVp1SEt5alVMTWUxT1VJMlNOVkN2dkUzV2NnTjhXaGU3S3pEb1NoRF85dw?oc=5">&quot;Time may be far stranger than we realize. Scientists have a way to test it - Science Daily&quot;</a></li>
 <li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMiggJBVV95cUxPSlV5akNvdUVfc3BzTGZsdnRURHBEYWMyWEtfUENlMTNLUUpIazZZMlVxLURia0g0d1hBUm1Jc2VFalQ0aXZsX2hTQ3FRbzFSRHBTRGVQeFZ4eXNEbUVMU0lnbEVvRVVFcFV2dThGWThWcGhtdHNUc3V1ckstWlpQNkpKM2pSTEtSZndxNzVmZS1HbVJsdV9RNnBVcXlLWVhSWUZuZ2ppWmhjcWhnd0JheS1BWXpjRVJ5ZnpnSUh4ZWxHd3VBV2dMMS11cFhrWEVGUzVlLUhpWHNJNmh2OGtsNmhsUjl6RnRKSVotTUdlX0hMSGNwVjBvMUx2c0JGM2hDOHfSAYICQVVfeXFMT0pVeWpDb3VFX3Nwc0xmbHZ0VERwRGFjMlhLX1BDZTEzS1FKSGs2WTJVcS1EYmtINHdYQVJtSXNlRWpUNGl2bF9oU0NxUW8xUkRwU0RlUHhWeHlzRG1FTFNJZ2xFb0VVRXBVdnU4Rlk4VnBobXRzVHN1dXJLLVpaUDZKSjNqUkxLUmZ3cTc1ZmUtR21SbHVfUTZwVXF5S1lYUllGbmdqaVpoY3FoZ3dCYXktQVl6Y0VSeWZ6Z0lIeGVsR3d1QVdnTDEtdXBYa1hFRlM1ZS1IaVhzSTZodjhrbDZobFI5ekZ0SklaLU1HZV9ITEhjcFYwbzFMdnNCRjNoQzh3?oc=5">&quot;Riverlane and Nature Research Intelligence Release 2026 Quantum Error Correction Report Highlighting Shift to Full-Stack Engineering - Quantum Computing Report&quot;</a></li>
 <li>The Manila Times <a href="https://news.google.com/rss/articles/CBMirgJBVV95cUxPX010X2dIaTRoRmxsTnFBbVludUI5UTFwM3JtSDltUnRQd0ZUSlczUzlod21LQU9YQXREb2hyRWdpaEtFa1RrX0xwUDNMVVd6dVVaa3hDYlh4azZfclducDROVUpvaTUwc2swbU02bXFMNTNtd1ZlNXV1OEtyZ2I3OUxUOEpXQ2ljaWZITGM1LVBfajNRd0ZsWl9XcHRfNVlvQ3VtQ2xzNlhoSFludTBVeXcxVE9QMkVUNEttODlpVjI4d3B3VFdTRGNXVjVzWTJ1U1A3THBZZUF0Sk9wVUs3Z0FhRnNlTDBWcS1EejBiSEpyb2Zwald6UHVJSFFnNENlQ1ZNeHpWaXl2VEF0V3A5ZWRXVFp0ekx1UUczWHdjYkNmc2JHaTdCZzhXZlVKd9IBswJBVV95cUxORXBVclVYZUR1a3BvdXVmQnR1STNtVm45Sld5azdGb3dGN3NFRXQ5RmxoRkFnaVZSNUFvR1NOLXJONTRld3hkQlZFcU5VZHFreGhJNWVvSW1kOGIxQkMxTGdlVzJiM1E2c1NqNHFWOVZoYWV2cUpqVXlvUi1HS0RHeXRSYTljUGJHYUlhZklGTU5hMWdqanlrVUZDaGlRMkxrcXNqOWlFdV96N1pncGNxX0k0amxOWENFYlhWMVVnYk9QTmp0YXR5Wlc0Q3V5SURhanZTVllYcWo5YzdQbkowc1hDWmlXNXhVbTlCM18wN1kxUUo1TThnTDk0dU5mNThYZEZCZThvbHMxcS1SMlN2VjViUG1mUUQyeWRld3lyMmsxVDJQcF83cU1pZkt1bDZPUGsw?oc=5">&quot;Quantum X Labs’s Decoder Delivered Lowest Logical Error Rates by integrating NVIDIA CUDA-Q QEC in Comparison to Benchmarked Decoders - The Manila Times&quot;</a></li>
-<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxPZWUwU1FudmdYeEpTbUhlRGgzZFMyVFRJR18wWVkzSDl5LW1lTzJ4dEdRQ0RtZFYwcklwWlM4dW1xNUgwdnVVbTQtMG9iVFozVXo5U284ZmJmM2k4anBIaU1kNW1aSTd0ejNPaEYybW5FNG0wamg3VXh2ZEhWc3pnUjJyMTBLLXlDbThWUmxOODF2eU5XQVRPVmZ1X3ZGRjJiZnVrWEdvQzA3LUZ1bGxRZ3R3UFROZkdrbkF3cjlodV82TU1kZzJkM2FDTHNoYVkwbjhuYjNGRVY0TUl0aVQzMjkxeXlNb0tfWlRkeEZn0gHzAUFVX3lxTE1lQ0dJcGZrZXpzd1d3MmxkWk45enBzU0dLRHh6Njl0bHNhSktPRXRqdkotd21qOXZjbDEwRGJQRlJUOGdiQkt1T3JXVW5yb0dKWnFZVldKWDQ1Z2RhMDZCV0lYYlk5eG9maDNPek1NZUtPTS1NSU5UODVDeGxaRFQ3T2V2Q004blVWb2RQalBpa1N5NS1YRG5ObHIwRTN6LWg2ZEYtZTBoNXdaRDFkdWZwdnQxaDNsTUFPMnNNanR5MEtNUE5wcThETDBvZ3RLcUFGeUNqQWVNaDVDbDI3WU4tYlBZS1BqdHNoeDBQQjl1aUZ4NA?oc=5">&quot;QuEra, Harvard, and UMD Researchers Develop Polynomial-Time Classical Benchmarking for Non-Clifford Fault-Tolerant Circuits - Quantum Computing Report&quot;</a></li>
-<li>The Globe and Mail <a href="https://news.google.com/rss/articles/CBMiqwJBVV95cUxQOFJzWXVqeUh0YnJaRmJDQzJ3ekszMkpNd2lVQ3hjRFowVDhUWXZfM0FPRkQ5enFsODJUUnVKcWRaZWFkU1k4bnY2Rkg0YnhLNFB6dmlMME9KWEE4MDdBZHQxNi1BWTVrLUpkWHdHbVlmV3JGamROaVlvdEtrZGM2amtVaDJ0a3ZuNENuMXRzQ1ZEeDZITUxBamlXSkVRWklqVEZPSnRFT25XN05odngyWlE4QkdmQUQ2ZW1NNUtHZnNvNl9zU0U5bTVRRlVPLTFhbTdrclhrSTF4MktzQmJJZVpTV0taTFA2ZktnR3g5LUJRaVNBSmlqNzFhR0xQTHU5ZGxYTG9MTFExai1wZE9qU3dsMXpBTnZCUEUzSXRnWUlSYkVuZ3pzd043WQ?oc=5">&quot;Keel Infrastructure, Nebius Group, D-Wave Quantum, Rigetti Computing, and VNET Group stocks trade up, what you need to know - The Globe and Mail&quot;</a></li>
+<li>University of Toronto Athletics <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTGJyU0s0WXV4SXd4TENVWjJXVF9JdGNMcldJUTgydm1XV2ltUXFQUzBUMU9vLWFKWmZLYmlPRTBKaTE1OFN4TC11LTBWbTMtTEFpbzdVWHh2bmdRZ1dZOUl5OWg5QUJxM241RzJId3NqMlRmRWljUFdVMnJzX2RuQllqUXcxdjBGRHFKQ3kxeEk2VDZPN0xMLUc0TjNESjdLLXllV3lCMS1QQQ?oc=5">&quot;MEN&#39;S VOLLEYBALL BATTLE TO ROAD WIN AT WESTERN - University of Toronto Athletics&quot;</a></li>
+<li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNMHVZemE4ZjdNdENJeDkyUkt5QUFpZ1p3N2l0Z1RCTjV0ZHE3Qk8tZW5WdTFCbE90SVljMVItM0xaX2ZXSFhSS3E5aWxnSnRacERGcGRPeVE1amgzd1lSSVRpWm1fSXpBZk5mZ2tob0lsSWZVZ01aOVVwWXF5MndRdmlobkI5SmZRRlpFSg?oc=5">&quot;Building critical hardware for Canada’s first quantum satellite mission - University of Waterloo&quot;</a></li>
 <li>Yahoo Finance UK <a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE9mZUJlaFVZN0lUVXc2aE9rZzl6UTNjU0xMdTRpSnR6WElReV9veF9MMkdaLU9xbjZmY3hfY2tmM3dwdF9UQmRwV0hVX0FLeWgwQ2xsdy1sR3g3Z21EY0hteWtINA?oc=5">&quot;Quantum Secure Encryption Corp (VN80.HM) cash flow - Yahoo Finance UK&quot;</a></li>
-<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi5wFBVV95cUxNLTROMGNoNGozVHBXRUtuX09wVngwRDJZNUEwZmZ3NjJKOFVKaldjblFjQ3Y5MWU0eGdyRnNueWFkUU1iN09aYXd6WFJtU0kzUVE0aEpYMG9LcFF3U0Y5NVRFN2JwNTRIX0lxRUhkTk02b2NQLVh3Z1ZfSlBDOE16M0NnYjI3Z0IzVVk0UWhlYWFLWDY0eUdVWDZUS3RvZnpEZjY0TEhfQVliXzd0QnFuQi1ndF95OVlxcHpXQ2luQW1rT3ZBTGI2aHZtbXdudnpiTE9QLVphTWhfQVhoWlFCcVg3cmNWemfSAewBQVVfeXFMT0QxanRneEhZam9Rc1V2dXdjZUdRZThwZ0JGcndVa0Q2TEhiZWN6MGNjNTQ5c3ZTbWVEb0U5UVptblYzQmkxWHF0TzFCSnZRS2V3U0Fpdm9DSUI5b25WMnJxQm4tTGlhT1JRRElwUmg0Q3VVQ3huTTNmazJhNWJTNUVob2dBQ25lVktJUnNOWEszQWQ5SnZ4SUxNTG91RFA1SXdobmxfOHhUTzlNYU1vQ3NaREZ0Mk5QMUk4Nm9aOXZFRUN6QXZFelI0U1BXdGROM3NRQ0NoamNiNFY3NkJEQ0ZvLWxlaGhTNnMyekY?oc=5">&quot;International Consortium Demonstrates 8,000-km Hybrid QKD and Post-Quantum Network Linking Europe and the U.S. at SC26 - Quantum Computing Report&quot;</a></li>
 <li>fundsforNGOs <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPcVotc0E2SHltQjd3MnVnX29kYWdXWTFoMXFpS0UwODl3OG51andZMDdZRWhtUlpWX1pGcHhvU01HdFY5RGtqd0ZTRldCTEoxY2E1bFZwRWJmaWZkbkotaWUzY0hMaDIyaXZuTzRiSGdBaUVNZkhRbE81S2Jsdk5GaGVidExzMU5NYXNILVA1cUtRNFlXT2Z6clVZbXhyQzMyU3lRZUZMT1o0U3FT0gGyAUFVX3lxTFAwQUVHM1ZFeHB2OTNXeDNrakZJUkx5UFl3TkhfMkRsWXppNkV6UjFqT3RMOHhtZy1ZN2ZVNGxKTHZMb3ppM1ExNW1EWVpSTnVEc3YwaWdYdFcxcVBCSVlmaVA4dlhZYkI4QWZud25HdVVET01vUVBCV3V2MjItUWVSNGp3UkFLanJ0ZUNaWFF3Ymg3M2dJb2dmT0pQdGs5ZTVweWlNY3F1dXEwM2tzbU5ZSUE?oc=5">&quot;Request for Applications: Quantum-Safe Kickstarter Grant (Singapore) - fundsforNGOs&quot;</a></li>
-<li>Yahoo! Finance Canada <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE0wWjBzZlZpWXIzLWV6VnlfVkM3dVZYMzJzSG1zbU9KQ1VmS3lMbE9xVUlRQm42Si1NZE5KODJXYUVJaExDWjV5YzZ5MklXRzBZTUE?oc=5">&quot;IonQ, Inc. (IONQ) Stock Price, News, Quote &amp; History - Yahoo! Finance Canada&quot;</a></li>
+<li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNODQtajE5OS1jNlp2NjhNd0QydDZ4bURUTWs3clItdEtPV21GSVVRMEVuNXpramZUZk5GVTFWNE80WWItS2FjVEZsX0NkOEljamNPNXUyVlE0QlVWZnZCWWdaUzNsQzhzSjFseVNwU0Q0ekNNaUtobmsxcC05UnNRcGJjek9McmR4dXBkdHR5NVlGanVFVDFadk1PSQ?oc=5">&quot;Faculty honours alumni and partner at awards dinner - University of Waterloo&quot;</a></li>
 <li>Yahoo Finance UK <a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE5vSGJlOTc1NHJpY2YyNWtVWG5OLTZUWVhvdDJOcnVRNm1lYTZqVnJRa0hueHJGSXFyd2pQT3lZbTROY1pQX2xCZG1aenZaTWRMTVJ5ek4zUm5KYjRGTUZ4UlhB?oc=5">&quot;Rigetti Computing, Inc. (RGTI) stock price, news, quote and history - Yahoo Finance UK&quot;</a></li>
-<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQT0h1aUQxa2pQRXVETDlxXzROeFVfWkl5ZGpQOHlXYUxGNzIxWFlwdUtCSjIxbU53MF9jc1M2S01DLVJ6ZWJnNF9yekVTeTB6cnN0UjluVmE2RHN0aTR1ZmFzUkJQaTg3NnVfLUEzYWpYQ1gzdHhaV3pYMVV1X2E5VkkwclExT3FfeTlQclVNYlozM2RGajYzVzdYcE5MWDhtTTR1YVExdXU?oc=5">&quot;Pakistan&#39;s Cnergyico seeks foreign funding to upgrade refinery - Quantum Commodity Intelligence&quot;</a></li>
-<li>Yahoo! Finance Canada <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE5pSUFzX2hUVExuVDJjTTg2V0FoX1pWVXJBSjNjRlp4SFFIZnRuZDVEWUdKeGp1TnMteTd3VFlBekc0bWZvS0ZLQjVQVFBmcEt0eEE?oc=5">&quot;Rigetti Computing, Inc. (RGTI) Stock Price, News, Quote &amp; History - Yahoo! Finance Canada&quot;</a></li>
 <li>Stocktwits <a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxQMzFRbjVHcmdNRjkwQWFEN2Nfc2xacEg4Rk9YdHQtMnhhMUNBMXBHdlU5SWFRUE9CSGdMdlRKQ3FkLXR3alp3aGh6SjM0Ml9VR3NlT0hfdUFXZ2R5dWdrMzZscE42MkhtSFJNc25STjVKeHQydTlORnJBZ1JaZ3EwWjdzX2lpYk9VcWFENE9wTTBmYjN0NW5CYk8xRlozMnZkSGdTTFIyQ2NHcFZNZ1pCQ09lcnJidmpkZXk5bkpwYU83MXRGT1YteVg3dTJrMXQzS2Rqd1lqQmUyWHp0eXM4NXZzTldXQQ?oc=5">&quot;IONQ, RGTI, QBTS Stocks Lag In 2026, But Retail Traders Continue To Buy The Quantum Vision - Stocktwits&quot;</a></li>
-<li>Yahoo Finance Singapore <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85SUlYQWRzdThmYy1Mdk9jUG9sVGpIbTYzUmRBV3YwaVFCdzFxYzRIVDZHOWNUeERyUWtzeEcxVGViUzBhR2p4YlRoSnBfcUkxV2NVMEhOZmtyQ3kta1dQVlJfdml0dnhJaVl1MEpuazByNXZhdkdfcXhR?oc=5">&quot;3 Top Stocks to Buy Before 2027 as Quantum Enters AI Data Centers - Yahoo Finance Singapore&quot;</a></li>
 <li>Stock Traders Daily <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNd3RhYTlzUWR2VzJuUWUxaTdEVDdGSXhUSmNLLUt0V2hBQ1h0WWVvOXdMVkdOdzFuV18ycVNCbDJhQzZVSWZPZlFrWmtGOU9IbVJvRnhqYjl1MVVCSEx6T0Z4dnNvVmZGcXVGOWF2ZHE4QnVOWXYtdnNqUmsxNEgwQXZ1emY5R2xfZmpOWDAxZ3ZJNVRydFdpMlRUZE9KYjFwdUtqb2dpc3JWVjQ5OHFDeld0cVVUU1BuNENEXzY4TQ?oc=5">&quot;(RGTI) Volatility Zones as Tactical Triggers - Stock Traders Daily&quot;</a></li>
+<li>Yahoo Finance Singapore <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE85SUlYQWRzdThmYy1Mdk9jUG9sVGpIbTYzUmRBV3YwaVFCdzFxYzRIVDZHOWNUeERyUWtzeEcxVGViUzBhR2p4YlRoSnBfcUkxV2NVMEhOZmtyQ3kta1dQVlJfdml0dnhJaVl1MEpuazByNXZhdkdfcXhR?oc=5">&quot;3 Top Stocks to Buy Before 2027 as Quantum Enters AI Data Centers - Yahoo Finance Singapore&quot;</a></li>
 <li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPTTZxb2dNU05VeWtoTHRPMjdnU0FlZkZuYXRqVkVvbFpXOUdFVXJ6WS1fZlZ3U19RYjJxZ056Q2JBQVI3VUppNUlERGg5NFBxUjhDRGVmanJoN3lpQUJ1OGNSVDA2YlVLZWtqZ0ZVN1FOZjJLN1FYSWhPbjNJV3g3akNiS09xSjMzcmx6UE1IOG5FZVluTlRtTUNYR3hCMnhQSWRPc0k1eWpBdw?oc=5">&quot;3 Top Stocks to Buy Before 2027 as Quantum Enters AI Data Centers - Zacks Investment Research&quot;</a></li>
 <li>BigGo Finance <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTFBfekZNZlFfR05YYld1U2VneXJuNkYtbTRQa3ZuZmNlWU1OOU5LRkpGQ053TFRuSmpjNHRIeXpwTkY5dFptaHc1U2liaXljdmo1ZVhsN3k1MFAtZTFQQWNDX1J6TC1ja3p1eUJwSjVITlJkQzlKd3c?oc=5">&quot;China&#39;s AtomQure (原子芯光) raises over 100 million yuan in angel round led by Legend Star, Shanghai Future Industry Fund - BigGo Finance&quot;</a></li>
 <li>Yahoo! Finance Canada <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE1DU29Nd2x3ZFFXMVdEd0p5TmJsSy15MTlOeUdjX0Z0aGM2cDUwbjhkOE5vZ2x0NnBjUDRtR0VHN0JlMDgzX2pWQWV0NnpZUmxDanc?oc=5">&quot;Quantum Computing Inc. (QUBT) Stock Price, News, Quote &amp; History - Yahoo! Finance Canada&quot;</a></li>
-<li>Quantum Commodity Intelligence <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxOWVV6Y2EzNWRndHUxSjBKM0tiWVd6RXo1LTk2aUpDZEhsdnhhMTFZdHh0VGlIS0dBVHNaSEl1WUp4OGt3TGVlNGFCUEFZTUhUeUZiRlAta3lpalhhUVk3WFlIN1dQUVRKX3RaTERUcElTX21wLWJ4NzRZMW5fak9TRV9PVEllY1k5bklZY2laaE9iS2RQcmtraw?oc=5">&quot;API: US crude stocks inch up, fuel inventories mixed - Quantum Commodity Intelligence&quot;</a></li>
 <li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxON1FXbWJyRTNYX1hERWtOYWZNUU9zRjlWdmFZN2pKSWFhQUN5bkZWbTcwaGlYQmdIS0xROVd2SG9yWnlkYWJiZVBjTmNEMS1pXzNHcXhLSWpYa01JYzF3UUtVSzVGek1Kd0I5aFdfWTJoWDl2R21VOFJlOGdIRndOZ0xDNUFJaTR1aDFDR1diMjhEVXRrcHhMRXA4NHpUNEEzZ2Ztdw?oc=5">&quot;Quantum Stocks Face a 2026 Reset: 2 Picks to Consider for 2027 - Zacks Investment Research&quot;</a></li>
 <li>Yahoo Finance UK <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5kbUVtWE5IbU0yUU5aSG1JaW5YbThValp3RFVtQTdFV2g2ZmxvVEJfRGRrNEs3NlRMOE1GM24zQk9TWFZ5Q0hHTlAxWXlyWWt4ZHJIM3RQbm9RM3QteDBKdg?oc=5">&quot;Rigetti Computing, Inc. (RGTI34.SA) interactive stock chart - Yahoo Finance UK&quot;</a></li>
-<li>Yahoo Finance UK <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE5qemtrY3Vfckl3bjVFbkx2NU9jUTFXamRSQ2hSZ2JRSnpKbmdXdEpoMVhBVnV6dXMtZXNBaHpqTzEybk1MWElPekQtNVBzdFBaUXRCdzRYTWhXVEE5OFF3?oc=5">&quot;Rigetti Computing, Inc. (A00.DE) stock major holders - Yahoo Finance UK&quot;</a></li>
-<li>University of Waterloo <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQbXdyN25LN3kydlRVenV0RDFoMzkzMzBiNi1mTmpJN0pzRVNReER4ZkY5bFRJS2FwazhESXMzdWJYc184TFIyYkh5blR0N0lKajJzTVJXT0RHdmtYbWNoRVB2SUpHNlY5UEtVc3dGb1k3M2t0R0JySUJnc1RGTWZYTjZhYlY3c0VndklNNmdobEt4NFNFdHgwMnY4cnM5R0F6SU5ISA?oc=5">&quot;Nominations open: Amit &amp; Meena Chakma Award for Exceptional Teaching by a Student - University of Waterloo&quot;</a></li>
+<li>StockStory <a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxQOC1xWktuSU9iWmVnMG5XREloZXBzOVZsQjg1MDFFWnpuQ3V6dHRpWDlnQTRKdjN2X2xBZnMtSW1YckVjc0FjQVR6alBBZk5HWmk5aHFFZGVPdERTdzZCUHZCNm0wWDZFLVliSGppMVB1Z25KOVZ5TEJydUh4SC03NC1lTzFhcy1OX1N3Tjd0b1IxRnBqczlnNXNRUGY0QUNTclY3a29NeUFFU2U1ZDlQWjFvckZ1YVMxbWdzeEZobnY1UXBuQmRRTzlNT2FUNGVMWlczVUxGUDFMbUw5bFFWWWtPbF9SQlk3V0ktbTFGM0M3TkZ3ODVRMzlEVVpERHJ4MkFsV2JtckowOVNP?oc=5">&quot;Keel Infrastructure, Nebius Group, D-Wave Quantum, Rigetti Computing, and VNET Group stocks trade up, what you need to know - StockStory&quot;</a></li>
+<li>Yahoo Finance Australia <a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE41R3hwZWtYLXQtVWdDRDBzM2pOY3BxUno3T3hYZHBBYlpCYXI3Ti1tZXNYU2JsbkYtaXJ1Z3VDb3N5anU0QmJGZXQ2ak9Hd1ZnY0phZTB2VGRreVB2?oc=5">&quot;Rigetti Computing, Inc. (A00.DE) interactive stock chart - Yahoo Finance Australia&quot;</a></li>
 <li>Education Times <a href="https://news.google.com/rss/articles/CBMi5gJBVV95cUxQZGlsTW9vU3lpTUJXSUpIV1NyZW9aRnZNZV9RSEhiTzJ5czlVTW5aeFBHUjcxZUJQcnV2cDl1RkdRTTlNdVlpcG41S0NCV2xJMGRRNlpFZmx3bHdLTHkyclBXU0FUd0labGxIVERCWl9obkZNOERGb04tWnJSUk84MUdkejdMYkhVdmRKcnRfVnhoaVExeVNGVmtQSmJIeFFzU0I1Wk1HeFBzT0pNWTdReWJuM0ViVFM5WnduMmpfQXc0VEpKSTd0Q29LOFVJclVWRDJHXzR1Nm5kRi1LUk82V1UycVlnRmE4dFdqZkxpT1B3aXZCcjZ6eU9sLUp0dTBsdWtSVmJjOF8wcXN0N0JYVG41b2xlMzBfc0ZzYmpYRlE5UkhGX1daN3pWQkZUTGEtSDRiLUh5M2ZjRE9kSmJnZ1A3UGtiSTh6Q2NUQkhuR1hOMlZkbDRZeFA5TzMyaVV6aENEUG5n?oc=5">&quot;Stanford physicist Venkatesa Chandrasekaran uses GPT-6 Astra to propose a new quantum theory of gravity; posts research preprint on arXiv after 400 million tokens of AI collaboration - Education Times&quot;</a></li>
 <li>BigGo Finance <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTFB5V3FTSlV3WVRXSTF2RFFsZVpyNzIyeXVLSnU1UFFQbEJtcFN1RFM2blQ0NG5zWkM3YlBUSFlubVQwXzdPLVVPOUc5cVNhVXNQRC1oRWo3Ti1fVl9jemk3Nk1EN2tZc2ZkbDFtM3puX2ZNek5TMmc?oc=5">&quot;400 Million Tokens for an 83-Page Paper: Stanford Scholar Uses GPT-6 Astra to Propose New Quantum Gravity Framework - BigGo Finance&quot;</a></li>
 <li>University of Alberta <a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxQVVJKMEdDa1kwc0VOWUZMb2Y1djNRNlhlMUV3OUJRYzM2SktLU1hFMHo4d00yZHVZdzlLN3FMT0NKUjkzLUIxS201YnJpM01GT0JiRmVxUTJCTFJ0M2lKMC1vOHE5YVVqMUpEN2xta1lWVFpRVWhkVDc0SElGRUlTWU4zX0NkT3RhMHpBY0ZtVWQ3eHhPTFduU3EzYjlPaVVvcjBaUGxxa1BkaG9OdUdNZ1BDczc2NG1QTldJdnQzUklDZ3V4WFd4eHg3TmNHSUxwSWVaZ3p1d3A0bDdJaTU0ag?oc=5">&quot;College dean and vice-provost of Natural and Applied Sciences moving to the University of Waterloo - University of Alberta&quot;</a></li>
 <li>The Record <a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxOZU0xa1BEVTJIV0FyVzFfME0zcDdOWXFxckNaMXl6RUx6cWFtOUp3Mk81RXNwVURxdkQxZlRlZVRIN0hTTHFKTGdmRl83M05EdU51ZTZWTEFrcW1aYlN0MFZBZmd6LXJLSjRpaW5rMXFiRTgtRmhBRWRwUTNFSTJKWHo5emFPSVY0V01ubmVEWXFIQUtUWlI0MWcwYTVTSndyTm5jMjZIVmFJVVhhR0NYWTBhMUhOdEJDMXlHMkJyN0Y3R2JKQlpqa2x3eXdfQVNuMlFv?oc=5">&quot;University of Waterloo names new provost for five-year term - The Record&quot;</a></li>
+<li>The Record <a href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxPU1l0MTg5bFQ4NHQ0MWtIejd3bFRhMVJ3VlN5TWZBMWpKXzVrVUNVSmZQUjQ4eWREN0lqR3BKbXNMQW5jYzlQTHVSbTVacnZsN21ZWEdlZVQzTkgxOU4tMGN1LUNGVEtJd051cU5hQzl3bVhjaEs4VUNxWXYzX2s5emZTNTd1ZGowMVRMX2VGQjcyY2dwQnZNUC1JdTVMbmxMZDhJbDQ2aVAtM2xPbU9BSldwWEJkM3hTNzU5Qmdtd1FKeWpSTkR4R29HcEtPUVNKTmxJNTk3WWduY2xjOHhLOUxlZ2Rvd1BX?oc=5">&quot;From fish guts to fame: Giller Prize winner Nicholas Herring returns to Waterloo - The Record&quot;</a></li>
+<li>University of Toronto Athletics <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOTllQRnFtTkRYWUJDV1dhbUpEa3Z1N053UlJ0TURjMjBaNmNXdXl6NXplRXN2Mk5TMlZGV0N1NDhIcklmOWpXZUg5UnJhUWY4UXktMTl2QW91S3lNTy1UQ2FxZHJOcTJfcVVaWVBxXzAyclIxanpxOW1VdnJGejlkZjNzUmEzdUtpRV9tazcwNVRYbkRDRkZDODkwbHRLNnhyV1JmUEJlX0ZWNllxYlZYUEhDZw?oc=5">&quot;BLUES FALL TO MUSTANGS TO CLOSE OUT WESTERN SERIES - University of Toronto Athletics&quot;</a></li>
 <li>CNBC <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1XQXFDMU80SFRjQ0VRQ0h4T29GS0doY3hpSFZ0NlVzRllna19oT3E5TG5yM2VVdzlFaUI4T3Bseld6MlJiaU5mWjloQno0a254OE9uTmZnbUFGVjBNOEJlS0VKLXhnV0Vhd3o4aWQxLUFtSndTblliZVhPWEJqdTDSAYQBQVVfeXFMT0R2REROU1RjRlFpOVBWdlBUdGhDLWZua29JY2pnSkpiRVFMNTgyQnRybTR1M3U4SW1nSDRFWlowX194MGctb3JfUDcya0lhbGJsYXpfbE9JYTRYY3A3R21FRmpTUVlSR3ctT1M3TW5IblpfU3BzMFVFLXVqUU9MVmp6MWpY?oc=5">&quot;Quantum computing’s first real-world payoff may come in energy, not drug discovery - CNBC&quot;</a></li>
 <li>IBM Quantum Blog <a href="https://www.ibm.com/think/ai-agents?lnk=thinkhpaipi1us">&quot;Latest in artificial intelligence&quot;</a></li>
+<li>ForkLog <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5wRXZ1RE1aZlFYdFhmWkJMVm5qcTNuLWp2a3lzc3ZDeHNNOUFiaDMwdHNJYVNFQmVZcE56OWVsbE5YbUFhaUZRZ09RQkdseWRjT2V0OW5aSEdRb2d2bk9kb3ZSMW5ERnMtNEpLQlJZLXRVeHhLWDZGV2NXbk9faVU?oc=5">&quot;AI-assisted quantum gravity approach sparks debate - ForkLog&quot;</a></li>
+<li>The Economic Times <a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxObE1zSnpyOGdKWGpXTjlqWF90cER5b0xLaWtxcEYyWkhtQWxYVWdSdzZ6cWlwaklLNVFRc1pXWjRNTmRDVHJna3A4V1VDa0stLXRaU0tRcnBNbTROcEdZcEZNYjNyQURSWEtjVDBoWlRWNURhSHZIRnhYeDVoSmdVYjNLdHc3VW44NUFld1lxZTVNdllqQ1o5dkMwbGdNZ2IyNkZRSU96UDFCeFJNV0JMQmJxZ1Q0cGYtYXNyRVVYaGstWkFacS1xek5pYXpkWUYxZzdObWFKd1pNNmVPTXdfMnhXQWxLM2FoVEJLVjduTzRaVC12M3RyT1NBMlVnQdIBgwJBVV95cUxQRkZ5dU1FR1dzVEFqWkxZT2s2ZV84ZUJ0XzM5TnVLSzJOVWtXdkVfVGYzWWtoN3VBa2hfTTRvZHltME0xOVRpRktjMjlDa0Y3QjhXdWdfV3B1Vm83MDhQUl9yOERWd0w4U1BBd1pzSHdkQmo5Wk1wRkQzTU1WZjBLXzdCejFveWJtR2daOTFxMU1XWXpIaElUazY2aTExOWUya3ljdTh2T2dmczNVTU1xcnFkVE5VbVFYNUI1cE8xeUh4amxlQ2wwMm43c2VzZXEwc0U1ZGxwMC1aV3dXRFYyV1ZZZ2d6TFllNFlGVFpSb1BLdDhLQm5jQmlKWlprWFRMUWdv?oc=5">&quot;AI may put 24 million knowledge-worker jobs at risk globally over five years: JP Morgan - The Economic Times&quot;</a></li>
 <li>SecurityBrief Australia <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNUmFWQVlrMFdfdXVQajhBdFNrZzVCS19BbXE3WnhIMTNDcWV6bVNEa0J4U0txalMtdEpBT2pRY2sxLUhkRVc4c2FDNDVUaU9ObUt0UEFuNTdtMTlXR3VGaTBJNUJUS0FqSXFZSmNsWkliZmtyVzZYNk80ajlidGZxcG5DX3JYeWxMOUdMNm1HalFFcEtOdDFSN0N3?oc=5">&quot;Aere replaces blockchain signatures with quantum-safe seals - SecurityBrief Australia&quot;</a></li>
 <li>New Electronics <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQUkpRaC1ubTcwaFBuT1doT1lJRHBTVEp2NmxILUJkaUJPdkRGNjdFWVhCQjExZVlCVnNFWGs2UFU1WmRudG94TWVuNkNKVExoT3liZmtOTkxZb0JSM1RuOWNadDNRd2xtZFA0a0pkZUl2OU1zSThKSzd5QU4zZUpLcWVKbXRZX2xrN0tRSHFhR09rbDNKZmJLWE5XY3lqVmlPY0lVZEwwam4?oc=5">&quot;UK quantum computing investment reaches record $621m in 2026 - New Electronics&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMifkFVX3lxTFBOM0h0NUdzdGpGTHljdGxoZFBVdDlmZS1hSUVHUVZ4UExDU19NSFVpLTE0cksyMW9ENG1VQjREd3E5SWRVMGFtVXhpckV3OWF3UDlrZksxTGw5OHN0LXFrTXU5aFJKNTBfbjFfUkd3b0RwUFlsZTNwZFhVb2tRUQ?oc=5">&quot;Riverlane’s Code Cuts Qubit Count For Error Correction By A Third - Quantum Zeitgeist&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxPOEQ2VUdIa3VkRFhqMU94SERjQlFDYmJzT0NSa0MxNkRhN1V3T1hvRlJuVWpzVGJ1Z2pndXZxWkNxZlN0T252V0docVlkc1RweUV3Rm1FemQ1UlpCT1VlY01oY3ZabWVVaGhpdE9HSmRGaXBlM0oxNmJCcFJKSHpxUzZFaVdmZElydUE?oc=5">&quot;Researchers Bound Error In Free Energy To One Over Root D - Quantum Zeitgeist&quot;</a></li>
-<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxNWnkxamFzbXFIZmlsLTEyTlhPbnhjb0NBZjY5cjMtY1N1Y2ptQW85dW1EYjlJN2lueDJuSFljTG1KcnhiTHRVX0xhUjEzYUNCOWxCZW1yMmZaNEpZTllVdjJSNFNQR2JVOHZ2TTdIQ2F4Y04zZEVSMFZsRzlOSVVYWkZMclBEUGRSNDRfQzVaVzFNeGczZ1dMZVNpOTBZWkpsUXhIbU9SU0pCZFE4d3NTc016WnBWeXNGSTBhUHlMWmg2eG1Gb3o0YUxWMndnajdYS0FpbUdickw4WWcySXVxTEYzSUlnSXdPWGZQdVg2REjSAfYBQVVfeXFMUFlxNlhyaE1xWUxvdlVHTFRsbjFXZkNMbHVsQ3ZHdmpEMVd1QXJrc2p3dGtWQ2dIV1cyc0Y2SExJYVEzYVZ1TFBhMnZwMDVRTXNRTmVfTXRKb21JSXNOSjhKQkJwakNfTWlTemRnamotMjVLdDY2Qzk2VWJxZmpYOWRHTzhPVjFOakdwRGtpSlV5LU51YTBPX1BwNFpRZm5BUDJrYU5lbHRTMUhSeHFudVpKbmFTQi05NUtEZTVRZTdPSUpIT29xMVhrMlBONHRZVEtfclVjUlhwdWdIb2xaSjNiYWpQdFlvYWhCTTZWTWJZbDU3NnZR?oc=5">&quot;University of Sussex and Universal Quantum Demonstrate Laser-Free Axial-Mode Entangling Gate on Doppler-Cooled Trapped Ions - Quantum Computing Report&quot;</a></li>
+<li>WKZO <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxOQWRmMGE4LUJQa2JHYVNmemNVZHNrTHF6aTVMUFpkUVFNVXVkekJ3Rk9Eb0xmRDhueF80d25rcnBieExjR0tOaFNKUWtCZzhxdERtRkQzazdlVVoyU1hqSHFrN3piZXpoZHU0MmJET2I2WFBqQ1JaSDNJU3l2QUNoUHhlQ09HN0tOeWQ0OVBPYkMyazQ2UHZiYWNxMXBNRldiT19QN0ZLNktGNS03Ulk1N0lKejV0MFBYRWlMWQ?oc=5">&quot;Canada’s top court upholds Quebec religious symbols law in test of unity - WKZO&quot;</a></li>
 <li>Gotrade <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxORGw0VEtLeFZGMDdnd0ZGTGFubFEwOXJZWW45TkNaZEVSUlpkcDdxdVRZT051VGZhNVMwRUg2dXNRVFJEWFF1SmNPaUdWT2laUXlkRHJpNHdCWGU0RFpwblFaNFdDMWZEWVdKa2Q0NnN4Nl81MUY5NmxuSDd5MlV1bQ?oc=5">&quot;Quantum Computing Stocks: Why IonQ, Rigetti Swung - Gotrade&quot;</a></li>
-<li>Wisevoter <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9Vek1EX2ZsVk0zM2s5cjBXTTBQZFBNZ29ISWxTUFhRQ0xLT1Yxa2ZuQkFiMDNoSjNjM2V5eWFfY1JMMlNyb2tMenlwb0hjYWs5Q3JZdEhkNGNEcmUzcE5kUDBvendMWVRDY0tJdVpqemxEalNaeEsyWGY2SXJZUm8?oc=5">&quot;QuTech Builds Working Majorana Qubit in Delft - Wisevoter&quot;</a></li>
+<li>NewsBytes <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxPZkNpWUkxc3Q3bm0xYklmd2lxcW50Y1FvMmVNU1pBSS03S0d0X01ocGtwUDBINjVBbUZvRlF2YmJBTVA3U3VhSS1aMlVVMW9zcnZXeExva2toZlVmSWVFSVVnTkFjT1oxbmtJYVJZMFJUU25xRXlrRk9GWWhCaTlDYlZFQTZ1aHlPMzlzcUlMaTRNRl96NW1FRTN2bGsxQzdFMVFoNThtVmM5emtLT21DU0RNRENRTk1zOHp0R3hOaHBwQW8?oc=5">&quot;Israel Aerospace Industries selects 4 Indian deep-tech startups for NeuSPHERE - NewsBytes&quot;</a></li>
 <li>Intelligent CIO <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNVFZVLW4xcTQ1UURyZGxzWWhkQWVoRnJXU1F4UVNuV1JFNmVULXlUdkFTc1RzaXRHbEdFeXdsZHg5Y0VLeG5mcTcyeXJ6ei1QUUhMQzNKbW43X29qWWdKYW1xM2ppVkx3cHBqRTFCVmdnT0hwM1RBRUF6ZkFpdXF2UnhhdThtVVpxckMwVkFHOTZ2eWxYTmhlT1ppOENGaXVCNDNxVHdJUHRxOFlRTFVYaUFmMnYtTk5SY3c?oc=5">&quot;Canadian and UK researchers target million-qubit quantum chip - Intelligent CIO&quot;</a></li>
 <li>W.Media <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxONEtXTDBDNm1kZkZhdGJha1VyOHE3aU9nc2U5WGU3YTZaSDZKXzl4SDBxc3VybENoV01HSzBjQzk4SWIzSGV3UlFRMzFkRXR1Z21kTk9sRXdVZndPaENRT2FnRk1BaHhoVDZZSlNVNmxQWFFiWGQ1aXNiY1hmQl9Bem8xRElLZFNNUTh3Y0tMT1R6ajQ?oc=5">&quot;Quantum processor maker Planckian secures US$ 10.9 million in EIC backing - W.Media&quot;</a></li>
 <li>Kalkine <a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQaENlck1nX0c4WUI1dk1MU2lpOUo2OFVNWXlLVFVtU0twYkZGanBXaENZemV1NTVMNC1xZWF0NFFnSlNBaTZXNFBkNlViX3VoQlJFeklMQTZBSFlKTjZGZjVEVDdpUzFwUmhuS1pDZGtxLWdqanJVS3ZucE13MlYzVWl3ekFIampDZFJmYW1sU0FGaUJaWVJBUnZ4TVllT3Z0ODV0R0hBS2JoQkdGTmhJMHlvRFpvcS1yUVlBbDE3VnlxUkZRY28wREEtWTQ4RUgzS0NOVExMMTM0SjlQOVE?oc=5">&quot;Archer Materials (ASX:AXE): Where Its 12CQ Quantum Chip, Biochip and Quantum Machine Learning Work Stands - Kalkine&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9wVnZ0dFFzNDRuQnFCaGZ6b0JGaG00bzVjbWxXRlZ5SWprQkRER0xSaDJhSkF4LWVvWVR2ajlEX3ZyMGpmVlJVV2YtQ2p0bWYxVUxXSEs4cHlQMjd0WXpGaThqM3B1T0R1d2pRUFc2WkxvQ2hhNnYtUFZsWFkzRVE?oc=5">&quot;New Quantum Codes Cut Qubit Count For Error Correction By A Third - Quantum Zeitgeist&quot;</a></li>
-<li>Trefis <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOdjQxOFl3LVd0cWt2SnJ2dUtJc3E5azNDaVRqYmNPd09ZalZNOEctVEExQnFoNjd2T2dSQWp2YTktVEhNY1pkZnVKMGNuUVNMbkkyRE54MlRaLUk1TFk5U0tpdHhrd1ExZGdvUU9xTkxmM2VHU3hlZWRaa3F2VnVUN0N2WVJ0U1J6UzlCMUZRU0NiZlZLZkowTFVfT1U1YVdURTN5eU1R?oc=5">&quot;How Much More Could You Lose In IonQ Stock? - Trefis&quot;</a></li>
 <li>ForkLog <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxQYkxFc0IzcFJjTDJTOU9ESmp4akdOd2FsX1RnSTZyRXBDQmxMQmlSRm91cXZmT1ZQWnBFUElxQnBOampoY1oza0JscFZTTDVJWFFpaFU5TF9VNUg4RURlLTc3YldVbFlnWU1sSlZvTjAzM0gxSFE3TW9VM21JZ2dCalJoU1RoV2F2UlRveHROanB2WGdDWGFtd2dWOGdzZw?oc=5">&quot;Researchers Integrate Quantum Circuits into 30 Billion Parameter AI Model - ForkLog&quot;</a></li>
 <li>Benzinga <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxORHpCN2lxZEpqaDFvN2VOUkZYSThWcGM0TWFrRV8zTHUwWVZ5Q2NYTTNMcHpSeUpaT1F0VTByZ1VuRXo2aEtnUktRSjZibjRnbjB5elQ5MUlTMjE2Uk1HNjZGS0R1Q1dXOUVlemI1bTVmX0FrUTl4Y1RpdkU2MjM3a25XUGRRbnVsYUpFT2l2bFN3aHk0UTNZSE9qZmVDZVJOWlktcWlZUGJoQVpjMFE?oc=5">&quot;Why Is D-Wave Quantum Stock Falling on Tuesday? - Benzinga&quot;</a></li>
 <li>Simply Wall St <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPWVBZWEV4RGpWV25nd0Y0MUczd0M0d2w0cUw4N2loN3JRQUxwVV9RcE1DSnlWbVFFcmhhaHlUaG9IWnVTM0ZvT1owdFB3aEVKSXVtV0ZWc2lCdV9COVlTeTFJd0JtVmdkeEZPb2Y1b0xZdV85ZnRIVXh1eHJiTjcxY0IxVHoxUUpiV0pacFl6N2xJYnBsVXVhd0ZxaVhNRy1xVHJEY0xzeWVGTU92TFRpQWpCUHdEa0hVWHRwYmE1QVZ4Z3ktemFnOWpBZzLSAdIBQVVfeXFMTWJ1c3Z6NXpMMTdXc2RQcG1UMVZLYV9LbHEtZE40Z0V0dWdIX1NVS21lTEFXc0ZENklzNUJJNnNVTHVsdENtQmJQNzRKcGk2U0hyVWZ5emlzSDU2RDJfQTFPTGJkRHF2eDVEbnJQaE1HRXUxb3lSRkVISUZpUzVOM1Blb3I4ODhhLWU1OE9uNmpfWm12SEstS0dKUUkxRVRISERGUTk5ek9VdlB2ZEhxb3BWVUEwcDdZQ1d1cVlQZGFlT3Y2aVR6N0gwYTBidzhMVlZn?oc=5">&quot;D-Wave Stock Gains Attention After Narrower Quarterly Losss - Simply Wall St&quot;</a></li>
@@ -361,20 +397,14 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>Analytics Insight <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWnpUalhadDIxVmZrMjRGS1g4QWEwTHhfcDRSYW5wWktaRk5nd3VZbTlJT2Q1aENhVC1JVlNWcVVoUnFPT2dZdGhRVDVDdGNDNEpuMFVvWTVSb1RlUTJuRVZWZXRQWGNmTEs2Y3EwVzQ5czR5SXFjUk1PQlRQNnA4bWpnV3l1WGlZWkNuR2FYd3ZOUUh4bDlTX1dWX013U0NUUE9aM3l1TjhHTnA3ZE1JQjhmLWJXQmVC0gHGAUFVX3lxTE5Nekp5OFBOaDNLS3Z5aDhrZk0tT19KczFQMlc4MnBqZXdDNTMwYnd6MTdKbU9id2U0Y0VXSFB6QlpFNzhRMlF4UjFCM1NNWWl4QWs5UDNjeFFKUmR5NE9RcHExaXpCQXlDQmt1WGxGZGVWN283RXMwdVZuMU9xYm1pSlI4aFJKOFJqbll6bmxobTMyek9MRWlxZXpyc2lfajBQNkdURFpOOGJGZzFablRRNkFYczRXeTZCNEcxV0ZMVThkMWIwZw?oc=5">&quot;Google Willow Chip Shows Why Quantum Computers Can Outsmart Classical Machines - Analytics Insight&quot;</a></li>
 <li>The Times of India <a href="https://news.google.com/rss/articles/CBMi-wJBVV95cUxNdkpGVFpHYU1LZXBQajVFamE4LTAxNzV2cEdDMDkwT0wxSzBjaUx3NFBvTFlyQjlib0dDWmVhNnBmNDFaWHRZZ0pZd0dEVjFDdXBPcHRaWWxjcDNPdkJkanhQOWNUVkhaa25CRHFUU3ljYWdtdTdsbUlEV2R6emwyYWZKVEVfd0cteV9UcUltcVB0SWFTU2Fpa1EtM3hZdHFaMlBtR1dWOHRwTWRmYjV0OUtYMmpfTW40dWxCWGRWUjc0TG1MNFdCSUlBN09La2M1OW9vSDZsdHJDM0phOWcteGw3U1oyeFhHLTE5LXl0YUFhUWlqSVNvZU5JNVhwMng0cDIxd19OTjY3NFY3Wkh5WlM0SkxwNWp0SHFvc1UtMDlUajRqVWlOaldqdzctWFk1Vk1ZWVZWcGlOd05JZWJnblVleENkdE1vNkRoYXlnQXF5TFBDTkxlSWlkR2E4YVhPVHJvTndDUWVTVFFzYU9LdlUwTlpvRHFXLVN30gGAA0FVX3lxTE1GaFRJSlk0RW5UaUd1MnF6clZKc2RacnNqcXZVNmZ2aUdxR1JHdzRBd2xTNTBmVWpDU2E2ZU1GMTV1bHZwQzh6cndSTlZVbEQtM1Y2aTJzcGRLa3c2MjQ3M093ZjRrN3NHY3Q1dFVOVnBqaVZoZ1dWemVEU1MzamxJdWVZOE9tR2VwQ1VTQzBSN3N4U1VlZmMyUk0xTlBheFJaQldiZVBrQjM0SVpqcGlMWWd4MktwcU90TUJQeWNLUTRYYU5jejJRc3B3NUNnYjhqdWowcExaaXpLQ0oxRVZEU3h0M0ktVGhEOTRwYXB2YS1pZWs5bWswanVLSGR5alBTSWlGd1ZUb09nZ1NPZnhoT19WME1YdUk3ek1hTVJxVkZSVWE4X3FsWGRnSjNmNmxhWVQzcE5rdkd5Tk0yVlRCYVdZTFdpV2dEaUtRaUpTVzZVeGszb1RXNjFNb3ktNTVQTDhnRHJjcmZxRGpSZ2VOcVk1SW8wbGVNU2VxMGdtMA?oc=5">&quot;Best Samsung 65-inch 4K smart TV in India: Samsung OLED S95H, Samsung OLED S90H, Samsung Micro RGB R85H, - The Times of India&quot;</a></li>
 <li>The Indian Express <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPMkE0djFfTkpIcXl1T3h2c09Vay1Va25DdzAyb2VyNE03Q1FuMnJYT0FET1lDMzRLSjd2TlBRa0dYLTkxRUwxVWZJN2NtMlZKemVvbHozeTE1UHpuVkMyR3hHWTBnb0loSllSelFmUkg2MnZINUFvbWIzTnhRc25EVGIyWnlXdWxBV2VFOGUtWGdfSDJaajg1QkxXMjZUWjdrSUJfdmFqRDRqMlNQYV82UGJFVVRFajBtb1Z2TTNaNVpUdHlwT09CR1FXa3drQdIB1AFBVV95cUxObmtzMGJoSldiMHNDOXhCdUVwNlRfUk5WcXJqR1JKLWtVNzBSOWV5ZWFINnAtdENmSHNacGZaSmFlS2ZjUFl2bTFNN2VRbVRWQWhTMDVwNkhfbi1KemVBWVlmMVhiSDUxbVNlYndnSmhMOFRFdTY2ZGtTWnY5WDhEaHNfUmVyUmZqUTdCNk5YMTNGVFMxdzVNd2k1dFJ5YW5OeC1DdFJ2V1B0TGdzQkoxNFpnWUIwS3A0MHQ0d1JZS29Oa2RycGhFRFM4OHdDVzd4bVJiRw?oc=5">&quot;India should build Asian chip alliance with Japan, South Korea, Singapore: Ajai Chowdhry - The Indian Express&quot;</a></li>
-<li>Investing.com <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPWGp0cnJQVG1PMVRoZHMwX1U0aVhwS0p2eXZfUVZhRFI2RExPa2VyaHFSanY4WVhVckFBeWp0UEY2dTNuTXdsSFNHd3Y5QnllemVpY2ROMlQ2RnMxT2g5YjRQV2ZLc182RHFGQXhmbjR2Ni1Kemx5MUl2T1pCRDVXeHFka3gyR2wxLWtqcUNQUTlhNVYwWVFBYWNkYmU1YmY4Zm55YXd0bnNXZ1RHc3FVWE5iOUlqUQ?oc=5">&quot;Rigetti CTO Andrew Bestwick sells $219,551 in shares - Investing.com&quot;</a></li>
 <li>Morningstar <a href="https://news.google.com/rss/articles/CBMimwJBVV95cUxQY1B2VDRwdTRyT19YUEh3eEphX1dDMFZyQU93aE1MTTdmUFpCeUtlWlJ5U0lZTXZtTERISVIwVnRNTmFmM0x4Mzdsa1V2VWNMVWxLdFhKeS1aSmM1Z1hDWVp3dUp6VWpPajV0Qy1BTldiVXFGNUtCcmpwSFZ3Y1A4SXVXYWw4UGtpNEZWdnI4WHlQa2dmS1hTUVFTLWoxQ1FFeHdnWGVISURyR0pIc0R3Mk4ySzJqajl1ZGRzcUpQaG9JaTdOUTdwc3g5bHRRSEVfRGFYMzBOR180VjNobVhDSnNGalhOU0QxYl8xbEVVckY0bUVxOWlxdjZBZGhwRzFEMGNfUS1MZl8zclZYVzFSN1BqUThveXk5eFBj?oc=5">&quot;QuEra Computing Joins Harvard-Led, $12 Million DOE Project to Design AI-Driven Error Correction for Fault-Tolerant Quantum Computing - Morningstar&quot;</a></li>
 <li>Quantinuum Blog <a href="https://www.quantinuum.com/blog/a-quantinuum-led-team-has-built-the-quantum-programming-tools-for-real-time-magic-state-distillation-on-a-quantum-computer">&quot;A Quantinuum-led team has built the quantum programming tools for real-time magic state distillation on a quantum computer&quot;</a></li>
 <li>FF News <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNRTN5VXRBbzNKbW9ITEdXVWJFSWJnXzQ1ZVNDSy0xUlMyT1c4dGZGQmFFZWQ2cDgtVEVZeC1qQ1lnX2ZMY2F1ZVVBSXVMa0d2NHV4OWF5NlNiWGEzXzFWMFJMQThGUkktYWluWU0zODdfaWk2OUhjV2RvcW9hX3h4OTJBb1JDTW55VUI4TUxRZnJ3TDd5SzZ3dUZyUUF2Q1hyamJERmpja2xXWWZPUHJiOEp6UQ?oc=5">&quot;Quantum Threat Reality Check: Why Enterprise Security Leaders Are Failing to Act on PQC - FF News&quot;</a></li>
 <li>The Quantum Insider <a href="https://thequantuminsider.com/2026/11/27/ethereum-shift-hash-based-signatures-post-quantum-security/">&quot;Ethereum Plans Shift to Hash-Based Signatures for Post-Quantum Security&quot;</a></li>
 <li>GBHackers News <a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE9wNUk0YXpxXy1WaXZNV3lMZ1FGcWlmZ2UzX3dFOEFhZE9ydUNtTnBPUld2bk4wcVdPMmRfWjVrZk9qOEN0ZGgweDlXSUlhZWd6c05xVmlIQ0xSanYxVWNuRldGZjNNeDJCLWt4N25rajRKd0nSAXNBVV95cUxPcDVJNGF6cV8tVml2TVd5TGdRRnFpZmdlM193RThBYWRPcnVDbU5wT1JXdm5OMHFXTzJkX1o1a2ZPajhDdGRoMHg5V0lJYWVnenNOcVZpSENMUmp2MVVjbkZXRmYzTXgyQi1reDdua2o0SndJ?oc=5">&quot;12 Post-Quantum / Quantum-Safe Cryptography Solutions: The 2026 Buyer’s Verdict Guide - GBHackers News&quot;</a></li>
+<li>Stocktwits <a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxPWWFFbE9QWTNnTEZzUS1mTHg4Sm5nN01GSlZYSm9tNFVDWGFXaG9ac2JoeDZ1NWFsQ1Y2bUtPUWx4UzFRRWM5NVpobHhoWjNMN1pjWEU2eXdjb21KYmt5Y2RrVVlJMXE1cUd5RXpYVnRGZXprUldsMWoyYUY1SVE3YmZTOW8xU2NSOWZpM2QxUTY3M2c1LXh1bHo1bWcyenJQM2RQLVI1Wm56cVlCRVVqUzhIa0hyUlRneS1fN0pNWl8xZ1RkZHN1VGFOY0VyX09RRUljQUNFZWZLbFE?oc=5">&quot;QBTS Stock Gains Premarket: Nasdaq Verafin Picks D-Wave’s Quantum Technology For Financial Crime Detection - Stocktwits&quot;</a></li>
 <li>Israel Defense <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE1BeHRxTVhISkRza0RqVlQ0a29pRmo2ZEhvMTdYeVNBYjFTQVVucWJrZjgyVzhhSFIxVWw3RHhhZzRGb1BIV01FclVXQThEZlBMYU1PN2t0dmU?oc=5">&quot;EU Proposes Quantum Act and €50 Billion Sovereign Tech Equity Fund - Israel Defense&quot;</a></li>
 <li>Tech Funding News <a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxOOFIzQkpUdmxaaHNRcnd3dFdWYWJ0alFpZTh5cjhXcnFXS0hLVHVnWk02OGtQYjVOdXp3QmJzYVBPZVFwMzRRcWdnemZLel81YkZOR1pnT0M0MWhTU1hpZnVlUnRUSVpJY0ZVRTU0QkpfRGlXYm8ySEduM2xIQjZ0dEIwT0M3ZG9XTE9iNWFrTENSa1R0TndmY3JWQXBMc0tQclN3LTN0TGMtLXVKdzdtMmppX1dUQVplNEpKTkF0ZDhvUnVyV1E?oc=5">&quot;EU proposes €50B Sovereign Tech Equity Fund to close Europe’s quantum funding gap with US and China - Tech Funding News&quot;</a></li>
-<li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOakJvNUY1NjBudTRsVmpOSFRQR1lfbkljMFUyRk01d0M1RzZwa1Btbjd4cDFPb2p1MVRiQTZMdnRiUFhCWmV6WDNzRnZzdmxRbzRyUlF4MzYtaTF4UnF5R3B0Tkl1N01sZ1hSdUtRR2tXdHhXbEVLdkdJd3F3cmE0a0VPZEhiczVhcXU2US1Za1VKYmYzaVlERmhoZ3U0bHBTVDQ5V3hzeWpOc01YNGNZbg?oc=5">&quot;Huang Is Back as NVDA CEO: Quantum ETFs to Buy Before the Next AI Surge - Zacks Investment Research&quot;</a></li>
-<li>StockInvest.us <a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFBoSXJCR2ktczNTUXZsUXdXUDl6OHhoNzVvSWt0VGVxajVQVXNVRVFUTGtGZXNEMklFaTdKUXFWUi1rbmdyb1dFUA?oc=5">&quot;Quantum Stock Price Forecast. Should You Buy QMCO? - StockInvest.us&quot;</a></li>
-<li>Argonne National Laboratory (.gov) <a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNQTExOUVRc1pCa0hLNEZZakNONVl1YjREaXhEWjRZaHJ3dk9JRmhLQzdMclNZajlNcUhhN1dfTWt0ZUtPNlFmNWFlQXFfa2NlVnh6MzJaek8tOXhBQk1YdHRGUm8xdnhJRVpRZk0tbVVUZG1QUmR5YzZPTV9WVWh3SWxNcVZaWTR0Nms3WExHSQ?oc=5">&quot;Argonne puts the Genesis Mission to work in its first year - Argonne National Laboratory (.gov)&quot;</a></li>
-<li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxObl8yLUxGdEtYLWZaYVhHTlk5UjBpakFkOW9LZnBOV05lNnJOYzdkN3RLZTItODJQM1pOUU9IMC12eWhxVExtdHdjbU1FcURlcXJIaVdnTjZyV3Vma0c4bWtueXVrUjRxd05hZUEtZllsTGF1aDJHajlVajJwalJBTVgzM1I5VVliZ1VnejFDY0ZHTU9UMG1xbjZpdklCczN1Y1BCVGJEY2RVcjdFNi1Ta0xJYlNhTFo4LUgyQy1paUZDeWphazk0Sw?oc=5">&quot;The Zacks Analyst Blog Highlights NVIDIA, Cisco Systems, BHP, GEE and Tandy Leather Factory - Zacks Investment Research&quot;</a></li>
-<li>Stocktwits <a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTFA3dldTYmpab2Jad014enRVakxobG5BOGdidE45dU5ESXNQVHVwYmZVMDlubVZsWVZZUEN2MW0wUFp5eHRmYnRLZzctamFadW9v?oc=5">&quot;Xanadu Quantum Technologies Ltd. - Ordinary Shares - Class B (Sub Voting) (XNDU) News, Articles, Events &amp; Latest Updates - Stocktwits&quot;</a></li>
-<li>Barchart.com <a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNQndheDFIbks1NTYxUFRaa05hMHJLOTBPWEtoTVh4UEx3M25wbmU4Qlh6ajdRUUZHRkludjctMGpwaTAwUXFBR0dEZUdJRTBXODl4aW1mMUo5TEc2NFhDT2h4Wmd0MGhWREpYNFlkY2dodjFsRE1sSTkzbXF6TFg2dGZSejJweDIybzF3d3NMclYyVEctcWF4SDhtdG1xTzB5bU1ieGxiR2luUE5fTmotZmltNU9xTzE2ZDF0RDhjSE1HWkRFWWFPZWNDMXNUbGdUeWlTb0NybEwtTXFWSXBubkpWaW96VTA0Z3VXQWZfVFVCZzJy?oc=5">&quot;Keel Infrastructure, Nebius Group, D-Wave Quantum, Rigetti Computing, and VNET Group stocks trade up, what you need to know - Barchart.com&quot;</a></li>
 <li>HPCwire <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQbWZvTUNLNkkyb0w0VVUzTU5uNG1mMnF3UXA3d0dOUnVudDBISXJ3QlhUWm1RbFplNzlnZ0s2STE4VlZvand6VzJXeUNYNTJPWXZ1VDcwWEtSRU1mbUNKMlRsVWFObUhxeUNHdzlsU2dtSEpncXZfVndWNVV5eHpPRmMwZnhjZzhleGowTnpWd3RkTkJoaEdvUFNfakRGZDF5ODRqZ2tPRXJBdElqQS0xNUl4Wko5YmpKY1dfbnp3?oc=5">&quot;Quantum X Labs Claims Accurate Quantum Radiation Simulation on IBM Quantum Computer - HPCwire&quot;</a></li>
 <li>Quiver Quantitative <a href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxPcE8xZEVBZm43TDYyLTlSVXE5U0kzSHFpRENVR04zY3RfZmFPUHdVUVNoU19sbzdMWERtMWdlU25XV0JPMmQ1RVRqWnlCSkRaZ01Oa2NQVUZ1cXlrM2YyRlFaZnZVdWZ0azVKRXEwdE5FN2JDTnpsTlJfMmdTSmRWWEE5RndVV25VUHlxajR1cU5hY09SVnRaZS1HR1d4c3k5NnFSVFdTcTJFZktwM0FYemJ5cXhTZmtjcmk5UXJmUG1VMjFJRXBnZ3AtSWZpeHNzQ08td2JTOC0tMlpIWDdiYmZOck5pbE90Y0t6d21aZw?oc=5">&quot;Quantum X Labs Reports QXL Decoder Cut Logical Errors 12–13% on Google Quantum Hardware Data with NVIDIA CUDA-Q QEC - Quiver Quantitative&quot;</a></li>
 <li>PsiQuantum News <a href="https://www.psiquantum.com/press-materials">&quot;PsiQuantum in the news&quot;</a></li>
@@ -383,6 +413,22 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNS1pqOHlBMnlVQ0lqc1FYbmI3VElRWG4wVV9Rc2QtM1FUbWNCYmtBMG1rTjVsNXhlcW8zcGYtc1Y1YTN3bXNkd2EyNk1ZV1lKa19fLWNTZUtEQ0l0LXNBQy11eng2UHVSNmdwZ3dxbkVTYnVhallhMVJkcnBRa3VuVFU5cXVESXd4Yk9YVGhpajZoUkkyamRMSDRQTjg?oc=5">&quot;Arqit Quantum Stock Just Scored a New &#39;Buy&#39; Rating. Here&#39;s Why. - Yahoo Finance&quot;</a></li>
 </ol>
 
-<footer>The Quantum Signal · Issue #48 · November 21st to November 28th, 2026<br><small>Tokens at Work. Human-built. Personal full-stack agentic AI pilot. Verify claims independently.</small></footer>
+<p class="report-tagline">Tokens at Work. Human-built. Personal full-stack agentic AI forge. Verify claims independently.</p>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-main">
+    <a class="brand" href="../../../index.html">TOKENS AT WORK</a>
+    <div class="footer-links">
+      <a href="../../../about/index.html">About</a>
+      <a href="../../../archive/index.html">Archive</a>
+      <a href="../../../podcast/index.html">Podcast</a>
+      <a href="https://open.spotify.com/show/3bOcmE7u4HKrQO4NXwn1r5" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://music.amazon.com/podcasts/a71db7b2-f0c7-4c31-a400-b7e5cb474611/tokens-at-work" target="_blank" rel="noopener">Amazon</a>
+      <a href="https://media.rss.com/tokens-at-work/feed.xml" target="_blank" rel="noopener">RSS</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">© <span data-year>2026</span> TOKENS AT WORK</div>
+</footer>
 </body>
 </html>
