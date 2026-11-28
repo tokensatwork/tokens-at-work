@@ -13,7 +13,7 @@
     "topics": "2",
     "reports": "2",
     "episodes": "2",
-    "articles": "3337"
+    "articles": "3360"
   },
   "reports": [
     {
@@ -32,7 +32,7 @@
       "topic": "quantum",
       "title": "The Quantum Signal — 2026-W48",
       "week": "2026-W48",
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "summary": "Launch preview: error correction, logical performance, and engineering milestones in quantum computing.",
       "url": "quantum/reports/2026-W48/index.html",
       "minutes": 7,
@@ -68,11 +68,11 @@
       "otherPercentage": 10.6
     },
     "quantum": {
-      "articlesCollected": 817,
-      "sourcesConfigured": 0,
-      "sourcesSuccessful": 0,
-      "healthScore": 68,
-      "otherPercentage": 32.68
+      "articlesCollected": 840,
+      "sourcesConfigured": 69,
+      "sourcesSuccessful": 67,
+      "healthScore": 65,
+      "otherPercentage": 33.1
     }
   }
 }
