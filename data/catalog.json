@@ -13,7 +13,7 @@
     "topics": "2",
     "reports": "2",
     "episodes": "2",
-    "articles": "3360"
+    "articles": "3358"
   },
   "reports": [
     {
@@ -61,11 +61,11 @@
   ],
   "reportMetrics": {
     "ai": {
-      "articlesCollected": 2520,
+      "articlesCollected": 2518,
       "sourcesConfigured": 136,
-      "sourcesSuccessful": 133,
-      "healthScore": 72,
-      "otherPercentage": 10.6
+      "sourcesSuccessful": 134,
+      "healthScore": 73,
+      "otherPercentage": 10.84
     },
     "quantum": {
       "articlesCollected": 840,

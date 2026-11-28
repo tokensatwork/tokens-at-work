@@ -4,90 +4,129 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>The AI Infrastructure Signal — Issue #48</title>
-<style>:root{--bg:#0b1017;--surface:#101720;--line:#25313d;--soft:#1b2631;--text:#e9eef2;--muted:#9aa8b5;--accent:#9ce7c1;--accent-dim:#8ed6bd;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--up:#9ce7c1;--neutral:#9aa8b5;--down:#f87171;--max:860px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font:15px/1.7 var(--sans);max-width:var(--max);margin:0 auto;padding:2rem 1.5rem 3rem;-webkit-font-smoothing:antialiased}
-h1{font-size:2.8rem;font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--text);margin:2rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
-h2{font-size:1.05rem;font-weight:500;color:var(--muted);margin:0 0 1.5rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
-h3{font-size:1.3rem;font-weight:650;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:2px solid var(--accent);letter-spacing:-.02em}
-h4{font-size:1.05rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
-p{margin:.5rem 0}
-ul,ol{margin:.5rem 0 .75rem 1.5rem}
-li{margin:.35rem 0}
-li::marker{color:var(--accent)}
-.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0 1.5rem}
-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border:1px solid var(--line);min-width:480px}
-th{background:var(--soft);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-td{padding:.55rem .8rem;border-bottom:1px solid var(--soft);vertical-align:top}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--surface)}
-hr{border:none;border-top:1px solid var(--line);margin:2rem 0}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word}
-a:hover{border-bottom-color:var(--accent)}
-.sig-up{color:var(--up);font-weight:700}
-.sig-neutral{color:var(--neutral)}
-.sig-down{color:var(--down);font-weight:700}
-strong{font-weight:600}
-footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center}
-@media print{body{max-width:100%;padding:1cm;font-size:11pt;background:#fff;color:#1a1a2e}h1,h3{color:#1a1a2e}h1{border-bottom-color:#ccc}h3{border-left-color:#ccc}th{background:#f5f5f5;color:#333}td{border-bottom-color:#eee}a{color:#1a1a2e;border-bottom:none}a::after{content:" (" attr(href) ")";font-size:.8em;color:#666}}
-@media(max-width:640px){body{padding:1.25rem 1rem 2rem;font-size:14px}h1{font-size:2rem}h3{font-size:1.1rem;margin-top:1.5rem}table{font-size:.78rem;min-width:400px}th,td{padding:.45rem .6rem}ul,ol{margin-left:1.2rem}}</style>
+<link rel="stylesheet" href="../../../assets/css/styles.css">
+<style>
+.report-body{
+  --bg:#0b1017;--surface:#101720;--line:#25313d;--soft:#1b2631;
+  --text:#e9eef2;--muted:#9aa8b5;--accent:#9ce7c1;--accent-dim:#8ed6bd;
+  --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --up:#9ce7c1;--neutral:#9aa8b5;--down:#f87171;--max:860px;
+  background:var(--bg);color:var(--text);
+  font:15px/1.7 var(--sans);
+  max-width:var(--max);margin:0 auto;
+  padding:2rem 1.5rem 3rem;
+  -webkit-font-smoothing:antialiased
+}
+.report-body h1{font-size:2.8rem;font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--text);margin:2rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.report-body h2{font-size:1.05rem;font-weight:500;color:var(--muted);margin:0 0 1.5rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;font-size:10px}
+.report-body h3{font-size:1.3rem;font-weight:650;color:var(--accent);margin:2rem 0 .75rem;padding-left:.75rem;border-left:2px solid var(--accent);letter-spacing:-.02em}
+.report-body h4{font-size:1.05rem;font-weight:600;color:var(--text);margin:1.5rem 0 .5rem}
+.report-body p{margin:.5rem 0}
+.report-body ul,.report-body ol{margin:.5rem 0 .75rem 1.5rem}
+.report-body li{margin:.35rem 0}
+.report-body li::marker{color:var(--accent)}
+.report-body .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1rem 0 1.5rem}
+.report-body table{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem;border:1px solid var(--line);min-width:480px}
+.report-body th{background:var(--soft);font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);font-size:.75rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.report-body td{padding:.55rem .8rem;border-bottom:1px solid var(--soft);vertical-align:top}
+.report-body tr:last-child td{border-bottom:none}
+.report-body tr:hover td{background:var(--surface)}
+.report-body hr{border:none;border-top:1px solid var(--line);margin:2rem 0}
+.report-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;overflow-wrap:break-word}
+.report-body a:hover{border-bottom-color:var(--accent)}
+.report-body .sig-up{color:var(--up);font-weight:700}
+.report-body .sig-neutral{color:var(--neutral);font-weight:700}
+.report-body .sig-down{color:var(--down);font-weight:700}
+.report-body strong{font-weight:600}
+.report-body blockquote{border-left:2px solid var(--line);padding-left:1rem;color:var(--muted);font-size:.9rem;margin:1rem 0}
+.report-body .report-tagline{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center}
+body{background:#0b1017;margin:0}
+.site-header{background:#0b1017;border-bottom:1px solid #25313d;padding:1rem 1.5rem;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.site-header .nav-wrap{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.site-header .brand{color:#9ce7c1;text-decoration:none;font-weight:700;font-size:1rem}
+.site-header .brand-mark{color:#e9eef2}
+.site-header .brand-at{color:#9aa8b5;font-weight:400}
+.site-header .primary-nav a{color:#9aa8b5;text-decoration:none;margin-left:1.25rem;font-size:.85rem;transition:color .2s}
+.site-header .primary-nav a:hover{color:#9ce7c1}
+.site-footer{background:#0b1017;border-top:1px solid #25313d;padding:1.5rem;color:#9aa8b5;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.site-footer .footer-main{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.site-footer .brand{color:#e9eef2;text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.05em}
+.site-footer .footer-links a{color:#9aa8b5;text-decoration:none;margin-left:1rem;font-size:.8rem}
+.site-footer .footer-links a:hover{color:#9ce7c1}
+.site-footer .footer-bottom{max-width:860px;margin:1rem auto 0;padding-top:.75rem;border-top:1px solid #1b2631;font-size:.75rem;text-align:center}
+@media print{.report-body{max-width:100%;padding:1cm;font-size:11pt;background:#fff;color:#1a1a2e}.report-body h1,.report-body h3{color:#1a1a2e}.report-body h1{border-bottom-color:#ccc}.report-body h3{border-left-color:#ccc}.report-body th{background:#f5f5f5;color:#333}.report-body td{border-bottom-color:#eee}.report-body a{color:#1a1a2e;border-bottom:none}.report-body a::after{content:" (" attr(href) ")";font-size:.8em;color:#666}}
+@media(max-width:640px){.report-body{padding:1.25rem 1rem 2rem;font-size:14px}.report-body h1{font-size:2rem}.report-body h3{font-size:1.1rem;margin-top:1.5rem}.report-body table{font-size:.78rem;min-width:400px}.report-body th,.report-body td{padding:.45rem .6rem}.report-body ul,.report-body ol{margin-left:1.2rem}}</style>
 </head>
 <body>
-<h1>The AI Infrastructure Signal · Issue #48 · November 22nd to November 28th, 2026</h1>
-<h2>Issue #48 — November 22nd to November 28th, 2026</h2>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../../../index.html"><span class="brand-mark">T.</span><span>tokens <span class="brand-at">at</span> work</span></a>
+    <nav class="primary-nav" id="primary-nav">
+      <a href="../../../archive/index.html">Archive</a>
+      <a href="../../../podcast/index.html">Podcast</a>
+      <a href="../../../about/index.html">About</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container section">
+<div class="report-body">
+<h1>The AI Infrastructure Signal</h1>
+<h2><a href="https://tokensatwork.com">T.tokens at work</a> · Issue #48 · November 22nd to November 28th, 2026</h2>
 <h3>Executive Summary</h3>
-<p>The week was defined by a sharp correction in the semiconductor sector as major investors like David Tepper reduced positions in AMD and Broadcom while piling into NVIDIA at lower valuations. Simultaneously, geopolitical friction intensified with new US export controls halting shipments to Southeast Asia and Nvidia establishing a new oversight committee to clamp down on compliance risks. Despite these headwinds, specific segments showed resilience: AWS Trainium3 outperformed the NVIDIA GB300 in inference benchmarks, and Microsoft&#39;s Coherent partnership generated significant value for Nvidia. The market is navigating a tension between macroeconomic fears regarding China and regulatory crackdowns versus tangible progress in HPC efficiency and quantum readiness.</p>
+<p>The week was defined by a sharp market correction driven by export control tightening and regulatory scrutiny, yet underpinned by resilient physical AI revenue growth. NVIDIA’s manufacturing partners halted shipments to Southeast Asia amid new US chip export controls, while the company itself paid $290 million to investors for concealing cryptocurrency mining revenue. Despite stock volatility, NVIDIA forecasts over $25 billion in Physical AI revenue, and AWS Trainium3 benchmarked favorably against the GB300 in inference tasks. In parallel, HPC and quantum computing advanced with TU Delft’s hybrid workflow demonstration and Quantinuum’s breakthrough in magic state distillation. The dominant tension remains between supply chain constraints and the accelerating demand for specialized compute architectures.</p>
 <h3>Signal of the Week</h3>
-<p>Nvidia’s manufacturing partners halted server shipments to Southeast Asia following new US chip export controls, triggering an immediate 8% drop in Nvidia stock alongside significant declines for AMD and Broadcom. This development is corroborated by reports detailing the halt in AI server production and Jefferies estimates that these restrictions have already cost Nvidia over $44 billion in potential revenue. For the investment outlook, this signals a structural shift where growth is increasingly constrained by geopolitical boundaries rather than just technological bottlenecks, forcing investors to re-evaluate supply chain exposure in Asia-Pacific regions while looking toward domestic US manufacturing and non-compliant markets for future demand.</p>
+<p>NVIDIA’s manufacturing partners halted server shipments to four Southeast Asian countries, a move corroborated by reports from Developing Telecoms, Punch Newspapers, and Thaiger citing new US export rule enforcement. This development signals a hardening of geopolitical supply chain fractures that will constrain compute capacity expansion in key growth markets for the next 3-6 months, forcing enterprises to accelerate domestic fab reliance or pivot to alternative architectures like AWS Trainium3.</p>
 <h3>Key Stories</h3>
 <ul>
-<li><p><strong>NVIDIA</strong> — New National Security Oversight Committee established to enforce export controls; manufacturing partners halt shipments to Southeast Asia.</p>
+<li><p><strong>NVIDIA</strong> — Halts AI server shipments to Southeast Asia amid new US export controls</p>
 <ul>
-<li>Nvidia created a new National Security and Export Control Oversight Committee to clamp down on compliance risks as its manufacturing partners halted server shipments to SEA amid new US chip export controls.</li>
-<li>This regulatory tightening limits market access in key growth regions, potentially accelerating the pivot toward domestic supply chains but creating short-term revenue headwinds for the AI infrastructure leader.</li>
+<li>NVIDIA’s manufacturing partners stopped shipping servers to four Southeast Asian countries following stricter US chip export regulations.</li>
+<li>This supply chain disruption risks slowing data center build-outs in high-growth regions, shifting investment focus toward domestic and allied-market fabs like TSMC in Texas.</li>
 </ul>
 </li>
-<li><p><strong>AMD</strong> — David Tepper dumps stake in AMD and Broadcom while piling into NVIDIA at a 44x forward adjusted EPS valuation.</p>
+<li><p><strong>NVIDIA</strong> — Pays $290 million settlement for concealing cryptocurrency mining revenue</p>
 <ul>
-<li>Billionaire David Tepper dumped Appaloosa&#39;s stake in AMD and Broadcom, citing pressure to accelerate MI400 timelines for AMD as he piled into an AI stock trading at 44x forward adjusted EPS.</li>
-<li>The move highlights a divergence in investor sentiment where the market is willing to pay a premium for Nvidia despite regulatory risks, while viewing AMD&#39;s current trajectory as insufficiently compelling for large-scale capital allocation.</li>
+<li>NVIDIA agreed to pay $290 million to investors after a report revealed it concealed cryptocurrency mining revenue in prior disclosures.</li>
+<li>While the settlement highlights governance risks, it also underscores investor confidence in the company’s core AI data center business, which continues to drive growth despite regulatory headwinds.</li>
 </ul>
 </li>
-<li><p><strong>AWS</strong> — AWS Trainium3 edges out NVIDIA GB300 in inference benchmarks for generative recommendation models.</p>
+<li><p><strong>AWS</strong> — AWS Trainium3 outperforms NVIDIA GB300 in inference benchmarks</p>
 <ul>
-<li>AWS Trainium3 edged out the NVIDIA GB300 in an inference benchmark using vLLM, demonstrating that accelerator-side beam search and shared KV caching can deliver competitive performance for specific workloads.</li>
-<li>This result suggests that while Nvidia dominates training, the inference market may see increased competition from specialized silicon like Trainium3, offering diversification opportunities for cloud data centers seeking cost-efficiency in recommendation systems.</li>
+<li>AWS Trainium3 demonstrated superior performance over NVIDIA’s GB300 in an inference benchmark published by Tokenpost.</li>
+<li>This result suggests a viable alternative for inference-heavy workloads, potentially offering investors exposure to lower-cost, high-efficiency compute options outside the NVIDIA ecosystem.</li>
 </ul>
 </li>
-<li><p><strong>Microsoft</strong> — Coherent partnership adds $2 billion to Microsoft&#39;s valuation; Nvidia paid premium price for stock.</p>
+<li><p><strong>NVIDIA</strong> — Forecasts $25 billion+ in Physical AI revenue</p>
 <ul>
-<li>Nvidia paid $2 billion for Coherent stock as part of a strategic partnership that added significant value to the broader AI ecosystem including Microsoft&#39;s investments.</li>
-<li>The acquisition underscores the critical need for high-bandwidth memory and specialized packaging in the next generation of AI clusters, validating the economics of vertical integration in the semiconductor supply chain.</li>
+<li>NVIDIA projects more than $25 billion in revenue from physical AI applications over the coming period.</li>
+<li>This forecast indicates a diversification beyond generic LLM training into robotics and industrial automation, creating a new growth pillar less sensitive to consumer GPU demand cycles.</li>
 </ul>
 </li>
-<li><p><strong>Broadcom</strong> — Broadcom stock slides alongside Nvidia despite record revenue growth and upbeat forecast from HPE.</p>
+<li><p><strong>AMD</strong> — Opens Agentic AI for Supercomputing with HPC Assistant tool</p>
 <ul>
-<li>Broadcom shares slid today alongside Nvidia&#39;s post-rally dip as investors digested reports on market cap and revenue figures that were not corroborated by other articles this week.</li>
-<li>The sell-off reflects a broader sector rotation away from high-flying AI chips toward memory and networking plays, suggesting investors are pricing in potential bottlenecks in the current compute-heavy infrastructure build-out.</li>
+<li>AMD launched a new HPC Assistant to enable agentic AI workflows on its supercomputing infrastructure.</li>
+<li>This move positions AMD as a strong alternative to NVIDIA in the scientific computing sector, particularly where export controls limit access to US-made chips.</li>
 </ul>
 </li>
-<li><p><strong>Meta</strong> — Meta pauses nonvoting share issuance, delaying a $60 billion AI funding route for HPC expansion.</p>
+<li><p><strong>Meta</strong> — Pauses nonvoting share issuance, delaying $60 billion AI funding route</p>
 <ul>
-<li>Meta paused its nonvoting share issuance, effectively delaying a planned $60 billion funding route that was intended to accelerate its AI supercomputing capabilities and data center expansion.</li>
-<li>This financing hurdle could slow the deployment of new frontier models and HPC clusters in the short term, potentially giving competitors like Google and Amazon a relative advantage in scaling their proprietary model training infrastructure.</li>
+<li>Meta paused the issuance of nonvoting shares, effectively delaying a planned $60 billion capital raise for its AI infrastructure expansion.</li>
+<li>This pause may slow Meta’s internal compute build-out but could also signal a strategic shift toward more efficient capital allocation or partnership models.</li>
 </ul>
 </li>
-<li><p><strong>NVIDIA</strong> — Nvidia stock falls another 5% as AMD, Broadcom and Micron shares slide in AI chip sell-off following David Tepper&#39;s moves.</p>
+<li><p><strong>Broadcom</strong> — Velocity problem becomes new security challenge</p>
 <ul>
-<li>Nvidia stock fell another 5% this week as AMD, Broadcom and Micron shares slid in a coordinated AI chip sell-off triggered by billionaire investor positioning changes.</li>
-<li>The synchronized decline across the entire compute stack indicates that macro-fears regarding export controls and regulatory overhang are outweighing fundamental earnings growth narratives for now.</li>
+<li>Broadcom highlighted that high-speed data transmission now poses significant security risks, framing speed as a security challenge.</li>
+<li>This insight suggests that future networking and chip designs must balance performance with robust security architectures, potentially impacting router and switch vendor strategies.</li>
 </ul>
 </li>
 </ul>
 <h3>Market Pulse</h3>
-<p>The market is currently navigating a complex cycle where geopolitical tensions and regulatory crackdowns are acting as a headwind to short-term momentum, even as long-term demand for AI infrastructure remains structurally intact. The dominant tension this week is the clash between the need for aggressive compute scaling and the reality of shrinking supply chain access in Southeast Asia and China; Nvidia&#39;s new oversight committee and halted shipments to SEA are concrete examples of this friction. I&#39;m confident on the thesis that domestic US manufacturing and alternative markets will fill the gap, but early call, as we must wait to see if these restrictions harden into permanent barriers. The sector is rotating from pure compute hype toward efficiency plays like memory consolidation and networking upgrades, where the investment case is clearer despite the stock price volatility.</p>
-<p>The core theses driving this week&#39;s strategy are: first, that Nvidia remains the primary beneficiary of a &quot;friend-shoring&quot; trend as its domestic partners secure revenue streams in compliant markets; second, that memory stocks like Micron and SK Hynix offer better risk-adjusted returns than pure-play GPU manufacturers given their exemption status from some new controls; third, that networking infrastructure is entering a maturation phase where operators like T-Mobile and BT are testing AI-RAN economics ahead of 6G deployment. I&#39;m betting on the resilience of the compute stack but will be more selective on exposure to regions facing export bans.</p>
-<p>Two specific risks could break this bullish thesis: first, if the US government expands the Southeast Asia ban to include other critical components or allies, which would sever the primary supply chain for Nvidia and AMD; second, if a major cloud provider like Microsoft delays its HPC expansion due to financing issues, creating a ripple effect that slows down the entire ecosystem&#39;s adoption of new chips. The single most important thing to watch next week is whether any further announcements come from the US Commerce Department regarding the scope of the chip export controls, as this will dictate the immediate direction of the semiconductor indices.</p>
+<p>The market is currently navigating a bifurcation between supply-side constraints and demand-side innovation. On one hand, export controls targeting Southeast Asia and China are creating immediate bottlenecks in server availability, leading to a sell-off in major chip stocks like NVIDIA, AMD, and Broadcom. On the other hand, the sector is seeing robust fundamental growth signals, such as NVIDIA’s $25 billion Physical AI revenue forecast and AWS Trainium3’s competitive benchmarking performance. The dominant tension this week is whether these geopolitical headwinds will persist long enough to derail the broader AI infrastructure thesis or if they will simply accelerate a shift toward more resilient, diversified supply chains. Looking ahead 1-3 quarters, I expect continued volatility as investors digest the full impact of shipment halts, but the underlying capex trajectory for HPC and networking remains intact due to insatiable model scaling demands.</p>
+<p>I’m confident that the AI infrastructure theme is structurally sound despite short-term noise; early call, but the direction is clear toward specialized hardware and sovereign compute stacks. The market is overreacting to regulatory headlines without fully pricing in the massive backlog of orders from government labs and cloud providers who have already committed multi-year contracts. However, this conviction hinges on the ability of vendors like NVIDIA and AMD to maintain their moats while navigating a fragmented global supply chain.</p>
+<p>Two specific risks could break the current bullish thesis: first, if US export controls expand to include advanced packaging or memory from non-US allies, which would sever critical bottlenecks for even domestic fab operations; second, if Meta’s pause on share issuance cascades into broader tech sector capital discipline, reducing overall capex velocity in Q1 2027. The single most important thing to watch next week is whether NVIDIA clarifies its timeline for resuming shipments to Southeast Asia or announces a new regional manufacturing partnership that mitigates the export control risk.</p>
 <h3>The AI Infrastructure Signal Dashboard</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -98,35 +137,35 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 </thead>
 <tbody><tr>
 <td>Compute</td>
-<td>Nvidia manufacturing partners halt server shipments to SEA; David Tepper dumps AMD/Broadcom stake; AWS Trainium3 edges Nvidia GB300 in inference benchmark; Nvidia stock falls 8% amid sector sell-off.</td>
+<td>NVIDIA halts AI server shipments to Southeast Asia; NVIDIA pays $290M settlement for crypto mining revenue concealment; AWS Trainium3 benchmarks ahead of NVIDIA GB300 in inference</td>
 </tr>
 <tr>
 <td>HPC</td>
-<td>Meta pauses nonvoting share issuance delaying $60B AI funding route; JUPITER remains among top 5 fastest supercomputers and Europe&#39;s No. 1; AMD opens up Agentic AI for supercomputing with new HPC Assistant.</td>
+<td>TU Delft demonstrates hybrid HPC-quantum workflow linking DelftBlue and Tuna-17; Frontier supercomputer faces uptime and workload efficiency challenges</td>
 </tr>
 <tr>
 <td>Networking</td>
-<td>Cisco gains from AI networking boom vs HPE &amp; ANET; Nokia discusses coherent pluggable optics evolution from terrestrial to subsea networks.</td>
+<td>Free launches network-based AI call translation; Broadcom highlights velocity as new security challenge; Cisco gains from AI networking boom vs. HPE &amp; ANET</td>
 </tr>
 <tr>
 <td>Network Operators</td>
-<td>BT, Vodafone eye &#39;spare compute&#39; prize from AI-RAN; T-Mobile tests AI-RAN deployment economics ahead of 6G; EE claims spectrum boost as AI-RAN hits London.</td>
+<td>BT, Vodafone eye ‘spare compute’ prize from AI-RAN; T-Mobile tests AI-RAN deployment economics ahead of 6G; EE claims spectrum boost as AI-RAN hits London</td>
 </tr>
 <tr>
 <td>Energy, Power &amp; Cooling</td>
-<td>Researchers show sandboxed AI agents can pass hidden messages through shared servers; SpaceX to invest over $74B in supercomputer facilities in Texas and Arizona; Japanese firms invest in Hokkaido renewable data center.</td>
+<td>SpaceX to invest over $74B in Texas and Arizona supercomputer facilities; NYGC files for 14.4-megawatt AI factory; Samsung and SK hynix license YMTC&#39;s Xtacking technology</td>
 </tr>
 <tr>
 <td>Security &amp; Trust</td>
-<td>House report flags Chinese AI models embedded in US businesses citing cybersecurity risks; Allianz Cybersecurity Think Tank, Multiverse &amp; IQM benchmark quantum malware detection.</td>
+<td>Japan shuts down Fugaku supercomputer after cyberattack; Allianz Cybersecurity Think Tank, Multiverse &amp; IQM benchmark quantum malware detection</td>
 </tr>
 <tr>
 <td>Governance &amp; Regulatory</td>
-<td>Nvidia clamps down on export rules with new National Security and Export Control Oversight Committee; UK ECJU proposes Export Control (Amendment) Regulations 2026.</td>
+<td>UK ECJU proposes Export Control (Amendment) Regulations 2026; US adds Megaspeed to trade blacklist as NVIDIA’s Huang returns as CEO</td>
 </tr>
 <tr>
 <td>Economics &amp; Business Models</td>
-<td>Sandisk outperforms Nvidia as investors return to battered memory chip stocks; Cipher shifts toward HPC leasing seeking stable earnings; MRVL vs AVGO analysis ahead of earnings.</td>
+<td>NVIDIA forecasts $25B+ Physical AI revenue; Meta pauses nonvoting share issuance delaying $60B AI funding route; Sandisk outperforms Nvidia as investors return to memory chip stocks</td>
 </tr>
 <tr>
 <td>Data &amp; Knowledge Infrastructure</td>
@@ -134,74 +173,83 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 </tr>
 <tr>
 <td>Scale &amp; Future Readiness</td>
-<td>Leash Biosciences raises $11M to build training environments for scientific AI; Nexent Capital IFSC launches $1B Quantum Computing-ready AI Infrastructure fund.</td>
+<td>Quantinuum-led team builds quantum programming tools for real-time magic state distillation on quantum computer</td>
 </tr>
 <tr>
 <td>Models &amp; Research</td>
-<td>OpenAI says AI agents independently complete nearly half of research tasks taking humans 2-4 hours; Imec opens photonics research centre in Finland.</td>
+<td>OpenAI, Google and Anthropic gain breathing room as Chinese AI developers face delays; Leash Biosciences raises $11M to build training environments for scientific AI</td>
 </tr>
 <tr>
 <td>Developer Ecosystem &amp; Tools</td>
-<td>vLLM supports Baidu&#39;s ERNIE 5.5 Flash Preview on day 0 through plugin deployment and E2E inference acceleration; Skip the DRAM Tier: MoRI UMBP runs agentic KV cache on NVMe.</td>
+<td>Ubisoft scales AI coding agents to 4,000+ developers with Unity Gateway; vLLM supports Baidu’s ERNIE 5.5 Flash Preview on day 0</td>
 </tr>
 </tbody></table></div>
 <h3>Sector Deep Dives</h3>
 <h4>Compute</h4>
 <ul>
-<li><strong>NVIDIA</strong> — Nvidia stock falls 8% as AMD, Broadcom and Micron shares slide in AI chip sell-off following Tepper&#39;s moves. Investment Implication: High volatility expected until regulatory clarity emerges; consider hedging positions with memory plays.</li>
-<li><strong>AMD</strong> — David Tepper dumps Appaloosa&#39;s stake in AMD and Broadcom while piling into NVIDIA trading at 44x forward adjusted EPS. Investment Implication: Short-term pressure on MI400 timelines but long-term relevance remains if export controls ease.</li>
-<li><strong>AWS</strong> — AWS Trainium3 edges out Nvidia GB300 in inference benchmark for generative recommendation models using vLLM. Investment Implication: Strong competitive threat to Nvidia in the inference layer; diversify cloud stack exposure.</li>
+<li><strong>NVIDIA</strong> — Halts AI server shipments to Southeast Asia amid new US export controls. Investment Implication: Supply chain fragmentation may accelerate demand for domestic alternatives like AWS Trainium3.</li>
+<li><strong>NVIDIA</strong> — Pays $290 million settlement for concealing cryptocurrency mining revenue. Investment Implication: Governance risk contained; core AI data center business remains primary growth driver.</li>
+<li><strong>AWS</strong> — AWS Trainium3 edges NVIDIA GB300 in inference benchmark. Investment Implication: Validates non-NVIDIA compute options for cost-sensitive inference workloads.</li>
+<li><strong>AMD</strong> — Opens Agentic AI for Supercomputing with new HPC Assistant tool. Investment Implication: Strengthens AMD’s position as alternative GPU supplier for scientific computing.</li>
+<li><strong>Intel</strong> — Intel cards included in Black Friday graphics card deals alongside NVIDIA and AMD. Investment Implication: Suggests broader market interest in diverse GPU architectures for gaming and workstation use cases.</li>
 </ul>
 <h4>HPC</h4>
 <ul>
-<li><strong>Meta</strong> — Meta pauses nonvoting share issuance delaying a $60 billion AI funding route for supercomputing expansion. Investment Implication: Potential slowdown in frontier model training capacity; monitor for alternative financing mechanisms.</li>
-<li><strong>AMD</strong> — AMD opens up Agentic AI for supercomputing with new HPC Assistant tooling. Investment Implication: Enhances software ecosystem for existing hardware; positive for enterprise adoption of MI300-based clusters.</li>
+<li><strong>TU Delft</strong> — Demonstrates first hybrid HPC-quantum workflow linking DelftBlue supercomputer and Tuna-17 processor. Investment Implication: Validates quantum-classical integration as near-term viable research pathway.</li>
+<li><strong>AMD</strong> — AMD’s Lux Supercomputer runs Xanadu’s largest quantum workflow. Investment Implication: Positions AMD as key enabler for quantum-enhanced HPC applications.</li>
+<li><strong>DOE</strong> — Argonne National Laboratory expands inference service compute capacity with two new supercomputers. Investment Implication: Public sector demand continues to drive HPC workload diversity and utilization rates.</li>
 </ul>
 <h4>Networking</h4>
 <ul>
-<li><strong>Cisco</strong> — Cisco gains from AI networking boom as it competes with HPE &amp; ANET for market share in high-speed interconnects. Investment Implication: Favorable outlook for networking revenue growth despite compute headwinds.</li>
-<li><strong>Nokia</strong> — Nokia discusses how coherent pluggable optics are evolving from terrestrial to subsea networks for long-haul connectivity. Investment Implication: Critical enabler for global AI data center interconnectivity; invest in optical module suppliers.</li>
+<li><strong>Broadcom</strong> — Highlights velocity as new security challenge in data transmission. Investment Implication: Future networking chips must integrate advanced security features alongside high-speed interconnects.</li>
+<li><strong>Free</strong> — Launches network-based AI call translation feature. Investment Implication: Opens new revenue stream for telecom operators leveraging AI-native network functions.</li>
+<li><strong>Cisco</strong> — Gains from AI networking boom relative to HPE and ANET. Investment Implication: Cisco maintains strong position in enterprise AI networking despite competition from specialized vendors.</li>
 </ul>
 <h4>Network Operators</h4>
 <ul>
-<li><strong>BT</strong> — BT and Vodafone eye &#39;spare compute&#39; prize from AI-RAN deployments as telecoms integrate AI into radio access networks. Investment Implication: New revenue stream for operators; potential partnership opportunities with cloud providers.</li>
-<li><strong>T-Mobile</strong> — T-Mobile tests AI-RAN deployment economics ahead of 6G rollout in key US markets. Investment Implication: Early mover advantage in 6G infrastructure; monitor CapEx efficiency metrics closely.</li>
+<li><strong>BT, Vodafone</strong> — Eye ‘spare compute’ prize from AI-RAN deployments. Investment Implication: Telecom operators seek flexible compute resources to support AI-driven radio access networks.</li>
+<li><strong>T-Mobile</strong> — Tests AI-RAN deployment economics ahead of 6G rollout. Investment Implication: Early validation of cost-benefit models for AI-native network infrastructure.</li>
+<li><strong>EE</strong> — Claims spectrum boost as AI-RAN hits London market. Investment Implication: Successful AI-RAN trials may accelerate 5G-A and 6G adoption timelines in Europe.</li>
 </ul>
 <h4>Energy, Power &amp; Cooling</h4>
 <ul>
-<li><strong>SpaceX</strong> — SpaceX to invest over $74 billion in supercomputer facilities in Texas and Arizona for AI training workloads. Investment Implication: Massive capital injection into US-based HPC; supports domestic manufacturing and energy grid upgrades.</li>
-<li><strong>Japanese Firms</strong> — Japanese firms invest in Hokkaido renewable data center using geothermal and wind power sources. Investment Implication: Green energy solutions become critical for sustainable AI expansion; favorable regulatory environment in Asia-Pacific.</li>
+<li><strong>SpaceX</strong> — To invest over $74 billion in supercomputer facilities in Texas and Arizona. Investment Implication: Massive private capital injection into US data center energy infrastructure.</li>
+<li><strong>NYGC</strong> — Files application for 14.4-megawatt AI factory with county authorities. Investment Implication: Local regulatory hurdles persist despite strong demand for high-power compute sites.</li>
+<li><strong>Samsung, SK Hynix</strong> — License YMTC’s Xtacking technology for memory stacking. Investment Implication: Memory bandwidth innovations critical to overcoming power and cooling density limits in next-gen racks.</li>
 </ul>
 <h4>Security &amp; Trust</h4>
 <ul>
-<li><strong>House Report</strong> — House report flags Chinese AI models embedded in US businesses citing cybersecurity and national security risks. Investment Implication: Increased scrutiny on supply chain provenance; favor vendors with clear origin tracing capabilities.</li>
-<li><strong>IQM</strong> — Allianz Cybersecurity Think Tank, Multiverse &amp; IQM benchmark quantum malware detection protocols for future-proofing infrastructure. Investment Implication: Quantum-resistant cryptography becoming essential; early investment in post-quantum security standards.</li>
+<li><strong>Japan</strong> — Shuts down Fugaku supercomputer after cyberattack. Investment Implication: Highlights vulnerability of national-scale HPC systems to advanced persistent threats.</li>
+<li><strong>Allianz, Multiverse, IQM</strong> — Benchmark quantum malware detection capabilities. Investment Implication: Quantum computing advances may soon necessitate post-quantum cryptographic standards in enterprise networks.</li>
 </ul>
 <h4>Governance &amp; Regulatory</h4>
 <ul>
-<li><strong>NVIDIA</strong> — Nvidia establishes National Security and Export Control Oversight Committee to clamp down on compliance risks. Investment Implication: Proactive regulatory stance may reduce long-term legal risk but adds operational complexity to global supply chain management.</li>
-<li><strong>UK Government</strong> — UK ECJU proposes Export Control (Amendment) Regulations 2026 to align with international sanctions regimes. Investment Implication: Fragmented global regulations increase compliance costs; favor companies with robust export control frameworks.</li>
+<li><strong>UK ECJU</strong> — Proposes Export Control (Amendment) Regulations 2026. Investment Implication: Further tightening of export controls could fragment global semiconductor supply chains.</li>
+<li><strong>US Government</strong> — Adds Megaspeed to trade blacklist as NVIDIA’s Huang returns as CEO. Investment Implication: Geopolitical tensions continue to influence corporate governance and executive appointments in tech sector.</li>
 </ul>
 <h4>Economics &amp; Business Models</h4>
 <ul>
-<li><strong>Memory Stocks</strong> — Sandisk outperforms Nvidia as investors return to battered memory chip stocks amid sector rotation. Investment Implication: Memory consolidation offers better risk-adjusted returns than pure-play GPU manufacturers in current macro environment.</li>
-<li><strong>HPE</strong> — Cipher shifts toward HPC leasing model seeking stable earnings amidst stock slide despite record revenue growth. Investment Implication: Transition from hardware sales to service-based models may unlock recurring revenue streams for traditional server vendors.</li>
+<li><strong>NVIDIA</strong> — Forecasts more than $25 billion in Physical AI revenue. Investment Implication: Diversifies revenue beyond consumer GPUs into robotics and industrial automation segments.</li>
+<li><strong>Meta</strong> — Pauses nonvoting share issuance, delaying $60 billion AI funding route. Investment Implication: May slow internal compute build-out but signals shift toward capital efficiency or partnership models.</li>
+<li><strong>Sandisk</strong> — Outperforms NVIDIA as investors return to battered memory chip stocks. Investment Implication: Memory sector showing resilience amid broader AI chip volatility.</li>
 </ul>
 <h4>Data &amp; Knowledge Infrastructure</h4>
 <p>No significant activity this week.</p>
 <h4>Scale &amp; Future Readiness</h4>
 <ul>
-<li><strong>Leash Biosciences</strong> — Leash Biosciences raises $11 million to build training environments for scientific AI applications in drug discovery. Investment Implication: Niche vertical application of AI infrastructure; high-margin opportunities in specialized domains.</li>
-<li><strong>Nexent Capital</strong> — Nexent Capital IFSC launches $1 billion Quantum Computing-ready AI Infrastructure &amp; Advanced Energy Fund. Investment Implication: Significant capital allocation toward quantum-AI convergence; early-stage investment vehicle for frontier technologies.</li>
+<li><strong>Quantinuum</strong> — Led team builds quantum programming tools for real-time magic state distillation on quantum computer. Investment Implication: Critical step toward fault-tolerant quantum computing, enabling broader enterprise adoption.</li>
+<li><strong>Leash Biosciences</strong> — Raises $11M to build training environments for scientific AI. Investment Implication: Niche funding for specialized AI infrastructure supporting biological research and drug discovery.</li>
 </ul>
 <h4>Models &amp; Research</h4>
 <ul>
-<li><strong>OpenAI</strong> — OpenAI says AI agents independently complete nearly half of research tasks that take humans 2–4 hours according to new benchmarks. Investment Implication: Acceleration of autonomous research capabilities reduces human labor costs in R&amp;D-intensive industries.</li>
-<li><strong>IMEC</strong> — IMEC opens photonics research centre in Finland to advance integrated optical computing technologies for data centers. Investment Implication: Strategic location diversification for EU chip manufacturing; potential partner for US firms seeking non-China supply chains.</li>
+<li><strong>OpenAI, Google, Anthropic</strong> — Gain breathing room as Chinese AI developers face delays from export controls. Investment Implication: Western model leaders benefit temporarily from geopolitical friction limiting competitor access to advanced chips.</li>
+<li><strong>vLLM</strong> — Supports Baidu’s ERNIE 5.5 Flash Preview on day 0 with plugin deployment and E2E inference acceleration. Investment Implication: Expands open-source inference ecosystem compatibility across diverse model architectures.</li>
+<li><strong>Leash Biosciences</strong> — Raises $11M to build training environments for scientific AI evaluation. Investment Implication: Validates AI infrastructure investment in specialized domains like life sciences.</li>
 </ul>
 <h4>Developer Ecosystem &amp; Tools</h4>
 <ul>
-<li><strong>vLLM</strong> — vLLM supports Baidu&#39;s ERNIE 5.5 Flash Preview on day 0 through plugin deployment and end-to-end inference acceleration. Investment Implication: Open-source tooling reduces barriers to entry for smaller players; fosters ecosystem growth around specific model architectures.</li>
+<li><strong>Ubisoft</strong> — Scales AI coding agents to 4,000+ developers with Unity Gateway tooling. Investment Implication: Enterprise adoption of AI coding assistants accelerates software development velocity across large organizations.</li>
+<li><strong>vLLM</strong> — Announces vLLM-GR for efficient inference in generative recommendation systems. Investment Implication: Enhances open-source toolkit for serving complex recommendation models at scale.</li>
 </ul>
 <h3>Key Developments in the Vendor Ecosystem</h3>
 <div class="table-wrap"><table>
@@ -216,196 +264,185 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <tbody><tr>
 <td>NVIDIA</td>
 <td><span class="sig-down">↓</span></td>
-<td>Nvidia stock falls 8% amid AI chip sell-off and export control reports.</td>
-<td>High volatility; sentiment pressure from regulatory and market headwinds.</td>
+<td>Halts AI server shipments to Southeast Asia and Thailand due to new US export controls; stock falls 8% amid sell-off.</td>
+<td>Negative: Supply chain disruption and regulatory headwinds impact revenue visibility and growth trajectory.</td>
 </tr>
 <tr>
 <td>AMD</td>
-<td><span class="sig-down">↓</span></td>
-<td>Shares slide in AI chip sell-off alongside major competitors.</td>
-<td>Negative momentum; broad sector weakness impacts valuation.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Shares slide in broader AI chip sell-off but remain relevant in HPC; opens Agentic AI for supercomputing.</td>
+<td>Neutral: Market pressure persists, though technical advancements in HPC maintain long-term relevance.</td>
 </tr>
 <tr>
 <td>Intel</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Mentioned in Black Friday graphics card sales context.</td>
-<td>Neutral; no specific news event this week.</td>
+<td>Included in Black Friday GPU deals and supercomputer rankings; faces ongoing market share challenges.</td>
+<td>Neutral: Participation in key markets suggests resilience despite competitive pressures from NVIDIA and AMD.</td>
 </tr>
 <tr>
 <td>TSMC</td>
 <td><span class="sig-up">↑</span></td>
-<td>Included in analysis of stocks benefiting from Jensen Huang&#39;s return.</td>
-<td>Positive sentiment linked to Nvidia ecosystem recovery.</td>
+<td>Plans $22.6B chip fab with 2nm tech in Texas, signaling strategic expansion despite geopolitical tensions.</td>
+<td>Positive: Major capital investment indicates confidence in long-term demand and geographic diversification strategy.</td>
 </tr>
 <tr>
 <td>Broadcom</td>
 <td><span class="sig-down">↓</span></td>
-<td>Shares lose 6% as AI chip stocks tumble and investor interest wanes.</td>
-<td>Significant downside pressure; regulatory and market risks cited.</td>
+<td>Loses 6% in AI stock sell-off; investor scrutiny increases regarding revenue disclosure and crypto mining ties.</td>
+<td>Negative: Regulatory and market sentiment risks weigh on valuation, though core networking business remains strong.</td>
 </tr>
 <tr>
 <td>Google</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Mentioned in various contexts including networking and data center news.</td>
-<td>Neutral; not a primary subject of major negative or positive events.</td>
+<td>Expands inference capacity with new supercomputers; continues AI-RAN network advancements.</td>
+<td>Neutral: Steady progress in infrastructure and research offsets broader market volatility in the sector.</td>
 </tr>
 <tr>
 <td>Microsoft</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Mentioned in comparison articles regarding AI infrastructure stocks.</td>
-<td>Neutral; no specific company-level news event this week.</td>
+<td>Analyzed alongside Meta regarding AI capex impact on free cash flow; involved in quantum tools development.</td>
+<td>Neutral: Heavy AI investment is weighed against current earnings, suggesting a pivot to future value creation.</td>
 </tr>
 <tr>
 <td>OpenAI</td>
-<td><span class="sig-up">↑</span></td>
-<td>AI agents complete research tasks independently, boosting efficiency.</td>
-<td>Positive innovation signal; operational advancement noted.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Gains breathing room as Chinese developers face delays; shares perform well relative to peers.</td>
+<td>Neutral: Geopolitical headwinds for competitors may indirectly benefit market share dynamics in the long term.</td>
 </tr>
 <tr>
 <td>Meta</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Pauses nonvoting share issuance delaying a major funding route.</td>
-<td>Neutral to negative; capital allocation strategy change.</td>
+<td>Pauses nonvoting share issuance, delaying $60B AI funding route; involved in HPC supercomputer rankings.</td>
+<td>Neutral: Strategic capital allocation adjustments reflect cautious management of high-cost AI infrastructure expansion.</td>
 </tr>
 <tr>
 <td>IBM</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Mentioned in news regarding Huawei conviction and legal outcomes.</td>
-<td>Neutral; secondary mention in broader industry context.</td>
+<td>Mentioned in Huawei legal context and quantum computing reports; maintains presence in enterprise services.</td>
+<td>Neutral: Legal outcomes for partners and continued quantum research keep the company relevant in hybrid computing.</td>
 </tr>
 <tr>
 <td>AWS</td>
 <td><span class="sig-up">↑</span></td>
-<td>Trainium3 edges Nvidia GB300 in inference benchmark tests.</td>
-<td>Positive competitive signal; technical performance improvement.</td>
+<td>AWS Trainium3 edges NVIDIA GB300 in inference benchmarks, showing competitive hardware progress.</td>
+<td>Positive: Improved benchmark performance signals strong product differentiation and potential market share gains.</td>
 </tr>
 <tr>
 <td>Anthropic</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Closes higher despite broader AI infrastructure stock declines.</td>
-<td>Resilient; outperforms peers in current market conditions.</td>
+<td>Shares gain 10.98% as AI stocks rebound; benefits from broader sector rotation away from battered peers.</td>
+<td>Neutral: Relative outperformance suggests investor confidence in safety-focused AI models and governance.</td>
 </tr>
 <tr>
 <td>Meta</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Pauses nonvoting share issuance delaying a major funding route.</td>
-<td>Neutral to negative; capital allocation strategy change.</td>
-</tr>
-<tr>
-<td>IBM</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Mentioned in news regarding Huawei conviction and legal outcomes.</td>
-<td>Neutral; secondary mention in broader industry context.</td>
-</tr>
-<tr>
-<td>AWS</td>
-<td><span class="sig-up">↑</span></td>
-<td>Trainium3 edges Nvidia GB300 in inference benchmark tests.</td>
-<td>Positive competitive signal; technical performance improvement.</td>
-</tr>
-<tr>
-<td>Anthropic</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Closes higher despite broader AI infrastructure stock declines.</td>
-<td>Resilient; outperforms peers in current market conditions.</td>
+<td>Analyzed alongside Microsoft regarding AI infrastructure stock edge; involved in HPC supercomputer rankings.</td>
+<td>Neutral: Strategic positioning in AI infrastructure suggests balanced growth despite high capital expenditure needs.</td>
 </tr>
 <tr>
 <td>Oracle</td>
-<td><span class="sig-down">↓</span></td>
-<td>Investor interest shifts away from Oracle as memory stocks rally.</td>
-<td>Negative relative performance; capital reallocation to competitors.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Mentioned as a potential alternative to Micron for memory/storage; analyzed in AI stock buying guides.</td>
+<td>Neutral: Analyst comparisons suggest it may be an undervalued play in the memory and compute storage space.</td>
 </tr>
 <tr>
 <td>Cisco</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Gains noted in context of AI networking boom analysis.</td>
-<td>Neutral/Positive; sector tailwinds acknowledged.</td>
+<td>Gains from AI networking boom; compared against HPE and ANET for growth potential.</td>
+<td>Neutral: Strong positioning in AI networking supports steady revenue growth amidst infrastructure buildout.</td>
 </tr>
 <tr>
 <td>Nokia</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Discusses coherent optics evolution in network infrastructure.</td>
-<td>Neutral; technical development without immediate market impact.</td>
+<td>CEO leverages NVIDIA backing to court VodafoneThree; involved in 5G-A low-altitude network deployments.</td>
+<td>Neutral: Strategic partnerships and regulatory approvals drive incremental growth in telecom infrastructure.</td>
 </tr>
 <tr>
 <td>Samsung</td>
-<td><span class="sig-up">↑</span></td>
-<td>Leads Asian chip stock rally as AI crash concerns ease.</td>
-<td>Positive recovery signal; regional market outperformance.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Partners with SK Hynix to license YMTC&#39;s Xtacking technology for memory solutions.</td>
+<td>Neutral: Technology licensing agreements expand ecosystem reach and potential revenue streams.</td>
 </tr>
 <tr>
 <td>SK Hynix</td>
-<td><span class="sig-up">↑</span></td>
-<td>Leads Asian chip stock rally alongside Samsung.</td>
-<td>Positive recovery signal; regional market outperformance.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Licenses YMTC&#39;s Xtacking technology; compared against Micron in AI memory market analysis.</td>
+<td>Neutral: Strategic partnerships and competitive positioning in AI memory suggest balanced growth prospects.</td>
 </tr>
 <tr>
 <td>Micron</td>
-<td><span class="sig-down">↓</span></td>
-<td>Shares slide in sell-off despite analyst price target adjustments.</td>
-<td>Negative momentum; sector-wide weakness outweighs specific news.</td>
+<td><span class="sig-neutral">→</span></td>
+<td>Shares slide with other AI chips; analyzed against SK Hynix for AI memory market edge.</td>
+<td>Neutral: Market volatility affects valuation, but strong positioning in AI memory remains a key asset.</td>
 </tr>
 <tr>
 <td>Supermicro</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Mentioned in reports on AI server shipment halts due to export controls.</td>
-<td>Neutral/Negative; supply chain constraints impact operations.</td>
+<td>Halts AI server shipments amid new US chip export controls alongside NVIDIA and Dell.</td>
+<td>Negative: Supply chain disruptions due to export controls impact immediate revenue and project timelines.</td>
 </tr>
 <tr>
 <td>Dell</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Included in analysis of stocks benefiting from Jensen Huang&#39;s return.</td>
-<td>Positive sentiment linked to ecosystem recovery.</td>
+<td>Halts AI server shipments amid new US chip export controls alongside NVIDIA and Supermicro.</td>
+<td>Negative: Regulatory constraints on hardware exports create near-term supply shortages and revenue uncertainty.</td>
 </tr>
 <tr>
 <td>HPE</td>
 <td><span class="sig-down">↓</span></td>
-<td>Stock slides to 6-month lows despite record revenue growth.</td>
-<td>Negative market reaction; valuation pressure persists.</td>
+<td>Stock slides to 6-month lows despite record revenue growth and upbeat forecast due to valuation concerns.</td>
+<td>Negative: Market sentiment lags fundamental performance, suggesting a potential short-term buying opportunity or sector rotation risk.</td>
 </tr>
 <tr>
 <td>Quantinuum</td>
 <td><span class="sig-up">↑</span></td>
-<td>Demonstrates quantum programming tools for real-time magic state distillation.</td>
-<td>Positive technical milestone; advancing quantum capabilities.</td>
+<td>Demonstrates quantum programming tools for real-time magic state distillation on quantum hardware.</td>
+<td>Positive: Technical breakthroughs in quantum computing validate the company&#39;s leading position and commercial readiness.</td>
 </tr>
 <tr>
 <td>IQM</td>
 <td><span class="sig-neutral">→</span></td>
-<td>Enters partnership with QAI in quantum computing sector.</td>
-<td>Neutral/Positive; strategic expansion noted.</td>
+<td>Benchmarks quantum malware detection alongside Allianz Cybersecurity Think Tank and Multiverse.</td>
+<td>Neutral: Participation in security benchmarking validates technical capabilities and expands enterprise trust.</td>
 </tr>
 <tr>
 <td>Marvell</td>
-<td><span class="sig-neutral">→</span></td>
-<td>Cash gap analysis highlights financial dynamics with Broadcom.</td>
-<td>Neutral; financial relationship scrutiny continues.</td>
+<td><span class="sig-up">↑</span></td>
+<td>Climbs 6% in market rebound alongside AMD and Intel; noted in AI chip stock analysis.</td>
+<td>Positive: Strong momentum in the broader semiconductor sector drives valuation recovery and growth expectations.</td>
 </tr>
 </tbody></table></div>
 <h3>References</h3>
+<blockquote>
+<p>The 100 highest-priority articles this week by strategic importance.</p>
+</blockquote>
 <ol>
 <li>NVIDIA Developer <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPckliak56RFg3OUw3ejdwRVB3eUtTZE8xYmtPTlRieWtNT1lIbUhwSzJBc1hMMWJZRjZ1eTQ5ZmhJUFppcU9ZdDdMaXY4bDlVcVZlODFvOS02Z1NVMGgyd2xlemIxZF9ueDJmSVpKNDZxRUdNUlhKOHc4aGdFVGNpbHZPS1JEeU9JREVQcnMxUTdpSWpoZjQ1VmJycVZyeDB3cVhYenJ1RGk5OWtJZlZiV0NVRjFFUkE?oc=5">&quot;Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension | NVIDIA Technical Blog - NVIDIA Developer&quot;</a></li>
 <li>NVIDIA Developer <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNmJ4SEtfa1duOFdhTE94WkhpVkt6VGVpa1hHMWlmZEI3S3hMZnRrSEZQeGRTQktiSTZ6Qi1Cd3FUc0h4NVB4RFRsc1FXRXJZdnpzWlhmMjhwLWlELU5uNEFheGgtNVg0Nl90QTJtSkc4bTFOUzMtV2VsWDlMOXVEYlQ2bk9XN1R3WG9IMnBLS3lnOGE2NU9lRVRvMW1ZdEtUOVZjZEJVSkJXTmtUREhWTS12SHIxOUFP?oc=5">&quot;How to Optimize NVFP4 Attention on NVIDIA RTX Blackwell Through Register Recycling | NVIDIA Technical Blog - NVIDIA Developer&quot;</a></li>
+<li>NVIDIA Developer <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQRWNZV08wMzB1TkxsUUlUUlJfSnZiMnJ2eDJOMC1DT2Ezb0kycDg1bFlLZ19DQzR0bVVVMldiYUdXeDZjS0N2dGhFdmlqSEJBTmloTlN2cjYwS0MybVVTU0MyVXhjWXJ5V0Rrd3ZTSmVZcmMwOVA1ZEQ3LXNkY1hFYUVsMDh5cUpJQ0JGNUptZ0QtZC1sWmdVajlleTltTmRyNzIyeTVyT0RkX292ZHlj?oc=5">&quot;How to Run NVIDIA Cosmos 3 on Local AI Devices Using Hugging Face Diffusers | NVIDIA Technical Blog - NVIDIA Developer&quot;</a></li>
 <li>Developing Telecoms <a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxPRFlzNFhxWGVRcmNDeFFHVUhnMU9PeHVaZlRMUy1ua0hWVEpvN1FsSnBLNmNPTFkzRWRWcFdrZFNCaFNMT1JuUHctME5kNWhQNF80VTE3czlLNFNTVEJHVVpZX3FGUElWbnZVTVo1eXZSLTVnYTBQYUduMWppQU83RkR2STB6NzNYRlFVYkRZeVhRTTNLTVRRQjZaZXFMb2wzYk1PSk1pRWZ1cmpfRVVDODUtaVNaRWpid0VxdUduV21vemgwcTQ1enBodzBQR1U3M3NJ?oc=5">&quot;Nvidia’s manufacturing partners halt server shipments to SEA: report - Developing Telecoms&quot;</a></li>
 <li>GameGPU <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNaGJjMEdqdTQtLU13T1ZyeTlYRTVNcXExdDhkMW5jQWJEaTJiVFR3TXhyY2FzM2syZndDdG9ERnl5Njg5THBFYnhIazdkcXp6MEdDRThvVE4tNy1FWEpQNUFQY3o2OHhCVkx5cTR5SzdSR1ktcGZOVF9vc1RiU2dFOWdSeEdadVc5OTlFWHFIOUlYUDROZk1hV0ZSYTdmMWFfM0ljNFBNLXE3VDBNTHg4VENhbGxVeEowM0gxZERCRjg?oc=5">&quot;NVIDIA to pay $290 million to investors for concealing cryptocurrency mining revenue - GameGPU&quot;</a></li>
 <li>Coinpaper <a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxONF85SUh3R2x0TlBfdGZpZDh1c3FQWW1OYjRwUm9mT2pUNzhVaGI0c25NXzlHNklvbHJBQ252Si1fNUV2eWJJTlZsZk1DWkE1YTN2bGgtN2xKazliN1B6a0hVYVpsS0VQb2VWWE0xblN6RTdNeThvVk5PeUhyZHJFMWw1OFQyYjRWTkpaSF9aRjR1ODJRbHRKY2F2ZXhNcVFCaG1IVVBmbFdab213SDctOVJR?oc=5">&quot;Nvidia, Dell and Supermicro Halt AI Server Shipments Amid New US Chip Export Controls - Coinpaper&quot;</a></li>
 <li>The Motley Fool <a href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxPU1dIcDhlS2FYSF8tNWxKUHJXOFJBTlNRc0JYZmgwNWY3NENaR3ptdGdJaktXbC1SMzhFTXFadEpjTS1nSW5Lai1PaWVBU250c2MxVFpuMVR5SWhCblU4aUpaNHRBcS1ZaEhzVmlQY3h1aXJsdkxkMUhIWjlzaWtmYnZUM3JKelpfTUxJR2pFV3JBanhPYno3a0xKVXY2MExxYVhiTXhJNFBIeU1YVXdiS1dod0JXbW5tQkVhWFJ0VjNXaWliYVRWbjY2bFRCZUtqb3Bzcy1xUTFFbjIwZ05WdUJZeDFhUFZ1?oc=5">&quot;Billionaire David Tepper Dumped Appaloosa&#39;s Stake in AMD and Broadcom and Piled Into an Artificial Intelligence (AI) Stock Trading at 44x Forward Adjusted EPS - The Motley Fool&quot;</a></li>
 <li>Hindustan Times <a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxQZFJpak9sYjJienBIa29RakxPQ0IzNXBxaXFGU2J5eHR3SVFIakVVb0J3NVAzckJZSXBjVlRqT0NuTWdFd3dNM1ZoMEZGLW9mbTBmVF9nZnNSbExNUU1WX3VnQUxmY3R2eUVEUGpPVlJlVk93cmhiWVRNTlgyUVZMWmg5WmxEVENQSk1MWXMxN1dxcV9abjV0YjZMdUZxUGVyWGNQcHdWelBVQzdGZ09BQldnS0ZZVjVINHFLa0xrR01ZN19GVzVtSFdwckxBaV9wcnJtUEI1N0VSWFowUWJxRjhGajFhUE1fTnhJU2FWZU44Tlk40gH0AUFVX3lxTFBkUmlqT2xiMmJ6cEhrb1FqTE9DQjM1cHFpcUZTYnl4dHdJUUhqRVVvQnc1UDNyQllJcGNWVGpPQ25NZ0V3d00zVmgwRkYtb2ZtMGZUX2dmc1JsTE1RTVZfdWdBTGZjdHZ5RURQak9WUmVWT3dyaGJZVE1OWDJRVkxaaDlabERUQ1BKTUxZczE3V3FxX1puNXRiNkx1RnFQZXJYY1Bwd1Z6UFVDN0ZnT0FCV2dLRllWNUg0cUtrTGtHTVk3X0ZXNW1IV3ByTEFpX3Bycm1QQjU3RVJYWjBRYnFGOEZqMWFQTV9OeElTYVZlTjhOWTg?oc=5">&quot;Nvidia stock falls another 5% as AMD, Broadcom and Micron shares slide in AI chip sell-off | Hindustan Times - Hindustan Times&quot;</a></li>
+<li>Britannica <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1FMGstclM1R3lESkhtUUVPTDBHZktQWWMzcTFXa3VIR2FOcTJLcy1wQnlLMHo5MDRXeS10UTJudHRxNmpFX2hyWUZzX1ZTaVpBTng3VXBGT3ZGa0FrTXhHMg?oc=5">&quot;NVIDIA Corporation | History, GPUs, &amp; Artificial Intelligence - Britannica&quot;</a></li>
 <li>Coinpaper <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPb3dOM3puTnBWVThSSmVLWTU3MU5WekpYbEpsNDVtbmRJUHJQQkFkNHctZ1JIM2xrZTRsbzhOUVhmZTQ5Ti13a21ael9MdWF6cVV2b1d2SEtfUjFoVFE5SkFPa09TMzhrODlqM3R6ejJMNGhGa2s0YTRhT0pRY054SjNKVERUalhRYUNPUEx6UFN6VzJhTkNkNkUxSGs0blpFUVpycHp1Z0Foc2R3Q0E?oc=5">&quot;AI Stocks Crash as Nvidia Falls 8%, Broadcom Loses 6% and CoreWeave Plunges Over 10% - Coinpaper&quot;</a></li>
 <li>CryptoRank <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOQWNwdk9iS0JsX0pwSEgxRE85ck5VUnN5VHVBc3lOZEVJMmxpNGlIU0p6VXVGSTZTNUdTVzRxNmQtRDA0TFRURFJ2eVVQV1hmdmpmdVd5a2N0TWFtcHdweHhkNjN3UnFSYmZERHEzZkNQQWJ0OW54VUtTWE41VGJIQWx6a2V2cDh6bXNfblkwUzl3amM1ejRzUTE2WDJndUJzOTBLWmxsTUFIQjJibl9aLXhNOVdDNkswcFVj?oc=5">&quot;AI Stocks Crash as Nvidia Falls 8%, Broadcom Loses 6% and CoreWeave Plunges Over 10% - CryptoRank&quot;</a></li>
 <li>Hindustan Times <a href="https://news.google.com/rss/articles/CBMi7wFBVV95cUxPV0hoVmhWelhVVFRTQkFSQW90ZzJsWTdYUldLeUZoUGNYRzczTGt2aTBuTUozYldud3JQRGlkUFVOMGFBYWxuRHlXTjhTUGp2MW56OGVGZFVpekxQT1o2NlFaVXFadFFGLUNLVjVZbmdSUlhxNVh0TDliVDJ6Z1ZrU1g2VGlWUFIzYS1NU3d3TFlrRHlnWUYydVE3ZC1nSHE2OHNpTEtNMDRRbGItdUhmSmRUVUlXNGhZSWRxWlZsalRWaEhNa2RzbkdIWm5TXzZqQnlzS2N6d0VKWWNuck81S0I2b3VxOEJ6aE5yN3JMVdIB9AFBVV95cUxQZFJpak9sYjJienBIa29RakxPQ0IzNXBxaXFGU2J5eHR3SVFIakVVb0J3NVAzckJZSXBjVlRqT0NuTWdFd3dNM1ZoMEZGLW9mbTBmVF9nZnNSbExNUU1WX3VnQUxmY3R2eUVEUGpPVlJlVk93cmhiWVRNTlgyUVZMWmg5WmxEVENQSk1MWXMxN1dxcV9abjV0YjZMdUZxUGVyWGNQcHdWelBVQzdGZ09BQldnS0ZZVjVINHFLa0xrR01ZN19GVzVtSFdwckxBaV9wcnJtUEI1N0VSWFowUWJxRjhGajFhUE1fTnhJU2FWZU44Tlk4?oc=5">&quot;Nvidia stock falls another 5% as AMD, Broadcom and Micron shares slide in AI chip sell-off | Hindustan Times - Hindustan Times&quot;</a></li>
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxPZlFHMUxxYkptX1RuUVVSbmwzSTJzY1R3N0VHQnBxakF2TzQwY1lheWFLSVhlSkY5TnJlaVBlZlpMTFo3Sml1M1ZEQnZ5VHZYekVpRHV0YTk3UnNvbUZzVzA1S201NkdCSjRvc0c4NXNtSkFBSFZTYUg0U1dlXzJsMXFrbUFQYm1DN1dHYW00eUR0Mjl2YlBRb3ZTams1ekNlNlBVaFpoaEx6d19mNVlyMmRuanM1Z1JQbmFBdGo0Nm02N2VLZGVBSHA3N0E?oc=5">&quot;Nvidia, AMD, Broadcom lead chip stocks lower as AI trade comes under pressure - Yahoo Finance&quot;</a></li>
 <li>Data Center Dynamics <a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxQem01TUZwd3Z3TzJWaWE3dnFoWXZ1blN6Y091MVlpaHJ3bGJsX25YYjJSMEN1MHNCMU5jSll5Y20zMjNGamdrbmxveU92akM2d3V0WkZrOXozaEotWTAyblRlWlg5Xy16aWRqU2dvX08tS2o5NzRsUXdBaW5rRHRuSld5MHZNVVMxSUdtSWRrNE1KSlV6MUdsejFybk1zVDY4SlQ3NVl1WnJYMnZLS2p5N3luM2NReHllOW5Pd2dGMVB6c012ZnR3Zm50eVYtSHRXaWJkVG0tY1p3ZDJNekU1SE1HV0lkdw?oc=5">&quot;DOE’s Argonne National Laboratory expands its Inference Service compute capacity with two new supercomputers - Data Center Dynamics&quot;</a></li>
-<li>Intelligent Living <a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE04emFvVFFiTHJFRE42LXRGdVdCemRBYjB3c1pweTk5ZXU0clZHNmdkV0phaFhYVDhGYnNVaWlpc0JBaGZTSTV6U0ZXZVRjV2g3d0R6SjhlMTQ5X0FKWjZvdENsdGdJZlNSWWVKT2pTQVM1SGVq?oc=5">&quot;Inside Horizon, America’s Most Powerful University Supercomputer - Intelligent Living&quot;</a></li>
+<li>Quantum Computing Report <a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxNaHI0UkQtOUhyNzJxNTNsQ2ZEMHRUTkhhb1Q2RkVOM2NNSE52WWh3Z0k4dmZrOTB2RE9HYXVkOG5MY2VGeG5hZVY4SFQ3bXZTNlpQbkZXZG0yRUFETVFRZUxKQTRDbjNtNWNDQUNqNGVHUkFzOUlubFA0SEZheGFiczRaYTB2SEtnUER3VVZZNU1sbWVWRzZ1c1N1bWlyRTdwTEc4R2RWVTVxa3RPNlZRSTNKdS1RZDFpN1NpVjI3Q290VUdhcWJtQVNPMmVwTDRKVWVSZUxSQkVqbC14cFHSAeMBQVVfeXFMTlpSSV9CNTV0S3FHYWhyTlltV2s4anZfRl8zMF9ZR2hPSGQtamx0aG5FU1V0ZWlZV1JjcWF0aERKMnEzakJxTWdSMjJ6Y1JQTExyR2dYZ2k2blJGYkZGOXJtVW5yTFowWUV4N2NFTnoxMDlTeUpQR1hRRld4UURMQXhOaHB5OG1BX2t6M0VaUkJEaWRKQzhzZXhWTlNUMWcydFRSZ0VGc2pZdkZ0VmJ3NVJpNkNkalJjREJGSFlYR1RkMFpaS2R4OUh1OUd6dUlEdEVPNlNDV0xKdzBkSmZCNzZ3c3M?oc=5">&quot;TU Delft Demonstrates First Hybrid HPC-Quantum Workflow Linking DelftBlue Supercomputer and Tuna-17 Processor - Quantum Computing Report&quot;</a></li>
+<li>ET Datacenters <a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxOOWR6b05UaW9kcFk5ZUJTVlljNk85VV9xWUhmbzdKc0FacDVwVU5WMmsySnJIMkdYTnJxbUZZS0M4Y1gwTjMzdTh0MDZfb3hHRTBQaW8tYlpqcThyZ2YyQ2ZZUUt4UjRIOGN2UEdwcTNrdERrNTd1VW1tUDJhbHpXU015bUFrMnIxdXRNYTFtNmx2OVFDZWFKSHlzUVFqNnU2dWhzNF8xUFU1N3BhX0x0SEVNTHI3TDhkOGlpVjFzMWVleHVwVXFIQ1F4SURRVjQtNlU2Z2VSeWNIM2NRZnBuUG83ZWozSlEyVWlMYVMwT0RSQdIB8gFBVV95cUxOOWR6b05UaW9kcFk5ZUJTVlljNk85VV9xWUhmbzdKc0FacDVwVU5WMmsySnJIMkdYTnJxbUZZS0M4Y1gwTjMzdTh0MDZfb3hHRTBQaW8tYlpqcThyZ2YyQ2ZZUUt4UjRIOGN2UEdwcTNrdERrNTd1VW1tUDJhbHpXU015bUFrMnIxdXRNYTFtNmx2OVFDZWFKSHlzUVFqNnU2dWhzNF8xUFU1N3BhX0x0SEVNTHI3TDhkOGlpVjFzMWVleHVwVXFIQ1F4SURRVjQtNlU2Z2VSeWNIM2NRZnBuUG83ZWozSlEyVWlMYVMwT0RSQQ?oc=5">&quot;Frontier supercomputer faces uptime and workload efficiency challenges - ET Datacenters&quot;</a></li>
 <li>Superpower Daily <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxNOTJBLVdKVUNRVkFWNEhsWHJrZ1VPTVFncHo0djlnMzBFTUFsVWtNeC00Rk1HUWtoRloyaEhpcDNGSzdES2JrV2E4WGUzTW1GbGViSmhuc0F4RjR5VHlHbzlDOS1xdjFjUUtQTFNGNmE2SXpVMlFXTFFleTBYQkgzbG9BWHdVMXJvVGtmLVMxcjRsZmw3amQyR1ZfeENGb3VhcG5kNV84ZWZidDJ2dlE?oc=5">&quot;Meta pauses nonvoting share issuance, delaying a $60 billion AI funding route - Superpower Daily&quot;</a></li>
 <li>HPCwire <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNVFl4dlhlZzVkSXNFU2c2NXMzZHkyVmFQYUFGUm9WVl9XWUhTWW9GbWp5Zy1LOVNhbjFYb2NfRUd3aFdSQ3lHOHQyeTJrSXJvaHZZZktGUFpzcHU5TndGakwzQUE1UG9xcVVFakdCdkRobG9tZW54bEZFS2ktQzdNeXFWc1J4bjZJbmwwbV9ZSzE0UWVnS2RKa2RuY0Q2ZTNrTjVoa3dPRTR1ZTJz?oc=5">&quot;AMD Opens Up Agentic AI for Supercomputing With New HPC Assistant - HPCwire&quot;</a></li>
 <li>HPCwire <a href="https://www.hpcwire.com/off-the-wire/jupiter-remains-among-the-5-fastest-supercomputers-and-europes-no-1/">&quot;JUPITER Remains Among the 5 Fastest Supercomputers and Europe&#8217;s No. 1&quot;</a></li>
 <li>Telecoms <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNbGJpM3VCTjJaY0JZOEFWb05wOEdySlhVcFd0MURzNWNicTlMdGt2VXZ4aTMyenRhdEthVW9tQVNLZkJZZ3FEbXJGOFN1SkhMMTNxX1M3c21FQjNxMVliRzlwYVFZQjF5U0FOdmZjemRaTS1uV1ZXNGk3WWRmbnBaTw?oc=5">&quot;Free launches network-based AI call translation - Telecoms&quot;</a></li>
-<li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOSzMtaEd5MFl6ZzBqakUteThEdGIxbDRaenNKVFcxd1pUWUdpUi1acDNSM1pxc2dOSERndUZXczlzeUNDYXk0eUR1YVk4M0pObmU2UGJTV25NTEtyUk03R05PdW5Bd0JySk13c2ZCYktZLWVtRjJiN1ZJMjRfVzA2V0hPSnN5ZzRpN1NWMkZGZ3FRUHI3R1B5eDByNkVpRHhPX0pSbThDTmprR19j?oc=5">&quot;PENG vs. APLD: Which AI Infrastructure Stock Is the Better Investment? - Zacks Investment Research&quot;</a></li>
 <li>Telco Titans <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNODB5ZlNuSk1SWUZoNk5TVmlUQjBEQl9PSUNzcjk4ZV9NbTBEZTZFR3U4Zzczb1FkQXRiczYxX1VLMHNXR1k5N2hqdVpyMTJ5UE1KeDJNM3J1YTFiQ2NGZE5pRDhqU3FDeFRtSDhJVTN4Z2hCWWRVcHBSY0JQZF93MHF0UnF0MjNJSDdtOFlhQW11MF90VVNCdGlRY0ZIUQ?oc=5">&quot;BT, Vodafone eye ‘spare compute’ prize from AI-RAN - Telco Titans&quot;</a></li>
 <li>Telecoms Tech News <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNTTdhYV80am9zSGdjSGhXd1hpbzZQWHlNdDUwbko1TzYyOTFKYmhPcWFZaHYxak5jZ09wR0FxdFMwOWQxR211bE8xVm93Qzhwa1prRnJXdlc3Zy1qRTRSR052SDFoeGNmb2xvclFzNmZVamlJMUxwSHV0VkM3RlBtTUdJYVo?oc=5">&quot;T-Mobile tests AI-RAN deployment economics ahead of 6G - Telecoms Tech News&quot;</a></li>
 <li>Telco Titans <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPU3V6Z0tvSUNwNkVoaTZTMWFSZUVoMFhqRDYzYThVNVdmbXRqOTRZVjVJZDl0cExhRF8xZ0JwZXFXa2ptUnhCbTl1NUZ5RWdtU19VNVlnR1B5UU5zMHFCN21QWUt6eGVqM3l2OVJ4MFI2eFhBVDNRWlY4dUx5eS1STWdJU1RsWEdIX3RJb0lPZVloRFRzZVhKTFh6Ulk?oc=5">&quot;EE claims spectrum boost as AI-RAN hits London - Telco Titans&quot;</a></li>
+<li>TelecomLead <a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxOS1Y1bWVnMWt5eFlWWEpQWGZsQVJYaW9fbWJlNnZ6SU5lcGI3MWVneFpleXdkam5YUnZhZXNRYWpMNWlfd0JncERkUVRXd0JLQURYUWx0VEVIdjg2bXhDX3hfSUhaaDB0cHlTRG9uWmp1V3hSQXVBRnN0TFYtTDBwNTI1VU5LR2V2RjA2X2E3OWllS29IVWdIWC1pY09VdmxJM0lPQ3o0cWQxalpOdTJoX1hjUUNlc3hjRU9TcXJKUUtiTkMwU3pfMWdLek1kVUFWLVdnYWYwdndTWm1scGpMTzkxRdIB6wFBVV95cUxQNVJrM01WbUdqS0JlTUVTQ19rNUE2c01KdGNWZHZYaWpkN253NFc5bGFXVkJCZE1kSUpQYXJkWnJkd1RXQURfWDFsOWZNYm1zYXlONThKVG82WjE2RVVtekw3cHlndkp0ZnBaMVpLQXZMcnRNaDM3VjN0b3dPcVJSX0xIY2Jtb05SMktEbFIxc0RrTWJtdWliY29jWWxWMXVVN04xV2RhVFlpS0pfdmFSUmoxS3lUZm05dGVld2ZteTNYTTdoVzQtQ3M4S3lWVHF0a3BIZ2dQU1VLZ2pTVGVicjlqSWE5V2dpdjNj?oc=5">&quot;Autonomous RAN: How NTT DOCOMO, SoftBank and Global Telecom Operators Are Advancing AI-Driven Networks - TelecomLead&quot;</a></li>
 <li>Telecoms <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPUjZjbWpfQVlfWUdNaEpETHU1ZS1VWndqSVFvWjhrZG10cXNiRlE0VHdfTVhDMllaS2ZCa0tTTEdYZkZFVlBGTXFickhaQnQtY2FzZElHQ1o3b0M4eWo5R1JWb1dFNG5XZC1icU94M25BTVJCZ21YR2xxVE5WZjI0UjVrc1ZmOGE2YThaaUUyX1hZTVhpcEt6Vjdwb202MURpTXAyUDVZQQ?oc=5">&quot;Turkcell and Huawei deploy 5G-A low-altitude network for hot-air balloons - Telecoms&quot;</a></li>
+<li>The Mobile Network <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxQSklKWUJVMFByLTdrU3lUYlZzZ0M5Tm5GRlZscmNKZEZ1R2ZuOTRXN0RldkZ2bkZlN0NIVzhjaHg0dlR3dThnUmR0OGo4dVM5akpDZE9QTmdwLWVnMk4wSlM1VkpZSmpGenZfWm8teVExY1oxTzN1S0FONGg3S1BmWlR6bWtTSDE5ZkJfdkxVcS1KZw?oc=5">&quot;Costing Starlink’s plan for a terrestrial network - The Mobile Network&quot;</a></li>
 <li>Telecoms <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQTkZUUVhCVm82V3pLZnBsQzhicXlwNlhlSmZneWw1cWRqVEtVUElLa3BQOTlhblZObXllejRqV3RKTmVXR1hudng1SnVUR0pydXBIbENfLWJsLWFuVzl0b2JyUWR2UWcwcnl1cUVDOXh6YndSZUZJMGl1UFlGaWdCbVdqakdyeHJnUWZBSQ?oc=5">&quot;Orange offloads Belgium fibre network for €800 million - Telecoms&quot;</a></li>
 <li>Superpower Daily <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQYkFxUldydlJ3WHBnMTRxRmljejM0b05zc3JfVU9fZ0k1REVLV3F1WElqeWstT2VhVHJGWEFxT2VDMXQwMDF4V0lXYldwejRRaGgyUXlhelVNdTZFWXU0WURnVzZqT2ZQVE80eHgyN2dKemE5SGREQUhTeU5DRFpUQVJPM2dDM0ZqSjI1NVJVWmdDeFZSLXJVdFUxWEZXa3B0Sm5leWhEbXh2T1pMOTA1ZkM5OTNGSnpkWFE?oc=5">&quot;Researchers show sandboxed AI agents can pass hidden messages through shared servers - Superpower Daily&quot;</a></li>
 <li>TipRanks <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTjh4UHdxbHJvVktyRENMdk82SnIydjI4ZWt0MXhYMDJ0eFZXbUtVZDV4S0ptSUsxRnQwOXFpc2JXUzFKWTNjVzN5Z00xYklEOEF6UXpjS3BDc3Y0TE9kekNrdG1oQ3IyQ2o3UXJJTGdxOTNUa0w3ZmsySEF6aHVwVWdWMWwyblJNWm1sYkhtalBWNGlwS2tHQVV3WnE1T3ZyMHY0bGthRkQ3R21HNGhBQ3Z5cEZhRDVtamJR?oc=5">&quot;Quantum Leap: SEC discontinues investigation into Arqit Quantum merger - TipRanks&quot;</a></li>
@@ -413,10 +450,11 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>Fierce Network <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPTHlMbm9CTThsT1cyUGVSMWVRZlFnSU9nLWRyQmphVGZJVEFiT1BJNG5OUjZQdDF0bEp4MnN5b0dkelljbVR3MkNCVmtLQTRhM0VyZWZLc3JnZE82OXdERGwxQlBxZ2s4YzF4LUdLbzBPYmc5TFVsamtUNWwwWTQ2dm0zRTluNzhMNUFkUGI3dDlQbHctTTRQLU5LTjdkVGwydjNWZmxBYzB2bjhPY2w0NndTdXFNRUZQS0E?oc=5">&quot;Analysis: Rockwell&#39;s Agilox acquisition brings AI-powered robots — and a Wi-Fi wager - Fierce Network&quot;</a></li>
 <li>Data Center Frontier <a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxObDFRWGpWRDhjWW9xT3JpaFUyZU9oUWZHQm8tU2NGWlFsZndiSHRnSEZOMHNqZDhmdkljOTVHc0JndjJJeXJuWjhpNmJ4OTFHS21yTllGX0ZsSU1JMG5HdWQ1eGszbGFmeFNGa05tc1BFRWNLVnFkb1BUY0diOU5kVkxYZzNfaGFGbGJmVWgzc3BTTDdsbGJCNndvcmdxN2ZrSDRiRDZLOXFkdFRGckhNMTF3TW4wZ2NSMF9NZzA3M3dnXzdzWmlCMWVGcnVXbGtDS1k4bk1PcUJ5a2ZzVWJB?oc=5">&quot;The Real Economics of AI Infrastructure: Power, Cooling and the Price of Growth - Data Center Frontier&quot;</a></li>
 <li>Broadcom <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOYnZibno1bVR6YTJkQ1d3cHd2YUt5UjVjaWNjTFZ0V0h2bkJBai1zRXZabXNCSlR4Q1dvWFlBNVFJWF9fWkRrUmlZU01SS2VCZ1VZOTVRd19qVlQ1QnFlRzd5T0RuVENsWUhYYlVRejZCbXk4OUhGU2RkWm83VHJhRWZ1TlpUOV8tSzhvQVJhWHpTd2ZwVV9GdmZ1NVZrSmFqRWo3MDRSdjhtTC1a?oc=5">&quot;The Velocity Problem: Speed is the New Security Challenge - Broadcom&quot;</a></li>
+<li>Ledger Dispatch <a href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxNNHUtZHRONXRtZmZpS3JyQ08xazRyUnpPZ0l3UVk4V1hRYWpCcTdOTFEzV1pTQ1BqYk9hbERwMXRpa0VQNV9sVERMU3R1OXNUbnZGZUJFZDJ2NGptMzNmWkc3eGxHN1JYOTRHSmtqZkgybW4zZVFGSEU5TFljQUY4OVpRMk5lR0hidmpfVkoxcmcxWWpVamdzYnl5MU9wajhCd1M1azhYMDIxSExMR29GVVotUjVkb2xiWEw1QTJxaE91YWphQ1Z5V2pVZ3VJVk1EMXJ2V3RFSE9qeU1UNUdncHl6WWhaYTZfR1lUMlM3dDdZNTJ1TzczM1JoWFg?oc=5">&quot;Data center debate intensifies as NYGC files application with county for 14.4-megawatt AI factory - Ledger Dispatch&quot;</a></li>
 <li>BankInfoSecurity <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNMG1QU0lxTVd0R3d6MVFXamRiR184WnlVUmRnc3NNTWxSbWRrVXhocmlHaEpaWTY3U3BpTEhDUExXaE90NHdfSkdvWE45eW1RNHVCWXIwc012aVNlaDhCSm9wc0Uwb1IxdEtCUWo2aW44UXR4Z2xNOWNaMDBRUDR3VlRNU3NqRDBRcGZHSm0xdGxjQXRSTVJvX0tOeGllVzBrbUhSRA?oc=5">&quot;EU AI Act: What Changes Now vs. What Starts in 2026 - BankInfoSecurity&quot;</a></li>
-<li>Compliance Week <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxOdU81WXJHcjlsWnZSdXU0Q0lTRTVFTU9XVmZHMndiZEVpNjJmT29iLVNDRi1idzcwdUpRdE5HamFFWFJ2aGZwb2Rab2VUeEQ0X2Y0SEloNDZ1b2V1Y2xfNVJzVU9YdEVCOUFFam1KRXg5akpHZDgyUDVRYWo0ak56REVNUnEzQmE3Um81Z2hCV1RyRWRjaU5KWFpOWFNNWVhoMzFHVDFYeXZPRE55NzNObGFNd1p4VzVpU2lfU0laNUdaTlZpZzJIbkdpMDVmLUpVcWlBelpUUHZjanJmVkNEN3RB?oc=5">&quot;Nvidia clamps down on export rules with new National Security and Export Control Oversight Committee - Compliance Week&quot;</a></li>
 <li>Databricks <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1IMFhmQjA1NVNuOVFMd0dDRWFmMWUwOTI4dGROejkzUTFDamlvZXgxa2xsVmI2ZTlTS0pZMl9EbzFLNlBPV19LaVFsalFfVmczLWhzenUyeG9QdlhnWGFGMTRBOEc4SGV6SVE?oc=5">&quot;Ubisoft scales AI coding agents to 4,000+ developers with Unity Gateway - Databricks&quot;</a></li>
 <li>Coinpaper <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaGpvcGNoODZMRFNHLWNLRjE2ZmhRS1ZmR1hqd1NZRERfQ19ydkJLZnZ6cjVZNWRjN0RwQzFPbnFRa3loTGRjdzA0N2tKWkVTbWgxUWFCQ1FxTm96ZmtpbXBfaG9QWnJadHFXSjdLbERkQTZfbWtKQlZ6SkIxM3pWU0RPV1RDM2djVEtXd05tLXZ4X1I4ZUJVaXVEaHcxTGlQZHk3ZVVnZmY?oc=5">&quot;Sandisk Outperforms Nvidia as Investors Return to Battered Memory Chip Stocks - Coinpaper&quot;</a></li>
+<li>ET Telecom <a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxQbWdTUHpHUm5NT2VNaU50NDVMZjJGVVRuWkNTNV9jUmpmNFNSUXp1RVVUQkdralctYnRSWExTSlhzSml1aUQwYWtoRjhKV2RTSTlyeF84UFZXRE5VRFdZQnNVYk0xYkNab0lhd0lCWEFyNHJHNDhLNjBaZ09McjlzNThlUDVmYzYwa0Q2Wm94TWFVRXNzVzltNk0xVmhCcUF0OGpYV0pNTHVMLU9zazIwTjJCc2RrLTI5aUcxMmlwdzI2a3pmVjdJSTJzN0gtVVVUa2lHSlU3UTNERVVOZVJQWHpJdEVBX1dMa243ZEpPZHA0cHln0gH6AUFVX3lxTE9feDkwNFBjdVdJZjIxUmIyQV95elY3QVZfTzMxNUZPdHFfdkZ5cnBoWTg1MG45SXJ0RlN4eFBqV093NFBJNGx1ZXJvM1FhYkg3UWFaWnNlOEdaU0xlcXMxV3NZdlRQSzRmaU9WNDhWQ081OENKdDAzZVFIRjd5ZEFwYmhEV2szc3dobUlrMnVmdGI5OXJJRGVxNE5rZWl0c1Nsdzc4Q0dodjR5ck5YODQ5OTBGWHJIODE2cnp1bUE2N3ZwYU1SNVRJZzItOFdEcVZBU3FJLXBmS3ZwZWdnNGpxMDFhbUVvWmluc2g0LVZHdTVldjN3VW00d0E?oc=5">&quot;AI regulation papers in final stages, to be released shortly: MeitY Secretary at Chariot-1 launch - ET Telecom&quot;</a></li>
 <li>The Quantum Insider <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSDhQVjl5ZFFUbnVWa2NmYlJNbjlGZU9FODRVdUExZE9yMy1tZHh0X2cxYlRiMHowLUo1bGxiaFZyNUJ5YTZlRkVHdjNhWTBLT0pyN2N4bVlWdV9PZ1c1VWRNa2thU3VQZ0pTTkkzcGctYnFjT1ZvMnNCYXJ1SVp5bkxncm44LWZmSHYxRlVCQXFob3RUTndneWxHOWFkYWJfNERFVDVhVEI?oc=5">&quot;Nexent Capital IFSC Launches $1 Billion Quantum Computing-ready AI Infrastructure &amp; Advanced Energy Fund - The Quantum Insider&quot;</a></li>
 <li>HPCwire <a href="https://www.hpcwire.com/2026/11/25/a-year-after-genesis-launch-ai-dominating-scientific-advances-does-gil-says/">&quot;A Year After Genesis Launch, AI ‘Dominating’ Scientific Advances, DOE’s Gil Says&quot;</a></li>
 <li>HPCwire <a href="https://www.hpcwire.com/off-the-wire/leash-biosciences-raises-11m-to-build-training-environments-for-scientific-ai/">&quot;Leash Biosciences Raises $11M to Build Training Environments for Scientific AI&quot;</a></li>
@@ -425,7 +463,7 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>vLLM Blog <a href="https://blog.vllm.ai/blog/2026-11-23-skip-the-dram-tier">&quot;Skip the DRAM Tier: MoRI UMBP Runs the Agentic KV Cache on NVMe&quot;</a></li>
 <li>vLLM Blog <a href="https://blog.vllm.ai/blog/2026-11-24-ernie-5-5-flash-preview">&quot;vLLM Day-0 Support for ERNIE 5.5 Flash Preview: Plugin Deployment and E2E Inference Acceleration&quot;</a></li>
 <li>TechRadar <a href="https://www.techradar.com/seasonal-sales/black-friday-2026-graphics-card-deals-all-the-best-gpus-for-gaming-and-workstations-on-sale-right-now-including-the-nvidia-geforce-rtx-5090-5080-and-5070-as-well-as-amd-and-intel-cards">&quot; Black Friday 2026 graphics card deals: all the best GPUs for gaming and workstations on sale right now, including the Nvidia GeForce RTX 5090, 5080, and 5070, as well as AMD and Intel cards &quot;</a></li>
-<li>ABC27 <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNbl91djZ4OWdnaS0wXy1iUDUyWF91clhWaDk4SWpRUERCN0xtWXJsc0RIcXZ5UHNJUnhIamdYLTBDYVZldnJ0WXZvZDF5TUloUUROaHBhWTAza3ZNazFsaGREa3d5cmtnUHdrZUQyMThpek5pLUo5UktqT1VoQjQ3ejhnWk1GWm1SLUozWkFtUW0ydUxpRVREdXZmYkxjcTQyTktuaDBTRlZ2T2JENHJuX3lHVDdsSkNzWXIwTFZnenB6cUHSAcMBQVVfeXFMTW5fdXY2eDlnZ2ktMF8tYlA1MlhfdXJYVmg5OElqUVBEQjdMbVlybHNESHF2eVBzSVJ4SGpnWC0wQ2FWZXZydFl2b2QxeU1JaFFETmhwYVkwM2t2TWsxbGhkRGt3eXJrZ1B3a2VEMjE4aXpOaS1KOVJLak9VaEI0N3o4Z1pNRlptUi1KM1pBbVFtMnVMaUVURHV2ZmJMY3E0Mk5LbmgwU0ZWdk9iRDRybl95R1Q3bEpDc1lyMExWZ3pwenFB?oc=5">&quot;Trump to visit groundbreaking for semiconductor manufacturer that supplies Nvidia: Reports - ABC27&quot;</a></li>
+<li>Punch Newspapers <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxONU1zRHlNN3dYRVVKZGliVUozYUNYRWRFcktleTRldjVXOXpRX0FRYUVBNzFERWE4bU5wN1hWU1lJanp1T2ZfRzNyaHJUbTg1a1E4UUFXdXNzSmp1T0p5THNGbEdQUVFkQUxPQ0ZsQnc2V3dVMUhYTmtENEFON2VBb0xJMVMwNnIySzMzSHVCZU5abVVPY2NTSjBR?oc=5">&quot;Nvidia halts AI server shipments to four Southeast Asian countries – Report - Punch Newspapers&quot;</a></li>
 <li>SiliconANGLE <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQREtNSkxiWHNBekFld2hXQWJ1TjJlVWhsaEQ2TE1Cd0liQ3E1cVVkOFI1VU5yOHR4VVhUdExLR0Y3YldpUlRVanB2bm1wcDNVUzlCdndQQ2VsZlNuU3pjYVRRNmdrSlFkdTFFZmJPV092a0hicVhfWHBZYnIxYlhEVFBmb0UxbVRiSDltQ1JUU3R1TWtzZ1ZPNzljaXhremJDX2hJbWdJWGpEQW5LcE5Z?oc=5">&quot;AI infrastructure stocks continue their slide, but Anthropic closes higher - SiliconANGLE&quot;</a></li>
 <li>TradingView <a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOSHMxUTRGTGRJVDBYTnhXcUhscnBNRDZvTUtKN3pzdmI3azE3bmsyZXEteUdEb0hOZmNoVENsZnlJRHRjTWNvT2d4Nl8zWVE3SlpuNUJyOGFmdkFIU0R5YzB3aFlfMENwRC15XzdyUWNGLUNiMG45ajNqZ3hXRDY4Tzkwbl9ENnFyYXpndTFtcjBfSzRUSmdkNmF2eG1FSEdrc1pDaDBhZXhJYUlDTk0zTHkwejB3ZkFpb2lUU29wcHZZdDdIOHhVZkdRQ2trcWZYUWc?oc=5">&quot;AI Chip Stocks Extend Brutal Selloff as Nvidia, AMD and Broadcom Tumble Again - TradingView&quot;</a></li>
 <li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOM25nM2xocEpCRXh6bkFUTzFEdGRSSThOOVAzX1BKaGVPNjh4NnlRdk1PODI4RmJ2U2kyVy1WbklzdDd5Yms1TkdnNlVOcFFGcktXMTlseGFCaDlKS3pXNzlDei1PMTVwRXNJUmd1ZkR0X284RXJPSXNpUmdFdEZqLVZaTTI5dVluY1ZpMFpBRkg2SUR6eVgxNkRRT05udzlJR29NanZIOA?oc=5">&quot;Microsoft vs. Meta: Which AI Infrastructure Stock Has An Edge Now? - Zacks Investment Research&quot;</a></li>
@@ -433,33 +471,34 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNeW9WRWNYclExdnVtQjJ5UHo1bV92aUJxdGFraUx4ZzNSRkVzWW9aeklqaTlzV29wRExmNVgyYm1Fb3k5bzNHd0thdE1lSHNtTS1HbV9jLVVXaUpqMWJmNnFzaFFTZjNOVEdHdW4zZVcya3RsekdVamxsTXpvS0dJbU9YeUZIZTVVOXJRYWs5THB5NVZyZTh6Z25icw?oc=5">&quot;US Futures Mixed After Monday’s Nvidia-Led Chip Rally — ZM, HPE, AMD, BABA In Focus - Yahoo Finance&quot;</a></li>
 <li>NVIDIA Developer <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQZmZvTlRRcm4tQlYyYnJaeGRwQS1tY3NaTXY4bmpCMTB5YWlxT2xreTF2MlRWSTZBbDN4N21yS2V6UXFYWUtJVzFyVUx6ZkxpSjNWcm5RNDhBcGxxTXd6aGNRMENrTENLUkg2SjFWa0hYSXdmQ1Z0OC1fODRSaWltUDFSZ0lkVTV1SjZDQXBZMWNzOEdhLVhTMUttWk1idTZfN3lCWQ?oc=5">&quot;Q&amp;A: How Everstone Brings Where Winds Meet to Life with NVIDIA DLSS 5 | NVIDIA Technical Blog - NVIDIA Developer&quot;</a></li>
 <li>NVIDIA <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOR19rNlRTS0lYN245MlJBTjVpMDJZMWhmbmxsT2tsU09pQl9YLUZ2TVVzYzZBVUsxZGRRdzlYRmJ3aENVTTJBZENsLWhUN2dpQWVBZE9Fb1FVWV9ha2JwaXNhc3kxVC14NHB5TUpWS19GZS0tdVpxaFQwRjdubVpnRkdrajlrOW0yQ2FGQnpTalJZSXQ2LUlyMlM5UHlSS2FET200?oc=5">&quot;DLSS 5 Brings Lifelike Lighting and Detail to Where Winds Meet – Available Now. - NVIDIA&quot;</a></li>
+<li>Observer <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNYmN0U2FuVWl3X2V0eHV2YUJ1elR2U0VjbnJCNmxLbmVvSWZEUEctUENIU2lIMVlRMDI4U1JOS3RYYkE2d3M2UHFvSXU0RzdhTmo1R1g3dVVaZ3VLREN6enpfTlIzcFBjVGd3QnVYM0lwdjRMRlNyLUVkY0taZWRHMHBCSGQ?oc=5">&quot;Nokia CEO Justin Hotard Wields Nvidia’s Backing to Court VodafoneThree - Observer&quot;</a></li>
+<li>Seeking Alpha <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPRUtuRHF1TmVSZEpMcHpzajJrLTVHQ2NXeW9HMEM0ZFhDR2c0bmd1a1VNcmV2QlVLVnZHRnRQbGN5dk1QZUhCTFNJT1BMaGtNclU4aFBTN1hRZmJyQk55bHZGM3VMM0o3Nkd6TVkxOWE2NzJmX2l5YWhrMXJEMWJiNURRd1JqYllOcHRwQ3lnUm16ZnRKWkYwc1VBdTY2SHY0OE9xOXcxaUdjejJFVVVOV1NJczI1WGNXckE?oc=5">&quot;Nvidia, AMD processors highlight new systems among top 500 supercomputers: Wedbush - Seeking Alpha&quot;</a></li>
 <li>Telecoms <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQNmtTOTZtZGdVVTZWMVNyN0tMMjFTRFlxdFR1SVJFTm1hRWE2aURLUTUtRkJFdTFLRjBZVXBFR1Z5d05JTlRGUUZOVS1zTlRndUNuNWdrTDV0WDlVVDJaX2JVNnkzZ1NudkdUWW5TMVJCSDZud1pZZDlEMnpuWnVUSHZnYUhMa3dOX2U1Rnk4S0JoTndLTHV5dVVYZW80WkhuVnc?oc=5">&quot;China inevitably complains about latest US telecoms restrictions - Telecoms&quot;</a></li>
-<li>ukranews &quot;&quot;Real<a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOUl9VeTVzSk5KVVBRaVVvUE9kSUV1d0tlM3NJRUF2LVV1UVZkMGFWSmFqa0oycWI4RjR3VHhsaTNDMzh0enJuX1ZkVTBVcTFhQ1lzVUd5cGUwVVpWeVNHVUVDLWllWEpLSGUzSS1Sa19hOHVrSTI1aGFJX0JKUkEtaHNLZUFhNl9JbklleFdldWt6c0hJUUx6QVB5MmY1VVR1ek5RSXpCazI2TDBtaVFYbU5mc3p1QjJHZVNvTlNKeEIyZlA3d1k4WGFDQdIB0AFBVV95cUxOQk5nQXJtWUVlalh0NUhlUXNtRGNaWWpkcEpNYllLVEFiNV9NOXNUTjZ1d2xON3A0UERQeDNEWWc0MV9iU1RqUU5ta21USFI2VkhrRXBLUmoxWWFQdlh4anRQOHVBVEwyQ2RFOW81SGdPckJSS0VtdEZMT2hWYmhtWWZiM3A4cFJ3TmFBRmgyVVRvT2ZRYVhnTXBQSXpCdWtJODlsdnVkQ0dYSEZtbEhBOGtrMWdoWDlWNmNfMkJzaExyQ3YxVWI5SmF0ZzJfRUhM?oc=5">&quot; tops Champions League standings, but Opta&#39;s supercomputer names another club as tournament favorite - ukranews&quot;</a></li>
 <li>Medical Device Network <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxQd08tekM2RG5XMV9qNU13am9vTnowbFVhTkxIOXF5c1dUc1Fadl9LZkdsUTc4X3JfSmx0UzlOX1kwN29NQU5iN2RqclpZUHFGMG5oem5wZ25SUTZBQmpadDR5cmpBVThJSXlKRmR5TXVIVE5hQ0syVTVQUzh1UVNZLUNaYVFYd1E3dGoyRE5RU2hiUTQ4UXQzZjI1R1FkQUtzdDc1TUxTdXRVdmRJb3Z2anlMNWpxSEVESGQ0aQ?oc=5">&quot;Medica 2026: Ongoing revisions to EU MDR and AI Act require close observation - Medical Device Network&quot;</a></li>
-<li>Action News Jax <a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOQ0RiSzF6bG1KYThUTEE5TEpKQ0VVU2pCdWNGcXM4MnRVMEpCcFdjajZMbk9rTXpzNWd3ZmVJSmdaN2ZBakdEWFJjN2ZPZkhHeVJyaU9ZYWpldGtUamJsUlBaMVRjZG15UmRMTkdsU01qbjJwa0Y5a1YwajZBMFZ2d1Vtakd0UEt4T0tFay1VUmZVWjJhX1FwbGtZVjMteWxnY2FGaWoySV8wRlRWT2dUdmJwcURNUWhwZXJwbHU2WWNOUWZyajlETFpR0gHeAUFVX3lxTE5JcE1JYTlXT3RrMWtEcDNlVmdkRUFHajZyWVotRWRPT3ZmazZhVklyZTNvRklqVFdNS2laeTVYQmdwb1JVbWRpT1U4NGloRlZkQ0FOeTMzNXlDU3djQmo3enNhVV85VVRyNUNvelU0UjEtSkp0aXBheko1RjFHbUwzRng0S1ZHMDlzUGpzRWZScWZ0QU0tR0xEVExLTnF4d2RFdDVWMUZzZV9fTHdQSUVWMUtpSEthRHVsRXl0MTF2blQtSE0xS2x4VlUzaVo4M0Fhb1NLdldGeGJoRTE5dw?oc=5">&quot;Talking the Tropics w/Mike: One week left in the ‘26 Atlantic hurricane season - Action News Jax&quot;</a></li>
+<li>Big News Network.com <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPS2dhcnFOWHRFSHRWWUdEaU5FSU4xNmkzUkFEdWxaNnlhUE5oVmdHek45OWZHYW1MRGs1SXFpQWJZZDNvcTNtOEhxYlhaeWNuaTUzNEFPckVQSk9UczQyQmE0YVNKVDk4SGQ4MXlvWEZHa2ZoNDk4cXpMOEtvb0lSWUpxZWZvV0ZlTk5wdkRjYUpVeDhfdDFqQmotQWFPeF9xT2RPdEJB?oc=5">&quot;Stop Fine-Tuning First: Prompt vs RAG vs Fine-Tuning Guide - Big News Network.com&quot;</a></li>
+<li>Action News Jax <a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxNRHVkLS16cmNRbHJuWHh5NGVyRG1kaVhVbk1TeXdYNUoyOWdFTDFMdmpjRm4wMi1pM3luMTZNX0FSQzNweFd3SklHX3NOTFVEM3VCNi1yeDlYWFRHck1IM2YweDdlUGRjSmJORmVGbWpRX2djemx2elRBWFVSWjN1bzd5cEN4amQ0Z3lDbzJhSEM4RkxUbHltTnNrellkNWFjVUZtM1l3MkplZUpfWTg0NjROYm5CRUFwYnBBOHhqbEpETWdQSE9veTZSRklWRVZ6dDQzQ1VZOExjZXdTUnVRdWQ2eHpKOFQ1bmfSAeoBQVVfeXFMTUR1ZC0tenJjUWxyblh4eTRlckRtZGlYVW5NU3l3WDVKMjlnRUwxTHZqY0ZuMDItaTN5bjE2TV9BUkMzcHhXd0pJR19zTkxVRDN1QjYtcng5WFhUR3JNSDNmMHg3ZVBkY0piTkZlRm1qUV9nY3psdnpUQVhVUlozdW83eXBDeGpkNGd5Q28yYUhDOEZMVGx5bU5za3pZZDVhY1VGbTNZdzJKZWVKX1k4NDY0TmJuQkVBcGJwQTh4amxKRE1nUEhPb3k2UkZJVkVWenQ0M0NVWThMY2V3U1J1UXVkNnh6SjhUNW5n?oc=5">&quot;Talking the Tropics w/Mike: Non-tropical coastal low to impact Florida to New England - Action News Jax&quot;</a></li>
 <li>DealStreetAsia <a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOaW1WUzZ6R3MtQ3JaU0xxdXdYRlhwSC16YlZib0NYcXZIMk16MlB6ejlpbWF4X2IwaUlMMUFtU2F5QUNVLWdCcmpHOTlGaWRWZEMwOXE3MENKdzZ4Z2dUN2xNcjhPbUJuNHg3MmRsT2JnTGM4U0d3eVZPRkFkcmI4amtOZw?oc=5">&quot;Nvidia drops Singapore revenue disclosure as local unit posts 77% growth - DealStreetAsia&quot;</a></li>
 <li>ET Datacenters <a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxON2Z0MW93VXgzSVlUbzZRcE1qVVNIU0hCUXNNbVNCajZWcjJmclFLSllnOURPaTgxX2xHOUtIaWNaSHdWTWpqek9LanNFTE5BR21BdUotOHpCcW51ckxxUE1kQm4tMEpCTXVrbHJpOEJzbndPV2FlYkFtU2tPeHU2bXUtS1hyemtfLWZWbU1Scy1Iamx4YThfaW1zOEZqek1SUm9SYTVacGM4a1REeWpDUm5vSDg4U1FVLWZMQlg0NFZHVHA0M3ZJeVJrMnIxX2d1cHlR0gHYAUFVX3lxTE80U1NhMmxuMzM4WjhQbXZHaE9ac0cyQ2xGelM1ZFRBa2VKY3ltTzVOLU5VRUdJWjBhdWQtcXBBTWt0eXRROFlpNW5BNWdUZXZCakt5cnBPYllWZGlTenRrQW13OVZRbG54amp0cHlfeDBFbm1OeldDUm52aDBSQmx5bVdyTUxSTE83VUQ3bUFwNjB6OFVaSTZwaVJzRERZUUtIZ2V0VHlTV0MyTzZQMW8xY2cwMnowMmFiUVpKSVAzSHNyMzlYTnZPVmZMbHdiSXhFY1NGNVV6ZA?oc=5">&quot;Japanese firms invest in Hokkaido renewable data center - ET Datacenters&quot;</a></li>
 <li>EnergyNow.com <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQZ3M0dUJWUnBmMlc1ekdON2gwSEtyQjY1X1dpa2g1Umk5RXFiWjQ4WjNIc3gydm1SZEJYeWlOVUlMZWdoeUtIenJGR2FiNEc1ZWxTSDhkdHJnMlJkb2dEZHVtOERHNUd2NElQbXAwdklCVkpoSmEtTFlBZVFmMXJrUVFXRVRDMzM1OUd5TEFtSThCamQ4VG9tS2xUZnRqZDBGbTFKRm9MSzhGaXM0?oc=5">&quot;SUPERCOMPUTER CAMPUSES: SpaceX to Invest Over $74 Billion in Supercomputer Facilities in Texas, Arizona - EnergyNow.com&quot;</a></li>
-<li>Action News Jax <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQeExNbjROSE5MUWQ4bS01RlVvS042VEZvLXJYUWFYemkwZHdxb0dGNnc1U0hOTXlweW45b05ORHVFSHJCUGpFYVdUTldNNHdvTWNKSmhOUUo3d2p2bkRidzhvWFNoR2hYbFlfQXk4S0RlUEFTeU5nTm5WN194MnJBYzFEM3poeVNfUHpuMnRvZzhmTkJEY1BLM3hNUmtON1o4aUpsRkdFTlpUMknSAasBQVVfeXFMUHhMTW40TkhOTFFkOG0tNUZVb0tONlRGby1yWFFhWHppMGR3cW9HRjZ3NVNITk15cHluOW9OTkR1RUhyQlBqRWFXVE5XTTR3b01jSkpoTlFKN3dqdm5EYnc4b1hTaEdoWGxZX0F5OEtEZVBBU3lOZ05uVjdfeDJyQWMxRDN6aHlTX1B6bjJ0b2c4Zk5CRGNQSzN4TVJrTjdaOGlKbEZHRU5aVDJJ?oc=5">&quot;As Google threatens to cut schools&#39; search access, Los Angeles blocks AI features - Action News Jax&quot;</a></li>
 <li>Benzinga <a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxNRWV1UE03dVJuYXB1dGNPQld2ZU1VcEF4ZlpENzZyZG90RWJ3WlFFbjVYNF80MGJxUXMzVEtYb0xkMWtPQ1h2ZS1scWZMaWNOa1pPa1FrV0FCWEV3NU16SWpOSzRRNlA4V2IwelZXNGdPSU1peGxVNVJMTUdUY3pZcHgwV3lEemN6TzVsSlI1NjNaa1hBMFVmanMwUld0TGVwQnFKMEk1VkpueDRqckpMampfOHBSZC1mUFFZanQtd05xWnhJRzNjaEhEVjhaVHNyOVBrdFJfbEhzMWNHQWY2TFNxUkpRV1RuSzgwemt0WUVoSDRORnRMbDlKTlk4aUk?oc=5">&quot;How Broadcom Stacks Up Against NVIDIA And Micron Technology, And The Rest Of The Semiconductors &amp; Semicon - Benzinga&quot;</a></li>
 <li>Counterpoint Research <a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxORDdQWldzVUpIZDdpYmE4TWhIVDE1SnRCaEdPcG82dmFOaWoyOXVjdGhZeFhVRmdqOFN1S2xWaXBfNi1PaGFDRXZsRU1HQ0NmS0VsMWowQ19pUXgyOER3bE8wSk02SmlIeW5LSzlOZFFnYXpzd3ZwdVhoUTByeWlvcDN2SF9VNl9KWUE3a3NSUQ?oc=5">&quot;Global Pure Foundry Market Share: Quarterly - Counterpoint Research&quot;</a></li>
-<li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPMUQ3V1I3ZmpYS29UMTRud1JMaUxRX3p5eDVCM0xhVDhGYVIzTGVsT3FxaTF5bktfNlB2ZDhTaVNLNzJxV1RVSHJYZUp4ajE0N2tuU2t1d0FZdDBYc1hLaEtiM3lkbEp2R2xoMnZPUENSUEphR19QM1M2bTgzYjBhZXl5WHJhVndNMXpOc0d2TVlMRUxla2cyM21MOA?oc=5">&quot;Jensen Huang’s Return Just Added About $500 Billion to Micron, Dell, TSMC and the AI Stocks That Depend on Nvidia - Yahoo Finance&quot;</a></li>
+<li>TechPowerUp <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNd0NsNlhCSkZud3FpVkl2N2RDakFob1A4ZUVpUnJ3MDNUREhwamxhdXZXQWFCdDZFenNTdVc0bFNCRllPeXJvSjVkLVItOTNCQ19UNEJmMGJyUmV0QndxU0RubVFnd3NwSU9JaFc3Z21LWWZUZW5aZWl2MnBtVUZZa1oydTNqXzV6WDBKSWpIUWRoMjNJYVFmRUl4YlDSAZwBQVVfeXFMTXdDbDZYQkpGbndxaVZJdjdkQ2pBaG9QOGVFaVJydzAzVERIcGpsYXV2V0FhQnQ2RXpzU3VXNGxTQkZZT3lyb0o1ZC1SLTkzQkNfVDRCZjBiclJldEJ3cVNEbm1RZ3dzcElPSWhXN2dtS1lmVGVuWmVpdjJwbVVGWWtaMnUzal81elgwSklqSFFkaDIzSWFRZkVJeGJQ?oc=5">&quot;Samsung and SK hynix to License YMTC&#39;s Xtacking Technology - TechPowerUp&quot;</a></li>
+<li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPdFROTGwtaTlJd1d6eGZjMWl2RWYtdFpwYkF2RkQwbm9LV3Mwbzl6NjU3X2lXWHdXWFZsU3YtNGxVWkJOajdjZDV3YVE4d241YkVrTFkwTDNUTi1WMXAtWHVCTjFVNHRLNEEyZ0doWlNtRVFaTnBrYXFjUjdfWmxYWXhsNlhNSDdOckpudlRBQmZvcVRuWEdMaW5KcGt0TDJBd0E?oc=5">&quot;Apple vs. Broadcom: Comparing Revenue Trends Amid the Artificial Intelligence Boom - Yahoo Finance&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQ2NZWm9IR2pIQUktNmN0OUsteVdQcnpJbEVreHphazdOVEtoTDhINU1qLUZJaUlHQWswcG5Sa3JVbFRTMGVMMUF2bFJMb0tKUFA4LW5EWDlZTkJBSS13cWFYbnZQSnYtV0tfWEhudUdRWTVEN2ZCcXlmLUE3ZWh3SktYcjdZWlpN?oc=5">&quot;Allianz Cybersecurity Think Tank, Multiverse &amp; IQM Benchmark Quantum Malware Detection - Quantum Zeitgeist&quot;</a></li>
+<li>eSecurity Planet <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQWnR4aGc0M21IaUFYWjBWalh3WUxRclExNUtwaG1SdGRUZEVpMm0zRnZyUjZtSlJXRUpEQ2ZYUm42c0Y2c1NiSmMxeUtsOWowdE83QlBFRlg5MGVVdEVnNUF6cDRLWl9KSExxRUxDcW5xcU9aLThVN1E2RkJ2YjB2NWdRelRwWWk1QUNiV28yeFh2YVk?oc=5">&quot;Japan Shuts Down Fugaku Supercomputer After Cyberattack - eSecurity Planet&quot;</a></li>
 <li>Global Sanctions and Export Controls Blog <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOUlZqZzVybW5XR3pXSHFVV1pQLTVpOWRoemxLV05wbllrV2txZEdMS3J3R2dBQnNjZFk5WnNxeHprbXRhZ29HTW4zNWtEb3E0aXpBbE1JQzB5UUxWS0dxd3FYVno3M1RuOUdoTHFqbnlVYXp2MTJRSml0bWlkbC1KMw?oc=5">&quot;UK: ECJU Proposes Export Control (Amendment) Regulations 2026 (SI 2026/1150) - Global Sanctions and Export Controls Blog&quot;</a></li>
+<li><a href="http://www.tokenpost.com">www.tokenpost.com</a> <a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE44TVh0WW9qbDk0ZHlTcUEyOXRuU1ZYXzgwUzdPU0RSN2J3VDB2REpKdm1UWXpqcGJfRG4yc1RyZkp3eTBRWG5ETkJwSFhOMHQ5YTdYbzljbWlhUQ?oc=5">&quot;U.S. Stocks Rise as Anthropic Shares Gain 10.98% Friday - www.tokenpost.com&quot;</a></li>
 <li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPVi1xajJuajVydGNPSG5JZVVkMnozZ2pUelBBbUJHS19RLVJ2Z3p4RzRpd09sakJlVnJ1c3FaZzFUQjFqZ1dyalRsWTNHT280aDUxeHNSWTIyOGNqQURDaXBzVldNelhDbTl2Sy05d1g5NG02UjRJXzY4TjBTZUFvZjVvV1VOLVk2ZkRaRUFLMXd6M0hrSmdoQU5DS0ZFWDAzSC1fYkRqdw?oc=5">&quot;Cipher Shifts Toward HPC Leasing: Can It Achieve Stable Earnings? - Zacks Investment Research&quot;</a></li>
 <li>Coinpaper <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOS21YZHpBUUoyVWlSMFcxN3pFa1l1RUVhVmp5LTkxVVowc2pOY0dUNG95aGhWVElMc2EyWEZoak51LVN2OTRaMlBlaG9Sb2NTVlBKc1MzNEZKZi05NUhYbzhvT29tYWFQS1hDc0M3LUVob2VDdWJ4UmwzQkE1MjVabWhzcXVrVmhDdGJMNWR2WEZsRU5TeFhLTmJkV0RkVmpwaHc?oc=5">&quot;Nvidia Stock Crashes 8% Despite Huang&#39;s Return and Record $115.8B Revenue - Coinpaper&quot;</a></li>
+<li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPVFdiZko5Z1ZuT09VRmV6ak5uZzdBMkUzNEFOWTl0c0dfNy1GNDladms2TXFPWExhZzFwZE5OQVlVWVFtUWlyVnJfVnNHanZlVlJ4UDM0TDVIRHVVRnBMUHEwX1FiUnpmRnloeUtVTm53VjQwTzVSakd4ZDZWbkxuU3BpakdsaGRMQnhwZWFPemEySXo4N2gwT3prcjM3amhrSGdkOE8tNUJhSV95cnc?oc=5">&quot;Is Microsoft Stock Worth Owning as AI Capex Weighs on Free Cash Flow? - Zacks Investment Research&quot;</a></li>
 <li>TipRanks <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPM2FQQXNCQVd2MjdFaWYyNXhJRnZuWnItMjdSSXRGbzRxM0FPVUFpY3lsZXpSSmoxNkR0RXRiRHlZNlBZYTdoOENncVJIeUt5amItMDJmTFdhM1pmMUQtVTFyZEhJeGwtR1NwU29RMVBoX3F1UWlHZHkzMm9OTmNFeC03QmN3VjhLYjF5YWlMTEFreGtIZnVpU0pFNVY?oc=5">&quot;MRVL vs. AVGO: Which AI Chip Stock Has More Upside Ahead of Earnings? - TipRanks&quot;</a></li>
-<li>TipRanks <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNQkFoQXdlUFBsdXBGT29wVGFMQXBSbHV6ZndDOTNuYk8tVndMc1Q5RVd1bUFLV3VaWHVCaVJKS3UtVzRpOTZ1ME1zLUVTNVd3aV9OVFdieHlrQ2ROeUt5QlRBcWx1R3lsTElNLWdkZFl3NWk5TUNtMlpndVlXSWVvbFRSa2xWa3V2cGNreGs3ZVMtU0VRb2wySDd1X0VDLVhF?oc=5">&quot;IQM Quantum Computers enters partnership with QAI - TipRanks&quot;</a></li>
-<li>Stocks Down Under <a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE5WejBJSFBCNTQxdlNuS3VndWwzY3A3bFpfTFVIeTB4SE1hcXlfLTF2QmN4cVZaX3JsQ2lGMEF4VU43OVhxYzczMWlleW1ZXzhITTViWjM1eGs5S092anc3Ulg0QVVhR3FyYzdmbi1wQUxPSXoxbXBlWXZ6MA?oc=5">&quot;Why Is Micron (NASDAQ:MU) Stock Crashing? Analysts Slash Price Targets as AI Fears Grow - Stocks Down Under&quot;</a></li>
 <li>TipRanks <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTFBWXzhWUTN5V2c2ODhyaURpSmR0eDN0VmQ0dDhUZloyWU9LbWNLZDdYN0ZsUGxKSVFxVExha01MWWxRMDh6YWcyY2lrTm9XLWZuOWMtSjQwZw?oc=5">&quot;MongoDB (MDB) Stock Forecast &amp; Analyst Price Targets - TipRanks&quot;</a></li>
-<li>AI Funding Tracker <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE13NFlUMWkzZVQwWUctMDNGRlhYLVEydlYtUkh6NUMtaWNBYlNoUWVyLUdzekJsMlY1R1ZVQWVSSHp3RF9KYXdZblg2SGJxcDVKR29mZHAwczA?oc=5">&quot;Epochal Funding: $100M Personal Investment From Co-founder Zhang, Bloomberg Reports - AI Funding Tracker&quot;</a></li>
 <li>Benzinga <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOSEt5Q1dlaVByTXJKQVVQR2dObG9YYUhaWXFqaE1ZaVh0WWo5enBDQk52dThTYzNValRSNVp3SFdTOWZkR2lhSkZSeXEwSXdzZmJCYzNMVko3Q001WHJ4cTNxZGRzY1FqZGFkX0ZlWFVHSllzeHVFWlB0dmhpczYtLW45b3dvczdzZUF0bFl3MGxNaXZlRjloNW4tTnJ5bGI2R1hUZUZBVFFyeVYwUWV0eTN5UGZheU1pREVKRGpn?oc=5">&quot;Why Is Broadcom Stock Sliding Today Alongside Nvidia’s Post-Rally Dip? - Benzinga&quot;</a></li>
 <li>Schaeffer&#39;s Investment Research <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOcGFDdnFuZWFBZkJiZUZZM2F5dHUyRHVRdERkbjZJOHdUVEpuakFmTEdMaDY3M240c0tMclNHaW9XR0Z5NDByeEV4cHFxM2tOTU4tdDZDaDVhSmhKVF8wWmZVaW45ck5rNkRQeFNhczh4aUlBc1NEOUc0VEpMNVE4U2xjZEI3SWNocVZ1Q3Z3RE9Mb0EyLTdLR0kxdHczWVI2T2podnVKNnBONWtFWkE?oc=5">&quot;Lackluster Outlook Drags HPE Stock to 6-Month Lows - Schaeffer&#39;s Investment Research&quot;</a></li>
 <li>SiliconANGLE <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxQUGhPdWprc1hXdFMxczgycktocTM1V3dRbFduWEpWcUxrUEdFRHNfOTJobDdSN0Q3aTJtcmR3eTdGNGdtZ0JzZ2RDeHVocHVwaGNkNFRxV1ZDYjE5bGtxaUJHQUN2dk93V2tCUEpRa2g3NnFZQjhHUlByS3FLSWZZRU40dEJ6cm01YzNRQU9aOWVERDR1b2lBNlU0dHpYdXZfSHNiMG9VTQ?oc=5">&quot;HPE’s stock slides despite record revenue growth and upbeat forecast - SiliconANGLE&quot;</a></li>
 <li><a href="http://www.tokenpost.com">www.tokenpost.com</a> <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1SclZxQmNWS2NRU1lCc1JIVEhBQ2Y2cDAwa2Z2bl9ZRURCWDlobTdRcFlwUTV5N2VrRjcwNlVjQ2VKNEJ3T2FTZDBnbFlZZHlUSmJGQVlrNVRsaDg?oc=5">&quot;AI Models Used a Shared vLLM Server to Coordinate and Bypass Monitoring - www.tokenpost.com&quot;</a></li>
-<li>London School of Business and Research (LSBR) <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQeVZwZW1rS3JQN1pRazlTbnp2Y2ppamdJUE1FY2NWMWFrUFZyMVJJSURoenZQcUlzcmFOOHlKX1Zhd1VmeWFUeWVkeFV1VzRBTnpiOFJWVDlzbzJGLVU5R1phX25xWEl4T0ZnRWxzUmJNbkpSVVcxeDQ5VDVjLVNoWjVnR3BsV3BFRi05RWx3?oc=5">&quot;Micron Technology (MU) Products Are Exempt From New US Ta... - London School of Business and Research (LSBR)&quot;</a></li>
 <li>Action News Jax <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOR1BDM0tsekFOVFFPYllyUHFXRkxNaHh0ZTZ2dU1oMTM1Yzl6OUM4a2dnOFNLV3RrUVZzYndQb2VIUUlSakJfQVkyTlgtLUQwTGstMGFHcUFfT3BfbHFwTzlOVFNUbEJuR0E2bGl1QndnVmZ4MlRLdUFYU3hJNFk1cmJPRXZKOEJNWXVqWVpVY3RYaTd3NDN2eC1GNFVCMmtTNE15S181ZktqTVkwZ0JSSFBtTUg4V2MtaVgtc1ZxZlJ0UdIB1gFBVV95cUxQWkwzV29FOUtJWW81OWswWHVWNjRvMTcwdHNwcHlmMDhsZUxhUU9INFc2M0lPLUxNSU9TeWVrMFlzTi1KQ0lBSkxCYzU1c1VyMjJxWmV3X2VNUHlBSEdQYnhpQXQyOHdXZmxGOU1SdVljUk9TRzNub2dNaDM3bkxaRDVwVVpGWnFYRktPSzV6QTI4QUdxakpTeGFkMVozcnQ4SnoxeHNHMEpmN1hLbDJVaVlSc1ZWQXNhUkE5ckMxT1MyTmtVa29yYmlYNnlhNzlJTV9wSk1n?oc=5">&quot;Talking the Tropics w/Mike: A recap of the 2026 Atlantic hurricane season - Action News Jax&quot;</a></li>
-<li>Telecompaper <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSzJrMkpkRFc0Z2ZyMzFURTB1Snh0VDJDeUR6WDhyM3hDT0JLeFhIYmljSUs5UXI5WFEydVFyaWI4bFV3aVNPZ2FHSUFLQ3NpQ25CRnVLdHBRMEdxdVFQbUZVcDRNalg0bUctZUVqUDQ4WndqOV9CR19nb3hqa2VpSTJ2bzhleXk0cmVJdkhxZlA1M284aV9oUk5WNG16M2U2OGdIOTVsMURpUDQyNDQ2WjMwT1Q1UDFD?oc=5">&quot;Tencent Cloud and WeesWares deploy palm recognition at senior care centres - Telecompaper&quot;</a></li>
+<li>Insurance Edge <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOVVVmTEtBS2N0SVF6VVFMR0VTTHk5cmUxNU1Yb0pfX0FOSzNLU3p3NDhkUG9fMGIyc2xxdmdtUDJTTVJLU1pnTGZ0SGFSeXpMNXpDM2tzc1dJLS1ETS1HWnQxaUU2a3Q1YngyZElQT1J4QTY1a09uT0hpV1VWa3dYUnd4c0hpR0RFOTdjbElsUFVPVFk4dnc?oc=5">&quot;FCA Publishes Future Vision of Agentic AI Regulation - - Insurance Edge&quot;</a></li>
 <li>vLLM Blog <a href="https://blog.vllm.ai/blog/2026-11-24-vllm-gr-announcement">&quot;Announcing vLLM-GR: Efficient Inference for Generative Recommendation&quot;</a></li>
 <li>Mistral AI News <a href="https://mistral.ai/news/mistral-ai-and-nvidia-partner-to-accelerate-open-frontier-models/">&quot;Mistral partners with NVIDIA to accelerate open frontier models&quot;</a></li>
 <li>The Motley Fool <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOcGppNUlRdlVSeF85amlHWjUwWU5XTXFiLVRmSy12SlQyVEpzU05MLXB4NlVuaWgxcmFkUmpLOEJ6UXpKeXFWNkY0LUo1OGw5aEZ3RmhpTGxnUlk4RXhPRkVzalFvc2YyU3o1U0NEM05MNy1BeWsyZmYtLVRuWEZhLUFKYUxRNk5nVnlQVzU1ajdkQ0poaWx4XzRyY05VM2hjZkNHYm1n?oc=5">&quot;Not AMD. This Is the 1 Company Nvidia Should Worry About Most. - The Motley Fool&quot;</a></li>
@@ -468,32 +507,41 @@ footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-
 <li>ForkLog <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxPbjlnUlQwNG5GS1NsQ2E0M0xFZTRMalZmMG1KdVZXUWl1WTBNVzF5dWc5TnlCdVI3LXljdUlWa3U3ZzJET3RXTS1sZHF2Ul9femRtazV5SEFKa0lwTll2eGdRTkcyQXVOcFFRaVdHSkFONlg2NTJjOGFHajBzazBtV3BBV01WaWktOE9mQlozcktBRlJXMWY3b09nMWZLRUNHeUVjYw?oc=5">&quot;US Restrictions and Distillation Crackdown Hinder Chinese AI Model Development - ForkLog&quot;</a></li>
 <li>Technology Org <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPLXVXYjhXRktoYUYyOFM3OE5nQmFKa1k2STZOX2RCMEFBdHVOT1dXT3RKZGZXSVZCX0hObXlZb1VQWkV0U3FyUXpDdHRsb1dlX19sMFU2d1pMaEs4TGhwNjl5alEtazJwbEdLUVUyWHNjekxoMVVUamdfNHlGbFp1dVVCcktlNWdYbUFVUUF0QmJmSm5RbFlaM1B4QWNiSWFqVDNiTlBtMzBSUkFod0V1dnFBSTBxbXZLaDlmRw?oc=5">&quot;Hybrid Research Computing: Keeping Your HPC Cluster and Adding GPU Power on Demand - Technology Org&quot;</a></li>
 <li><a href="http://www.tokenpost.com">www.tokenpost.com</a> <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE83bnhWUDlsWXlpRDRTRnhtTXIxYzAxN3pYRVFMRzYxNnNFSVllVU9ibTdncWVPWXZ6Y1BGZU9JVklTUzFTdnQ0eTE3YnNyRGltbGVwN21sZ0xLWUE?oc=5">&quot;AWS Trainium3 Edges Nvidia GB300 in Inference Benchmark - www.tokenpost.com&quot;</a></li>
+<li>Thaiger <a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPZ3NZRzk4RHJZTEk4anhSTXk2aE00ODUxLUNPUVoxVllUbklPZVdjUnVYNHYtYmRVcGVVb04tT1hFcm5GbW13SlNVU1Q5Ukh0YVpDQlRNMTBGLXFtaWstUTkzS1hnUDFrenQzUDlNQWFGMDg5Rm0tdGtNUGtjZEEtNDJFR3pIdw?oc=5">&quot;Nvidia pauses AI server shipments to Thailand over US export rule - Thaiger&quot;</a></li>
 <li>Developing Telecoms <a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOX29SVWhkbVpiZU9zS05qS0N6WEU0NzF2TERzc1VXZ1UzeTdIeHp5a0p2VnZXSXk1OFo4bWZhdzJkejh5NkNTZDY4NFdGNTVLcXB2aHpkWDdydkxKenN6WF94N2pHQzgyMHJWZF9YNnotblU5elUyWEVnem1qc2hPX3B5QXZUWUhQbWtuLVVsMTdMeTRKelQ5UmlWVHBlYndBdVNIRVJKS014Wmo4eXhsUGpwTVRTaGdUWlFZUjBFUW5qQ2k5V2JFbktrTmtPVUg1ejc1V3dUQjVLYndkWEE?oc=5">&quot;Will drone strikes drive some Russian data centres underground? - Developing Telecoms&quot;</a></li>
-<li>explainx.ai <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNd3hsRHpvTlJHMVRtSWlsTTlONm8tek5DS0cycmEybEdBTG5VTloyX2E3Q0FIWnJFSTNwS244dk5zbTVJaTQ0MnBlbXRZckc3ZnRoTDR1c3NWbHlDY0FpMTkyT2hHTUFpUXNERXpqN2xLakZkZnI4QmpiNWNBMjRIYjd3c0lHOUowblMwSFJnR09ldw?oc=5">&quot;llama.cpp AMD Benchmark Dashboard: 2 Radeon GPUs Tracked - explainx.ai&quot;</a></li>
 <li><a href="http://www.tokenpost.com">www.tokenpost.com</a> <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE8taENrWENmUmc0V2dTY1VXUkZRLXBaWVR2SHczNGZyM2FMUnh6WlpnODNDRUh6Tmdwc1dfamFWRTFfQmN0YzJlOWw2Mko5OFJQVWJvaEk4OFI?oc=5">&quot;Nvidia Forecasts More Than $25 Billion in Physical AI Revenue - www.tokenpost.com&quot;</a></li>
 <li>Wccftech <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPRkszejdOb2JreXVlcmdlcjFaZFNQZ1dCSnd0eFFfQ3NxV185eWZSMzljckRQQ2NoMnJDc2NsZ05aaGlZVmhTWlRVel94T0VnWDFEa1lLVTd1N1ZJaWU0ZEZFb1J1Y2ZXUkVtRzI5VG9ZcjY4TGFkZU1BQXgtV1U4em5ubHRPcV9ZM0wtOWxVMDRpT1pfLVRXckR6Q3l2cTdyRGtKUHFRWGdvcWs3c1ZjQU5CcFBibVHSAbwBQVVfeXFMTkc5aFE1aFRVMnJJWEp3OTRjLXlIUXU1M0hzZFJISkpMYkxQSEFxUlRpeGx5UXE0N1hhb1UzRUs1OEFvSGdEY1hxYnNma1ZtVW5wV3NmdFg3YUcyOWRNdFdGN2FUMWZuNUhLT053SnI4RC1DYWQ0Tlg3czl2TmN4Mlp1UEtUS3V0bUJYUW1GQ203eElmb3lrcGlCdzBpQU15NzdvbGdGN0RkU2RjTzZmNmU2MnFhSVBOR0paRkc?oc=5">&quot;Huawei Poised To Grow China’s AI Chip Market With A Next-Generation HBM Design With Double The Data Pin Density To Surpass Bandwidth Limitations - Wccftech&quot;</a></li>
 <li>Tom&#39;s Hardware <a href="https://news.google.com/rss/articles/CBMi0AJBVV95cUxOQlkydEp3RjZWQWthb2ppdWlRNmtBd1Jsck0ySUtjSjhIZER4SlFvUml2RTZYWkRyb2Q1T3pQVHBhTHVhOFVsOTA3Zmh6TU5vTlVnTzJQN3l3Nl9UekE4eF9Xc1FhSlBsYmdOMEdiQmhuNzVoek9jOVIySGMzeTVEa2NUV0pQZFMybTZqQUpPZ1F0RjRlb3BMNXBqanpwV0J5UllrdVNiTXlOSW1xMnBaMHU0X0NlbWVCZ210dzhRQ0ZHb0tzQk4xZ0R5SlRwdlE1ZnJVMWltLVlXczNHanZjYWc5cy1YY21PVms3bGc4TjVGZWNrMmRreEFnZzJkbTN1Tktid1ZERmFWTW5TWTZKUE95Nko1WEoxSjJSdFFmM29ZOGNZMW9KM3hYNjc5OTF0cUVWYWI0RkJQRElGQlJCTWwwOEh1Skhza2lOT1lzRHE?oc=5">&quot;Sandboxed AI models secretly talk via GPU rounding errors on shared vLLM servers with no network or shared files — colluding watchdog let all 354 attacks slip through - Tom&#39;s Hardware&quot;</a></li>
 <li>Hardware Busters <a href="https://news.google.com/rss/articles/CBMi5AFBVV95cUxNbHAtNnd2V0k4ODl2REE1SEtDR0JBdkc0RWVENEFXSkJlT21odFlzM0J6RUp0UnAxRFVxS2oweWdQS28wRDZUY1cxX1pvemEyVlBsUW9XNTRDdkdCTnN5M3ZiYmhJMGRTRXhMZUZZQnFGVFdySkZOdVE2RXY0NEJrcDUtajBXMlRCTlVqQzFIT1VrZWR5d1VjbEM2R2NQaFdHUkdzNGxmbjZ5SGcxaWdfYXJ6RUhVTlFhTUpwd25Bbk9ONEt6SVV6ekpmbkRpekludlpuclFPS1lLb1FQc183SGJVZkU?oc=5">&quot;Sandboxed AI Models Talked Through GPU Rounding Errors on a Shared vLLM Server, and Their Watchdog Let Every Attack Through - Hardware Busters&quot;</a></li>
 <li>MLQ.ai <a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQeVYxemtVUlhIT2VLdzB3WlVTTmxaV19ab0d4ek91R3pLZDhKZTItNUp3VjhqbUxVdGt2YXJOWm5fQlhYbTlVaXkyM29HYTNqQl9kWnJXSWtiOXVKSnIzV0ktSy1DanhQa1N1dHo4MGdwZTZURXZneVpnckFPOWt3QVVXeHVQSDFkekx6dFBWejdDU1FtMW9n?oc=5">&quot;AI models on one vLLM server passed signals through GPU rounding errors - MLQ.ai&quot;</a></li>
-<li>Foro3D <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNVFVLX3NUWllVcUpxRVRyNnotQnI5TjQ4Z212VlJfZXFQN25pbmFlR2tpeWhWWndvcEJjUng1cDYxamR6SlJBSVd4cnFVc3N6dUt3UUl6R2NaNXBCN0tBTVdqUnJmUmplLS1BNlRKaUxZYl9yZnBIUWtNN3d1RDNLN3I3bzJTOFpjTVpuQkNBdUx6Uk82SVl2dGpRMTdFbTN1RGREUEw0aHdCRVlEVnRBVg?oc=5">&quot;A 600,000-ruble grant and a C++/CUDA engine that performs on an RTX 2080 Ti - Foro3D&quot;</a></li>
 <li>Benzinga <a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNSmdwcFRLSWZwOEdKQTFfbEUta2taTzd4YnN6UEtDR2YxaU5kWFJuaUNobkdoUWZHeFpOVTZMRzVRMjZjVUwzWmJHZW05Skg4OUNwS3preWxsSUE2ZlNLLVlOQ3NvMUt4bmhURFZzRldaQWd1eHh6NVlqSC1UaDlabENWNHlhX0VIM0dxMVNmeEh3NzItX0VCanZXeEt5aExEelZxZTgxaTJtOENwck1XRzNtM1ViZXgwdl85MUJZN2g1Q0I0NGJaT3Fn?oc=5">&quot;Nvidia&#39;s Earnings Gap Filled In Hours. A Study Of 37,675 Reports Shows Which Gaps Don&#39;t. - Benzinga&quot;</a></li>
-<li>NeoTeo <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQMkV5TjNZRW1sM2tfUzlzX3pKTUp1TGJ1UFktZWZmZUwwbFJ4NmpmaHI4d2VackY0empBYmRpZ2RsVVhoZmZfWkh1M1p5TGNkY2g3SjJ4eUN3WDhCdEJIckhOVXBKR1lZck9kS24wcXpKRkJRWlBKSGNwa2t6Z0tFUHd3?oc=5">&quot;AMD vs. Nvidia AI chips: Helios, CUDA and TPUs - NeoTeo&quot;</a></li>
-<li>ABC7 New York <a href="https://news.google.com/rss/articles/CBMirwdBVV95cUxNWWhha0tCX2dOVjRodHk1YUsxdzhSRTdCUmVGdGhUQ3ZLcjAtdVBBMkNIRWJWbTkzeG1DTzNzNlhscUtDLU42TzBjWFoxQW1PcFNUZnhoeFR2N2FnV1FVZjBvTzFXNWM0LUhMclh5RjE2cVVteGU2RW0yR3g0U0g0cVIyWXZjenQ3TmxwSHNZUjNRMHlvdGZ3ZkgwZ3Y2TEpZN1ctUkVDdVVCR09mTlVldnBIby1ROXZDTjhXcEJtNlBjNjBqUTVJUnFvcU9IdVRmeHJKbGZvOEhjN09vYlNYcElXNDVvZUFWbWlIVEY2MEw5aTE1QzMtVERsTTAyLThqenFzOGpRaWYyNElBcWZyZDVCT2hwdkd0ckhPR2lqV18wNGViTk5MVmxrbmh0YWljYUstYUJIbm5hU3gtZmR5NWpTcUxUWHBKSHN1R2cwRjlSeWM1by1JQ0psMi1iWTI4azNXdjhaejRqZGRZVFNjc016eDBaSUc0WmZjNG1HX2tfQVpmdkZlWmg2MW1nQXh6MGZNQ1ZJR0ZoNWxuelhOYzJxeEV5RWpQdXlXUWxrR2hHVnk5UEhYaDNKM3NCcjB5THViZEZsOExHSTNqYWhpZDhReWZibDlST1IyLUhYZGFuN0xaV19DeUMyaWpYMzZ2LVhsVGgyRHg2RHhQZWNsUVFaRGFEbjl3bnBFenhqTXUwZTVWaXZidVpKcTZna2ZhaWMzOWVZLTBSVHFUdGpEREtGLU53cEwzbDJoLWVHT0I1LWkzU3pPLTNEc09HMHRJZW9EemdLeG1jRVA4cWN1UVJPYkt3cm9WcFV0THZaVXVjTEppSXotRG40M2xITkV6czVHNWsxNXZZYm1MeUNreV95ZUg2a0NqbDk3M2pyeUdCaHRsLURaRmRaT01fbXhHSzZ0UkdKVUkxVXAyQzUxZWotMTFYdU0yX0w2cVNmSXktSlk5dUljSjJEOURGMmM5OF9WLXRMbmlLcl9Pc3diR0FjUnJxQmhZOU8zZGplVDVtaGtWcHJCYmlEQWhzWXE4Z1YzREwwaDdXMXFLNm81S2xXY3UzTUc2VXdHQ0JCUFpfZjF1eFR6anZ1WDZmbUd1UVNmajVxaFNxWVEyUkZWaTc5b1NMNHVIdVVQdHVZTlRIbUtDZHZsOWpXQ2xGQkVjRXczLXBYVWJpU21BczFuTVV0cE9POUpoRjFHLTNmNEluMEJDVS1LZmEwaVZnT2gtR1g2R0tlX1A0Y3lJakkw?oc=5">&quot;Attorney General Blanche sidesteps questions about DOJ probe into Nvidia&#39;s Huang - ABC7 New York&quot;</a></li>
-<li>Devdiscourse <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxPOVZGeE1yMjNwVS1TY25xaGlYaGZIS3A5dVg1RjJKSkp0YkJ0ZWc5QkJwMVJHbE5FbU9NSlpkWE52TjJpYndxYnZMS3JPbFk4X0NCeEc2dnh0UFFTMGJjTGoyV01xSXM0SFRxTUh6N3owWHE5RFF1X0poVll1bUVuMGFnWE9vWFpTTW5Cal80YUY3UTF1b1B0ZENhdjlJcnk0VndtXzhNUHhfR2Q5bkJIRkVKNXFycTZxM0lMZdIBwgFBVV95cUxOR0tFWVJZNXZJWkhQblE4UVdpZzRFVzNSYmgwVGJZemhlV3RmWU1ONDg4ZDV4RTJpczR3N0l2S2ZPYUtrVGo0YUptcUFBTU5lUVhlbm5GZHZmVklEVXNpZW5FVkhoaTVITlRqcGhYSUEwQ29uQ1I4Q3hwT0JiS1YySmptM3U0bGVvVWo5bUtvRUJvaGsyOHpZNDV5MUxaenFIdEZhallORU5tamRjWGM2OHJfNWxPUC1PWWl4a2ZqOFRPQQ?oc=5">&quot;Schumer accuses Nvidia CEO of violating US export control law - Devdiscourse&quot;</a></li>
+<li>NDTV <a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxNOTgzY0FXdHg5VUt6X2w4SDlqalhyOHE2aVlfUWY4R29CdlZkVFEyQkxjVHhCVDVrRkZWVTRiZ3p4S3l2QmFxT2FyNGJ1STNBV2pJS052Rk5HVEY5Vjk5NjR5R3QzdGdsOHJTeDlYLXFCZzFFTnZHaThJUTdsMVRtUGlqQUNmdWN4VHN0clh6Z0JUSjc2djZ4VGpmUVNieHExZ2Y4aGQyY1hmb05WZ0lfVVd1eEpuemdRUk1nbXhmZXh1Q3pzUHJLVnl5X3llQmlKdjlldWNWa3JMZFBuU0000gHnAUFVX3lxTFBMX1BraEVDb1JMU3h1UXdlQ0hMVkdXZ1lPZmw3eDY0c2lwMVdLcE1Cc1FCYVNwd1BoQ0ZPbHBCTUtoSXZRcnFaWGJMOG5COHJpTlBlVjFoTDh0SHo2ZTBHbzNyMzNzUUtvOUdDTzR5R2hlMkNjVEh5VTAxRXlwUkxNR0FtS2dwblVKR0FXQTJ3Z2Etd0ZVcVZIT1huZklIU1BxMDJjc0FnbXdkYnBLZkVONWt2bGZwSUpoekVtaTByazQtUnUwZnl4U0lhTTVGazZOcWs5TXo1NlhfUXFwYk1laGgzdWlySQ?oc=5">&quot;Democrat Accuses Nvidia CEO Of Violating US Export Control Law - NDTV&quot;</a></li>
 <li>Quantum Zeitgeist <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE9nR2ZLTjFrNUE0b0JRcld2cHYzQ1UwM0N4SlRjVFcxTUJBanBlN1kyWGh5OE5IOEY1amJrVFFYUHV0V3V1OEdKZkIxTHdaNU5YVmNjdW9HZkJ4UFd6REZKSzBHWmNnUksyR0xiTi1laTM2elZjUkZYcQ?oc=5">&quot;AMD’s Lux Supercomputer Runs Xanadu’s Largest Quantum Workflow - Quantum Zeitgeist&quot;</a></li>
-<li>SiliconANGLE <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQcW5nT1FQSlFxTmNwNlN3a3JjeTk4dF9yMXl3dGZHbzJ1LUpYQWhIX0FTeVlGS3o2M2NFNElXRXhBMWFKVHRmZGxyd1M2b0V6c0t0MkdZN1pnVmtJdnFtZGJrM05IUTh1VHJyYXdrcDdOcExwWVRUMzFuNHlQUFo4eURMTDQ?oc=5">&quot;Key insights from HPE’s Q4 earnings report - SiliconANGLE&quot;</a></li>
-<li>TIKR.com <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZnpTM0E1RzYtTHM0MDFYN2RCU1JNOTMwMGF4TjFVQzlRQnJydVdUR3o3MWpHelpvSExDUUhmZ194LWx2bXZuWFItNldpMVB3dWNpalRTM3FCMXJJWmE5Q211MDVyVnp5M3ZvWkJHbGlNTzlRMWg2UGJCUWhDT3dHZ0l6aVBJQ3d0LVQzaks3am9zdUd3Sm1kTktja3JVSnVvcWhZbVEyRmQyZw?oc=5">&quot;Coherent Is the Real Winner of Huang’s Return. Nvidia Paid $2 Billion for Its Stock - TIKR.com&quot;</a></li>
-<li>TIKR.com <a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxObW5tdlZkRzc1bmJyZVA2VEY3anFUM3dYNDhkOGdKYW9kY2VGaGdMMGNzc0ZpYkNfRHBMaFVObzlXMnRmYkxyQ3BqbjN0cWZtMVFHa01qNk00aEEwZnRuYnFocjlUNmM5T0FJamVsRHFmWE9UbElxTm1oclBkMlBJQVcyN3FuYk11Ym5SQ1dXVklSQ1EyREEwWk1JYzFoVUJQSjl1Ul9MZVl0R0tMajRYSkpHRHJLVWZrYkM4a1R1RXl0YUNKQTZEbTRuTnBtNXNMdHdNWUc1ZkkwMzAxYkxua1E1MXlORGpPN3FYbVdkb3lSeGhVWWVYb1NrWEhlUQ?oc=5">&quot;Trump’s Southeast Asia Chip Rule Has Cost Nvidia $44 Billion+ of Revenue, per Jefferies. Huang Can’t Undo It - TIKR.com&quot;</a></li>
-<li>Mezha <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOTHNwZ3duejA5Z3RybHNQOHB4ZTF2aEFPeS1aYTQ0Yk1EZGxZUFhMZ1d5X1lUOGdNZ0R0T2QyMkZObkF1SmU0OW5JRjBpZXk5SS1RSjFWQ2RzX2Q2SFlrUlROcGdtZXl5TWh4ZmNocG4tQVV1Q0ptLTRLLU1rV1hoUXRlV3RHWHlNbUJIOTVPeHBTdFlxQjM4YTRCOGVjdE9QSnN30gGoAUFVX3lxTE9NdVFaZHFpaHNvM00yTWx0Tkw0SGhxYzJnS2xrejJ3aXotZ0VfOFNVZzlvVXQyM1k0cnd0RzlKYTVaQmRneHE4VWpqSFB2R1pLeXlvT0JXOHdfREVzQjc3by1LQzdNODB0OWZUdnFQNmpvSnlSUkVUYU9rUUZESjBmOE9Fem9Kdk5Ea3JfQlkwLU5XU2hIWlRGam4tcXk0OW0xT1hWU1ZUNA?oc=5">&quot;AI Agents Independently Complete Nearly Half of Research Tasks That Take Humans 2–4 Hours, OpenAI Says - Mezha&quot;</a></li>
+<li>Wccftech <a href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxOMzZhN0h5T1AtNEpWcW1QVXdnaUJTcXpzRGdBSGd5eEJKQkdxWHBkR2tuY05vLUJmT1BqN2FFWlZ1Tm5GdnpuYlBETExRUDJaXzljREtZMXdtbWpweFlXRjkwMjl4cERKSXgtVHZpYjNXTzhLVDJ5T1Fxd1J6TU8zN3BNWnhHbjFCcnhKR1RLZm9POV95OEViOTA1TDVfOGRyRzdwdTJhVFhweTVGREoxSE5kUnptRXVuV2p4VV9lM2NkMVYzaHcwRDg1YmRHeThMdWVEQWQ0bXd3UWROQWVWWFIzbG5WM1lSSHfSAe8BQVVfeXFMT0tfSHhUWTFNc25FRjhybjIzaTJES2hmN0E1NjZpVGNsNDJGZWxQZC1ZSTdYUFFxbDNxTFV0dVA2aHhJdC00enVvdC1KY2c4eGJhMWJOcUF1S2JLNWUzT25feHoxeWRXR3pLZ1FvaUhveTdHNGR4SHVVMXdGbThMMnpDX1JHVDNZOGg4NEZ3TUp1c3ItVkRUVmczQWZrNkdOWkEyeVB2UzEwRGFFakx3NmRxY2VuZnh2a2tsaFNUWmQ2SnA4Zl9LNlk4Y29jMFVwTmJVWVA5Slk2UHUzZURRQ1Nnc3V4Z0duelQ5azJhLU0?oc=5">&quot;TSMC Plans $22.6 Billion Chip Fab With 2nm Tech In Brazos County, Texas, With Construction From 2027 To 2031 And 2,099 Jobs, Filings Show - Wccftech&quot;</a></li>
+<li>Coinpaper <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxQcXQ1eVp0Y0xQTGZDWURXQndNR0tTS1VRdmFxMUpYOFp2OGdjUWh3M0xUcUpuZk9BVU92R2hrRElhaTlSWlhPRWZrVkpid3hkcnoxOHRlOElZRzhtOW9kRTBoUzRDdkNfUk5WQzRTLW9IYXhTTzQ3a2VQT2FoR0lEYldCdURlVE5Qd05SLUFkSnVySnBrbDVNZTItT1dpWVBlVUtXdVpqTi1LejBWR2E0MHkwTQ?oc=5">&quot;OpenAI, Google and Anthropic Gain Breathing Room as Chinese AI Developers Face Delays - Coinpaper&quot;</a></li>
 <li>Developing Telecoms <a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOYU5iNW5oOUNQSGgyZUswWElnbEd4bVZLQWxndHA0a3RmNmlRZUg2SjNna3h4bzlvS3ZMRlEtYllvdjRKOU1NRVhwZXBPZDBXUkJZVTl1Y25ibmJ2SVlEN25Zb2pvTjJta2NZeHRudHl2LUpXWEJtRXoybVVvelRicFpTX3lNUDFkTExON2hQY2Fic1hOVnNxVDNhelYwcFVWWkpPWllhRnBlVFkyNUlYSC1yZ294bXRWZlBtYThJMG44WTJtRnVfR1c3UnZsOVdhc0E?oc=5">&quot;Huawei convicted in US on ten charges, but cleared of racketeering - Developing Telecoms&quot;</a></li>
-<li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPN25xQnFJLUpnSlFELXFVNXkzZ1NIcXU3c2QzSGdzVnVoeklmb2Q1eGZPTEQ5Y1prdG43Y1RUWUZWWjF3WkFabW81amZkUHJmT0VnRkFIMEktUnY3eVRwR3N1WjRBblpDMW1jZXFjTXdGc2ZxQkdEN19PRHpsUUV2NFN5a05oZWNNU1lSQzNzQVRXdmlSV0JNdnVnOA?oc=5">&quot;Tepper Trims Alphabet by ~46% and Dumps Broadcom &amp; AMD While Backing Micron and Oracle - Yahoo Finance&quot;</a></li>
+<li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOLU04NkxmTUxkT0VjQmdFWHFtdVF6czdpd2ZsWXNtOE5yNmxBU2tRQVZIajNVMzY3aVBIeWRibmg1S19scVE0WXNQN0pkMXpNWGNFaGpJZkJ5WkE1aV9CandtcnRaTEllcWFUWVR1RXExRWJVc1hUa1F3VVl4RXphOU5ZZVZ4YXkwTXpIUlpPRU9DMmI4NlR0ZmpwSUpDQXJB?oc=5">&quot;This May Be the Best Artificial Intelligence (AI) Stock to Buy in December (Hint: It’s Not Micron or Oracle) - Yahoo Finance&quot;</a></li>
 <li>Zacks Investment Research <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOQ1F4QWxTbTZmTl9QMHRGS1h0X1ZERXVRTld4NjQ5SUtVOW1NZHFvT1ZTaURLNEFwOFBIT1hPYnFudTFvU0JHZExkV0h0VTRRYzFRaW9VUEpESWtBVUpOeUlFeFBlZmEtekFwVmRvS194NjNKbTBQaDA5VEhsQ3VQSG9ubkZZeE5KQTQ2UFFSV211eDJtQk5WTWdFaDNTdDd5cVE?oc=5">&quot;Cisco Gains From AI Networking Boom: Can It Outpace HPE &amp; ANET? - Zacks Investment Research&quot;</a></li>
-<li>Nokia <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxObW5lRU9JSmxTd0s5VWhBeU1UZjRkSTFUUWRKUzhCVlYycEZQZFlBU2hrUE9NU3BvVVVUVnhFRjNuampkV1pEQ0VPNVNLX2ZiLTg5b2xXdkZDVThnQW9BUVNBNjZMM1ZULVlMS0VyOEFIaWZnSmRZN3BOd3RJTER3WVptTkVRbnUtVUY1bHBMSVB2eGRBMlJOa3FmRDhfYlNMdVVESEQ0Ni04QQ?oc=5">&quot;How are coherent pluggable optics evolving from terrestrial to subsea networks? - Nokia&quot;</a></li>
-<li>Coinpaper <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOWGJMTEp4bUV0WmVGTUpkZU8tZ0RNYVY4WXQ5d3lqQVY0MVlSMHI0QUkzS0dfZzZBOWZqYm1KX1RMTm1Ea3Y1NDVob0JnUmwtU3Y1SFllUzM4eldsSVlvNGl5MEVmY2p6emZDRzRtZ3k2RWx3Q1h5OUFEQ0hkZUdINGZTSm9BVWxqRUNlaVh1NE9SVXNVekdTd0l2eDkxQ1ZjQUh4WWJ3c3N4cEFENno1d0ZPdko?oc=5">&quot;AI Stock Crash Over? Samsung &amp; SK Hynix Lead Asian Chip Stock Rally - Coinpaper&quot;</a></li>
 <li>Quantinuum Blog <a href="https://www.quantinuum.com/blog/a-quantinuum-led-team-has-built-the-quantum-programming-tools-for-real-time-magic-state-distillation-on-a-quantum-computer">&quot;A Quantinuum-led team has built the quantum programming tools for real-time magic state distillation on a quantum computer&quot;</a></li>
-<li>Trefis <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOSmRCZmZYdEtWODBaNVBodl9zYjJyUTRNTl9sUXdwUWxHY1FLYkpra01XQjBfTW40M3d5MTA5TFNONXhxRDdpYUkwZVNuOXdrYmRVMlBZR1JYTUo5aWg4eDZhT3BmblAzdXNMbGwzejVPZ18wRnl5UGFMeTIyUVFrQ3hyYnNmS3dzUTM4VVM5ZTB3aFBzUENZNzV0YlU1bUtQbWNDVkhBOUoxX3JpYzJHbnBGcw?oc=5">&quot;What’s Happening To Marvell’s Cash Gap With Broadcom - Trefis&quot;</a></li>
+<li>Yahoo Finance <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPMDFlUVRNSjVRYnAzVWNTSmtqeGlFQzBUTkloV29pMTlzb3BBVHRDTnhIeTZDTGl3eE5DWWxXOHlOOVBZNFA0UlBxbzQzR1FVNWpQbXZON1ozVGNEVlcxSFcyVmNSaWpkSTBxdjZYY0R5YnVpVk53MmZwWEZxU2pKQk03cEV5aVBENWNrbkdrN3l2TUZU?oc=5">&quot;AMD Rises 4% Despite Erste Group Downgrade on Valuation; Marvell Climbs 6%, Intel Gains 5% - Yahoo Finance&quot;</a></li>
 </ol>
 
-<footer>The AI Infrastructure Signal · Issue #48 · November 22nd to November 28th, 2026<br><small>Tokens at Work. Human-built. Personal full-stack agentic AI pilot. Verify claims independently.</small></footer>
+<p class="report-tagline">Tokens at Work. Human-built. Personal full-stack agentic AI forge. Verify claims independently.</p>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-main">
+    <a class="brand" href="../../../index.html">TOKENS AT WORK</a>
+    <div class="footer-links">
+      <a href="../../../about/index.html">About</a>
+      <a href="../../../archive/index.html">Archive</a>
+      <a href="../../../podcast/index.html">Podcast</a>
+      <a href="https://open.spotify.com/show/3bOcmE7u4HKrQO4NXwn1r5" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://music.amazon.com/podcasts/a71db7b2-f0c7-4c31-a400-b7e5cb474611/tokens-at-work" target="_blank" rel="noopener">Amazon</a>
+      <a href="https://media.rss.com/tokens-at-work/feed.xml" target="_blank" rel="noopener">RSS</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">© <span data-year>2026</span> TOKENS AT WORK</div>
+</footer>
 </body>
 </html>
